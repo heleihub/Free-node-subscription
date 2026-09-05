@@ -12,13 +12,11 @@ import urllib.parse
 import subprocess
 import requests
 import yaml
-import maxminddb
 from datetime import datetime, timezone
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 
-# ----------------- 1. 订阅源池 (已新增 shadowmere API 订阅) -----------------
+# ----------------- 1. 订阅源池 -----------------
 SOURCE_URLS = [
-    # 用户指定的优质源池与新增 API 订阅
     "https://shadowmere.xyz/api/b64sub/",
     "https://shadowmere.xyz/api/sub/",
     "https://raw.githubusercontent.com/ShatakVPN/ConfigForge-V2Ray/main/configs/all.txt",
@@ -45,7 +43,6 @@ RESIDENTIAL_COUNTRY_DIR = os.path.join(OUTPUT_DIR, "residential-by-country")
 os.makedirs(COUNTRY_DIR, exist_ok=True)
 os.makedirs(RESIDENTIAL_COUNTRY_DIR, exist_ok=True)
 
-# 知名 SS 加密方式白名单 (防止非法 cipher 导致内核闪退)
 VALID_SS_CIPHERS = {
     "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
     "chacha20-ietf-poly1305", "xchacha20-ietf-poly1305",
@@ -53,19 +50,6 @@ VALID_SS_CIPHERS = {
     "2022-blake3-chacha20-poly1305", "aes-128-ctr", "aes-192-ctr",
     "aes-256-ctr", "aes-128-cfb", "aes-192-cfb", "aes-256-cfb", "rc4-md5"
 }
-
-DATACENTER_ASNS = {
-    13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
-    14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081
-}
-
-RESIDENTIAL_KEYWORDS = [
-    "telecom", "broadband", "consumer", "cable", "dsl", "hinet", 
-    "chunghwa", "comcast", "charter", "spectrum", "verizon", "att",
-    "bell", "rogers", "shaw", "vodafone", "orange", "deutsche telekom",
-    "virgin media", "kddi", "softbank", "ntt", "so-net", "kt", "sk broadband",
-    "lguplus", "home", "residential", "starhub", "singtel"
-]
 
 COUNTRY_META = {
     "HK": ("🇭🇰", "香港 (Hong Kong)"),
@@ -90,12 +74,7 @@ def safe_download(url, dest_path):
         shutil.copyfileobj(response, out_file)
 
 def setup_environment():
-    print("[*] 正在准备依赖环境与数据库...")
-    if not os.path.exists("Country.mmdb"):
-        safe_download("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb", "Country.mmdb")
-    if not os.path.exists("ASN.mmdb"):
-        safe_download("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb", "ASN.mmdb")
-    
+    print("[*] 正在准备测活内核...")
     if not os.path.exists("mihomo"):
         print("[*] 正在下载 mihomo 测活内核...")
         safe_download("https://github.com/MetaCubeX/mihomo/releases/download/v1.18.9/mihomo-linux-amd64-v1.18.9.gz", "mihomo.gz")
@@ -214,7 +193,6 @@ def convert_node_to_clash(node_str, index):
                     if not pbk:
                         return None
                     sid = params.get("sid", "").strip()
-                    # 容错：校验 short-id 格式防闪退
                     if sid and (len(sid) % 2 != 0 or not re.fullmatch(r'[0-9a-fA-F]+', sid)):
                         sid = ""
                     proxy["reality-opts"] = {
@@ -337,7 +315,6 @@ def test_single_batch(proxies_batch, port=19090, secret="secret123"):
     time.sleep(3)
 
     if proc.poll() is not None:
-        print("[!] 警告: 发现单批内存在残缺节点导致内核闪退，自动跳过以保障主队列安全")
         if os.path.exists("temp_clash.yaml"):
             os.remove("temp_clash.yaml")
         return {}
@@ -350,7 +327,7 @@ def test_single_batch(proxies_batch, port=19090, secret="secret123"):
         name = p["name"]
         url = f"http://127.0.0.1:{port}/proxies/{urllib.parse.quote(name)}/delay"
         try:
-            r = requests.get(url, params={"url": test_url, "timeout": 3000}, headers=headers, timeout=4)
+            r = requests.get(url, params={"url": test_url, "timeout": 4500}, headers=headers, timeout=6)
             if r.status_code in [200, 204]:
                 delay = r.json().get("delay", 0)
                 if delay > 0:
@@ -392,57 +369,124 @@ def run_real_delay_test(clash_proxies):
     print(f"[+] 全部节点检测完毕！真实存活总量: {len(alive_nodes)}")
     return alive_nodes
 
-def classify_and_filter(alive_proxies, node_map):
-    country_reader = maxminddb.open_database("Country.mmdb")
-    asn_reader = maxminddb.open_database("ASN.mmdb")
-    verified = []
+def rename_node_link(raw_link, new_name):
+    """规范重命名 V2Ray/通用协议链接备注（国旗 + 缩写 + xiaohe）"""
+    try:
+        if raw_link.startswith("vmess://"):
+            b64 = raw_link[8:]
+            b64 += '=' * (-len(b64) % 4)
+            data = json.loads(base64.b64decode(b64).decode('utf-8', errors='ignore'))
+            data["ps"] = new_name
+            new_b64 = base64.b64encode(json.dumps(data, ensure_ascii=False).encode()).decode()
+            return f"vmess://{new_b64}"
+        elif "#" in raw_link:
+            base_url = raw_link.split("#")[0]
+            return f"{base_url}#{urllib.parse.quote(new_name)}"
+        else:
+            return f"{raw_link}#{urllib.parse.quote(new_name)}"
+    except Exception:
+        return raw_link
 
-    def resolve_and_tag(item):
-        name, delay = item
-        original_link, p_obj = node_map[name]
+def batch_query_ip_api(ip_list):
+    """
+    使用第三方专业 IP 威胁与归属 API (ip-api.com Batch) 打包查询
+    单次打包查 100 个 IP，直接获取官方定义的 hosting (机房与否) 和精准国家代码
+    """
+    ip_info_map = {}
+    if not ip_list:
+        return ip_info_map
+
+    unique_ips = list(set(ip_list))
+    print(f"[*] 启动第三方权威 IP 属性检测 API，待检测独立 IP 总量: {len(unique_ips)} 个...")
+
+    batch_size = 100
+    for i in range(0, len(unique_ips), batch_size):
+        chunk = unique_ips[i:i + batch_size]
+        payload = [{"query": ip, "fields": "status,countryCode,hosting,isp,org,as"} for ip in chunk]
+        try:
+            resp = requests.post("http://ip-api.com/batch", json=payload, timeout=15)
+            if resp.status_code == 200:
+                results = resp.json()
+                for item in results:
+                    if item.get("status") == "success":
+                        ip_info_map[item["query"]] = {
+                            "country": item.get("countryCode", "OTHER"),
+                            "hosting": item.get("hosting", True),  # True 表示数据中心/机房
+                            "isp": item.get("isp", ""),
+                            "org": item.get("org", "")
+                        }
+            time.sleep(1.5)  # 严格遵守第三方每分钟频控规则，安全无痛查询
+        except Exception as e:
+            print(f"[!] 第三方 IP API 批次查询异常: {e}")
+
+    return ip_info_map
+
+def classify_and_filter(alive_proxies, node_map):
+    """结合第三方 API 的 hosting 字段实现所有国家真实家宽与高精度国家分类"""
+    resolved_cache = {}
+    
+    def resolve_server(name):
+        _, p_obj = node_map[name]
         server = p_obj["server"]
         try:
-            ip = socket.gethostbyname(server)
+            return socket.gethostbyname(server)
         except Exception:
             return None
 
+    # 并发快速将节点域名解析为 IP
+    print("[*] 正在解析可用节点的服务器出口 IP...")
+    with ThreadPoolExecutor(max_workers=50) as executor:
+        futures = {executor.submit(resolve_server, name): name for name in alive_proxies.keys()}
+        for f in as_completed(futures):
+            name = futures[f]
+            ip = f.result()
+            if ip:
+                resolved_cache[name] = ip
+
+    # 调用第三方 API 批量检测真实国家与是否为 hosting 机房
+    all_ips = list(resolved_cache.values())
+    ip_api_data = batch_query_ip_api(all_ips)
+
+    verified = []
+    for name, delay in alive_proxies.items():
+        if name not in resolved_cache:
+            continue
+        ip = resolved_cache[name]
+        original_link, p_obj = node_map[name]
+
+        # 默认值
         country_code = "OTHER"
-        try:
-            c = country_reader.get(ip)
-            if c and "country" in c:
-                country_code = c["country"]["iso_code"]
-        except Exception:
-            pass
-
         is_residential = False
-        try:
-            a = asn_reader.get(ip)
-            if a:
-                asn = a.get("autonomous_system_number", 0)
-                org = str(a.get("autonomous_system_organization", "")).lower()
-                if asn not in DATACENTER_ASNS:
-                    if any(k in org for k in RESIDENTIAL_KEYWORDS):
-                        is_residential = True
-        except Exception:
-            pass
 
-        return {
+        if ip in ip_api_data:
+            data = ip_api_data[ip]
+            country_code = data["country"]
+            # 权威真家宽判定：第三方 API 明确判定 hosting 为 false（非机房，即为宽带住宅）
+            if not data["hosting"]:
+                is_residential = True
+
+        verified.append({
             "link": original_link,
             "clash_proxy": p_obj,
             "country": country_code,
             "is_residential": is_residential,
             "delay": delay
-        }
+        })
 
-    with ThreadPoolExecutor(max_workers=40) as executor:
-        futures = [executor.submit(resolve_and_tag, item) for item in alive_proxies.items()]
-        for f in as_completed(futures):
-            res = f.result()
-            if res:
-                verified.append(res)
+    # 按照国家与家宽为每个节点规范重命名：国旗 + 代码 + 序号 - xiaohe
+    counters = {}
+    for node in verified:
+        cc = node["country"]
+        counters[cc] = counters.get(cc, 0) + 1
+        idx = counters[cc]
+        flag = COUNTRY_META.get(cc, ("🌐", ""))[0]
+        res_tag = " (家宽)" if node["is_residential"] else ""
+        
+        new_name = f"{flag} {cc} {idx:02d}{res_tag} - xiaohe"
+        
+        node["clash_proxy"]["name"] = new_name
+        node["link"] = rename_node_link(node["link"], new_name)
 
-    country_reader.close()
-    asn_reader.close()
     return verified
 
 def export_clash_yaml(clash_proxies, filepath):
@@ -465,8 +509,8 @@ def export_clash_yaml(clash_proxies, filepath):
 
 def export_singbox_json(verified_nodes, filepath):
     outbounds = [
-        {"type": "selector", "tag": "select", "outbounds": ["auto"] + [f"node_{i}" for i in range(len(verified_nodes))]},
-        {"type": "urltest", "tag": "auto", "outbounds": [f"node_{i}" for i in range(len(verified_nodes))], "url": "http://cp.cloudflare.com/generate_204"},
+        {"type": "selector", "tag": "select", "outbounds": ["auto"] + [n["clash_proxy"]["name"] for n in verified_nodes]},
+        {"type": "urltest", "tag": "auto", "outbounds": [n["clash_proxy"]["name"] for n in verified_nodes], "url": "http://cp.cloudflare.com/generate_204"},
         {"type": "direct", "tag": "direct"},
         {"type": "block", "tag": "block"}
     ]
@@ -482,20 +526,20 @@ def export_subscriptions(verified_nodes):
     residential_links = [n["link"] for n in residential_nodes]
     residential_clash = [n["clash_proxy"] for n in residential_nodes]
 
-    # 全部节点
+    # 1. 全部节点导出
     with open(os.path.join(OUTPUT_DIR, "v2ray.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(all_links).encode()).decode())
     export_clash_yaml(all_clash_proxies, os.path.join(OUTPUT_DIR, "clash.yaml"))
     export_singbox_json(verified_nodes, os.path.join(OUTPUT_DIR, "singbox.json"))
 
-    # 全部家宽节点
+    # 2. 全部家宽节点导出
     with open(os.path.join(OUTPUT_DIR, "residential.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(residential_links).encode()).decode())
     if residential_clash:
         export_clash_yaml(residential_clash, os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
         export_singbox_json(residential_nodes, os.path.join(OUTPUT_DIR, "residential-singbox.json"))
 
-    # 按国家分类全部节点
+    # 3. 按国家分类输出全部节点
     by_cc = {}
     for n in verified_nodes:
         by_cc.setdefault(n["country"], []).append(n)
@@ -507,7 +551,7 @@ def export_subscriptions(verified_nodes):
             f.write(base64.b64encode("\n".join(links).encode()).decode())
         export_clash_yaml(proxies, os.path.join(COUNTRY_DIR, f"clash-{cc}.yaml"))
 
-    # 按国家分类家宽节点
+    # 4. 按国家分类输出家宽节点
     res_by_cc = {}
     for n in residential_nodes:
         res_by_cc.setdefault(n["country"], []).append(n)
@@ -519,10 +563,11 @@ def export_subscriptions(verified_nodes):
             f.write(base64.b64encode("\n".join(links).encode()).decode())
         export_clash_yaml(proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"clash-{cc}.yaml"))
 
+    print(f"[*] 导出完毕！全部存活: {len(all_links)} | 第三方判定真家宽: {len(residential_links)} | 涉及国家: {len(by_cc)}")
     return by_cc, res_by_cc, len(all_links), len(residential_links)
 
 def update_readme():
-    """直接扫描真实生成的物理文件统计真实数量，彻底避免 0 的乌龙"""
+    """扫描真实磁盘物理文件统计数量，保证 README 与文件完全一致"""
     repo = os.environ.get("GITHUB_REPOSITORY", "heleihub/free-node-subscription")
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -580,12 +625,13 @@ def update_readme():
         country_table_rows.append(f"| {flag} {name} | **{count}** | [V2Ray/通用]({v2ray_cdn}) | [Clash 订阅]({clash_cdn}) |")
     country_table_str = "\n".join(country_table_rows) if country_table_rows else "| 暂无可用节点 | 0 | - | - |"
 
-    readme_content = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
+    readme_content = f"""# 🚀 免费节点自动测活订阅池 (含第三方权威家宽/住宅IP甄选)
 
 > 🕒 **最近更新时间**: `{now_utc}`  
 > 🟢 **全部可用节点数量**: `{total_count}` 个  
-> 🏠 **甄选家宽节点数量**: `{res_count}` 个  
-> ⚡ **真实可用保障**: 所有节点由 `mihomo` 代理内核建立实际网络通道握手测活，拒绝虚假通畅与死节点。
+> 🏠 **权威住宅家宽数量**: `{res_count}` 个  
+> 👤 **节点规范命名**: 格式统一为 `国旗 地区 序号 (家宽) - xiaohe`  
+> ⚡ **质量保证**: 由 `mihomo` 真实代理握手测活 + `ip-api` 第三方接口进行数据中心/机房风控检测过滤。
 
 ---
 
@@ -599,8 +645,8 @@ def update_readme():
 
 ---
 
-## 🏠 按照家宽分类节点订阅 (住宅 IP 专区)
-> 严格过滤机房云厂商 ASN，筛选出归属于民用电信运营商宽带的家宽节点。
+## 🏠 按照家宽分类节点订阅 (第三方权威非机房住宅 IP)
+> 经专业 IP 接口检测，排除所有托管数据中心/机房 IP (`hosting: false`)，保留原生民用宽带。
 
 | 家宽地区 | 可用节点数 | 通用订阅链接 (V2Ray/Shadowrocket) | Clash 专属订阅 |
 | :--- | :---: | :--- | :--- |
@@ -617,7 +663,7 @@ def update_readme():
 ---
 
 ## 🛠️ 项目使用说明
-1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并更新上方的节点数量与订阅内容。
+1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
 2. **多客户端兼容**：
    - **Clash / Clash Verge / Mihomo Party**：直接复制上方表格中的 **Clash 订阅** 链接。
    - **v2rayN / v2rayNG / Shadowrocket (小火箭)**：直接复制 **V2Ray/通用** 链接。
@@ -625,7 +671,7 @@ def update_readme():
 """
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(readme_content)
-    print(f"[+] README.md 数据更新完成！可用总数: {total_count}, 家宽总数: {res_count}")
+    print(f"[+] README.md 数据更新完成！全部可用: {total_count}, 权威真家宽: {res_count}")
 
 if __name__ == "__main__":
     setup_environment()
