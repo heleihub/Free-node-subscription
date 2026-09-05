@@ -5,6 +5,7 @@ import json
 import time
 import base64
 import shutil
+import socket
 import urllib.request
 import urllib.parse
 import subprocess
@@ -14,9 +15,8 @@ import maxminddb
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor
 
-# ----------------- 1. 节点抓取源池 (含指定的新网站与原仓库提取源) -----------------
+# ----------------- 1. 提取的节点源池与目标爬取网站 -----------------
 SOURCE_URLS = [
-    # 原项目主力上游聚合与活跃订阅池
     "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Sub1.txt",
     "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Sub2.txt",
     "https://raw.githubusercontent.com/peasoft/NoMoreGFW/master/subs/base64.txt",
@@ -27,10 +27,10 @@ SOURCE_URLS = [
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
 ]
 
-# 用户指定抓取网站列表
 SCRAPE_WEBSITES = [
     "https://outlinekeys.com/protocols/vless/",
     "https://shadowmere.xyz/",
+    "https://shadowmere.xyz/api/vless",  # 直接爬取其公共 API 端点
 ]
 
 OUTPUT_DIR = "output"
@@ -39,7 +39,7 @@ RESIDENTIAL_COUNTRY_DIR = os.path.join(OUTPUT_DIR, "residential-by-country")
 os.makedirs(COUNTRY_DIR, exist_ok=True)
 os.makedirs(RESIDENTIAL_COUNTRY_DIR, exist_ok=True)
 
-# 常见机房/数据中心云厂商 ASN（用于精准识别过滤，余下归类为家宽/住宅 IP）
+# 常见数据中心云厂商 ASN（用于过滤剔除，保留民用宽带/住宅 IP）
 DATACENTER_ASNS = {
     13335,          # Cloudflare
     16509, 14618,   # Amazon AWS
@@ -54,9 +54,9 @@ DATACENTER_ASNS = {
     132203,         # Tencent Cloud
     20473,          # Vultr / Choopa
     60068,          # CDN77
+    55081,          # 24-7
 }
 
-# 常见国家代码对应的名称与国旗 Emoji
 COUNTRY_META = {
     "HK": ("🇭🇰", "中国香港 / Hong Kong"),
     "TW": ("🇹🇼", "中国台湾 / Taiwan"),
@@ -92,120 +92,148 @@ def setup_environment():
         if os.path.exists("mihomo.gz"):
             os.remove("mihomo.gz")
 
+def extract_nodes_from_text(text):
+    """从纯文本、HTML 或 Base64 内容中深度递归提取节点链接"""
+    results = set()
+    if not text:
+        return results
+    
+    # 尝试 Base64 解码提取
+    try:
+        decoded = base64.b64decode(text).decode('utf-8', errors='ignore')
+        if any(p in decoded for p in ["vmess://", "vless://", "ss://", "trojan://"]):
+            text += "\n" + decoded
+    except Exception:
+        pass
+
+    # 正则提取协议节点
+    pattern = r'((?:vmess|vless|ss|trojan)://[^\s"\'<>]+)'
+    matches = re.findall(pattern, text)
+    for m in matches:
+        clean = m.strip().rstrip(".,;\"')")
+        results.add(clean)
+    return results
+
 def fetch_raw_nodes():
-    """多渠道爬取原始节点（包含常规订阅源及指定网页爬取）"""
+    """多渠道爬取原始节点"""
     nodes = set()
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
     }
 
-    # 1. 常规订阅链接拉取
-    print("[*] 正在从订阅源拉取节点...")
+    # 1. 抓取订阅源
+    print("[*] 正在从基础订阅源拉取节点...")
     for url in SOURCE_URLS:
         try:
             resp = requests.get(url, headers=headers, timeout=15)
-            text = resp.text.strip()
-            try:
-                decoded = base64.b64decode(text).decode('utf-8', errors='ignore')
-                lines = decoded.splitlines()
-            except Exception:
-                lines = text.splitlines()
-
-            for line in lines:
-                line = line.strip()
-                if any(line.startswith(p) for p in ["vmess://", "vless://", "ss://", "trojan://"]):
-                    nodes.add(line)
+            extracted = extract_nodes_from_text(resp.text)
+            nodes.update(extracted)
         except Exception as e:
             print(f"[!] 拉取失败 {url}: {e}")
 
-    # 2. 爬取特定网页中的节点内容 (shadowmere.xyz, outlinekeys.com)
+    # 2. 爬取目标网站
     print("[*] 正在从指定网页端提取节点...")
     for site in SCRAPE_WEBSITES:
         try:
             resp = requests.get(site, headers=headers, timeout=20)
             if resp.status_code == 200:
-                html = resp.text
-                found_vless = re.findall(r'(vless://[^\s"\'<>]+)', html)
-                found_vmess = re.findall(r'(vmess://[^\s"\'<>]+)', html)
-                found_ss = re.findall(r'(ss://[^\s"\'<>]+)', html)
-                found_trojan = re.findall(r'(trojan://[^\s"\'<>]+)', html)
-                matched = found_vless + found_vmess + found_ss + found_trojan
-                for m in matched:
-                    clean_node = m.strip().rstrip(".,;\"'")
-                    nodes.add(clean_node)
-                print(f"[+] 从 {site} 成功抓取到 {len(matched)} 个节点")
+                extracted = extract_nodes_from_text(resp.text)
+                nodes.update(extracted)
+                print(f"[+] 从 {site} 成功解析出 {len(extracted)} 个节点")
         except Exception as e:
             print(f"[!] 网页抓取失败 {site}: {e}")
             
-    print(f"[*] 原始去重节点池总量: {len(nodes)} 个")
+    print(f"[*] 原始节点池去重后总量: {len(nodes)} 个")
     return list(nodes)
 
 def convert_node_to_clash(node_str, index):
-    """将通用 URL 节点转换为 Clash 代理字典"""
+    """将链接转换为合规的 Clash 代理字典，带有严格的类型修复"""
     name = f"node_{index}"
     try:
         if node_str.startswith("vmess://"):
             b64 = node_str[8:]
             b64 += '=' * (-len(b64) % 4)
             data = json.loads(base64.b64decode(b64).decode('utf-8', errors='ignore'))
+            server = str(data.get("add", "")).strip()
+            port = int(data.get("port", 0))
+            if not server or port <= 0:
+                return None
+
             proxy = {
                 "name": name,
                 "type": "vmess",
-                "server": str(data.get("add")),
-                "port": int(data.get("port")),
+                "server": server,
+                "port": port,
                 "uuid": str(data.get("id")),
                 "alterId": int(data.get("aid", 0)),
                 "cipher": "auto",
                 "udp": True,
-                "tls": True if data.get("tls") in ["tls", "1"] else False
+                "tls": True if data.get("tls") in ["tls", "1"] else False,
+                "skip-cert-verify": True
             }
             if data.get("net") == "ws":
                 proxy["network"] = "ws"
                 proxy["ws-opts"] = {
                     "path": data.get("path", "/"),
-                    "headers": {"Host": data.get("host", data.get("add"))}
+                    "headers": {"Host": str(data.get("host", server))}
                 }
             return proxy
 
         elif node_str.startswith("vless://"):
             m = re.search(r"vless://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
             if m:
-                uuid, server, port, query = m.groups()
+                uuid, server, port_s, query = m.groups()
+                server = server.strip()
+                port = int(port_s)
+                if not server or port <= 0:
+                    return None
+
                 params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
                 proxy = {
                     "name": name,
                     "type": "vless",
                     "server": server,
-                    "port": int(port),
+                    "port": port,
                     "uuid": uuid,
                     "udp": True,
-                    "tls": True if params.get("security") in ["tls", "reality"] else False
+                    "tls": True if params.get("security") in ["tls", "reality"] else False,
+                    "skip-cert-verify": True
                 }
                 if params.get("security") == "reality":
                     proxy["reality-opts"] = {
                         "public-key": params.get("pbk", ""),
                         "short-id": params.get("sid", "")
                     }
-                    proxy["servername"] = params.get("sni", "")
+                    proxy["servername"] = params.get("sni", server)
+                    proxy["client-fingerprint"] = params.get("fp", "chrome")
                 if params.get("type") == "ws":
                     proxy["network"] = "ws"
-                    proxy["ws-opts"] = {"path": params.get("path", "/")}
+                    proxy["ws-opts"] = {
+                        "path": urllib.parse.unquote(params.get("path", "/")),
+                        "headers": {"Host": params.get("host", server)}
+                    }
                 return proxy
 
         elif node_str.startswith("trojan://"):
             m = re.search(r"trojan://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
             if m:
-                password, server, port, query = m.groups()
+                password, server, port_s, query = m.groups()
+                server = server.strip()
+                port = int(port_s)
+                if not server or port <= 0:
+                    return None
+
                 params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
                 proxy = {
                     "name": name,
                     "type": "trojan",
                     "server": server,
-                    "port": int(port),
+                    "port": port,
                     "password": password,
                     "udp": True,
-                    "sni": params.get("sni", server)
+                    "sni": params.get("sni", server),
+                    "skip-cert-verify": True
                 }
                 return proxy
     except Exception:
@@ -213,7 +241,10 @@ def convert_node_to_clash(node_str, index):
     return None
 
 def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
-    """使用 mihomo 内核批量并发真连接测试 (返回真实连通与 RTT)"""
+    """使用 mihomo 内核批量并发执行真连接测试"""
+    if not clash_proxies:
+        return {}
+
     print(f"[*] 启动 mihomo 内核进行真连接测活，测试规模: {len(clash_proxies)} 个节点...")
     config = {
         "mixed-port": 17890,
@@ -227,17 +258,18 @@ def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
         yaml.dump(config, f, allow_unicode=True)
 
     proc = subprocess.Popen(["./mihomo", "-f", "temp_clash.yaml"])
-    time.sleep(3)
+    time.sleep(3)  # 等待内核加载
 
     alive_nodes = {}
-    test_url = "http://cp.cloudflare.com/generate_204"
+    # 使用 Google 204 替代 Cloudflare，确保是具有真正出海代理能力的节点
+    test_url = "http://www.google.com/generate_204"
     headers = {"Authorization": f"Bearer {secret}"}
 
     def check_proxy(p):
         name = p["name"]
         url = f"http://127.0.0.1:{port}/proxies/{urllib.parse.quote(name)}/delay"
         try:
-            # 严格限制 3000ms 超时，确保测出都是真可用高速节点
+            # 严格控制在 3000ms 以内
             r = requests.get(url, params={"url": test_url, "timeout": 3000}, headers=headers, timeout=5)
             if r.status_code == 200:
                 delay = r.json().get("delay", 0)
@@ -263,7 +295,7 @@ def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
     return alive_nodes
 
 def classify_and_filter(alive_proxies, node_map):
-    """解析落地真实国家与家宽住宅属性"""
+    """根据解析 IP 判别国家和家宽/住宅属性"""
     country_reader = maxminddb.open_database("Country.mmdb")
     asn_reader = maxminddb.open_database("ASN.mmdb")
     verified = []
@@ -272,7 +304,6 @@ def classify_and_filter(alive_proxies, node_map):
         original_link, p_obj = node_map[name]
         server = p_obj["server"]
         try:
-            import socket
             ip = socket.gethostbyname(server)
         except Exception:
             continue
@@ -286,7 +317,7 @@ def classify_and_filter(alive_proxies, node_map):
         except Exception:
             pass
 
-        # 2. 家宽判定
+        # 2. 家宽住宅判断 (排查所有公有云机房 ASN)
         is_residential = False
         try:
             a = asn_reader.get(ip)
@@ -346,25 +377,23 @@ def export_subscriptions(verified_nodes):
     return by_cc, res_by_cc, len(all_links), len(residential_links)
 
 def update_readme(by_cc, res_by_cc, total_count, res_count):
-    """像原仓库一样自动生成并更新 README.md 表格、节点数与订阅链接"""
+    """自动生成并更新 README.md 表格、节点数与订阅直链"""
     repo = os.environ.get("GITHUB_REPOSITORY", "heleihub/free-node-subscription")
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
-    # 构建国家列表（按节点数量降序排列）
+    # 构建全量国家表格
     all_countries = sorted(by_cc.keys(), key=lambda c: len(by_cc[c]), reverse=True)
-
-    # 生成全量国家表格
     country_table_rows = []
     for cc in all_countries:
         flag, name = COUNTRY_META.get(cc, ("🌐", f"{cc} / Other"))
         count = len(by_cc.get(cc, []))
         raw_url = f"https://raw.githubusercontent.com/{repo}/main/output/by-country/{cc}.txt"
         cdn_url = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/by-country/{cc}.txt"
-        country_table_rows.append(f"| {flag} {cc} | {name} | **{count}** | [查看]({raw_url}) | [CDN 订阅]({cdn_url}) |")
+        country_table_rows.append(f"| {flag} {cc} | {name} | **{count}** | [查看 Raw]({raw_url}) | [CDN 订阅]({cdn_url}) |")
 
     country_table_str = "\n".join(country_table_rows)
 
-    # 生成家宽专属国家表格
+    # 构建家宽专属国家表格
     all_res_countries = sorted(res_by_cc.keys(), key=lambda c: len(res_by_cc[c]), reverse=True)
     res_table_rows = []
     for cc in all_res_countries:
@@ -372,7 +401,7 @@ def update_readme(by_cc, res_by_cc, total_count, res_count):
         count = len(res_by_cc.get(cc, []))
         raw_url = f"https://raw.githubusercontent.com/{repo}/main/output/residential-by-country/{cc}.txt"
         cdn_url = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/residential-by-country/{cc}.txt"
-        res_table_rows.append(f"| {flag} {cc} | {name} | **{count}** | [查看]({raw_url}) | [CDN 订阅]({cdn_url}) |")
+        res_table_rows.append(f"| {flag} {cc} | {name} | **{count}** | [查看 Raw]({raw_url}) | [CDN 订阅]({cdn_url}) |")
 
     res_table_str = "\n".join(res_table_rows) if res_table_rows else "| - | 暂无可用家宽节点 | 0 | - | - |"
 
@@ -381,7 +410,7 @@ def update_readme(by_cc, res_by_cc, total_count, res_count):
 > 🕒 **最后更新时间**: `{now_utc}`  
 > 🟢 **真连接可用节点总量**: `{total_count}` 个  
 > 🏠 **甄选住宅/家宽节点总量**: `{res_count}` 个  
-> ⚡ **质量保证**: 所有节点均由 `mihomo` (Clash Meta) 内核执行严格真连接握手（HTTP 204）过滤，拒绝虚假通畅与死节点。
+> ⚡ **质量保证**: 所有节点均由 `mihomo` (Clash Meta) 内核执行真实代理握手（Google 204）测活过滤，拒绝虚假通畅与死节点。
 
 ---
 
@@ -413,13 +442,13 @@ def update_readme(by_cc, res_by_cc, total_count, res_count):
 
 ## 🛠️ 项目特性与说明
 
-1. **真连接连通检测**：摒弃单纯的 TCP ping，使用 mihomo 内核通过代理链路实际访问网络端点并校验往返时间（RTT $\le$ 3000ms），测出可用即代表客户端真实可用。
-2. **多源采集聚合**：集成 GitHub 活跃订阅池，并自动提取爬取 `outlinekeys.com` 及 `shadowmere.xyz` 的免费节点。
-3. **全自动维护**：通过 GitHub Actions 全自动定时构建，运行后自动重绘本页面的节点统计与各分流文件。
+1. **真连接连通检测**：摒弃单纯的 TCP 端口 ping，使用 mihomo 内核通过代理链路实际访问 Google 204 端点并校验往返时间（RTT $\le$ 3000ms），测出可用即代表客户端真实可用。
+2. **多源采集聚合**：集成 GitHub 活跃订阅池，并自动爬取 `outlinekeys.com` 及 `shadowmere.xyz` 的节点。
+3. **全自动维护**：通过 GitHub Actions 全自动构建，运行后自动重绘本页面的节点统计与各分流文件。
 """
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(readme_content)
-    print("[+] README.md 页面数据统计与直链表格已自动重新生成并写入！")
+    print("[+] README.md 页面数据统计与直链表格已自动更新完成！")
 
 if __name__ == "__main__":
     setup_environment()
