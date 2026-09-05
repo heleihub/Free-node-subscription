@@ -12,8 +12,10 @@ import urllib.parse
 import subprocess
 import requests
 import yaml
+import maxminddb
 from datetime import datetime, timezone
-from concurrent.futures import ThreadPoolExecutor
+# 关键修复 1：补齐 as_completed 导入
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ----------------- 1. 订阅源池 -----------------
 SOURCE_URLS = [
@@ -51,21 +53,39 @@ VALID_SS_CIPHERS = {
     "aes-256-ctr", "aes-128-cfb", "aes-192-cfb", "aes-256-cfb", "rc4-md5"
 }
 
-COUNTRY_META = {
-    "HK": ("🇭🇰", "香港 (Hong Kong)"),
-    "TW": ("🇹🇼", "台湾 (Taiwan)"),
-    "JP": ("🇯🇵", "日本 (Japan)"),
-    "SG": ("🇸🇬", "新加坡 (Singapore)"),
-    "US": ("🇺🇸", "美国 (United States)"),
-    "KR": ("🇰🇷", "韩国 (South Korea)"),
-    "DE": ("🇩🇪", "德国 (Germany)"),
-    "GB": ("🇬🇧", "英国 (United Kingdom)"),
-    "CA": ("🇨🇦", "加拿大 (Canada)"),
-    "FR": ("🇫🇷", "法国 (France)"),
-    "NL": ("🇳🇱", "荷兰 (Netherlands)"),
-    "RU": ("🇷🇺", "俄罗斯 (Russia)"),
-    "OTHER": ("🌐", "其他地区 (Other)"),
+COUNTRY_NAMES = {
+    "HK": "中国香港 (Hong Kong)",
+    "TW": "中国台湾 (Taiwan)",
+    "JP": "日本 (Japan)",
+    "SG": "新加坡 (Singapore)",
+    "US": "美国 (United States)",
+    "KR": "韩国 (South Korea)",
+    "DE": "德国 (Germany)",
+    "GB": "英国 (United Kingdom)",
+    "CA": "加拿大 (Canada)",
+    "FR": "法国 (France)",
+    "NL": "荷兰 (Netherlands)",
+    "RU": "俄罗斯 (Russia)",
+    "IN": "印度 (India)",
+    "AU": "澳大利亚 (Australia)",
+    "IT": "意大利 (Italy)",
+    "ES": "西班牙 (Spain)",
+    "TR": "土耳其 (Turkey)",
+    "AE": "阿联酋 (UAE)",
+    "OTHER": "其他地区 (Other)",
 }
+
+def get_country_flag(country_code):
+    """根据二字代码自动计算国旗 Emoji"""
+    if not country_code or country_code.upper() in ["OTHER", "ZZ", "XX"]:
+        return "🌐"
+    try:
+        cc = country_code.upper()
+        if len(cc) == 2 and cc.isalpha():
+            return chr(ord(cc[0]) + 127397) + chr(ord(cc[1]) + 127397)
+    except Exception:
+        pass
+    return "🌐"
 
 def safe_download(url, dest_path):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
@@ -193,6 +213,7 @@ def convert_node_to_clash(node_str, index):
                     if not pbk:
                         return None
                     sid = params.get("sid", "").strip()
+                    # 关键修复 2：严格检验 short-id，非法字符或奇数长度强制清空，绝不让内核抛 fatal 挂掉
                     if sid and (len(sid) % 2 != 0 or not re.fullmatch(r'[0-9a-fA-F]+', sid)):
                         sid = ""
                     proxy["reality-opts"] = {
@@ -388,10 +409,7 @@ def rename_node_link(raw_link, new_name):
         return raw_link
 
 def batch_query_ip_api(ip_list):
-    """
-    使用第三方专业 IP 威胁与归属 API (ip-api.com Batch) 打包查询
-    单次打包查 100 个 IP，直接获取官方定义的 hosting (机房与否) 和精准国家代码
-    """
+    """调用第三方批量 API 识别真实归属国与非机房住宅属性"""
     ip_info_map = {}
     if not ip_list:
         return ip_info_map
@@ -411,18 +429,18 @@ def batch_query_ip_api(ip_list):
                     if item.get("status") == "success":
                         ip_info_map[item["query"]] = {
                             "country": item.get("countryCode", "OTHER"),
-                            "hosting": item.get("hosting", True),  # True 表示数据中心/机房
+                            "hosting": item.get("hosting", True),
                             "isp": item.get("isp", ""),
                             "org": item.get("org", "")
                         }
-            time.sleep(1.5)  # 严格遵守第三方每分钟频控规则，安全无痛查询
+            time.sleep(1.5)
         except Exception as e:
             print(f"[!] 第三方 IP API 批次查询异常: {e}")
 
     return ip_info_map
 
 def classify_and_filter(alive_proxies, node_map):
-    """结合第三方 API 的 hosting 字段实现所有国家真实家宽与高精度国家分类"""
+    """解析落地国家与真实家宽，格式化重命名"""
     resolved_cache = {}
     
     def resolve_server(name):
@@ -433,7 +451,6 @@ def classify_and_filter(alive_proxies, node_map):
         except Exception:
             return None
 
-    # 并发快速将节点域名解析为 IP
     print("[*] 正在解析可用节点的服务器出口 IP...")
     with ThreadPoolExecutor(max_workers=50) as executor:
         futures = {executor.submit(resolve_server, name): name for name in alive_proxies.keys()}
@@ -443,7 +460,6 @@ def classify_and_filter(alive_proxies, node_map):
             if ip:
                 resolved_cache[name] = ip
 
-    # 调用第三方 API 批量检测真实国家与是否为 hosting 机房
     all_ips = list(resolved_cache.values())
     ip_api_data = batch_query_ip_api(all_ips)
 
@@ -454,14 +470,12 @@ def classify_and_filter(alive_proxies, node_map):
         ip = resolved_cache[name]
         original_link, p_obj = node_map[name]
 
-        # 默认值
         country_code = "OTHER"
         is_residential = False
 
         if ip in ip_api_data:
             data = ip_api_data[ip]
             country_code = data["country"]
-            # 权威真家宽判定：第三方 API 明确判定 hosting 为 false（非机房，即为宽带住宅）
             if not data["hosting"]:
                 is_residential = True
 
@@ -473,13 +487,13 @@ def classify_and_filter(alive_proxies, node_map):
             "delay": delay
         })
 
-    # 按照国家与家宽为每个节点规范重命名：国旗 + 代码 + 序号 - xiaohe
+    # 为每一个节点重命名：【国旗图标】 + 【国家代码】 + 【序号】 + 【家宽标记】 - xiaohe
     counters = {}
     for node in verified:
         cc = node["country"]
         counters[cc] = counters.get(cc, 0) + 1
         idx = counters[cc]
-        flag = COUNTRY_META.get(cc, ("🌐", ""))[0]
+        flag = get_country_flag(cc)
         res_tag = " (家宽)" if node["is_residential"] else ""
         
         new_name = f"{flag} {cc} {idx:02d}{res_tag} - xiaohe"
@@ -526,20 +540,20 @@ def export_subscriptions(verified_nodes):
     residential_links = [n["link"] for n in residential_nodes]
     residential_clash = [n["clash_proxy"] for n in residential_nodes]
 
-    # 1. 全部节点导出
+    # 全部节点
     with open(os.path.join(OUTPUT_DIR, "v2ray.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(all_links).encode()).decode())
     export_clash_yaml(all_clash_proxies, os.path.join(OUTPUT_DIR, "clash.yaml"))
     export_singbox_json(verified_nodes, os.path.join(OUTPUT_DIR, "singbox.json"))
 
-    # 2. 全部家宽节点导出
+    # 家宽节点
     with open(os.path.join(OUTPUT_DIR, "residential.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(residential_links).encode()).decode())
     if residential_clash:
         export_clash_yaml(residential_clash, os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
         export_singbox_json(residential_nodes, os.path.join(OUTPUT_DIR, "residential-singbox.json"))
 
-    # 3. 按国家分类输出全部节点
+    # 按国家分类全量节点
     by_cc = {}
     for n in verified_nodes:
         by_cc.setdefault(n["country"], []).append(n)
@@ -551,7 +565,7 @@ def export_subscriptions(verified_nodes):
             f.write(base64.b64encode("\n".join(links).encode()).decode())
         export_clash_yaml(proxies, os.path.join(COUNTRY_DIR, f"clash-{cc}.yaml"))
 
-    # 4. 按国家分类输出家宽节点
+    # 按国家分类家宽节点
     res_by_cc = {}
     for n in residential_nodes:
         res_by_cc.setdefault(n["country"], []).append(n)
@@ -567,7 +581,6 @@ def export_subscriptions(verified_nodes):
     return by_cc, res_by_cc, len(all_links), len(residential_links)
 
 def update_readme():
-    """扫描真实磁盘物理文件统计数量，保证 README 与文件完全一致"""
     repo = os.environ.get("GITHUB_REPOSITORY", "heleihub/free-node-subscription")
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -608,7 +621,8 @@ def update_readme():
     # 生成家宽表格
     res_table_rows = []
     for cc in sorted(res_country_counts.keys(), key=lambda x: res_country_counts[x], reverse=True):
-        flag, name = COUNTRY_META.get(cc, ("🌐", f"{cc} / 其他"))
+        flag = get_country_flag(cc)
+        name = COUNTRY_NAMES.get(cc, f"{cc} / 其他")
         count = res_country_counts[cc]
         v2ray_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/residential-by-country/{cc}.txt"
         clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/residential-by-country/clash-{cc}.yaml"
@@ -618,7 +632,8 @@ def update_readme():
     # 生成全量表格
     country_table_rows = []
     for cc in sorted(country_counts.keys(), key=lambda x: country_counts[x], reverse=True):
-        flag, name = COUNTRY_META.get(cc, ("🌐", f"{cc} / 其他"))
+        flag = get_country_flag(cc)
+        name = COUNTRY_NAMES.get(cc, f"{cc} / 其他")
         count = country_counts[cc]
         v2ray_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/by-country/{cc}.txt"
         clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/by-country/clash-{cc}.yaml"
