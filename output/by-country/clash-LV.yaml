@@ -5,33 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇱🇻 LV 01 - xiaohe
-  type: hysteria2
-  server: 104.165.205.42
-  port: 8443
-  password: 52e3dd44-ed23-4030-b0cc-5b5a953f2d4d
-  sni: 104.165.205.42
-  skip-cert-verify: true
-- name: 🇱🇻 LV 02 - xiaohe
-  type: hysteria2
-  server: 104.165.205.42
-  port: 8443
-  password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
-  sni: 104.165.205.42
-  skip-cert-verify: true
-- name: 🇱🇻 LV 03 - xiaohe
-  type: vless
-  server: 89.36.161.222
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 89.36.161.222
-- name: 🇱🇻 LV 04 - xiaohe
   type: vless
   server: 89.36.161.222
   port: 2096
@@ -44,6 +17,39 @@ proxies:
     path: /
     headers:
       Host: laoye.in-gect.fun
+- name: 🇱🇻 LV 02 - xiaohe
+  type: vless
+  server: 89.36.161.222
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: laoye.in-gect.fun
+- name: 🇱🇻 LV 03 - xiaohe
+  type: ss
+  server: 185.135.86.175
+  port: 9094
+  cipher: aes-256-cfb
+  password: rpgbNnU9rDDU4aWZ
+  udp: true
+- name: 🇱🇻 LV 04 - xiaohe
+  type: vless
+  server: 89.36.161.222
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 89.36.161.222
 - name: 🇱🇻 LV 05 - xiaohe
   type: vless
   server: 89.36.161.222
@@ -58,25 +64,19 @@ proxies:
     headers:
       Host: 89.36.161.222
 - name: 🇱🇻 LV 06 - xiaohe
-  type: vless
-  server: 89.36.161.222
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-  udp: true
-  tls: false
+  type: hysteria2
+  server: 104.165.205.40
+  port: 8443
+  password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
+  sni: 104.165.205.40
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: laoye.in-gect.fun
 - name: 🇱🇻 LV 07 - xiaohe
-  type: ss
-  server: 185.135.86.175
-  port: 9094
-  cipher: aes-256-cfb
-  password: rpgbNnU9rDDU4aWZ
-  udp: true
+  type: hysteria2
+  server: 104.165.205.42
+  port: 8443
+  password: 52e3dd44-ed23-4030-b0cc-5b5a953f2d4d
+  sni: 104.165.205.42
+  skip-cert-verify: true
 - name: 🇱🇻 LV 08 - xiaohe
   type: vless
   server: 89.36.161.222
@@ -91,20 +91,6 @@ proxies:
     headers:
       Host: laoye.in-gect.fun
 - name: 🇱🇻 LV 09 - xiaohe
-  type: hysteria2
-  server: 104.165.205.40
-  port: 8443
-  password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
-  sni: 104.165.205.40
-  skip-cert-verify: true
-- name: 🇱🇻 LV 10 - xiaohe
-  type: hysteria2
-  server: 85.159.228.22
-  port: 443
-  password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
-  sni: 85.159.228.22
-  skip-cert-verify: true
-- name: 🇱🇻 LV 11 - xiaohe
   type: vless
   server: 89.36.161.222
   port: 2096
@@ -117,6 +103,20 @@ proxies:
     path: /
     headers:
       Host: laoye.in-gect.fun
+- name: 🇱🇻 LV 10 - xiaohe
+  type: hysteria2
+  server: 85.159.228.22
+  port: 443
+  password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+  sni: 85.159.228.22
+  skip-cert-verify: true
+- name: 🇱🇻 LV 11 - xiaohe
+  type: hysteria2
+  server: 85.159.228.22
+  port: 443
+  password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+  sni: 85.159.228.22
+  skip-cert-verify: true
 - name: 🇱🇻 LV 12 - xiaohe
   type: vless
   server: 89.36.161.222
@@ -132,10 +132,10 @@ proxies:
       Host: laoye.in-gect.fun
 - name: 🇱🇻 LV 13 - xiaohe
   type: hysteria2
-  server: 85.159.228.22
-  port: 443
-  password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
-  sni: 85.159.228.22
+  server: 104.165.205.42
+  port: 8443
+  password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
+  sni: 104.165.205.42
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES

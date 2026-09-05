@@ -6,11 +6,11 @@ log-level: info
 proxies:
 - name: 🇯🇵 日本 (Japan) 01 (家宽) - xiaohe
   type: trojan
-  server: aa.ccmusic.jp
+  server: 161.34.39.108
   port: 443
   password: tsuchiya
   udp: true
-  sni: aa.ccmusic.jp
+  sni: 161.34.39.108
   skip-cert-verify: true
 - name: 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
   type: trojan
@@ -22,75 +22,11 @@ proxies:
   skip-cert-verify: true
 - name: 🇯🇵 日本 (Japan) 03 (家宽) - xiaohe
   type: trojan
-  server: aa.ccmusic.jp
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: aa.ccmusic.jp
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 04 (家宽) - xiaohe
-  type: trojan
-  server: 161.34.39.108
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: aa.ccmusic.jp
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 05 (家宽) - xiaohe
-  type: trojan
-  server: 161.34.39.108
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: aa.ccmusic.jp
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 06 (家宽) - xiaohe
-  type: trojan
-  server: 161.34.39.108
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: aa.ccmusic.jp
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 07 (家宽) - xiaohe
-  type: trojan
   server: 161.34.39.108
   port: 443
   password: tsuchiya
   udp: true
   sni: 161.34.39.108
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 08 (家宽) - xiaohe
-  type: trojan
-  server: aa.ccmusic.jp
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: aa.ccmusic.jp
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 09 (家宽) - xiaohe
-  type: trojan
-  server: aa.ccmusic.jp
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: aa.ccmusic.jp
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 10 (家宽) - xiaohe
-  type: trojan
-  server: 161.34.39.108
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: 161.34.39.108
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 11 (家宽) - xiaohe
-  type: trojan
-  server: aa.ccmusic.jp
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: aa.ccmusic.jp
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
@@ -100,14 +36,6 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 01 (家宽) - xiaohe
   - 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
   - 🇯🇵 日本 (Japan) 03 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 04 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 05 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 06 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 07 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 08 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 09 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 10 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 11 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -116,13 +44,5 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 01 (家宽) - xiaohe
   - 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
   - 🇯🇵 日本 (Japan) 03 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 04 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 05 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 06 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 07 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 08 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 09 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 10 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 11 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES
