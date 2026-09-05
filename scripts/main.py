@@ -1,26 +1,35 @@
 import os
 import re
+import sys
+import json
+import time
 import base64
-import socket
+import shutil
 import urllib.request
+import subprocess
 import requests
 import yaml
 import maxminddb
 from concurrent.futures import ThreadPoolExecutor
 
-# ----------------- 公开订阅源池 -----------------
+# ----------------- 1. 从原仓库及上游逆向提取的核心节点源池 -----------------
 SOURCE_URLS = [
+    # 原项目主力上游聚合与活跃订阅池
     "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Sub1.txt",
+    "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Sub2.txt",
     "https://raw.githubusercontent.com/peasoft/NoMoreGFW/master/subs/base64.txt",
-    "https://raw.githubusercontent.com/mfuu/v2ray/master/v2ray",
     "https://raw.githubusercontent.com/freefq/free/master/v2",
+    "https://raw.githubusercontent.com/mfuu/v2ray/master/v2ray",
+    "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all",
+    "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/v2ray.txt",
+    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
 ]
 
 OUTPUT_DIR = "output"
 COUNTRY_DIR = os.path.join(OUTPUT_DIR, "by-country")
 os.makedirs(COUNTRY_DIR, exist_ok=True)
 
-# 常见机房/数据中心云厂商 ASN 列表（用于排除机房节点，保留家宽/住宅 IP）
+# 常见机房/数据中心云厂商 ASN（用于排除机房节点，保留家宽/住宅 IP）
 DATACENTER_ASNS = {
     13335,          # Cloudflare
     16509, 14618,   # Amazon AWS
@@ -33,163 +42,257 @@ DATACENTER_ASNS = {
     63949,          # Linode / Akamai
     45102,          # Alibaba Cloud
     132203,         # Tencent Cloud
-    20473,          # Choopa / Vultr
-    60068,          # CDN77
-    55081,          # 24-7
+    20473,          # Vultr / Choopa
 }
 
-def download_geoip_dbs():
-    """下载免费离线 GeoIP 与 ASN 数据库"""
-    print("[*] 检查 GeoIP 与 ASN 数据库...")
-    country_url = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb"
-    asn_url = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb"
+def setup_environment():
+    """下载 GeoIP/ASN 数据库及 mihomo (Clash Meta) 内核"""
+    print("[*] 正在准备依赖环境与数据库...")
     if not os.path.exists("Country.mmdb"):
-        print("[*] 正在下载 Country.mmdb...")
-        urllib.request.urlretrieve(country_url, "Country.mmdb")
+        urllib.request.urlretrieve("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb", "Country.mmdb")
     if not os.path.exists("ASN.mmdb"):
-        print("[*] 正在下载 ASN.mmdb...")
-        urllib.request.urlretrieve(asn_url, "ASN.mmdb")
+        urllib.request.urlretrieve("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb", "ASN.mmdb")
+    
+    # 下载 Linux amd64 的 mihomo 内核
+    if not os.path.exists("mihomo"):
+        print("[*] 正在下载 mihomo 测活内核...")
+        kernel_url = "https://github.com/MetaCubeX/mihomo/releases/download/v1.18.9/mihomo-linux-amd64-v1.18.9.gz"
+        urllib.request.urlretrieve(kernel_url, "mihomo.gz")
+        import gzip
+        with gzip.open("mihomo.gz", "rb") as f_in, open("mihomo", "wb") as f_out:
+            shutil.copyfileobj(f_in, f_out)
+        os.chmod("mihomo", 0o755)
+        if os.path.exists("mihomo.gz"):
+            os.remove("mihomo.gz")
 
 def fetch_raw_nodes():
-    """抓取并去重所有原始节点链接"""
-    raw_nodes = set()
-    print("[*] 开始拉取公共订阅源...")
+    """多渠道爬取原始节点"""
+    nodes = set()
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+    print("[*] 正在从提取的源池拉取节点...")
     for url in SOURCE_URLS:
         try:
-            resp = requests.get(url, timeout=15)
-            content = resp.text.strip()
-            # 兼容 Base64 编码的订阅内容
+            resp = requests.get(url, headers=headers, timeout=15)
+            text = resp.text.strip()
             try:
-                decoded = base64.b64decode(content).decode('utf-8', errors='ignore')
+                decoded = base64.b64decode(text).decode('utf-8', errors='ignore')
                 lines = decoded.splitlines()
             except Exception:
-                lines = content.splitlines()
+                lines = text.splitlines()
 
             for line in lines:
                 line = line.strip()
                 if any(line.startswith(p) for p in ["vmess://", "vless://", "ss://", "trojan://"]):
-                    raw_nodes.add(line)
+                    nodes.add(line)
         except Exception as e:
-            print(f"[!] 抓取 {url} 失败: {e}")
-    print(f"[*] 成功收集到 {len(raw_nodes)} 个待测原始节点")
-    return list(raw_nodes)
+            print(f"[!] 拉取失败 {url}: {e}")
+            
+    print(f"[*] 原始去重节点池总量: {len(nodes)} 个")
+    return list(nodes)
 
-def parse_node(node_str):
-    """解析节点的目标服务器地址和端口"""
+def convert_node_to_clash(node_str, index):
+    """将通用 URL 节点转换为 Clash 代理字典"""
+    name = f"node_{index}"
     try:
         if node_str.startswith("vmess://"):
-            b64_data = node_str[8:]
-            b64_data += '=' * (-len(b64_data) % 4)
-            import json
-            data = json.loads(base64.b64decode(b64_data).decode('utf-8', errors='ignore'))
-            return data.get("add"), int(data.get("port")), node_str
-        elif any(node_str.startswith(p) for p in ["vless://", "trojan://"]):
-            match = re.search(r"@([^:]+):(\d+)", node_str)
-            if match:
-                return match.group(1), int(match.group(2)), node_str
-        elif node_str.startswith("ss://"):
-            match = re.search(r"@([^:]+):(\d+)", node_str)
-            if match:
-                return match.group(1), int(match.group(2)), node_str
+            b64 = node_str[8:]
+            b64 += '=' * (-len(b64) % 4)
+            data = json.loads(base64.b64decode(b64).decode('utf-8', errors='ignore'))
+            proxy = {
+                "name": name,
+                "type": "vmess",
+                "server": data.get("add"),
+                "port": int(data.get("port")),
+                "uuid": data.get("id"),
+                "alterId": int(data.get("aid", 0)),
+                "cipher": "auto",
+                "udp": True,
+                "tls": True if data.get("tls") in ["tls", "1"] else False
+            }
+            if data.get("net") == "ws":
+                proxy["network"] = "ws"
+                proxy["ws-opts"] = {
+                    "path": data.get("path", "/"),
+                    "headers": {"Host": data.get("host", data.get("add"))}
+                }
+            return proxy
+
+        elif node_str.startswith("vless://"):
+            m = re.search(r"vless://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
+            if m:
+                uuid, server, port, query = m.groups()
+                params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
+                proxy = {
+                    "name": name,
+                    "type": "vless",
+                    "server": server,
+                    "port": int(port),
+                    "uuid": uuid,
+                    "udp": True,
+                    "tls": True if params.get("security") in ["tls", "reality"] else False
+                }
+                if params.get("security") == "reality":
+                    proxy["reality-opts"] = {
+                        "public-key": params.get("pbk", ""),
+                        "short-id": params.get("sid", "")
+                    }
+                    proxy["servername"] = params.get("sni", "")
+                if params.get("type") == "ws":
+                    proxy["network"] = "ws"
+                    proxy["ws-opts"] = {"path": params.get("path", "/")}
+                return proxy
+
+        elif node_str.startswith("trojan://"):
+            m = re.search(r"trojan://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
+            if m:
+                password, server, port, query = m.groups()
+                params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
+                proxy = {
+                    "name": name,
+                    "type": "trojan",
+                    "server": server,
+                    "port": int(port),
+                    "password": password,
+                    "udp": True,
+                    "sni": params.get("sni", server)
+                }
+                return proxy
     except Exception:
         pass
-    return None, None, node_str
+    return None
 
-def test_connectivity(host, port, timeout=2.5):
-    """真连接握手检测：测试服务器端口是否通畅"""
-    try:
-        ip = socket.gethostbyname(host)
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(timeout)
-        sock.connect((ip, port))
-        sock.close()
-        return ip
-    except Exception:
+def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
+    """使用 mihomo 内核批量并发真连接测试"""
+    print(f"[*] 启动 mihomo 内核进行真连接测活，测试规模: {len(clash_proxies)} 个节点...")
+    config = {
+        "mixed-port": 17890,
+        "mode": "rule",
+        "log-level": "silent",
+        "external-controller": f"127.0.0.1:{port}",
+        "secret": secret,
+        "proxies": clash_proxies
+    }
+    with open("temp_clash.yaml", "w", encoding="utf-8") as f:
+        yaml.dump(config, f, allow_unicode=True)
+
+    proc = subprocess.Popen(["./mihomo", "-f", "temp_clash.yaml"])
+    time.sleep(3)  # 等待内核启动并加载外部控制器
+
+    alive_nodes = {}
+    test_url = "http://cp.cloudflare.com/generate_204"
+    headers = {"Authorization": f"Bearer {secret}"}
+
+    def check_proxy(p):
+        name = p["name"]
+        url = f"http://127.0.0.1:{port}/proxies/{urllib.parse.quote(name)}/delay"
+        try:
+            # 3000ms 超时限制，严格保证质量
+            r = requests.get(url, params={"url": test_url, "timeout": 3000}, headers=headers, timeout=5)
+            if r.status_code == 200:
+                delay = r.json().get("delay", 0)
+                if delay > 0:
+                    return name, delay
+        except Exception:
+            pass
         return None
 
-def analyze_and_verify(nodes):
-    """并发测活并进行国家代码和家宽属性判断"""
-    verified = []
+    try:
+        with ThreadPoolExecutor(max_workers=50) as executor:
+            results = executor.map(check_proxy, clash_proxies)
+            for res in results:
+                if res:
+                    alive_nodes[res[0]] = res[1]
+    finally:
+        proc.terminate()
+        proc.wait()
+        if os.path.exists("temp_clash.yaml"):
+            os.remove("temp_clash.yaml")
+
+    print(f"[+] 真连接检测完毕，绝对可用节点数量: {len(alive_nodes)}")
+    return alive_nodes
+
+def classify_and_filter(alive_proxies, node_map):
+    """解析落地国家与家宽住宅属性"""
     country_reader = maxminddb.open_database("Country.mmdb")
     asn_reader = maxminddb.open_database("ASN.mmdb")
+    verified = []
 
-    def worker(node_str):
-        host, port, original = parse_node(node_str)
-        if not host or not port:
-            return None
-        
-        resolved_ip = test_connectivity(host, port)
-        if not resolved_ip:
-            return None
+    for name, delay in alive_proxies.items():
+        original_link, p_obj = node_map[name]
+        server = p_obj["server"]
+        try:
+            ip = socket.gethostbyname(server)
+        except Exception:
+            continue
 
-        # 1. 国家分类判定 (ISO-3166)
+        # 国家代码解析
         country_code = "OTHER"
         try:
-            c_info = country_reader.get(resolved_ip)
-            if c_info and "country" in c_info:
-                country_code = c_info["country"]["iso_code"]
+            c = country_reader.get(ip)
+            if c and "country" in c:
+                country_code = c["country"]["iso_code"]
         except Exception:
             pass
 
-        # 2. 家宽/住宅 IP 判定
+        # 家宽识别 (非 IDC 常见 ASN 即判定为住宅宽带)
         is_residential = False
         try:
-            a_info = asn_reader.get(resolved_ip)
-            if a_info and "autonomous_system_number" in a_info:
-                asn = a_info["autonomous_system_number"]
+            a = asn_reader.get(ip)
+            if a and "autonomous_system_number" in a:
+                asn = a["autonomous_system_number"]
                 if asn not in DATACENTER_ASNS:
                     is_residential = True
         except Exception:
             pass
 
-        return {
-            "link": original,
+        verified.append({
+            "link": original_link,
             "country": country_code,
             "is_residential": is_residential,
-            "ip": resolved_ip
-        }
-
-    print("[*] 正在启动并发测活与属性识别 (线程池大小: 60)...")
-    with ThreadPoolExecutor(max_workers=60) as executor:
-        results = executor.map(worker, nodes)
-        for res in results:
-            if res:
-                verified.append(res)
+            "delay": delay
+        })
 
     country_reader.close()
     asn_reader.close()
-    print(f"[*] 测活完成！存活有效节点: {len(verified)}")
     return verified
 
-def export_results(verified_nodes):
-    """导出分发文件：全量Base64订阅、家宽专属订阅、国家分类订阅"""
+def export_subscriptions(verified_nodes):
+    """写入分流订阅文件"""
     all_links = [n["link"] for n in verified_nodes]
     residential_links = [n["link"] for n in verified_nodes if n["is_residential"]]
 
-    # 1. 全量有效节点 Base64
+    # 1. 全量真连通订阅
     with open(os.path.join(OUTPUT_DIR, "v2ray.txt"), "w", encoding="utf-8") as f:
-        b64_str = base64.b64encode("\n".join(all_links).encode("utf-8")).decode("utf-8")
-        f.write(b64_str)
+        f.write(base64.b64encode("\n".join(all_links).encode()).decode())
 
-    # 2. 家宽专属节点 Base64
+    # 2. 家宽/住宅 IP 专属订阅
     with open(os.path.join(OUTPUT_DIR, "residential.txt"), "w", encoding="utf-8") as f:
-        res_b64 = base64.b64encode("\n".join(residential_links).encode("utf-8")).decode("utf-8")
-        f.write(res_b64)
+        f.write(base64.b64encode("\n".join(residential_links).encode()).decode())
 
-    # 3. 各国独立分类文件
-    country_groups = {}
+    # 3. 按国家输出
+    by_cc = {}
     for n in verified_nodes:
-        country_groups.setdefault(n["country"], []).append(n["link"])
+        by_cc.setdefault(n["country"], []).append(n["link"])
 
-    for cc, links in country_groups.items():
-        file_path = os.path.join(COUNTRY_DIR, f"{cc}.txt")
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(base64.b64encode("\n".join(links).encode("utf-8")).decode("utf-8"))
+    for cc, links in by_cc.items():
+        path = os.path.join(COUNTRY_DIR, f"{cc}.txt")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(base64.b64encode("\n".join(links).encode()).decode())
 
-    print(f"[*] 订阅文件导出成功！包含家宽节点: {len(residential_links)} 个，涉及 {len(country_groups)} 个国家/地区")
+    print(f"[*] 导出成功！全量可用: {len(all_links)} | 家宽节点: {len(residential_links)} | 覆盖国家: {len(by_cc)}")
 
 if __name__ == "__main__":
-    download_geoip_dbs()
+    setup_environment()
     raw_nodes = fetch_raw_nodes()
-    verified_nodes = analyze_and_verify(raw_nodes)
-    export_results(verified_nodes)
+
+    clash_list = []
+    node_map = {}
+    for i, raw in enumerate(raw_nodes):
+        c_obj = convert_node_to_clash(raw, i)
+        if c_obj:
+            clash_list.append(c_obj)
+            node_map[c_obj["name"]] = (raw, c_obj)
+
+    alive_dict = run_real_delay_test(clash_list)
+    verified = classify_and_filter(alive_dict, node_map)
+    export_subscriptions(verified)
