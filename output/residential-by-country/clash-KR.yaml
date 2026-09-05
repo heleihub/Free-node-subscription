@@ -4,14 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 KR 12 (家宽) - xiaohe
-  type: ss
-  server: 49.254.204.133
-  port: 1774
-  cipher: aes-256-cfb
-  password: 1234!@#$
-  udp: true
-- name: 🇰🇷 KR 17 (家宽) - xiaohe
+- name: 🇰🇷 KR 25 (家宽) - xiaohe
   type: ss
   server: 211.178.105.134
   port: 6123
@@ -23,14 +16,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 KR 12 (家宽) - xiaohe
-  - 🇰🇷 KR 17 (家宽) - xiaohe
+  - 🇰🇷 KR 25 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 KR 12 (家宽) - xiaohe
-  - 🇰🇷 KR 17 (家宽) - xiaohe
+  - 🇰🇷 KR 25 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

@@ -5,19 +5,19 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇮🇳 IN 01 - xiaohe
+  type: hysteria2
+  server: vpn-in-001.fastervpn.world
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-in-001.fastervpn.world
+  skip-cert-verify: true
+- name: 🇮🇳 IN 02 - xiaohe
   type: trojan
   server: 34.131.228.210
   port: 443
   password: M7v%w11Se*
   udp: true
   sni: hyfuuf6.wsone.icu
-  skip-cert-verify: true
-- name: 🇮🇳 IN 02 - xiaohe
-  type: hysteria2
-  server: vpn-in-001.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-in-001.fastervpn.world
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES

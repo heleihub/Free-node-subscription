@@ -6,26 +6,12 @@ log-level: info
 proxies:
 - name: 🇷🇺 RU 01 - xiaohe
   type: hysteria2
-  server: 91.196.32.163
-  port: 443
-  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-  sni: 91.196.32.163
-  skip-cert-verify: true
-- name: 🇷🇺 RU 02 - xiaohe
-  type: hysteria2
-  server: 91.196.32.163
-  port: 443
-  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-  sni: 91.196.32.163
-  skip-cert-verify: true
-- name: 🇷🇺 RU 03 - xiaohe
-  type: hysteria2
   server: ru1.xiaoliyu.cyou
   port: 4433
   password: 19f72087-4591-4d72-930b-2697078ec2be
   sni: ru1.xiaoliyu.cyou
   skip-cert-verify: true
-- name: 🇷🇺 RU 04 - xiaohe
+- name: 🇷🇺 RU 02 - xiaohe
   type: vless
   server: 186.246.12.242
   port: 2053
@@ -38,6 +24,13 @@ proxies:
     path: /
     headers:
       Host: 186.246.12.242
+- name: 🇷🇺 RU 03 - xiaohe
+  type: hysteria2
+  server: 91.196.32.163
+  port: 443
+  password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+  sni: 91.196.32.163
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
@@ -46,7 +39,6 @@ proxy-groups:
   - 🇷🇺 RU 01 - xiaohe
   - 🇷🇺 RU 02 - xiaohe
   - 🇷🇺 RU 03 - xiaohe
-  - 🇷🇺 RU 04 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -55,6 +47,5 @@ proxy-groups:
   - 🇷🇺 RU 01 - xiaohe
   - 🇷🇺 RU 02 - xiaohe
   - 🇷🇺 RU 03 - xiaohe
-  - 🇷🇺 RU 04 - xiaohe
 rules:
 - MATCH,PROXIES

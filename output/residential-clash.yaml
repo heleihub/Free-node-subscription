@@ -4,7 +4,23 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 TW 03 (家宽) - xiaohe
+- name: 🇹🇼 TW 01 (家宽) - xiaohe
+  type: trojan
+  server: 125.227.152.109
+  port: 3462
+  password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
+  udp: true
+  sni: a03.taipeicitygovernment.cn.ua
+  skip-cert-verify: true
+- name: 🇯🇵 JP 03 (家宽) - xiaohe
+  type: trojan
+  server: 161.34.39.108
+  port: 443
+  password: tsuchiya
+  udp: true
+  sni: 161.34.39.108
+  skip-cert-verify: true
+- name: 🇹🇼 TW 02 (家宽) - xiaohe
   type: vless
   server: 60.248.219.78
   port: 443
@@ -17,22 +33,52 @@ proxies:
     path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     headers:
       Host: 60.248.219.78
-- name: 🇹🇼 TW 05 (家宽) - xiaohe
-  type: ss
-  server: r3mrcg00129437x.cybervena.com
-  port: 50099
-  cipher: chacha20-ietf-poly1305
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-  udp: true
-- name: 🇹🇼 TW 06 (家宽) - xiaohe
+- name: 🇯🇵 JP 13 (家宽) - xiaohe
   type: trojan
-  server: 61.216.76.139
+  server: aa.ccmusic.jp
+  port: 443
+  password: tsuchiya
+  udp: true
+  sni: aa.ccmusic.jp
+  skip-cert-verify: true
+- name: 🇭🇰 HK 32 (家宽) - xiaohe
+  type: trojan
+  server: 119.246.1.143
+  port: 443
+  password: BxceQaOe
+  udp: true
+  sni: t.me%25252fripaojiedian
+  skip-cert-verify: true
+- name: 🇯🇵 JP 21 (家宽) - xiaohe
+  type: trojan
+  server: aa.ccmusic.jp
+  port: 443
+  password: tsuchiya
+  udp: true
+  sni: aa.ccmusic.jp
+  skip-cert-verify: true
+- name: 🇹🇼 TW 07 (家宽) - xiaohe
+  type: trojan
+  server: 211.75.143.195
   port: 3462
   password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
   udp: true
   sni: a03.taipeicitygovernment.cn.ua
   skip-cert-verify: true
-- name: 🇯🇵 JP 17 (家宽) - xiaohe
+- name: 🇺🇸 US 28 (家宽) - xiaohe
+  type: vless
+  server: 38.127.121.44
+  port: 53856
+  uuid: 3ab5119a-d0e9-4feb-c748-2b42b7367d21
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: rwpbqas_HY8knlW0fFSIeUrjgBXHBzSNboflsLD8elA
+    short-id: ''
+  servername: www.speedtest.net
+  client-fingerprint: chrome
+- name: 🇯🇵 JP 29 (家宽) - xiaohe
   type: trojan
   server: 161.34.39.108
   port: 443
@@ -40,14 +86,15 @@ proxies:
   udp: true
   sni: aa.ccmusic.jp
   skip-cert-verify: true
-- name: 🇹🇼 TW 08 (家宽) - xiaohe
-  type: ss
-  server: 36.224.152.189
-  port: 50099
-  cipher: chacha20-ietf-poly1305
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+- name: 🇹🇼 TW 09 (家宽) - xiaohe
+  type: trojan
+  server: 203.69.207.175
+  port: 3462
+  password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
   udp: true
-- name: 🇭🇰 HK 05 (家宽) - xiaohe
+  sni: a03.taipeicitygovernment.cn.ua
+  skip-cert-verify: true
+- name: 🇭🇰 HK 72 (家宽) - xiaohe
   type: trojan
   server: 119.246.1.143
   port: 443
@@ -56,104 +103,26 @@ proxies:
   sni: 119.246.1.143
   skip-cert-verify: true
 - name: 🇹🇼 TW 11 (家宽) - xiaohe
-  type: ss
-  server: 36.224.151.80
-  port: 50099
-  cipher: chacha20-ietf-poly1305
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  type: trojan
+  server: 61.216.76.139
+  port: 3462
+  password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
   udp: true
-- name: 🇯🇵 JP 30 (家宽) - xiaohe
+  sni: a03.taipeicitygovernment.cn.ua
+  skip-cert-verify: true
+- name: 🇯🇵 JP 35 (家宽) - xiaohe
   type: trojan
   server: 161.34.39.108
   port: 443
   password: tsuchiya
   udp: true
-  sni: aa.ccmusic.jp
+  sni: 161.34.39.108
   skip-cert-verify: true
-- name: 🇨🇿 CZ 03 (家宽) - xiaohe
-  type: ss
-  server: 45.129.142.41
-  port: 47425
-  cipher: chacha20-ietf-poly1305
-  password: lIoNSMeYLX8QGHnOp0DTBR0W91/CHVDEjPqjMDuYcdQ=
-  udp: true
-- name: 🇹🇼 TW 12 (家宽) - xiaohe
-  type: trojan
-  server: 211.75.143.195
-  port: 3462
-  password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
-  udp: true
-  sni: a03.taipeicitygovernment.cn.ua
-  skip-cert-verify: true
-- name: 🇹🇼 TW 13 (家宽) - xiaohe
+- name: 🇹🇼 TW 14 (家宽) - xiaohe
   type: vless
-  server: hinet1.2yly.com
-  port: 24215
-  uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
-    short-id: ''
-  servername: addons.mozilla.org
-  client-fingerprint: qq
-- name: 🇰🇷 KR 12 (家宽) - xiaohe
-  type: ss
-  server: 49.254.204.133
-  port: 1774
-  cipher: aes-256-cfb
-  password: 1234!@#$
-  udp: true
-- name: 🇭🇰 HK 10 (家宽) - xiaohe
-  type: trojan
-  server: 119.246.1.143
+  server: 59.125.69.19
   port: 443
-  password: BxceQaOe
-  udp: true
-  sni: t.me%25252fripaojiedian
-  skip-cert-verify: true
-- name: 🇹🇼 TW 19 (家宽) - xiaohe
-  type: trojan
-  server: 61.222.160.199
-  port: 3462
-  password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
-  udp: true
-  sni: a03.taipeicitygovernment.cn.ua
-  skip-cert-verify: true
-- name: 🇰🇷 KR 17 (家宽) - xiaohe
-  type: ss
-  server: 211.178.105.134
-  port: 6123
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
-  udp: true
-- name: 🇹🇼 TW 20 (家宽) - xiaohe
-  type: vless
-  server: 118.167.196.203
-  port: 24215
-  uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
-    short-id: ''
-  servername: addons.mozilla.org
-  client-fingerprint: firefox
-- name: 🇹🇼 TW 22 (家宽) - xiaohe
-  type: trojan
-  server: 203.69.207.175
-  port: 3462
-  password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
-  udp: true
-  sni: a03.taipeicitygovernment.cn.ua
-  skip-cert-verify: true
-- name: 🇹🇼 TW 23 (家宽) - xiaohe
-  type: vless
-  server: 60.248.219.52
-  port: 443
-  uuid: f265b49a-70a3-407a-b17b-e45dfb9f255c
+  uuid: f1d247db-d7ce-4eb8-9c0d-7b10603cd0b4
   udp: true
   tls: true
   skip-cert-verify: true
@@ -161,45 +130,16 @@ proxies:
   ws-opts:
     path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     headers:
-      Host: 60.248.219.52
-- name: 🇭🇰 HK 14 (家宽) - xiaohe
+      Host: 59.125.69.19
+- name: 🇯🇵 JP 41 (家宽) - xiaohe
   type: trojan
-  server: 119.246.1.143
+  server: 161.34.39.108
   port: 443
-  password: BxceQaOe
+  password: tsuchiya
   udp: true
-  sni: t.me%25252fripaojiedian
+  sni: 161.34.39.108
   skip-cert-verify: true
-- name: 🇹🇼 TW 25 (家宽) - xiaohe
-  type: trojan
-  server: 125.227.152.109
-  port: 3462
-  password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
-  udp: true
-  sni: a03.taipeicitygovernment.cn.ua
-  skip-cert-verify: true
-- name: 🇹🇼 TW 26 (家宽) - xiaohe
-  type: vless
-  server: 60.248.219.78
-  port: 443
-  uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
-    headers:
-      Host: ty986gfazs.cainiaohub.xyz
-- name: 🇭🇰 HK 21 (家宽) - xiaohe
-  type: trojan
-  server: 119.246.1.143
-  port: 443
-  password: BxceQaOe
-  udp: true
-  sni: t.me
-  skip-cert-verify: true
-- name: 🇹🇼 TW 27 (家宽) - xiaohe
+- name: 🇹🇼 TW 16 (家宽) - xiaohe
   type: vless
   server: 60.248.219.53
   port: 443
@@ -212,70 +152,192 @@ proxies:
     path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     headers:
       Host: ty986gfazs.cainiaohub.xyz
-- name: 🇹🇼 TW 28 (家宽) - xiaohe
+- name: 🇹🇼 TW 17 (家宽) - xiaohe
+  type: vless
+  server: 118.167.196.203
+  port: 24215
+  uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
+    short-id: ''
+  servername: addons.mozilla.org
+  client-fingerprint: firefox
+- name: 🇹🇼 TW 18 (家宽) - xiaohe
+  type: trojan
+  server: 61.222.160.199
+  port: 3462
+  password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
+  udp: true
+  sni: a03.taipeicitygovernment.cn.ua
+  skip-cert-verify: true
+- name: 🇹🇼 TW 19 (家宽) - xiaohe
+  type: ss
+  server: 36.224.151.80
+  port: 50099
+  cipher: chacha20-ietf-poly1305
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  udp: true
+- name: 🇹🇼 TW 20 (家宽) - xiaohe
   type: ss
   server: 36.224.152.189
   port: 50099
   cipher: chacha20-ietf-poly1305
   password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
   udp: true
+- name: 🇹🇼 TW 21 (家宽) - xiaohe
+  type: vless
+  server: 60.248.219.53
+  port: 443
+  uuid: f1d247db-d7ce-4eb8-9c0d-7b10603cd0b4
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    headers:
+      Host: 60.248.219.53
+- name: 🇹🇼 TW 23 (家宽) - xiaohe
+  type: ss
+  server: r3mrcg00129437x.cybervena.com
+  port: 50099
+  cipher: chacha20-ietf-poly1305
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  udp: true
+- name: 🇯🇵 JP 58 (家宽) - xiaohe
+  type: trojan
+  server: aa.ccmusic.jp
+  port: 443
+  password: tsuchiya
+  udp: true
+  sni: aa.ccmusic.jp
+  skip-cert-verify: true
+- name: 🇭🇰 HK 115 (家宽) - xiaohe
+  type: trojan
+  server: 119.246.1.143
+  port: 443
+  password: BxceQaOe
+  udp: true
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇹🇼 TW 25 (家宽) - xiaohe
+  type: vless
+  server: hinet1.2yly.com
+  port: 24215
+  uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
+    short-id: ''
+  servername: addons.mozilla.org
+  client-fingerprint: qq
+- name: 🇹🇼 TW 26 (家宽) - xiaohe
+  type: ss
+  server: 36.224.152.189
+  port: 50099
+  cipher: chacha20-ietf-poly1305
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  udp: true
+- name: 🇹🇼 TW 27 (家宽) - xiaohe
+  type: vless
+  server: 60.248.219.78
+  port: 443
+  uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    headers:
+      Host: ty986gfazs.cainiaohub.xyz
+- name: 🇭🇰 HK 120 (家宽) - xiaohe
+  type: trojan
+  server: 119.246.1.143
+  port: 443
+  password: BxceQaOe
+  udp: true
+  sni: t.me%25252fripaojiedian
+  skip-cert-verify: true
+- name: 🇰🇷 KR 25 (家宽) - xiaohe
+  type: ss
+  server: 211.178.105.134
+  port: 6123
+  cipher: aes-256-cfb
+  password: qwerREWQ@@
+  udp: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 TW 03 (家宽) - xiaohe
-  - 🇹🇼 TW 05 (家宽) - xiaohe
-  - 🇹🇼 TW 06 (家宽) - xiaohe
-  - 🇯🇵 JP 17 (家宽) - xiaohe
-  - 🇹🇼 TW 08 (家宽) - xiaohe
-  - 🇭🇰 HK 05 (家宽) - xiaohe
+  - 🇹🇼 TW 01 (家宽) - xiaohe
+  - 🇯🇵 JP 03 (家宽) - xiaohe
+  - 🇹🇼 TW 02 (家宽) - xiaohe
+  - 🇯🇵 JP 13 (家宽) - xiaohe
+  - 🇭🇰 HK 32 (家宽) - xiaohe
+  - 🇯🇵 JP 21 (家宽) - xiaohe
+  - 🇹🇼 TW 07 (家宽) - xiaohe
+  - 🇺🇸 US 28 (家宽) - xiaohe
+  - 🇯🇵 JP 29 (家宽) - xiaohe
+  - 🇹🇼 TW 09 (家宽) - xiaohe
+  - 🇭🇰 HK 72 (家宽) - xiaohe
   - 🇹🇼 TW 11 (家宽) - xiaohe
-  - 🇯🇵 JP 30 (家宽) - xiaohe
-  - 🇨🇿 CZ 03 (家宽) - xiaohe
-  - 🇹🇼 TW 12 (家宽) - xiaohe
-  - 🇹🇼 TW 13 (家宽) - xiaohe
-  - 🇰🇷 KR 12 (家宽) - xiaohe
-  - 🇭🇰 HK 10 (家宽) - xiaohe
+  - 🇯🇵 JP 35 (家宽) - xiaohe
+  - 🇹🇼 TW 14 (家宽) - xiaohe
+  - 🇯🇵 JP 41 (家宽) - xiaohe
+  - 🇹🇼 TW 16 (家宽) - xiaohe
+  - 🇹🇼 TW 17 (家宽) - xiaohe
+  - 🇹🇼 TW 18 (家宽) - xiaohe
   - 🇹🇼 TW 19 (家宽) - xiaohe
-  - 🇰🇷 KR 17 (家宽) - xiaohe
   - 🇹🇼 TW 20 (家宽) - xiaohe
-  - 🇹🇼 TW 22 (家宽) - xiaohe
+  - 🇹🇼 TW 21 (家宽) - xiaohe
   - 🇹🇼 TW 23 (家宽) - xiaohe
-  - 🇭🇰 HK 14 (家宽) - xiaohe
+  - 🇯🇵 JP 58 (家宽) - xiaohe
+  - 🇭🇰 HK 115 (家宽) - xiaohe
   - 🇹🇼 TW 25 (家宽) - xiaohe
   - 🇹🇼 TW 26 (家宽) - xiaohe
-  - 🇭🇰 HK 21 (家宽) - xiaohe
   - 🇹🇼 TW 27 (家宽) - xiaohe
-  - 🇹🇼 TW 28 (家宽) - xiaohe
+  - 🇭🇰 HK 120 (家宽) - xiaohe
+  - 🇰🇷 KR 25 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 TW 03 (家宽) - xiaohe
-  - 🇹🇼 TW 05 (家宽) - xiaohe
-  - 🇹🇼 TW 06 (家宽) - xiaohe
-  - 🇯🇵 JP 17 (家宽) - xiaohe
-  - 🇹🇼 TW 08 (家宽) - xiaohe
-  - 🇭🇰 HK 05 (家宽) - xiaohe
+  - 🇹🇼 TW 01 (家宽) - xiaohe
+  - 🇯🇵 JP 03 (家宽) - xiaohe
+  - 🇹🇼 TW 02 (家宽) - xiaohe
+  - 🇯🇵 JP 13 (家宽) - xiaohe
+  - 🇭🇰 HK 32 (家宽) - xiaohe
+  - 🇯🇵 JP 21 (家宽) - xiaohe
+  - 🇹🇼 TW 07 (家宽) - xiaohe
+  - 🇺🇸 US 28 (家宽) - xiaohe
+  - 🇯🇵 JP 29 (家宽) - xiaohe
+  - 🇹🇼 TW 09 (家宽) - xiaohe
+  - 🇭🇰 HK 72 (家宽) - xiaohe
   - 🇹🇼 TW 11 (家宽) - xiaohe
-  - 🇯🇵 JP 30 (家宽) - xiaohe
-  - 🇨🇿 CZ 03 (家宽) - xiaohe
-  - 🇹🇼 TW 12 (家宽) - xiaohe
-  - 🇹🇼 TW 13 (家宽) - xiaohe
-  - 🇰🇷 KR 12 (家宽) - xiaohe
-  - 🇭🇰 HK 10 (家宽) - xiaohe
+  - 🇯🇵 JP 35 (家宽) - xiaohe
+  - 🇹🇼 TW 14 (家宽) - xiaohe
+  - 🇯🇵 JP 41 (家宽) - xiaohe
+  - 🇹🇼 TW 16 (家宽) - xiaohe
+  - 🇹🇼 TW 17 (家宽) - xiaohe
+  - 🇹🇼 TW 18 (家宽) - xiaohe
   - 🇹🇼 TW 19 (家宽) - xiaohe
-  - 🇰🇷 KR 17 (家宽) - xiaohe
   - 🇹🇼 TW 20 (家宽) - xiaohe
-  - 🇹🇼 TW 22 (家宽) - xiaohe
+  - 🇹🇼 TW 21 (家宽) - xiaohe
   - 🇹🇼 TW 23 (家宽) - xiaohe
-  - 🇭🇰 HK 14 (家宽) - xiaohe
+  - 🇯🇵 JP 58 (家宽) - xiaohe
+  - 🇭🇰 HK 115 (家宽) - xiaohe
   - 🇹🇼 TW 25 (家宽) - xiaohe
   - 🇹🇼 TW 26 (家宽) - xiaohe
-  - 🇭🇰 HK 21 (家宽) - xiaohe
   - 🇹🇼 TW 27 (家宽) - xiaohe
-  - 🇹🇼 TW 28 (家宽) - xiaohe
+  - 🇭🇰 HK 120 (家宽) - xiaohe
+  - 🇰🇷 KR 25 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

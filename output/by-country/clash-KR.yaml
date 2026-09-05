@@ -5,24 +5,18 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇰🇷 KR 01 - xiaohe
-  type: vmess
-  server: 140.238.2.250
+  type: hysteria2
+  server: 3.36.93.74
   port: 443
-  uuid: 41a7089a-040b-4538-8b8d-010902405bde
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 3.36.93.74
   skip-cert-verify: true
 - name: 🇰🇷 KR 02 - xiaohe
-  type: vmess
-  server: 140.238.2.250
-  port: 443
-  uuid: 41a7089a-040b-4538-8b8d-010902405bde
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
+  type: hysteria2
+  server: 152.67.200.82
+  port: 50160
+  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+  sni: 152.67.200.82
   skip-cert-verify: true
 - name: 🇰🇷 KR 03 - xiaohe
   type: vmess
@@ -43,13 +37,12 @@ proxies:
   sni: tough-hermit.rooster465.autos
   skip-cert-verify: true
 - name: 🇰🇷 KR 05 - xiaohe
-  type: trojan
-  server: 54.180.128.171
-  port: 443
-  password: NQ26071394
+  type: ss
+  server: 141.164.45.187
+  port: 6679
+  cipher: aes-256-gcm
+  password: TEzjfAYq2IjtuoS
   udp: true
-  sni: accurate-cat.rooster465.autos
-  skip-cert-verify: true
 - name: 🇰🇷 KR 06 - xiaohe
   type: hysteria2
   server: 3.36.93.74
@@ -58,20 +51,6 @@ proxies:
   sni: 3.36.93.74
   skip-cert-verify: true
 - name: 🇰🇷 KR 07 - xiaohe
-  type: hysteria2
-  server: 152.67.200.82
-  port: 50160
-  password: 3d7634af8cb2c6cb4bac1c0efad8b43d
-  sni: 152.67.200.82
-  skip-cert-verify: true
-- name: 🇰🇷 KR 08 - xiaohe
-  type: hysteria2
-  server: 43.203.252.104
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 43.203.252.104
-  skip-cert-verify: true
-- name: 🇰🇷 KR 09 - xiaohe
   type: vmess
   server: 140.238.2.250
   port: 443
@@ -81,6 +60,23 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
+- name: 🇰🇷 KR 08 - xiaohe
+  type: vmess
+  server: 140.238.2.250
+  port: 443
+  uuid: 41a7089a-040b-4538-8b8d-010902405bde
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇰🇷 KR 09 - xiaohe
+  type: ss
+  server: 141.164.45.187
+  port: 9090
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+  udp: true
 - name: 🇰🇷 KR 10 - xiaohe
   type: vmess
   server: 140.238.2.250
@@ -92,52 +88,6 @@ proxies:
   tls: false
   skip-cert-verify: true
 - name: 🇰🇷 KR 11 - xiaohe
-  type: vless
-  server: 130.94.29.111
-  port: 2087
-  uuid: 84da6391-1539-4583-a3d9-d6efd796b4d6
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /e17586a75123
-    headers:
-      Host: 130.94.29.111
-- name: 🇰🇷 KR 12 (家宽) - xiaohe
-  type: ss
-  server: 49.254.204.133
-  port: 1774
-  cipher: aes-256-cfb
-  password: 1234!@#$
-  udp: true
-- name: 🇰🇷 KR 13 - xiaohe
-  type: vless
-  server: 130.94.29.111
-  port: 2087
-  uuid: 84da6391-1539-4583-a3d9-d6efd796b4d6
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /e17586a75123
-    headers:
-      Host: 130.94.29.111
-- name: 🇰🇷 KR 14 - xiaohe
-  type: vless
-  server: 168.110.107.218
-  port: 443
-  uuid: a36d383f-5ea0-4b5f-99ef-20e68cdbd32c
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /f004ff67-afbd-43c3-9db1-7b6a123e337d
-    headers:
-      Host: hk59.wxgqlfx.top
-- name: 🇰🇷 KR 15 - xiaohe
   type: vmess
   server: 140.238.2.250
   port: 443
@@ -147,7 +97,68 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
+- name: 🇰🇷 KR 12 - xiaohe
+  type: vmess
+  server: 140.238.2.250
+  port: 443
+  uuid: 41a7089a-040b-4538-8b8d-010902405bde
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇰🇷 KR 13 - xiaohe
+  type: hysteria2
+  server: vpn-kr-003.fastervpn.world
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-kr-003.fastervpn.world
+  skip-cert-verify: true
+- name: 🇰🇷 KR 14 - xiaohe
+  type: vmess
+  server: 140.238.2.250
+  port: 443
+  uuid: 41a7089a-040b-4538-8b8d-010902405bde
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇰🇷 KR 15 - xiaohe
+  type: hysteria2
+  server: 3.36.93.74
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 3.36.93.74
+  skip-cert-verify: true
 - name: 🇰🇷 KR 16 - xiaohe
+  type: vmess
+  server: 140.238.2.250
+  port: 443
+  uuid: 41a7089a-040b-4538-8b8d-010902405bde
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇰🇷 KR 17 - xiaohe
+  type: hysteria2
+  server: 43.203.252.104
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 43.203.252.104
+  skip-cert-verify: true
+- name: 🇰🇷 KR 18 - xiaohe
+  type: vmess
+  server: 140.238.2.250
+  port: 443
+  uuid: 41a7089a-040b-4538-8b8d-010902405bde
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇰🇷 KR 19 - xiaohe
   type: trojan
   server: 43.201.249.3
   port: 443
@@ -155,21 +166,14 @@ proxies:
   udp: true
   sni: magical-prawn.rooster465.autos
   skip-cert-verify: true
-- name: 🇰🇷 KR 17 (家宽) - xiaohe
+- name: 🇰🇷 KR 20 - xiaohe
   type: ss
-  server: 211.178.105.134
-  port: 6123
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
+  server: 141.164.45.187
+  port: 5498
+  cipher: aes-256-gcm
+  password: lGqs95QkFHo2NV
   udp: true
-- name: 🇰🇷 KR 18 - xiaohe
-  type: hysteria2
-  server: 132.226.226.189
-  port: 50160
-  password: 1671a252e2a97dc2bda4e515475931da
-  sni: 132.226.226.189
-  skip-cert-verify: true
-- name: 🇰🇷 KR 19 - xiaohe
+- name: 🇰🇷 KR 21 - xiaohe
   type: trojan
   server: 15.165.76.91
   port: 443
@@ -177,57 +181,35 @@ proxies:
   udp: true
   sni: star-kiwi.rooster465.autos
   skip-cert-verify: true
-- name: 🇰🇷 KR 20 - xiaohe
-  type: hysteria2
-  server: 3.36.93.74
+- name: 🇰🇷 KR 22 - xiaohe
+  type: trojan
+  server: 54.180.128.171
   port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 3.36.93.74
+  password: NQ26071394
+  udp: true
+  sni: accurate-cat.rooster465.autos
   skip-cert-verify: true
-- name: 🇰🇷 KR 21 - xiaohe
+- name: 🇰🇷 KR 23 - xiaohe
   type: hysteria2
   server: 152.67.200.82
   port: 50160
   password: 3d7634af8cb2c6cb4bac1c0efad8b43d
   sni: 152.67.200.82
   skip-cert-verify: true
-- name: 🇰🇷 KR 22 - xiaohe
-  type: vless
-  server: 130.94.29.111
-  port: 2087
-  uuid: 84da6391-1539-4583-a3d9-d6efd796b4d6
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /e17586a75123
-    headers:
-      Host: 130.94.29.111
-- name: 🇰🇷 KR 23 - xiaohe
-  type: ss
-  server: 141.164.45.187
-  port: 9090
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-  udp: true
 - name: 🇰🇷 KR 24 - xiaohe
-  type: vmess
-  server: 140.238.2.250
-  port: 443
-  uuid: 41a7089a-040b-4538-8b8d-010902405bde
-  alterId: 0
-  cipher: auto
+  type: ss
+  server: 49.254.204.133
+  port: 1774
+  cipher: aes-256-cfb
+  password: 1234!@#$
   udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇰🇷 KR 25 - xiaohe
-  type: hysteria2
-  server: 3.36.93.74
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 3.36.93.74
-  skip-cert-verify: true
+- name: 🇰🇷 KR 25 (家宽) - xiaohe
+  type: ss
+  server: 211.178.105.134
+  port: 6123
+  cipher: aes-256-cfb
+  password: qwerREWQ@@
+  udp: true
 - name: 🇰🇷 KR 26 - xiaohe
   type: vless
   server: 130.94.29.111
@@ -242,32 +224,44 @@ proxies:
     headers:
       Host: 130.94.29.111
 - name: 🇰🇷 KR 27 - xiaohe
-  type: hysteria2
-  server: vpn-kr-003.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-kr-003.fastervpn.world
+  type: vless
+  server: 130.94.29.111
+  port: 2087
+  uuid: 84da6391-1539-4583-a3d9-d6efd796b4d6
+  udp: true
+  tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /e17586a75123
+    headers:
+      Host: 130.94.29.111
 - name: 🇰🇷 KR 28 - xiaohe
-  type: vmess
-  server: 140.238.2.250
-  port: 443
-  uuid: 41a7089a-040b-4538-8b8d-010902405bde
-  alterId: 0
-  cipher: auto
+  type: vless
+  server: 130.94.29.111
+  port: 2087
+  uuid: 84da6391-1539-4583-a3d9-d6efd796b4d6
   udp: true
   tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /e17586a75123
+    headers:
+      Host: 130.94.29.111
 - name: 🇰🇷 KR 29 - xiaohe
-  type: vmess
-  server: 140.238.2.250
-  port: 443
-  uuid: 41a7089a-040b-4538-8b8d-010902405bde
-  alterId: 0
-  cipher: auto
+  type: vless
+  server: 130.94.29.111
+  port: 2087
+  uuid: 84da6391-1539-4583-a3d9-d6efd796b4d6
   udp: true
   tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /e17586a75123
+    headers:
+      Host: 130.94.29.111
 proxy-groups:
 - name: PROXIES
   type: select
@@ -284,12 +278,12 @@ proxy-groups:
   - 🇰🇷 KR 09 - xiaohe
   - 🇰🇷 KR 10 - xiaohe
   - 🇰🇷 KR 11 - xiaohe
-  - 🇰🇷 KR 12 (家宽) - xiaohe
+  - 🇰🇷 KR 12 - xiaohe
   - 🇰🇷 KR 13 - xiaohe
   - 🇰🇷 KR 14 - xiaohe
   - 🇰🇷 KR 15 - xiaohe
   - 🇰🇷 KR 16 - xiaohe
-  - 🇰🇷 KR 17 (家宽) - xiaohe
+  - 🇰🇷 KR 17 - xiaohe
   - 🇰🇷 KR 18 - xiaohe
   - 🇰🇷 KR 19 - xiaohe
   - 🇰🇷 KR 20 - xiaohe
@@ -297,7 +291,7 @@ proxy-groups:
   - 🇰🇷 KR 22 - xiaohe
   - 🇰🇷 KR 23 - xiaohe
   - 🇰🇷 KR 24 - xiaohe
-  - 🇰🇷 KR 25 - xiaohe
+  - 🇰🇷 KR 25 (家宽) - xiaohe
   - 🇰🇷 KR 26 - xiaohe
   - 🇰🇷 KR 27 - xiaohe
   - 🇰🇷 KR 28 - xiaohe
@@ -318,12 +312,12 @@ proxy-groups:
   - 🇰🇷 KR 09 - xiaohe
   - 🇰🇷 KR 10 - xiaohe
   - 🇰🇷 KR 11 - xiaohe
-  - 🇰🇷 KR 12 (家宽) - xiaohe
+  - 🇰🇷 KR 12 - xiaohe
   - 🇰🇷 KR 13 - xiaohe
   - 🇰🇷 KR 14 - xiaohe
   - 🇰🇷 KR 15 - xiaohe
   - 🇰🇷 KR 16 - xiaohe
-  - 🇰🇷 KR 17 (家宽) - xiaohe
+  - 🇰🇷 KR 17 - xiaohe
   - 🇰🇷 KR 18 - xiaohe
   - 🇰🇷 KR 19 - xiaohe
   - 🇰🇷 KR 20 - xiaohe
@@ -331,7 +325,7 @@ proxy-groups:
   - 🇰🇷 KR 22 - xiaohe
   - 🇰🇷 KR 23 - xiaohe
   - 🇰🇷 KR 24 - xiaohe
-  - 🇰🇷 KR 25 - xiaohe
+  - 🇰🇷 KR 25 (家宽) - xiaohe
   - 🇰🇷 KR 26 - xiaohe
   - 🇰🇷 KR 27 - xiaohe
   - 🇰🇷 KR 28 - xiaohe

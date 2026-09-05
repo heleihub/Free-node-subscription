@@ -4,7 +4,15 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 HK 05 (家宽) - xiaohe
+- name: 🇭🇰 HK 32 (家宽) - xiaohe
+  type: trojan
+  server: 119.246.1.143
+  port: 443
+  password: BxceQaOe
+  udp: true
+  sni: t.me%25252fripaojiedian
+  skip-cert-verify: true
+- name: 🇭🇰 HK 72 (家宽) - xiaohe
   type: trojan
   server: 119.246.1.143
   port: 443
@@ -12,23 +20,7 @@ proxies:
   udp: true
   sni: 119.246.1.143
   skip-cert-verify: true
-- name: 🇭🇰 HK 10 (家宽) - xiaohe
-  type: trojan
-  server: 119.246.1.143
-  port: 443
-  password: BxceQaOe
-  udp: true
-  sni: t.me%25252fripaojiedian
-  skip-cert-verify: true
-- name: 🇭🇰 HK 14 (家宽) - xiaohe
-  type: trojan
-  server: 119.246.1.143
-  port: 443
-  password: BxceQaOe
-  udp: true
-  sni: t.me%25252fripaojiedian
-  skip-cert-verify: true
-- name: 🇭🇰 HK 21 (家宽) - xiaohe
+- name: 🇭🇰 HK 115 (家宽) - xiaohe
   type: trojan
   server: 119.246.1.143
   port: 443
@@ -36,23 +28,31 @@ proxies:
   udp: true
   sni: t.me
   skip-cert-verify: true
+- name: 🇭🇰 HK 120 (家宽) - xiaohe
+  type: trojan
+  server: 119.246.1.143
+  port: 443
+  password: BxceQaOe
+  udp: true
+  sni: t.me%25252fripaojiedian
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 HK 05 (家宽) - xiaohe
-  - 🇭🇰 HK 10 (家宽) - xiaohe
-  - 🇭🇰 HK 14 (家宽) - xiaohe
-  - 🇭🇰 HK 21 (家宽) - xiaohe
+  - 🇭🇰 HK 32 (家宽) - xiaohe
+  - 🇭🇰 HK 72 (家宽) - xiaohe
+  - 🇭🇰 HK 115 (家宽) - xiaohe
+  - 🇭🇰 HK 120 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 HK 05 (家宽) - xiaohe
-  - 🇭🇰 HK 10 (家宽) - xiaohe
-  - 🇭🇰 HK 14 (家宽) - xiaohe
-  - 🇭🇰 HK 21 (家宽) - xiaohe
+  - 🇭🇰 HK 32 (家宽) - xiaohe
+  - 🇭🇰 HK 72 (家宽) - xiaohe
+  - 🇭🇰 HK 115 (家宽) - xiaohe
+  - 🇭🇰 HK 120 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

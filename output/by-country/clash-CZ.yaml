@@ -18,20 +18,13 @@ proxies:
   password: OD6gGbGU9a
   sni: 195.133.24.124
   skip-cert-verify: true
-- name: 🇨🇿 CZ 03 (家宽) - xiaohe
+- name: 🇨🇿 CZ 03 - xiaohe
   type: ss
   server: 45.129.142.41
   port: 47425
   cipher: chacha20-ietf-poly1305
   password: lIoNSMeYLX8QGHnOp0DTBR0W91/CHVDEjPqjMDuYcdQ=
   udp: true
-- name: 🇨🇿 CZ 04 - xiaohe
-  type: hysteria2
-  server: 195.133.24.124
-  port: 443
-  password: OD6gGbGU9a
-  sni: 195.133.24.124
-  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
@@ -39,8 +32,7 @@ proxy-groups:
   - AUTO
   - 🇨🇿 CZ 01 - xiaohe
   - 🇨🇿 CZ 02 - xiaohe
-  - 🇨🇿 CZ 03 (家宽) - xiaohe
-  - 🇨🇿 CZ 04 - xiaohe
+  - 🇨🇿 CZ 03 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -48,7 +40,6 @@ proxy-groups:
   proxies:
   - 🇨🇿 CZ 01 - xiaohe
   - 🇨🇿 CZ 02 - xiaohe
-  - 🇨🇿 CZ 03 (家宽) - xiaohe
-  - 🇨🇿 CZ 04 - xiaohe
+  - 🇨🇿 CZ 03 - xiaohe
 rules:
 - MATCH,PROXIES

@@ -7,48 +7,8 @@ proxies:
 - name: 🇹🇷 TR 01 - xiaohe
   type: vless
   server: 91.228.227.172
-  port: 110
-  uuid: 393280e5-746f-4d09-b406-bf0ddbb86307
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇹🇷 TR 02 - xiaohe
-  type: vless
-  server: 91.228.227.172
   port: 8080
   uuid: 367111be-17b4-4abc-aae0-3d7fe72aa3ec
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇹🇷 TR 03 - xiaohe
-  type: vless
-  server: 91.228.227.172
-  port: 443
-  uuid: 393280e5-746f-4d09-b406-bf0ddbb86307
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇹🇷 TR 04 - xiaohe
-  type: vless
-  server: 91.228.227.172
-  port: 110
-  uuid: 367111be-17b4-4abc-aae0-3d7fe72aa3ec
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇹🇷 TR 05 - xiaohe
-  type: vless
-  server: 91.228.227.172
-  port: 110
-  uuid: cfa3451d-4ee4-4912-aebe-78c2df96250d
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇹🇷 TR 06 - xiaohe
-  type: vless
-  server: 91.228.227.172
-  port: 443
-  uuid: 3fa6a07b-c137-4d9d-b988-dbdc16ac92a8
   udp: true
   tls: false
   skip-cert-verify: true
@@ -58,21 +18,11 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇹🇷 TR 01 - xiaohe
-  - 🇹🇷 TR 02 - xiaohe
-  - 🇹🇷 TR 03 - xiaohe
-  - 🇹🇷 TR 04 - xiaohe
-  - 🇹🇷 TR 05 - xiaohe
-  - 🇹🇷 TR 06 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
   - 🇹🇷 TR 01 - xiaohe
-  - 🇹🇷 TR 02 - xiaohe
-  - 🇹🇷 TR 03 - xiaohe
-  - 🇹🇷 TR 04 - xiaohe
-  - 🇹🇷 TR 05 - xiaohe
-  - 🇹🇷 TR 06 - xiaohe
 rules:
 - MATCH,PROXIES

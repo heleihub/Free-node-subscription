@@ -5,229 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇬🇧 GB 01 - xiaohe
-  type: ss
-  server: 82.38.31.218
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 02 - xiaohe
-  type: trojan
-  server: xn--1ugy405pdua.gayvibe.dpdns.org
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: xn--1ugy405pdua.gayvibe.dpdns.org
-  skip-cert-verify: true
-- name: 🇬🇧 GB 03 - xiaohe
-  type: ss
-  server: 31.57.35.41
-  port: 65443
-  cipher: aes-256-cfb
-  password: 7eadc6dbe2ae
-  udp: true
-- name: 🇬🇧 GB 04 - xiaohe
-  type: ss
-  server: 82.38.31.198
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 05 - xiaohe
-  type: ss
-  server: 82.38.31.207
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 06 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: 45.85.88.194
-  skip-cert-verify: true
-- name: 🇬🇧 GB 07 - xiaohe
-  type: ss
-  server: 82.38.31.10
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 08 - xiaohe
-  type: vless
-  server: 82.24.203.10
-  port: 2087
-  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /3bfc3e3ed603
-    headers:
-      Host: 82.24.203.10
-- name: 🇬🇧 GB 09 - xiaohe
-  type: vless
-  server: 188.220.67.140
-  port: 2087
-  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /8f2690e2d016
-    headers:
-      Host: 188.220.67.140
-- name: 🇬🇧 GB 10 - xiaohe
-  type: ss
-  server: 82.38.31.191
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 11 - xiaohe
-  type: ss
-  server: 35.178.200.252
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
-  udp: true
-- name: 🇬🇧 GB 12 - xiaohe
-  type: ss
-  server: 82.38.31.3
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 13 - xiaohe
-  type: vless
-  server: 82.24.203.10
-  port: 2087
-  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /3bfc3e3ed603
-    headers:
-      Host: 82.24.203.10
-- name: 🇬🇧 GB 14 - xiaohe
-  type: ss
-  server: 82.38.31.201
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 15 - xiaohe
-  type: ss
-  server: 82.38.31.18
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 16 - xiaohe
-  type: ss
-  server: 82.38.31.9
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 17 - xiaohe
-  type: vless
-  server: 188.220.67.245
-  port: 2087
-  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /8f2690e2d016
-    headers:
-      Host: 188.220.67.245
-- name: 🇬🇧 GB 18 - xiaohe
-  type: ss
-  server: 82.38.31.190
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 19 - xiaohe
-  type: ss
-  server: 82.38.31.11
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 20 - xiaohe
-  type: ss
-  server: 82.38.31.175
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 21 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: speedtest.tinkoff.ru
-  skip-cert-verify: true
-- name: 🇬🇧 GB 22 - xiaohe
-  type: vless
-  server: 188.220.67.198
-  port: 2087
-  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /8f2690e2d016
-    headers:
-      Host: 188.220.67.198
-- name: 🇬🇧 GB 23 - xiaohe
-  type: ss
-  server: 82.38.31.11
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 24 - xiaohe
-  type: ss
-  server: 82.38.31.182
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 25 - xiaohe
-  type: ss
-  server: 82.38.31.204
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 26 - xiaohe
-  type: ss
-  server: 82.38.31.17
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 27 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: css.rbxcdn.com
-  skip-cert-verify: true
-- name: 🇬🇧 GB 28 - xiaohe
   type: vmess
   server: 51.38.71.147
   port: 2053
@@ -237,213 +14,21 @@ proxies:
   udp: true
   tls: true
   skip-cert-verify: true
-- name: 🇬🇧 GB 29 - xiaohe
-  type: vmess
-  server: 66.163.117.58
-  port: 22324
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇬🇧 GB 30 - xiaohe
+- name: 🇬🇧 GB 02 - xiaohe
   type: ss
-  server: 82.38.31.205
+  server: 82.38.31.183
   port: 8080
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 🇬🇧 GB 31 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: 45.85.88.194
-  skip-cert-verify: true
-- name: 🇬🇧 GB 32 - xiaohe
+- name: 🇬🇧 GB 03 - xiaohe
   type: ss
-  server: 82.38.31.15
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 33 - xiaohe
-  type: ss
-  server: 82.38.31.174
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 34 - xiaohe
-  type: ss
-  server: 82.38.31.162
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 35 - xiaohe
-  type: vless
-  server: 188.220.67.181
-  port: 2087
-  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /8f2690e2d016
-    headers:
-      Host: 188.220.67.181
-- name: 🇬🇧 GB 36 - xiaohe
-  type: vless
-  server: 129.121.95.159
-  port: 443
-  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /connect
-    headers:
-      Host: 129.121.95.159
-- name: 🇬🇧 GB 37 - xiaohe
-  type: ss
-  server: 82.38.31.187
+  server: 82.38.31.207
   port: 8080
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 🇬🇧 GB 38 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: google.com
-  skip-cert-verify: true
-- name: 🇬🇧 GB 39 - xiaohe
-  type: ss
-  server: 82.38.31.206
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 40 - xiaohe
-  type: ss
-  server: 82.38.31.42
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 41 - xiaohe
-  type: ss
-  server: 82.38.31.48
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 42 - xiaohe
-  type: ss
-  server: 82.38.31.162
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 43 - xiaohe
-  type: trojan
-  server: xn--1ugy405pdua.gayvibe.dpdns.org
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: xn--1ugy405pdua.gayvibe.dpdns.org
-  skip-cert-verify: true
-- name: 🇬🇧 GB 44 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: 45.85.88.194
-  skip-cert-verify: true
-- name: 🇬🇧 GB 45 - xiaohe
-  type: ss
-  server: 82.38.31.13
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 46 - xiaohe
-  type: ss
-  server: 82.38.31.18
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 47 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: css.rbxcdn.com
-  skip-cert-verify: true
-- name: 🇬🇧 GB 48 - xiaohe
-  type: ss
-  server: 82.38.31.164
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 49 - xiaohe
-  type: vless
-  server: 129.121.95.159
-  port: 443
-  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /connect
-    headers:
-      Host: 129.121.95.159
-- name: 🇬🇧 GB 50 - xiaohe
-  type: vless
-  server: 188.220.67.245
-  port: 2087
-  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /8f2690e2d016
-    headers:
-      Host: 188.220.67.245
-- name: 🇬🇧 GB 51 - xiaohe
-  type: vless
-  server: 82.24.203.9
-  port: 2087
-  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /3bfc3e3ed603
-    headers:
-      Host: 82.24.203.9
-- name: 🇬🇧 GB 52 - xiaohe
-  type: ss
-  server: 82.38.31.176
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 53 - xiaohe
+- name: 🇬🇧 GB 04 - xiaohe
   type: vless
   server: 82.24.203.20
   port: 2087
@@ -456,435 +41,21 @@ proxies:
     path: /fd5ba98a3970
     headers:
       Host: 82.24.203.20
-- name: 🇬🇧 GB 54 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: 45.85.88.194
-  skip-cert-verify: true
-- name: 🇬🇧 GB 55 - xiaohe
-  type: vless
-  server: 129.121.95.159
+- name: 🇬🇧 GB 05 - xiaohe
+  type: ss
+  server: 82.38.31.48
   port: 443
-  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /connect
-    headers:
-      Host: 129.121.95.159
-- name: 🇬🇧 GB 56 - xiaohe
-  type: vless
-  server: 57.129.132.223
-  port: 80
-  uuid: 9e20b04d-5a81-4e16-b421-01e502f0aac6
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vless/
-    headers:
-      Host: google.com
-- name: 🇬🇧 GB 57 - xiaohe
-  type: ss
-  server: 82.38.31.201
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 58 - xiaohe
-  type: ss
-  server: 82.38.31.210
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 59 - xiaohe
-  type: ss
-  server: 82.38.31.16
-  port: 8080
   cipher: chacha20-ietf-poly1305
   password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇬🇧 GB 60 - xiaohe
-  type: vless
-  server: 188.220.67.245
-  port: 2087
-  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /8f2690e2d016
-    headers:
-      Host: 188.220.67.245
-- name: 🇬🇧 GB 61 - xiaohe
-  type: vless
-  server: 129.121.95.159
-  port: 443
-  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /connect
-    headers:
-      Host: 129.121.95.159
-- name: 🇬🇧 GB 62 - xiaohe
-  type: ss
-  server: 82.38.31.212
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 63 - xiaohe
-  type: trojan
-  server: xn--1ugy405pdua.gayvibe.dpdns.org
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: xn--1ugy405pdua.gayvibe.dpdns.org
-  skip-cert-verify: true
-- name: 🇬🇧 GB 64 - xiaohe
-  type: trojan
-  server: xn--1ugy405pdua.gayvibe.dpdns.org
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: xn--1ugy405pdua.gayvibe.dpdns.org
-  skip-cert-verify: true
-- name: 🇬🇧 GB 65 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: google.com
-  skip-cert-verify: true
-- name: 🇬🇧 GB 66 - xiaohe
-  type: ss
-  server: 82.38.31.208
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 67 - xiaohe
-  type: ss
-  server: 82.38.31.149
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 68 - xiaohe
-  type: hysteria2
-  server: vpn-uk-002.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-uk-002.fastervpn.world
-  skip-cert-verify: true
-- name: 🇬🇧 GB 69 - xiaohe
-  type: vless
-  server: 82.24.203.2
-  port: 2087
-  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /3bfc3e3ed603
-    headers:
-      Host: 82.24.203.2
-- name: 🇬🇧 GB 70 - xiaohe
-  type: ss
-  server: 82.38.31.46
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 71 - xiaohe
-  type: vless
-  server: 82.24.203.37
-  port: 2087
-  uuid: 44573770-963a-41f5-a080-3cc11e4957a2
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /5c62e3c616d8
-    headers:
-      Host: 82.24.203.37
-- name: 🇬🇧 GB 72 - xiaohe
-  type: ss
-  server: 82.38.31.28
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 73 - xiaohe
-  type: vless
-  server: 82.24.203.9
-  port: 2087
-  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /3bfc3e3ed603
-    headers:
-      Host: 82.24.203.9
-- name: 🇬🇧 GB 74 - xiaohe
+- name: 🇬🇧 GB 06 - xiaohe
   type: ss
   server: 82.38.31.17
   port: 8080
   cipher: chacha20-ietf-poly1305
   password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇬🇧 GB 75 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: google.com
-  skip-cert-verify: true
-- name: 🇬🇧 GB 76 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: css.rbxcdn.com
-  skip-cert-verify: true
-- name: 🇬🇧 GB 77 - xiaohe
-  type: ss
-  server: 82.38.31.149
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 78 - xiaohe
-  type: vless
-  server: 188.220.67.161
-  port: 2087
-  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /8f2690e2d016
-    headers:
-      Host: 188.220.67.161
-- name: 🇬🇧 GB 79 - xiaohe
-  type: ss
-  server: 141.98.101.181
-  port: 443
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇬🇧 GB 80 - xiaohe
-  type: trojan
-  server: xn--1ugy405pdua.gayvibe.dpdns.org
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: xn--1ugy405pdua.gayvibe.dpdns.org
-  skip-cert-verify: true
-- name: 🇬🇧 GB 81 - xiaohe
-  type: ss
-  server: 82.38.31.219
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 82 - xiaohe
-  type: trojan
-  server: xn--1ugy405pdua.gayvibe.dpdns.org
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: xn--1ugy405pdua.gayvibe.dpdns.org
-  skip-cert-verify: true
-- name: 🇬🇧 GB 83 - xiaohe
-  type: ss
-  server: 82.38.31.176
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 84 - xiaohe
-  type: vless
-  server: 82.24.203.10
-  port: 2087
-  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /3bfc3e3ed603
-    headers:
-      Host: 82.24.203.10
-- name: 🇬🇧 GB 85 - xiaohe
-  type: ss
-  server: 82.38.31.36
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 86 - xiaohe
-  type: trojan
-  server: xn--1ugy405pdua.gayvibe.dpdns.org
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: xn--1ugy405pdua.gayvibe.dpdns.org
-  skip-cert-verify: true
-- name: 🇬🇧 GB 87 - xiaohe
-  type: vmess
-  server: 51.38.71.147
-  port: 2053
-  uuid: 72f2cbe4-2874-45b7-b6aa-b93077c10c72
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  skip-cert-verify: true
-- name: 🇬🇧 GB 88 - xiaohe
-  type: ss
-  server: 82.38.31.198
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 89 - xiaohe
-  type: ss
-  server: 82.38.31.184
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
-  udp: true
-- name: 🇬🇧 GB 90 - xiaohe
-  type: ss
-  server: 82.38.31.13
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 91 - xiaohe
-  type: ss
-  server: 82.38.31.35
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
-- name: 🇬🇧 GB 92 - xiaohe
-  type: vless
-  server: 129.121.95.159
-  port: 443
-  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /connect
-    headers:
-      Host: 129.121.95.159
-- name: 🇬🇧 GB 93 - xiaohe
-  type: trojan
-  server: xn--1ugy405pdua.gayvibe.dpdns.org
-  port: 2174
-  password: tripitropa444
-  udp: true
-  sni: xn--1ugy405pdua.gayvibe.dpdns.org
-  skip-cert-verify: true
-- name: 🇬🇧 GB 94 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: speedtest.tinkoff.ru
-  skip-cert-verify: true
-- name: 🇬🇧 GB 95 - xiaohe
-  type: trojan
-  server: 45.85.88.194
-  port: 2234
-  password: tripitropa994825
-  udp: true
-  sni: speedtest.tinkoff.ru
-  skip-cert-verify: true
-- name: 🇬🇧 GB 96 - xiaohe
-  type: vless
-  server: 82.24.203.37
-  port: 2087
-  uuid: 44573770-963a-41f5-a080-3cc11e4957a2
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /5c62e3c616d8
-    headers:
-      Host: 82.24.203.37
-- name: 🇬🇧 GB 97 - xiaohe
-  type: ss
-  server: 35.178.132.176
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
-  udp: true
-- name: 🇬🇧 GB 98 - xiaohe
-  type: vless
-  server: 82.24.203.10
-  port: 2087
-  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /3bfc3e3ed603
-    headers:
-      Host: 82.24.203.10
-- name: 🇬🇧 GB 99 - xiaohe
-  type: vless
-  server: 188.220.67.224
-  port: 2087
-  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /8f2690e2d016
-    headers:
-      Host: 188.220.67.224
-- name: 🇬🇧 GB 100 - xiaohe
-  type: vless
-  server: 188.220.67.140
-  port: 2087
-  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /8f2690e2d016
-    headers:
-      Host: 188.220.67.140
-- name: 🇬🇧 GB 101 - xiaohe
+- name: 🇬🇧 GB 07 - xiaohe
   type: vless
   server: 188.220.67.181
   port: 2087
@@ -897,21 +68,153 @@ proxies:
     path: /8f2690e2d016
     headers:
       Host: 188.220.67.181
-- name: 🇬🇧 GB 102 - xiaohe
+- name: 🇬🇧 GB 08 - xiaohe
   type: ss
-  server: 82.38.31.199
+  server: 82.38.31.162
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 09 - xiaohe
+  type: ss
+  server: 82.38.31.10
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 10 - xiaohe
+  type: ss
+  server: 82.38.31.164
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 11 - xiaohe
+  type: vless
+  server: 129.121.95.159
+  port: 443
+  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /connect
+    headers:
+      Host: 129.121.95.159
+- name: 🇬🇧 GB 12 - xiaohe
+  type: ss
+  server: 35.178.132.176
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇬🇧 GB 13 - xiaohe
+  type: ss
+  server: 82.38.31.191
   port: 8080
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
-- name: 🇬🇧 GB 103 - xiaohe
+- name: 🇬🇧 GB 14 - xiaohe
+  type: vless
+  server: 82.24.203.10
+  port: 2087
+  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3bfc3e3ed603
+    headers:
+      Host: 82.24.203.10
+- name: 🇬🇧 GB 15 - xiaohe
+  type: vless
+  server: 129.121.95.159
+  port: 443
+  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /connect
+    headers:
+      Host: 129.121.95.159
+- name: 🇬🇧 GB 16 - xiaohe
+  type: vless
+  server: 82.24.203.10
+  port: 2087
+  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3bfc3e3ed603
+    headers:
+      Host: 82.24.203.10
+- name: 🇬🇧 GB 17 - xiaohe
   type: ss
-  server: 82.38.31.205
+  server: 82.38.31.35
   port: 8080
   cipher: chacha20-ietf-poly1305
-  password: k1dBOmOB4oqi7Ump37a1bQ
+  password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇬🇧 GB 104 - xiaohe
+- name: 🇬🇧 GB 18 - xiaohe
+  type: vless
+  server: 82.24.203.2
+  port: 2087
+  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3bfc3e3ed603
+    headers:
+      Host: 82.24.203.2
+- name: 🇬🇧 GB 19 - xiaohe
+  type: ss
+  server: 82.38.31.16
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 20 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: speedtest.tinkoff.ru
+  skip-cert-verify: true
+- name: 🇬🇧 GB 21 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: google.com
+  skip-cert-verify: true
+- name: 🇬🇧 GB 22 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: speedtest.tinkoff.ru
+  skip-cert-verify: true
+- name: 🇬🇧 GB 23 - xiaohe
+  type: trojan
+  server: xn--1ugy405pdua.gayvibe.dpdns.org
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: xn--1ugy405pdua.gayvibe.dpdns.org
+  skip-cert-verify: true
+- name: 🇬🇧 GB 24 - xiaohe
   type: trojan
   server: 45.85.88.194
   port: 2174
@@ -919,7 +222,449 @@ proxies:
   udp: true
   sni: 45.85.88.194
   skip-cert-verify: true
-- name: 🇬🇧 GB 105 - xiaohe
+- name: 🇬🇧 GB 25 - xiaohe
+  type: ss
+  server: 82.38.31.219
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 26 - xiaohe
+  type: trojan
+  server: xn--1ugy405pdua.gayvibe.dpdns.org
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: xn--1ugy405pdua.gayvibe.dpdns.org
+  skip-cert-verify: true
+- name: 🇬🇧 GB 27 - xiaohe
+  type: ss
+  server: 82.38.31.47
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 28 - xiaohe
+  type: vless
+  server: 82.24.203.10
+  port: 2087
+  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3bfc3e3ed603
+    headers:
+      Host: 82.24.203.10
+- name: 🇬🇧 GB 29 - xiaohe
+  type: ss
+  server: 82.38.31.176
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 30 - xiaohe
+  type: trojan
+  server: xn--1ugy405pdua.gayvibe.dpdns.org
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: xn--1ugy405pdua.gayvibe.dpdns.org
+  skip-cert-verify: true
+- name: 🇬🇧 GB 31 - xiaohe
+  type: ss
+  server: 82.38.31.36
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 32 - xiaohe
+  type: vless
+  server: 129.121.95.159
+  port: 443
+  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /connect
+    headers:
+      Host: 129.121.95.159
+- name: 🇬🇧 GB 33 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: 45.85.88.194
+  skip-cert-verify: true
+- name: 🇬🇧 GB 34 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: google.com
+  skip-cert-verify: true
+- name: 🇬🇧 GB 35 - xiaohe
+  type: vmess
+  server: 66.163.117.58
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇬🇧 GB 36 - xiaohe
+  type: ss
+  server: 82.38.31.149
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 37 - xiaohe
+  type: vless
+  server: 82.24.203.37
+  port: 2087
+  uuid: 44573770-963a-41f5-a080-3cc11e4957a2
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /5c62e3c616d8
+    headers:
+      Host: 82.24.203.37
+- name: 🇬🇧 GB 38 - xiaohe
+  type: vless
+  server: 82.24.203.37
+  port: 2087
+  uuid: 44573770-963a-41f5-a080-3cc11e4957a2
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /5c62e3c616d8
+    headers:
+      Host: 82.24.203.37
+- name: 🇬🇧 GB 39 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇬🇧 GB 40 - xiaohe
+  type: vless
+  server: 188.220.67.161
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.161
+- name: 🇬🇧 GB 41 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: 45.85.88.194
+  skip-cert-verify: true
+- name: 🇬🇧 GB 42 - xiaohe
+  type: ss
+  server: 82.38.31.155
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 43 - xiaohe
+  type: ss
+  server: 82.38.31.184
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 44 - xiaohe
+  type: trojan
+  server: xn--1ugy405pdua.gayvibe.dpdns.org
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: xn--1ugy405pdua.gayvibe.dpdns.org
+  skip-cert-verify: true
+- name: 🇬🇧 GB 45 - xiaohe
+  type: ss
+  server: 82.38.31.198
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 46 - xiaohe
+  type: vless
+  server: 82.24.203.9
+  port: 2087
+  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3bfc3e3ed603
+    headers:
+      Host: 82.24.203.9
+- name: 🇬🇧 GB 47 - xiaohe
+  type: ss
+  server: 82.38.31.204
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 48 - xiaohe
+  type: vless
+  server: 82.24.203.9
+  port: 2087
+  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3bfc3e3ed603
+    headers:
+      Host: 82.24.203.9
+- name: 🇬🇧 GB 49 - xiaohe
+  type: trojan
+  server: xn--1ugy405pdua.gayvibe.dpdns.org
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: xn--1ugy405pdua.gayvibe.dpdns.org
+  skip-cert-verify: true
+- name: 🇬🇧 GB 50 - xiaohe
+  type: trojan
+  server: xn--1ugy405pdua.gayvibe.dpdns.org
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: xn--1ugy405pdua.gayvibe.dpdns.org
+  skip-cert-verify: true
+- name: 🇬🇧 GB 51 - xiaohe
+  type: ss
+  server: 82.38.31.15
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 52 - xiaohe
+  type: ss
+  server: 82.38.31.198
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 53 - xiaohe
+  type: ss
+  server: 82.38.31.201
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 54 - xiaohe
+  type: ss
+  server: 82.38.31.176
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 55 - xiaohe
+  type: ss
+  server: 82.38.31.190
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 56 - xiaohe
+  type: ss
+  server: 82.38.31.155
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 57 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: speedtest.tinkoff.ru
+  skip-cert-verify: true
+- name: 🇬🇧 GB 58 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: google.com
+  skip-cert-verify: true
+- name: 🇬🇧 GB 59 - xiaohe
+  type: ss
+  server: 82.38.31.175
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 60 - xiaohe
+  type: vless
+  server: 129.121.95.159
+  port: 443
+  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /connect
+    headers:
+      Host: 129.121.95.159
+- name: 🇬🇧 GB 61 - xiaohe
+  type: trojan
+  server: xn--1ugy405pdua.gayvibe.dpdns.org
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: xn--1ugy405pdua.gayvibe.dpdns.org
+  skip-cert-verify: true
+- name: 🇬🇧 GB 62 - xiaohe
+  type: ss
+  server: 82.38.31.205
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 63 - xiaohe
+  type: ss
+  server: 82.38.31.205
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 64 - xiaohe
+  type: hysteria2
+  server: vpn-uk-002.fastervpn.world
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-uk-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇬🇧 GB 65 - xiaohe
+  type: ss
+  server: 82.38.31.187
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 66 - xiaohe
+  type: vless
+  server: 188.220.67.140
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.140
+- name: 🇬🇧 GB 67 - xiaohe
+  type: vless
+  server: 129.121.95.159
+  port: 443
+  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /connect
+    headers:
+      Host: 129.121.95.159
+- name: 🇬🇧 GB 68 - xiaohe
+  type: vmess
+  server: 51.38.71.147
+  port: 2053
+  uuid: 72f2cbe4-2874-45b7-b6aa-b93077c10c72
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: 🇬🇧 GB 69 - xiaohe
+  type: ss
+  server: 82.38.31.162
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 70 - xiaohe
+  type: ss
+  server: 82.38.31.11
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 71 - xiaohe
+  type: ss
+  server: 82.38.31.13
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 72 - xiaohe
+  type: ss
+  server: 82.38.31.174
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 73 - xiaohe
+  type: ss
+  server: 82.38.31.212
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 74 - xiaohe
+  type: ss
+  server: 82.38.31.42
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 75 - xiaohe
+  type: ss
+  server: 82.38.31.42
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 76 - xiaohe
+  type: ss
+  server: 82.38.31.17
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 77 - xiaohe
   type: vless
   server: 188.220.67.224
   port: 2087
@@ -932,7 +677,98 @@ proxies:
     path: /8f2690e2d016
     headers:
       Host: 188.220.67.224
-- name: 🇬🇧 GB 106 - xiaohe
+- name: 🇬🇧 GB 78 - xiaohe
+  type: ss
+  server: 82.38.31.218
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 79 - xiaohe
+  type: ss
+  server: 82.38.31.182
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 80 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: 45.85.88.194
+  skip-cert-verify: true
+- name: 🇬🇧 GB 81 - xiaohe
+  type: ss
+  server: 82.38.31.179
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 82 - xiaohe
+  type: ss
+  server: 82.38.31.18
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 83 - xiaohe
+  type: ss
+  server: 82.38.31.46
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 84 - xiaohe
+  type: ss
+  server: 82.38.31.26
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 85 - xiaohe
+  type: ss
+  server: 141.98.101.181
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇬🇧 GB 86 - xiaohe
+  type: vless
+  server: 188.220.67.181
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.181
+- name: 🇬🇧 GB 87 - xiaohe
+  type: ss
+  server: 82.38.31.28
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 88 - xiaohe
+  type: ss
+  server: 82.38.31.13
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 89 - xiaohe
+  type: ss
+  server: 82.38.31.3
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 90 - xiaohe
   type: trojan
   server: 45.85.88.194
   port: 2234
@@ -940,41 +776,201 @@ proxies:
   udp: true
   sni: vk.com
   skip-cert-verify: true
-- name: 🇬🇧 GB 107 - xiaohe
+- name: 🇬🇧 GB 91 - xiaohe
   type: ss
-  server: 82.38.31.26
-  port: 443
+  server: 31.57.35.41
+  port: 65443
+  cipher: aes-256-cfb
+  password: 7eadc6dbe2ae
+  udp: true
+- name: 🇬🇧 GB 92 - xiaohe
+  type: vless
+  server: 147.189.141.106
+  port: 2087
+  uuid: 4a269a45-a9e3-4272-b04a-1d42d581150f
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4de527ea5ed9
+    headers:
+      Host: 147.189.141.106
+- name: 🇬🇧 GB 93 - xiaohe
+  type: ss
+  server: 82.38.31.149
+  port: 8080
   cipher: chacha20-ietf-poly1305
   password: oZIoA69Q8yhcQV8ka3Pa3A
   udp: true
-- name: 🇬🇧 GB 108 - xiaohe
+- name: 🇬🇧 GB 94 - xiaohe
+  type: vless
+  server: 188.220.67.245
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.245
+- name: 🇬🇧 GB 95 - xiaohe
+  type: trojan
+  server: xn--1ugy405pdua.gayvibe.dpdns.org
+  port: 2174
+  password: tripitropa444
+  udp: true
+  sni: xn--1ugy405pdua.gayvibe.dpdns.org
+  skip-cert-verify: true
+- name: 🇬🇧 GB 96 - xiaohe
   type: ss
-  server: 82.38.31.176
+  server: 82.38.31.186
   port: 8080
   cipher: chacha20-ietf-poly1305
   password: k1dBOmOB4oqi7Ump37a1bQ
   udp: true
+- name: 🇬🇧 GB 97 - xiaohe
+  type: ss
+  server: 82.38.31.201
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 98 - xiaohe
+  type: vless
+  server: 188.220.67.245
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.245
+- name: 🇬🇧 GB 99 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇬🇧 GB 100 - xiaohe
+  type: vless
+  server: 188.220.67.198
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.198
+- name: 🇬🇧 GB 101 - xiaohe
+  type: vmess
+  server: 66.163.117.58
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇬🇧 GB 102 - xiaohe
+  type: ss
+  server: 82.38.31.11
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 GB 103 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: 45.85.88.194
+  skip-cert-verify: true
+- name: 🇬🇧 GB 104 - xiaohe
+  type: ss
+  server: 82.38.31.208
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 GB 105 - xiaohe
+  type: trojan
+  server: 45.85.88.194
+  port: 2234
+  password: tripitropa994825
+  udp: true
+  sni: css.rbxcdn.com
+  skip-cert-verify: true
+- name: 🇬🇧 GB 106 - xiaohe
+  type: vless
+  server: 188.220.67.224
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.224
+- name: 🇬🇧 GB 107 - xiaohe
+  type: vless
+  server: 188.220.67.245
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.245
+- name: 🇬🇧 GB 108 - xiaohe
+  type: ss
+  server: 82.38.31.18
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
 - name: 🇬🇧 GB 109 - xiaohe
-  type: ss
-  server: 82.38.31.155
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
+  type: vless
+  server: 188.220.67.140
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
   udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.140
 - name: 🇬🇧 GB 110 - xiaohe
-  type: ss
-  server: 82.38.31.47
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
+  type: vless
+  server: 45.95.184.120
+  port: 2087
+  uuid: 4a269a45-a9e3-4272-b04a-1d42d581150f
   udp: true
-- name: 🇬🇧 GB 111 - xiaohe
-  type: ss
-  server: 82.38.31.42
-  port: 8080
-  cipher: chacha20-ietf-poly1305
-  password: oZIoA69Q8yhcQV8ka3Pa3A
-  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4de527ea5ed9
+    headers:
+      Host: 45.95.184.120
 proxy-groups:
 - name: PROXIES
   type: select
@@ -1090,7 +1086,6 @@ proxy-groups:
   - 🇬🇧 GB 108 - xiaohe
   - 🇬🇧 GB 109 - xiaohe
   - 🇬🇧 GB 110 - xiaohe
-  - 🇬🇧 GB 111 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -1206,6 +1201,5 @@ proxy-groups:
   - 🇬🇧 GB 108 - xiaohe
   - 🇬🇧 GB 109 - xiaohe
   - 🇬🇧 GB 110 - xiaohe
-  - 🇬🇧 GB 111 - xiaohe
 rules:
 - MATCH,PROXIES
