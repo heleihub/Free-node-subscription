@@ -4,153 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇷 FR 01 - xiaohe
-  type: hysteria2
-  server: 35.181.169.140
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 35.181.169.140
-  skip-cert-verify: true
-- name: 🇫🇷 FR 02 - xiaohe
-  type: ss
-  server: 54.36.174.134
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: 🇫🇷 FR 03 - xiaohe
-  type: vmess
-  server: 162.19.204.71
-  port: 1234
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  skip-cert-verify: true
-- name: 🇫🇷 FR 04 - xiaohe
-  type: hysteria2
-  server: 35.181.166.40
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 35.181.166.40
-  skip-cert-verify: true
-- name: 🇫🇷 FR 05 - xiaohe
-  type: hysteria2
-  server: 35.181.166.40
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 35.181.166.40
-  skip-cert-verify: true
-- name: 🇫🇷 FR 06 - xiaohe
-  type: ss
-  server: 54.36.174.140
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: 🇫🇷 FR 07 - xiaohe
-  type: vless
-  server: 45.144.28.39
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: usejh2.neobo-tooth.ru
-- name: 🇫🇷 FR 08 - xiaohe
-  type: vless
-  server: chopin.adaspoloandco.com
-  port: 8443
-  uuid: f798a2c4-c51b-409d-b349-ca8455b36796
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /download.php
-    headers:
-      Host: chopin.adaspoloandco.com
-- name: 🇫🇷 FR 09 - xiaohe
-  type: vless
-  server: 152.228.162.19
-  port: 80
-  uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vless/
-    headers:
-      Host: 152.228.162.19
-- name: 🇫🇷 FR 10 - xiaohe
-  type: hysteria2
-  server: 35.181.166.40
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 35.181.166.40
-  skip-cert-verify: true
-- name: 🇫🇷 FR 11 - xiaohe
-  type: ss
-  server: 54.36.174.140
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: 🇫🇷 FR 12 - xiaohe
-  type: ss
-  server: 51.255.13.232
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: BqnqToih0PbU
-  udp: true
-- name: 🇫🇷 FR 13 - xiaohe
-  type: ss
-  server: 51.255.13.232
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: BqnqToih0PbU
-  udp: true
-- name: 🇫🇷 FR 14 - xiaohe
-  type: vless
-  server: 152.228.162.19
-  port: 80
-  uuid: f5c47e9c-914a-4a91-a81e-a5a77bc10fc1
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vless/
-    headers:
-      Host: 152.228.162.19
-- name: 🇫🇷 FR 15 - xiaohe
-  type: ss
-  server: 54.36.174.134
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: 🇫🇷 FR 16 - xiaohe
-  type: hysteria2
-  server: vpn-fr-002.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-fr-002.fastervpn.world
-  skip-cert-verify: true
-- name: 🇫🇷 FR 17 - xiaohe
-  type: ss
-  server: 51.83.192.80
-  port: 8388
-  cipher: aes-256-gcm
-  password: itzvpn@321
-  udp: true
-- name: 🇫🇷 FR 18 - xiaohe
+- name: 🇫🇷 法国 (France) 01 - xiaohe
   type: vless
   server: 169.58.143.21
   port: 443
@@ -163,20 +17,21 @@ proxies:
     path: /
     headers:
       Host: telegram.us
-- name: 🇫🇷 FR 19 - xiaohe
-  type: vless
-  server: 149.202.58.99
+- name: 🇫🇷 法国 (France) 02 - xiaohe
+  type: hysteria2
+  server: vpn-fr-002.fastervpn.world
   port: 443
-  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
-  udp: true
-  tls: true
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-fr-002.fastervpn.world
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vws/
-    headers:
-      Host: bab-6.site
-- name: 🇫🇷 FR 20 - xiaohe
+- name: 🇫🇷 法国 (France) 03 - xiaohe
+  type: ss
+  server: 51.255.13.232
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: BqnqToih0PbU
+  udp: true
+- name: 🇫🇷 法国 (France) 04 - xiaohe
   type: vless
   server: 149.202.58.99
   port: 443
@@ -189,7 +44,96 @@ proxies:
     path: /vws/
     headers:
       Host: 149.202.58.99
-- name: 🇫🇷 FR 21 - xiaohe
+- name: 🇫🇷 法国 (France) 05 - xiaohe
+  type: hysteria2
+  server: 35.181.166.40
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 35.181.166.40
+  skip-cert-verify: true
+- name: 🇫🇷 法国 (France) 06 - xiaohe
+  type: vless
+  server: 149.202.58.99
+  port: 443
+  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vws/
+    headers:
+      Host: 149.202.58.99
+- name: 🇫🇷 法国 (France) 07 - xiaohe
+  type: ss
+  server: 51.255.13.232
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: BqnqToih0PbU
+  udp: true
+- name: 🇫🇷 法国 (France) 08 - xiaohe
+  type: ss
+  server: 54.36.174.140
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
+  udp: true
+- name: 🇫🇷 法国 (France) 09 - xiaohe
+  type: hysteria2
+  server: 35.181.166.40
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 35.181.166.40
+  skip-cert-verify: true
+- name: 🇫🇷 法国 (France) 10 - xiaohe
+  type: hysteria2
+  server: 35.181.169.140
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 35.181.169.140
+  skip-cert-verify: true
+- name: 🇫🇷 法国 (France) 11 - xiaohe
+  type: ss
+  server: 51.83.192.80
+  port: 8388
+  cipher: aes-256-gcm
+  password: itzvpn@321
+  udp: true
+- name: 🇫🇷 法国 (France) 12 - xiaohe
+  type: ss
+  server: 54.36.174.134
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
+  udp: true
+- name: 🇫🇷 法国 (France) 13 - xiaohe
+  type: ss
+  server: 54.36.174.134
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
+  udp: true
+- name: 🇫🇷 法国 (France) 14 - xiaohe
+  type: vless
+  server: 149.202.58.99
+  port: 443
+  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vws/
+    headers:
+      Host: bab-6.site
+- name: 🇫🇷 法国 (France) 15 - xiaohe
+  type: hysteria2
+  server: 35.181.166.40
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 35.181.166.40
+  skip-cert-verify: true
+- name: 🇫🇷 法国 (France) 16 - xiaohe
   type: vless
   server: 45.144.28.39
   port: 2096
@@ -202,72 +146,143 @@ proxies:
     path: /
     headers:
       Host: usejh2.neobo-tooth.ru
-- name: 🇫🇷 FR 22 - xiaohe
+- name: 🇫🇷 法国 (France) 17 - xiaohe
   type: vless
-  server: 152.228.162.19
-  port: 80
-  uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
+  server: 45.144.28.39
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /vless/
+    path: /
     headers:
-      Host: 152.228.162.19
+      Host: usejh2.neobo-tooth.ru
+- name: 🇫🇷 法国 (France) 18 - xiaohe
+  type: vless
+  server: 45.144.28.39
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: usejh2.neobo-tooth.ru
+- name: 🇫🇷 法国 (France) 19 - xiaohe
+  type: vless
+  server: 45.144.28.39
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: usejh2.neobo-tooth.ru
+- name: 🇫🇷 法国 (France) 20 - xiaohe
+  type: vless
+  server: 45.144.28.39
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 45.144.28.39
+- name: 🇫🇷 法国 (France) 21 - xiaohe
+  type: vmess
+  server: 162.19.204.71
+  port: 1234
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: 🇫🇷 法国 (France) 22 - xiaohe
+  type: ss
+  server: 54.36.174.140
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
+  udp: true
+- name: 🇫🇷 法国 (France) 23 - xiaohe
+  type: vless
+  server: 45.144.28.39
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 45.144.28.39
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇷 FR 01 - xiaohe
-  - 🇫🇷 FR 02 - xiaohe
-  - 🇫🇷 FR 03 - xiaohe
-  - 🇫🇷 FR 04 - xiaohe
-  - 🇫🇷 FR 05 - xiaohe
-  - 🇫🇷 FR 06 - xiaohe
-  - 🇫🇷 FR 07 - xiaohe
-  - 🇫🇷 FR 08 - xiaohe
-  - 🇫🇷 FR 09 - xiaohe
-  - 🇫🇷 FR 10 - xiaohe
-  - 🇫🇷 FR 11 - xiaohe
-  - 🇫🇷 FR 12 - xiaohe
-  - 🇫🇷 FR 13 - xiaohe
-  - 🇫🇷 FR 14 - xiaohe
-  - 🇫🇷 FR 15 - xiaohe
-  - 🇫🇷 FR 16 - xiaohe
-  - 🇫🇷 FR 17 - xiaohe
-  - 🇫🇷 FR 18 - xiaohe
-  - 🇫🇷 FR 19 - xiaohe
-  - 🇫🇷 FR 20 - xiaohe
-  - 🇫🇷 FR 21 - xiaohe
-  - 🇫🇷 FR 22 - xiaohe
+  - 🇫🇷 法国 (France) 01 - xiaohe
+  - 🇫🇷 法国 (France) 02 - xiaohe
+  - 🇫🇷 法国 (France) 03 - xiaohe
+  - 🇫🇷 法国 (France) 04 - xiaohe
+  - 🇫🇷 法国 (France) 05 - xiaohe
+  - 🇫🇷 法国 (France) 06 - xiaohe
+  - 🇫🇷 法国 (France) 07 - xiaohe
+  - 🇫🇷 法国 (France) 08 - xiaohe
+  - 🇫🇷 法国 (France) 09 - xiaohe
+  - 🇫🇷 法国 (France) 10 - xiaohe
+  - 🇫🇷 法国 (France) 11 - xiaohe
+  - 🇫🇷 法国 (France) 12 - xiaohe
+  - 🇫🇷 法国 (France) 13 - xiaohe
+  - 🇫🇷 法国 (France) 14 - xiaohe
+  - 🇫🇷 法国 (France) 15 - xiaohe
+  - 🇫🇷 法国 (France) 16 - xiaohe
+  - 🇫🇷 法国 (France) 17 - xiaohe
+  - 🇫🇷 法国 (France) 18 - xiaohe
+  - 🇫🇷 法国 (France) 19 - xiaohe
+  - 🇫🇷 法国 (France) 20 - xiaohe
+  - 🇫🇷 法国 (France) 21 - xiaohe
+  - 🇫🇷 法国 (France) 22 - xiaohe
+  - 🇫🇷 法国 (France) 23 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇷 FR 01 - xiaohe
-  - 🇫🇷 FR 02 - xiaohe
-  - 🇫🇷 FR 03 - xiaohe
-  - 🇫🇷 FR 04 - xiaohe
-  - 🇫🇷 FR 05 - xiaohe
-  - 🇫🇷 FR 06 - xiaohe
-  - 🇫🇷 FR 07 - xiaohe
-  - 🇫🇷 FR 08 - xiaohe
-  - 🇫🇷 FR 09 - xiaohe
-  - 🇫🇷 FR 10 - xiaohe
-  - 🇫🇷 FR 11 - xiaohe
-  - 🇫🇷 FR 12 - xiaohe
-  - 🇫🇷 FR 13 - xiaohe
-  - 🇫🇷 FR 14 - xiaohe
-  - 🇫🇷 FR 15 - xiaohe
-  - 🇫🇷 FR 16 - xiaohe
-  - 🇫🇷 FR 17 - xiaohe
-  - 🇫🇷 FR 18 - xiaohe
-  - 🇫🇷 FR 19 - xiaohe
-  - 🇫🇷 FR 20 - xiaohe
-  - 🇫🇷 FR 21 - xiaohe
-  - 🇫🇷 FR 22 - xiaohe
+  - 🇫🇷 法国 (France) 01 - xiaohe
+  - 🇫🇷 法国 (France) 02 - xiaohe
+  - 🇫🇷 法国 (France) 03 - xiaohe
+  - 🇫🇷 法国 (France) 04 - xiaohe
+  - 🇫🇷 法国 (France) 05 - xiaohe
+  - 🇫🇷 法国 (France) 06 - xiaohe
+  - 🇫🇷 法国 (France) 07 - xiaohe
+  - 🇫🇷 法国 (France) 08 - xiaohe
+  - 🇫🇷 法国 (France) 09 - xiaohe
+  - 🇫🇷 法国 (France) 10 - xiaohe
+  - 🇫🇷 法国 (France) 11 - xiaohe
+  - 🇫🇷 法国 (France) 12 - xiaohe
+  - 🇫🇷 法国 (France) 13 - xiaohe
+  - 🇫🇷 法国 (France) 14 - xiaohe
+  - 🇫🇷 法国 (France) 15 - xiaohe
+  - 🇫🇷 法国 (France) 16 - xiaohe
+  - 🇫🇷 法国 (France) 17 - xiaohe
+  - 🇫🇷 法国 (France) 18 - xiaohe
+  - 🇫🇷 法国 (France) 19 - xiaohe
+  - 🇫🇷 法国 (France) 20 - xiaohe
+  - 🇫🇷 法国 (France) 21 - xiaohe
+  - 🇫🇷 法国 (France) 22 - xiaohe
+  - 🇫🇷 法国 (France) 23 - xiaohe
 rules:
 - MATCH,PROXIES

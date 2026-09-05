@@ -5,13 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇸🇪 SE 01 - xiaohe
-  type: hysteria2
-  server: jackvpn23.mooo.com
-  port: 17538
-  password: 036c648f927d4d86a82dcf629db8cbe1
-  sni: jackvpn23.mooo.com
-  skip-cert-verify: true
-- name: 🇸🇪 SE 02 - xiaohe
   type: vless
   server: 202.155.11.249
   port: 443
@@ -24,6 +17,13 @@ proxies:
     path: /cdn/v3/live
     headers:
       Host: cf2.rumedia-cdn.com
+- name: 🇸🇪 SE 02 - xiaohe
+  type: hysteria2
+  server: jackvpn23.mooo.com
+  port: 17538
+  password: 036c648f927d4d86a82dcf629db8cbe1
+  sni: jackvpn23.mooo.com
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select

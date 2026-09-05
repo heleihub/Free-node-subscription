@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 KR 25 (家宽) - xiaohe
+- name: 🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe
   type: ss
   server: 211.178.105.134
   port: 6123
@@ -16,12 +16,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 KR 25 (家宽) - xiaohe
+  - 🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 KR 25 (家宽) - xiaohe
+  - 🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

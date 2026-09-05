@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇷 TR 01 - xiaohe
+- name: 🇹🇷 土耳其 (Turkey) 01 - xiaohe
   type: vless
   server: 91.228.227.172
   port: 8080
@@ -17,12 +17,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇷 TR 01 - xiaohe
+  - 🇹🇷 土耳其 (Turkey) 01 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇷 TR 01 - xiaohe
+  - 🇹🇷 土耳其 (Turkey) 01 - xiaohe
 rules:
 - MATCH,PROXIES

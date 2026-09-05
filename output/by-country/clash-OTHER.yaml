@@ -4,22 +4,22 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🌐 OTHER 01 - xiaohe
+- name: 🌐 其他地区 (Other) 01 - xiaohe
   type: vless
-  server: 108.162.198.178
-  port: 2082
+  server: 162.159.0.169
+  port: 8880
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 02 - xiaohe
+- name: 🌐 其他地区 (Other) 02 - xiaohe
   type: vless
-  server: 104.18.47.113
+  server: 188.114.97.6
   port: 2086
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -27,155 +27,12 @@ proxies:
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 03 - xiaohe
-  type: vless
-  server: 172.64.154.8
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 04 - xiaohe
-  type: vless
-  server: 104.21.70.21
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: c7h4v.mnkl.d8e.hh.vavava.kdns.fr
-- name: 🌐 OTHER 05 - xiaohe
-  type: vless
-  server: 172.64.229.170
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 06 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 07 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
     path: /
     headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 08 - xiaohe
-  type: vless
-  server: 172.64.154.8
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 09 - xiaohe
-  type: vless
-  server: 172.64.229.170
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 10 - xiaohe
+      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 03 - xiaohe
   type: vless
   server: 104.18.46.46
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 11 - xiaohe
-  type: vless
-  server: 172.64.229.170
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 12 - xiaohe
-  type: vless
-  server: 172.64.154.8
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 13 - xiaohe
-  type: vless
-  server: 172.64.52.6
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 14 - xiaohe
-  type: vless
-  server: 162.159.43.187
   port: 2086
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -186,451 +43,9 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 15 - xiaohe
+- name: 🌐 其他地区 (Other) 04 - xiaohe
   type: vless
-  server: 172.64.42.85
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 16 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 17 - xiaohe
-  type: vless
-  server: 172.64.42.85
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 18 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560+
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 19 - xiaohe
-  type: vless
-  server: 162.159.39.218
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 20 - xiaohe
-  type: vless
-  server: 172.64.52.6
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 21 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 22 - xiaohe
-  type: vless
-  server: 172.64.53.55
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 23 - xiaohe
-  type: vless
-  server: 172.64.32.103
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 24 - xiaohe
-  type: vless
-  server: 162.159.45.19
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 25 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 26 - xiaohe
-  type: vless
-  server: 172.64.52.6
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 27 - xiaohe
-  type: vless
-  server: 104.18.47.113
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 28 - xiaohe
-  type: vless
-  server: 162.159.0.169
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 29 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 30 - xiaohe
-  type: vless
-  server: 172.64.42.85
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 31 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 32 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 33 - xiaohe
-  type: vless
-  server: 162.159.0.169
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 34 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 35 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 36 - xiaohe
-  type: vless
-  server: 162.159.48.32
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 37 - xiaohe
-  type: vless
-  server: 104.18.34.14
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 38 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 39 - xiaohe
-  type: vless
-  server: 104.21.70.21
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 40 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2087
-  uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: fx3h2kf8xn.fx6hsv0.ccwu.cc
-- name: 🌐 OTHER 41 - xiaohe
-  type: vless
-  server: 104.18.34.14
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 42 - xiaohe
-  type: vless
-  server: 162.159.43.187
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 43 - xiaohe
-  type: vless
-  server: 162.159.39.218
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 44 - xiaohe
-  type: vless
-  server: 172.64.52.6
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 45 - xiaohe
-  type: vless
-  server: 172.64.53.55
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 46 - xiaohe
-  type: vless
-  server: 162.159.43.187
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 47 - xiaohe
-  type: vless
-  server: 104.21.53.73
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 5-m19.SOuth-aFRICa-liNE.cCwU.Cc
-- name: 🌐 OTHER 48 - xiaohe
-  type: vless
-  server: 162.159.48.32
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 49 - xiaohe
-  type: vless
-  server: 104.21.70.21
+  server: 104.21.33.59
   port: 443
   uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
   udp: true
@@ -641,7 +56,7 @@ proxies:
     path: /tyxyws
     headers:
       Host: jp3.yohototo.top
-- name: 🌐 OTHER 50 - xiaohe
+- name: 🌐 其他地区 (Other) 05 - xiaohe
   type: vless
   server: 188.114.97.6
   port: 443
@@ -654,7 +69,20 @@ proxies:
     path: /
     headers:
       Host: xwrivr.pages.dev
-- name: 🌐 OTHER 51 - xiaohe
+- name: 🌐 其他地区 (Other) 06 - xiaohe
+  type: vless
+  server: 172.64.158.146
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 07 - xiaohe
   type: vless
   server: 172.67.156.147
   port: 443
@@ -667,22 +95,9 @@ proxies:
     path: /tyxyws
     headers:
       Host: jp3.yohototo.top
-- name: 🌐 OTHER 52 - xiaohe
+- name: 🌐 其他地区 (Other) 08 - xiaohe
   type: vless
-  server: 172.64.32.103
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 53 - xiaohe
-  type: vless
-  server: 172.64.229.2
+  server: 104.18.39.218
   port: 2086
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -693,20 +108,46 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 54 - xiaohe
+- name: 🌐 其他地区 (Other) 09 - xiaohe
   type: vless
-  server: 108.162.198.178
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  server: 172.67.153.78
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
   udp: true
-  tls: false
+  tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /?ed=2560security=tls
+    path: /CjBjB9sn5pCvaSwScc
     headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 55 - xiaohe
+      Host: 2-M19.SOuTh-AFRIca-linK.ccWU.cC
+- name: 🌐 其他地区 (Other) 10 - xiaohe
+  type: vless
+  server: 104.21.22.82
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 1-M19.mJU.CCwU.cC
+- name: 🌐 其他地区 (Other) 11 - xiaohe
+  type: vless
+  server: 104.21.62.202
+  port: 443
+  uuid: a1a6a3be-2bf9-46a2-bc24-328306e49ab7
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /fVs1qv0xm8dxmnwuaPwokxgY4XlP
+    headers:
+      Host: 9-M17.kAzakHStAn-LinK.kdNs.fR
+- name: 🌐 其他地区 (Other) 12 - xiaohe
   type: vless
   server: 104.21.78.105
   port: 443
@@ -719,9 +160,22 @@ proxies:
     path: /fVs1qv0xm8dxmnwuaPwokxgY4XlP
     headers:
       Host: 2-M17.KUWaiT.KdNs.fR
-- name: 🌐 OTHER 56 - xiaohe
+- name: 🌐 其他地区 (Other) 13 - xiaohe
   type: vless
   server: 162.159.24.131
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 14 - xiaohe
+  type: vless
+  server: 172.64.229.170
   port: 8080
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -732,35 +186,9 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 57 - xiaohe
+- name: 🌐 其他地区 (Other) 15 - xiaohe
   type: vless
-  server: 162.159.24.131
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 58 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: ?ed=2560
-    headers:
-      Host: 571x2.r4bn.bim.hh.vavava.kdns.fr
-- name: 🌐 OTHER 59 - xiaohe
-  type: vless
-  server: 162.159.39.218
+  server: 172.64.229.170
   port: 8880
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -771,33 +199,7 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 60 - xiaohe
-  type: vless
-  server: 104.18.37.233
-  port: 2053
-  uuid: 65c56e1f-5c41-40bc-b0b5-9346772476ca
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /download/v3/installer-x64.bin
-    headers:
-      Host: us.105794.xyz
-- name: 🌐 OTHER 61 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 62 - xiaohe
+- name: 🌐 其他地区 (Other) 16 - xiaohe
   type: vless
   server: 162.159.43.187
   port: 2082
@@ -810,35 +212,9 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 63 - xiaohe
+- name: 🌐 其他地区 (Other) 17 - xiaohe
   type: vless
-  server: 172.64.32.108
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 64 - xiaohe
-  type: vless
-  server: 162.159.0.53
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 65 - xiaohe
-  type: vless
-  server: 104.18.34.14
+  server: 172.64.32.103
   port: 2086
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -849,10 +225,10 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 66 - xiaohe
+- name: 🌐 其他地区 (Other) 18 - xiaohe
   type: vless
-  server: 172.64.229.170
-  port: 2052
+  server: 104.18.34.14
+  port: 2095
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
@@ -862,10 +238,62 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 67 - xiaohe
+- name: 🌐 其他地区 (Other) 19 - xiaohe
+  type: vless
+  server: 172.64.229.2
+  port: 80
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 20 - xiaohe
+  type: vless
+  server: 104.21.84.167
+  port: 2053
+  uuid: 08125d23-5500-41ae-97ef-8398eaf70562
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net--@BlueKnight_net
+    headers:
+      Host: uwu.blueknightnet.qzz.io
+- name: 🌐 其他地区 (Other) 21 - xiaohe
+  type: vless
+  server: 104.18.46.234
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 22 - xiaohe
+  type: vless
+  server: 104.21.92.49
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 8-M19.oMan-lInk.kDNs.fr
+- name: 🌐 其他地区 (Other) 23 - xiaohe
   type: vless
   server: 162.159.24.131
-  port: 8880
+  port: 2095
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
@@ -875,7 +303,7 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 68 - xiaohe
+- name: 🌐 其他地区 (Other) 24 - xiaohe
   type: vless
   server: 104.21.16.216
   port: 443
@@ -888,10 +316,10 @@ proxies:
     path: /CjBjB9sn5pCvaSwScc
     headers:
       Host: 2-M19.oman-liNe.Kdns.Fr
-- name: 🌐 OTHER 69 - xiaohe
+- name: 🌐 其他地区 (Other) 25 - xiaohe
   type: vless
-  server: 172.64.32.108
-  port: 80
+  server: 104.18.46.46
+  port: 8880
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
@@ -901,48 +329,9 @@ proxies:
     path: /?ed=2560security=tls+
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 70 - xiaohe
+- name: 🌐 其他地区 (Other) 26 - xiaohe
   type: vless
-  server: 172.64.42.85
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 71 - xiaohe
-  type: vless
-  server: 172.64.150.28
-  port: 2082
-  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /fp
-    headers:
-      Host: hhlfy.twiladaphne.ndjp.net
-- name: 🌐 OTHER 72 - xiaohe
-  type: vless
-  server: 104.18.39.218
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 73 - xiaohe
-  type: vless
-  server: 162.159.45.19
+  server: 162.159.0.53
   port: 2095
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -953,7 +342,215 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 74 - xiaohe
+- name: 🌐 其他地区 (Other) 27 - xiaohe
+  type: vless
+  server: 172.64.158.146
+  port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 28 - xiaohe
+  type: vless
+  server: 104.18.34.14
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 29 - xiaohe
+  type: vless
+  server: 172.64.42.85
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 30 - xiaohe
+  type: vless
+  server: 172.64.229.170
+  port: 2086
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 31 - xiaohe
+  type: vless
+  server: 162.159.0.53
+  port: 2086
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls+
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 32 - xiaohe
+  type: vless
+  server: 172.64.229.2
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 33 - xiaohe
+  type: vless
+  server: 104.21.69.218
+  port: 443
+  uuid: 7e26fd8f-d75a-473d-84ba-9f4e3f47d086
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8qMLgNapWf6SBxo8fhQlVPYO
+    headers:
+      Host: 7-m20.cd6b506e-5a88-4c5d-9e11-906f39613c04.kdns.fr
+- name: 🌐 其他地区 (Other) 34 - xiaohe
+  type: vless
+  server: 172.64.229.170
+  port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 35 - xiaohe
+  type: vless
+  server: 162.159.0.169
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls+
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 36 - xiaohe
+  type: vless
+  server: 104.21.62.234
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 5-M19.sUdaN-PArK.ccWu.CC
+- name: 🌐 其他地区 (Other) 37 - xiaohe
+  type: vless
+  server: 172.67.202.114
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 1-M19.peru-line.CcwU.cC
+- name: 🌐 其他地区 (Other) 38 - xiaohe
+  type: vless
+  server: 104.21.85.220
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🌐 其他地区 (Other) 39 - xiaohe
+  type: vless
+  server: 172.67.148.54
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 7-M19.NoRTh-korea-pArk.KDnS.Fr
+- name: 🌐 其他地区 (Other) 40 - xiaohe
+  type: vless
+  server: 172.67.213.31
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🌐 其他地区 (Other) 41 - xiaohe
+  type: vless
+  server: 162.159.24.131
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 42 - xiaohe
+  type: vless
+  server: 108.162.198.178
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 43 - xiaohe
   type: vless
   server: 104.21.31.110
   port: 443
@@ -966,22 +563,22 @@ proxies:
     path: /CjBjB9sn5pCvaSwScc
     headers:
       Host: 8-m19.SouTh-aFRIca.cCWU.Cc
-- name: 🌐 OTHER 75 - xiaohe
+- name: 🌐 其他地区 (Other) 44 - xiaohe
   type: vless
-  server: 104.16.72.41
-  port: 80
-  uuid: dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51
+  server: 104.21.5.103
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
   udp: true
-  tls: false
+  tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /http
+    path: /CjBjB9sn5pCvaSwScc
     headers:
-      Host: de.vpnbase.net
-- name: 🌐 OTHER 76 - xiaohe
+      Host: 3-M19.loP.ccWU.cC
+- name: 🌐 其他地区 (Other) 45 - xiaohe
   type: vless
-  server: 104.18.46.234
+  server: 172.64.229.170
   port: 80
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -992,7 +589,20 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 77 - xiaohe
+- name: 🌐 其他地区 (Other) 46 - xiaohe
+  type: vless
+  server: 172.67.195.150
+  port: 443
+  uuid: 7e26fd8f-d75a-473d-84ba-9f4e3f47d086
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8qMLgNapWf6SBxo8fhQlVPYO
+    headers:
+      Host: 5-m20.dbfb5a2a-81c7-481a-b0cc-0f51aa86cc51.kdns.fr
+- name: 🌐 其他地区 (Other) 47 - xiaohe
   type: vless
   server: 188.114.97.6
   port: 443
@@ -1002,101 +612,10 @@ proxies:
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /?ed=2048
+    path: '%2F%3Fed%3D2048'
     headers:
       Host: xwrivr.pages.dev
-- name: 🌐 OTHER 78 - xiaohe
-  type: vless
-  server: 172.67.170.204
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 3-m19.IKl.CcWu.CC
-- name: 🌐 OTHER 79 - xiaohe
-  type: vless
-  server: 172.64.32.103
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 80 - xiaohe
-  type: vless
-  server: 162.159.39.218
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 81 - xiaohe
-  type: vless
-  server: 104.18.39.218
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 82 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 83 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 84 - xiaohe
-  type: vless
-  server: 172.67.136.91
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 9-m19.ALbaNia.ccwu.cc
-- name: 🌐 OTHER 85 - xiaohe
+- name: 🌐 其他地区 (Other) 48 - xiaohe
   type: vmess
   server: 172.67.161.144
   port: 8443
@@ -1111,61 +630,9 @@ proxies:
     path: /lMnsZUN4/
     headers:
       Host: v2ray1.dozapp.xyz
-- name: 🌐 OTHER 86 - xiaohe
+- name: 🌐 其他地区 (Other) 49 - xiaohe
   type: vless
-  server: 172.64.158.146
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 87 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 88 - xiaohe
-  type: vless
-  server: 172.67.150.230
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 8-M19.mexIco-PoRT.CcWU.Cc
-- name: 🌐 OTHER 89 - xiaohe
-  type: vless
-  server: 162.159.0.53
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 90 - xiaohe
-  type: vless
-  server: 104.18.34.14
+  server: 172.64.229.170
   port: 8080
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -1176,631 +643,7 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 91 - xiaohe
-  type: vless
-  server: 172.64.32.103
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 92 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 93 - xiaohe
-  type: vless
-  server: 162.159.43.187
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 94 - xiaohe
-  type: vless
-  server: 172.64.52.6
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 95 - xiaohe
-  type: vless
-  server: 162.159.38.127
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 96 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 97 - xiaohe
-  type: vless
-  server: 162.159.0.169
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 98 - xiaohe
-  type: vless
-  server: 104.21.62.202
-  port: 443
-  uuid: a1a6a3be-2bf9-46a2-bc24-328306e49ab7
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /fVs1qv0xm8dxmnwuaPwokxgY4XlP
-    headers:
-      Host: 9-M17.kAzakHStAn-LinK.kdNs.fR
-- name: 🌐 OTHER 99 - xiaohe
-  type: vless
-  server: 172.64.32.103
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 100 - xiaohe
-  type: vless
-  server: 172.64.52.6
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 101 - xiaohe
-  type: vless
-  server: 172.64.32.103
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 102 - xiaohe
-  type: vless
-  server: 172.64.32.108
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 103 - xiaohe
-  type: vless
-  server: 162.159.48.32
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 104 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 105 - xiaohe
-  type: vless
-  server: 172.64.154.8
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 106 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 107 - xiaohe
-  type: vless
-  server: 162.159.48.32
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 108 - xiaohe
-  type: vless
-  server: 104.21.86.179
-  port: 443
-  uuid: a1a6a3be-2bf9-46a2-bc24-328306e49ab7
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /fVs1qv0xm8dxmnwuaPwokxgY4XlP
-    headers:
-      Host: 5-m17.joRdAn-LinK.KDNS.Fr
-- name: 🌐 OTHER 109 - xiaohe
-  type: vless
-  server: 104.21.70.21
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: ne4d3.thir.mn8.hh.vavava.kdns.fr
-- name: 🌐 OTHER 110 - xiaohe
-  type: vless
-  server: 104.21.92.49
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 8-M19.oMan-lInk.kDNs.fr
-- name: 🌐 OTHER 111 - xiaohe
-  type: vless
-  server: 104.18.46.46
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 112 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 113 - xiaohe
-  type: vless
-  server: 104.18.46.234
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 114 - xiaohe
-  type: vless
-  server: 104.18.39.218
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 115 - xiaohe
-  type: vless
-  server: 172.64.53.55
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 116 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 117 - xiaohe
-  type: vless
-  server: 162.159.39.218
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 118 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 119 - xiaohe
-  type: vless
-  server: 162.159.45.19
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 120 - xiaohe
-  type: vless
-  server: 162.159.39.218
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 121 - xiaohe
-  type: vless
-  server: 172.64.229.2
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 122 - xiaohe
-  type: vless
-  server: 172.64.229.2
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 123 - xiaohe
-  type: vless
-  server: 162.159.0.53
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 124 - xiaohe
-  type: vless
-  server: 104.21.33.59
-  port: 443
-  uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /tyxyws
-    headers:
-      Host: jp3.yohototo.top
-- name: 🌐 OTHER 125 - xiaohe
-  type: vless
-  server: 172.64.32.108
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 126 - xiaohe
-  type: vless
-  server: 172.64.52.6
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 127 - xiaohe
-  type: vless
-  server: 104.18.46.234
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 128 - xiaohe
-  type: vless
-  server: 172.64.53.55
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 129 - xiaohe
-  type: vless
-  server: 104.18.46.46
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 130 - xiaohe
-  type: vless
-  server: 172.64.150.28
-  port: 2082
-  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /fp
-    headers:
-      Host: hhlfy.twiladaphne.ndjp.net
-- name: 🌐 OTHER 131 - xiaohe
-  type: vless
-  server: 104.21.62.234
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 5-M19.sUdaN-PArK.ccWu.CC
-- name: 🌐 OTHER 132 - xiaohe
-  type: vless
-  server: 162.159.45.19
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 133 - xiaohe
-  type: vless
-  server: 162.159.38.127
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 134 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 443
-  uuid: c4edb87e-8544-4fa4-bd1c-b0cda9a34b46
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: a.cwvps.eu.org
-- name: 🌐 OTHER 135 - xiaohe
-  type: vless
-  server: 162.159.0.169
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 136 - xiaohe
-  type: vless
-  server: 172.64.52.6
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 137 - xiaohe
-  type: vless
-  server: 172.64.42.85
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 138 - xiaohe
-  type: vless
-  server: 172.64.32.103
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 139 - xiaohe
+- name: 🌐 其他地区 (Other) 50 - xiaohe
   type: vless
   server: 172.64.229.170
   port: 2052
@@ -1813,10 +656,38 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 140 - xiaohe
+- name: 🌐 其他地区 (Other) 51 - xiaohe
   type: vless
-  server: 104.18.46.46
-  port: 8080
+  server: 104.21.53.73
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 5-m19.SOuth-aFRICa-liNE.cCwU.Cc
+- name: 🌐 其他地区 (Other) 52 - xiaohe
+  type: vmess
+  server: 104.21.57.84
+  port: 8443
+  uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /lMnsZUN4/
+    headers:
+      Host: v2ray1.dozapp.xyz
+- name: 🌐 其他地区 (Other) 53 - xiaohe
+  type: vless
+  server: 162.159.38.127
+  port: 2086
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
@@ -1826,9 +697,9 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 141 - xiaohe
+- name: 🌐 其他地区 (Other) 54 - xiaohe
   type: vless
-  server: 162.159.38.127
+  server: 162.159.45.19
   port: 2095
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -1839,87 +710,9 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 142 - xiaohe
+- name: 🌐 其他地区 (Other) 55 - xiaohe
   type: vless
-  server: 104.18.46.234
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 143 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 443
-  uuid: 0f0b7f69-78e1-4e9e-8b35-0986444613e4
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: xwrivr.pages.dev
-- name: 🌐 OTHER 144 - xiaohe
-  type: vless
-  server: 172.64.42.85
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 145 - xiaohe
-  type: vless
-  server: 104.18.47.113
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 146 - xiaohe
-  type: vless
-  server: 172.64.32.103
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 147 - xiaohe
-  type: vless
-  server: 104.18.47.113
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 148 - xiaohe
-  type: vless
-  server: 162.159.39.218
+  server: 172.64.52.6
   port: 8080
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -1930,124 +723,7 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 149 - xiaohe
-  type: vless
-  server: 162.159.38.127
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 150 - xiaohe
-  type: vless
-  server: 172.67.156.147
-  port: 443
-  uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /tyxyws
-    headers:
-      Host: jp3.yohototo.top
-- name: 🌐 OTHER 151 - xiaohe
-  type: vless
-  server: 172.64.229.2
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 152 - xiaohe
-  type: vless
-  server: 172.64.229.170
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 153 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 154 - xiaohe
-  type: vless
-  server: 172.64.42.85
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 155 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 156 - xiaohe
-  type: vless
-  server: 172.64.42.85
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 157 - xiaohe
-  type: vless
-  server: 172.64.154.8
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 158 - xiaohe
+- name: 🌐 其他地区 (Other) 56 - xiaohe
   type: vless
   server: 141.101.122.147
   port: 443
@@ -2060,22 +736,9 @@ proxies:
     path: /ws
     headers:
       Host: a.cwvps.eu.org
-- name: 🌐 OTHER 159 - xiaohe
+- name: 🌐 其他地区 (Other) 57 - xiaohe
   type: vless
-  server: 162.159.43.187
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 160 - xiaohe
-  type: vless
-  server: 172.64.229.170
+  server: 172.64.32.103
   port: 2082
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -2086,137 +749,33 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 161 - xiaohe
+- name: 🌐 其他地区 (Other) 58 - xiaohe
   type: vless
-  server: 104.21.12.3
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 6-m19.mExiCo-pOrT.cCwu.cc
-- name: 🌐 OTHER 162 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 8080
-  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: hhlfy.twiladaphne.ndjp.net
-- name: 🌐 OTHER 163 - xiaohe
-  type: vless
-  server: 162.159.45.19
+  server: undef.network
   port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  uuid: a3dc82ea-67df-423d-b322-8bc0b0790f41
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /?ed=2560security=tls
+    path: /@BlueKnight_net--@BlueKnight_net
     headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 164 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 165 - xiaohe
-  type: vless
-  server: 104.18.39.218
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 166 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 167 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 168 - xiaohe
-  type: vless
-  server: 172.64.150.28
-  port: 2082
-  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /fp
-    headers:
-      Host: hhlfy.twiladaphne.ndjp.net
-- name: 🌐 OTHER 169 - xiaohe
+      Host: uwu.blueknightnet.qzz.io
+- name: 🌐 其他地区 (Other) 59 - xiaohe
   type: vless
   server: 162.159.24.131
-  port: 2082
+  port: 2052
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /?ed=2560security=tls+
+    path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 170 - xiaohe
-  type: vless
-  server: 172.67.148.54
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 7-M19.NoRTh-korea-pArk.KDnS.Fr
-- name: 🌐 OTHER 171 - xiaohe
+- name: 🌐 其他地区 (Other) 60 - xiaohe
   type: vless
   server: 104.21.83.140
   port: 443
@@ -2229,165 +788,9 @@ proxies:
     path: /JRr6VGcSLFc034DC6sDbwyWJLbB
     headers:
       Host: 0-m16.ChIAng-Mai2032.kdnS.fR
-- name: 🌐 OTHER 172 - xiaohe
+- name: 🌐 其他地区 (Other) 61 - xiaohe
   type: vless
-  server: 108.162.198.178
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 173 - xiaohe
-  type: vless
-  server: 172.64.229.170
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 174 - xiaohe
-  type: vless
-  server: 104.18.34.14
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 175 - xiaohe
-  type: vless
-  server: 104.18.46.234
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 176 - xiaohe
-  type: vless
-  server: 104.18.46.46
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 177 - xiaohe
-  type: vless
-  server: 162.159.39.218
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 178 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 179 - xiaohe
-  type: vless
-  server: 104.18.46.234
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 180 - xiaohe
-  type: vless
-  server: 162.159.0.53
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 181 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 182 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 183 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 184 - xiaohe
-  type: vless
-  server: 172.67.202.114
+  server: 172.67.170.204
   port: 443
   uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
   udp: true
@@ -2397,114 +800,10 @@ proxies:
   ws-opts:
     path: /CjBjB9sn5pCvaSwScc
     headers:
-      Host: 1-M19.peru-line.CcwU.cC
-- name: 🌐 OTHER 185 - xiaohe
+      Host: 3-m19.IKl.CcWu.CC
+- name: 🌐 其他地区 (Other) 62 - xiaohe
   type: vless
-  server: 172.64.154.8
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 186 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 187 - xiaohe
-  type: vless
-  server: 162.159.0.53
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 188 - xiaohe
-  type: vless
-  server: 104.18.37.233
-  port: 2053
-  uuid: 65c56e1f-5c41-40bc-b0b5-9346772476ca
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /download/v3/installer-x64.bin
-    headers:
-      Host: us.105794.xyz
-- name: 🌐 OTHER 189 - xiaohe
-  type: vless
-  server: 162.159.0.169
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 190 - xiaohe
-  type: vless
-  server: 104.18.46.46
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 191 - xiaohe
-  type: vless
-  server: 104.18.39.218
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 192 - xiaohe
-  type: vless
-  server: 172.64.32.108
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 193 - xiaohe
-  type: vless
-  server: 172.67.140.11
+  server: 172.67.136.91
   port: 443
   uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
   udp: true
@@ -2514,710 +813,8 @@ proxies:
   ws-opts:
     path: /CjBjB9sn5pCvaSwScc
     headers:
-      Host: 7-m19.sUDAN-pArk.CCwu.CC
-- name: 🌐 OTHER 194 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 195 - xiaohe
-  type: vless
-  server: 162.159.38.127
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 196 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 197 - xiaohe
-  type: vless
-  server: 104.18.34.14
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 198 - xiaohe
-  type: vless
-  server: 172.67.148.211
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 8-M19.SoUTH-africA-ChANNeL.ccwu.Cc
-- name: 🌐 OTHER 199 - xiaohe
-  type: vless
-  server: 172.64.32.108
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 200 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 201 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 202 - xiaohe
-  type: vless
-  server: 104.18.39.218
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tlssecurity=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 203 - xiaohe
-  type: vless
-  server: 104.18.47.113
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 204 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 205 - xiaohe
-  type: vless
-  server: 162.159.0.53
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 206 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 207 - xiaohe
-  type: vless
-  server: 162.159.39.218
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 208 - xiaohe
-  type: vless
-  server: 104.18.39.218
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 209 - xiaohe
-  type: vless
-  server: 162.159.48.32
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 210 - xiaohe
-  type: vless
-  server: 104.21.56.104
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 4-M19.aLBanIA.kDNS.fR
-- name: 🌐 OTHER 211 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 212 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 213 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 214 - xiaohe
-  type: vless
-  server: 172.64.42.85
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 215 - xiaohe
-  type: vless
-  server: 172.64.229.170
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 216 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 217 - xiaohe
-  type: vless
-  server: 104.18.46.234
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 218 - xiaohe
-  type: vless
-  server: 172.64.42.85
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 219 - xiaohe
-  type: vless
-  server: 172.64.32.108
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 220 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
-- name: 🌐 OTHER 221 - xiaohe
-  type: vless
-  server: 162.159.48.32
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 222 - xiaohe
-  type: vless
-  server: 162.159.43.187
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 223 - xiaohe
-  type: vless
-  server: 104.21.5.103
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 3-M19.loP.ccWU.cC
-- name: 🌐 OTHER 224 - xiaohe
-  type: vless
-  server: 104.18.47.113
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 225 - xiaohe
-  type: vless
-  server: 162.159.43.187
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 226 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 227 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 228 - xiaohe
-  type: vless
-  server: 104.18.34.14
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 229 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 230 - xiaohe
-  type: vless
-  server: 162.159.38.127
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 231 - xiaohe
-  type: vless
-  server: 188.114.97.6
-  port: 443
-  uuid: 0f0b7f69-78e1-4e9e-8b35-0986444613e4
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: xwrivr.pages.dev
-- name: 🌐 OTHER 232 - xiaohe
-  type: vless
-  server: 162.159.39.218
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 233 - xiaohe
-  type: vless
-  server: 104.18.46.46
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 234 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 235 - xiaohe
-  type: vless
-  server: 162.159.0.169
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 236 - xiaohe
-  type: vless
-  server: 104.18.46.234
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 237 - xiaohe
-  type: vless
-  server: 172.64.53.55
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 238 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 239 - xiaohe
-  type: vless
-  server: 162.159.45.19
-  port: 2095
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 240 - xiaohe
-  type: vless
-  server: 162.159.0.169
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 241 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls+
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 242 - xiaohe
-  type: vless
-  server: 172.64.229.170
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 243 - xiaohe
-  type: vless
-  server: 172.64.158.146
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 244 - xiaohe
-  type: vless
-  server: 162.159.0.53
-  port: 80
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 245 - xiaohe
-  type: vless
-  server: 162.159.39.218
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 246 - xiaohe
-  type: vless
-  server: 162.159.38.127
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 247 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 248 - xiaohe
+      Host: 9-m19.ALbaNia.ccwu.cc
+- name: 🌐 其他地区 (Other) 63 - xiaohe
   type: vless
   server: 162.159.254.3
   port: 443
@@ -3230,9 +827,35 @@ proxies:
     path: /tyxyws
     headers:
       Host: jp3.yohototo.top
-- name: 🌐 OTHER 249 - xiaohe
+- name: 🌐 其他地区 (Other) 64 - xiaohe
   type: vless
-  server: 162.159.45.19
+  server: 172.64.158.146
+  port: 8080
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 65 - xiaohe
+  type: vless
+  server: 172.67.133.118
+  port: 2052
+  uuid: 08125d23-5500-41ae-97ef-8398eaf70562
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@BlueKnight_net--@BlueKnight_net
+    headers:
+      Host: uwu.blueknightnet.qzz.io
+- name: 🌐 其他地区 (Other) 66 - xiaohe
+  type: vless
+  server: 172.64.229.2
   port: 2052
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -3243,10 +866,64 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 250 - xiaohe
+- name: 🌐 其他地区 (Other) 67 - xiaohe
   type: vless
-  server: 172.64.154.8
+  server: 172.67.179.82
+  port: 443
+  uuid: 7e26fd8f-d75a-473d-84ba-9f4e3f47d086
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8qMLgNapWf6SBxo8fhQlVPYO
+    headers:
+      Host: 1-m20.be434a1f-0c04-40c9-a43a-87cc7d7da502.kdns.fr
+- name: 🌐 其他地区 (Other) 68 - xiaohe
+  type: vless
+  server: 162.159.24.131
   port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls+
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 69 - xiaohe
+  type: vless
+  server: 172.64.42.85
+  port: 2086
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls+
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 70 - xiaohe
+  type: vmess
+  server: 104.21.57.84
+  port: 8443
+  uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /lMnsZUN4/
+    headers:
+      Host: v2ray1.dozapp.xyz
+- name: 🌐 其他地区 (Other) 71 - xiaohe
+  type: vless
+  server: 172.64.32.103
+  port: 2095
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
@@ -3256,7 +933,111 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 251 - xiaohe
+- name: 🌐 其他地区 (Other) 72 - xiaohe
+  type: vless
+  server: 172.67.198.236
+  port: 443
+  uuid: 7e26fd8f-d75a-473d-84ba-9f4e3f47d086
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8qMLgNapWf6SBxo8fhQlVPYO
+    headers:
+      Host: 4-m20.c8e0fc76-a6e4-4464-86b7-703a4f338c3a.kdns.fr
+- name: 🌐 其他地区 (Other) 73 - xiaohe
+  type: vless
+  server: 104.21.53.134
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🌐 其他地区 (Other) 74 - xiaohe
+  type: vless
+  server: 162.159.0.53
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 75 - xiaohe
+  type: vless
+  server: 162.159.0.169
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 76 - xiaohe
+  type: vless
+  server: 172.64.32.103
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 77 - xiaohe
+  type: vless
+  server: 104.18.47.113
+  port: 8080
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 78 - xiaohe
+  type: vless
+  server: 162.159.39.218
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 79 - xiaohe
+  type: vless
+  server: 188.114.97.6
+  port: 8080
+  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhlfy.twiladaphne.ndjp.net
+- name: 🌐 其他地区 (Other) 80 - xiaohe
   type: vless
   server: 104.21.70.21
   port: 443
@@ -3269,10 +1050,36 @@ proxies:
     path: /tyxyws
     headers:
       Host: jp3.yohototo.top
-- name: 🌐 OTHER 252 - xiaohe
+- name: 🌐 其他地区 (Other) 81 - xiaohe
   type: vless
-  server: 172.64.32.108
-  port: 2082
+  server: 188.114.97.6
+  port: 2087
+  uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: fx3h2kf8xn.fx6hsv0.ccwu.cc
+- name: 🌐 其他地区 (Other) 82 - xiaohe
+  type: vless
+  server: 188.114.97.6
+  port: 443
+  uuid: 0f0b7f69-78e1-4e9e-8b35-0986444613e4
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: xwrivr.pages.dev
+- name: 🌐 其他地区 (Other) 83 - xiaohe
+  type: vless
+  server: 162.159.48.32
+  port: 8880
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
@@ -3282,9 +1089,9 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 253 - xiaohe
+- name: 🌐 其他地区 (Other) 84 - xiaohe
   type: vless
-  server: 172.64.42.85
+  server: 172.64.229.2
   port: 80
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -3295,150 +1102,7 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 254 - xiaohe
-  type: vless
-  server: 162.159.0.169
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 255 - xiaohe
-  type: vless
-  server: 172.67.186.138
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 4-m19.omAN-lINK.kdns.fr
-- name: 🌐 OTHER 256 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 257 - xiaohe
-  type: vless
-  server: 162.159.43.187
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 258 - xiaohe
-  type: vless
-  server: 162.159.24.131
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 259 - xiaohe
-  type: vless
-  server: 172.67.153.78
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 2-M19.SOuTh-AFRIca-linK.ccWU.cC
-- name: 🌐 OTHER 260 - xiaohe
-  type: vless
-  server: 172.64.229.2
-  port: 2082
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 261 - xiaohe
-  type: vless
-  server: 162.159.0.169
-  port: 2052
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 262 - xiaohe
-  type: vless
-  server: 108.162.198.178
-  port: 8080
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 263 - xiaohe
-  type: vless
-  server: 162.159.38.127
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 264 - xiaohe
-  type: vless
-  server: 104.18.34.14
-  port: 8880
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560security=tls
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 265 - xiaohe
+- name: 🌐 其他地区 (Other) 85 - xiaohe
   type: vmess
   server: 172.67.167.78
   port: 8443
@@ -3453,10 +1117,62 @@ proxies:
     path: /lMnsZUN4/
     headers:
       Host: v2ray1.dozapp.xyz
-- name: 🌐 OTHER 266 - xiaohe
+- name: 🌐 其他地区 (Other) 86 - xiaohe
   type: vless
-  server: 108.162.198.178
-  port: 2095
+  server: 172.64.158.146
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 87 - xiaohe
+  type: vless
+  server: 162.159.254.3
+  port: 443
+  uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /tyxyws
+    headers:
+      Host: jp3.yohototo.top
+- name: 🌐 其他地区 (Other) 88 - xiaohe
+  type: vless
+  server: 104.18.46.234
+  port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 89 - xiaohe
+  type: vless
+  server: 172.67.140.11
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 7-m19.sUDAN-pArk.CCwu.CC
+- name: 🌐 其他地区 (Other) 90 - xiaohe
+  type: vless
+  server: 172.64.229.170
+  port: 2082
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
@@ -3466,9 +1182,9 @@ proxies:
     path: /
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 267 - xiaohe
+- name: 🌐 其他地区 (Other) 91 - xiaohe
   type: vless
-  server: 172.64.32.103
+  server: 104.18.46.234
   port: 2082
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -3479,23 +1195,10 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 268 - xiaohe
+- name: 🌐 其他地区 (Other) 92 - xiaohe
   type: vless
-  server: 104.21.22.82
-  port: 443
-  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /CjBjB9sn5pCvaSwScc
-    headers:
-      Host: 1-M19.mJU.CCwU.cC
-- name: 🌐 OTHER 269 - xiaohe
-  type: vless
-  server: 104.18.34.14
-  port: 2086
+  server: 172.64.32.103
+  port: 8880
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
@@ -3505,10 +1208,10 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 270 - xiaohe
+- name: 🌐 其他地区 (Other) 93 - xiaohe
   type: vless
-  server: 162.159.0.53
-  port: 80
+  server: 162.159.24.131
+  port: 2082
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
   tls: false
@@ -3518,9 +1221,22 @@ proxies:
     path: /?ed=2560security=tls+
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 271 - xiaohe
+- name: 🌐 其他地区 (Other) 94 - xiaohe
   type: vless
-  server: 172.64.32.103
+  server: 172.64.229.2
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 95 - xiaohe
+  type: vless
+  server: 104.18.34.14
   port: 2095
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -3531,22 +1247,9 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 272 - xiaohe
+- name: 🌐 其他地区 (Other) 96 - xiaohe
   type: vless
-  server: 108.162.198.178
-  port: 2086
-  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
-- name: 🌐 OTHER 273 - xiaohe
-  type: vless
-  server: 108.162.198.178
+  server: 162.159.38.127
   port: 2086
   uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
   udp: true
@@ -3557,561 +1260,1032 @@ proxies:
     path: /?ed=2560security=tls
     headers:
       Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 97 - xiaohe
+  type: vless
+  server: 172.67.150.230
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 8-M19.mexIco-PoRT.CcWU.Cc
+- name: 🌐 其他地区 (Other) 98 - xiaohe
+  type: vless
+  server: 188.114.97.6
+  port: 443
+  uuid: 0f0b7f69-78e1-4e9e-8b35-0986444613e4
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN-MTMVPN
+    headers:
+      Host: xwrivr.pages.dev
+- name: 🌐 其他地区 (Other) 99 - xiaohe
+  type: vless
+  server: 172.64.158.146
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls+
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 100 - xiaohe
+  type: vless
+  server: 104.18.39.218
+  port: 80
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tlssecurity=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 101 - xiaohe
+  type: vless
+  server: 172.67.156.147
+  port: 443
+  uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /tyxyws
+    headers:
+      Host: jp3.yohototo.top
+- name: 🌐 其他地区 (Other) 102 - xiaohe
+  type: vless
+  server: 188.114.97.6
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 103 - xiaohe
+  type: vless
+  server: 104.18.39.218
+  port: 80
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 104 - xiaohe
+  type: vless
+  server: 162.159.45.19
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 105 - xiaohe
+  type: vless
+  server: 162.159.39.218
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 106 - xiaohe
+  type: vless
+  server: 188.114.97.6
+  port: 443
+  uuid: c4edb87e-8544-4fa4-bd1c-b0cda9a34b46
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /ws
+    headers:
+      Host: a.cwvps.eu.org
+- name: 🌐 其他地区 (Other) 107 - xiaohe
+  type: vless
+  server: 104.21.91.142
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🌐 其他地区 (Other) 108 - xiaohe
+  type: vless
+  server: 172.64.52.6
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 109 - xiaohe
+  type: vless
+  server: 104.21.70.21
+  port: 443
+  uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /tyxyws
+    headers:
+      Host: jp3.yohototo.top
+- name: 🌐 其他地区 (Other) 110 - xiaohe
+  type: vless
+  server: 172.64.42.85
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 111 - xiaohe
+  type: vless
+  server: 162.159.24.131
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 112 - xiaohe
+  type: vless
+  server: 104.21.12.3
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 6-m19.mExiCo-pOrT.cCwu.cc
+- name: 🌐 其他地区 (Other) 113 - xiaohe
+  type: vless
+  server: 172.67.186.138
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 4-m19.omAN-lINK.kdns.fr
+- name: 🌐 其他地区 (Other) 114 - xiaohe
+  type: vless
+  server: 104.18.81.92
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🌐 其他地区 (Other) 115 - xiaohe
+  type: vless
+  server: 172.64.42.85
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 116 - xiaohe
+  type: vless
+  server: 172.64.229.170
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 117 - xiaohe
+  type: vless
+  server: 172.64.229.2
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls+
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 118 - xiaohe
+  type: vless
+  server: 172.64.229.170
+  port: 2086
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls+
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 119 - xiaohe
+  type: vless
+  server: 172.64.42.85
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 120 - xiaohe
+  type: vless
+  server: 172.67.213.31
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🌐 其他地区 (Other) 121 - xiaohe
+  type: vless
+  server: 172.64.150.28
+  port: 2082
+  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /fp
+    headers:
+      Host: hhlfy.twiladaphne.ndjp.net
+- name: 🌐 其他地区 (Other) 122 - xiaohe
+  type: vless
+  server: 172.67.185.142
+  port: 443
+  uuid: 7e26fd8f-d75a-473d-84ba-9f4e3f47d086
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8qMLgNapWf6SBxo8fhQlVPYO
+    headers:
+      Host: 4-m20.c3d5336a-3310-48b7-8505-ec90b7a7df24.kdns.fr
+- name: 🌐 其他地区 (Other) 123 - xiaohe
+  type: vless
+  server: 172.64.52.6
+  port: 80
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 124 - xiaohe
+  type: vless
+  server: 172.64.52.6
+  port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 125 - xiaohe
+  type: vless
+  server: 172.64.158.146
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 126 - xiaohe
+  type: vless
+  server: 162.159.24.131
+  port: 2095
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 127 - xiaohe
+  type: vless
+  server: 172.64.53.55
+  port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 128 - xiaohe
+  type: vless
+  server: 172.64.52.6
+  port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 129 - xiaohe
+  type: vless
+  server: 172.64.42.85
+  port: 2086
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls+
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 130 - xiaohe
+  type: vless
+  server: 172.64.42.85
+  port: 8080
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 131 - xiaohe
+  type: vless
+  server: 162.159.24.131
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 132 - xiaohe
+  type: vless
+  server: 104.18.46.46
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 133 - xiaohe
+  type: vless
+  server: 172.64.229.170
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 134 - xiaohe
+  type: vless
+  server: 188.114.97.6
+  port: 8080
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 135 - xiaohe
+  type: vless
+  server: 104.18.47.113
+  port: 2086
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 136 - xiaohe
+  type: vless
+  server: 172.64.32.103
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 137 - xiaohe
+  type: vless
+  server: 172.67.148.211
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 8-M19.SoUTH-africA-ChANNeL.ccwu.Cc
+- name: 🌐 其他地区 (Other) 138 - xiaohe
+  type: vless
+  server: 104.18.34.14
+  port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 139 - xiaohe
+  type: vless
+  server: 108.162.198.178
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 140 - xiaohe
+  type: vless
+  server: 172.64.32.103
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 141 - xiaohe
+  type: vless
+  server: 104.21.56.104
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /CjBjB9sn5pCvaSwScc
+    headers:
+      Host: 4-M19.aLBanIA.kDNS.fR
+- name: 🌐 其他地区 (Other) 142 - xiaohe
+  type: vless
+  server: 104.21.54.32
+  port: 443
+  uuid: a1a6a3be-2bf9-46a2-bc24-328306e49ab7
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /fVs1qv0xm8dxmnwuaPwokxgY4XlP
+    headers:
+      Host: 8-m17.kuwAIt-LINE.kDNs.Fr
+- name: 🌐 其他地区 (Other) 143 - xiaohe
+  type: vless
+  server: 172.64.52.6
+  port: 8080
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 144 - xiaohe
+  type: vless
+  server: 188.114.97.6
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: zb1zi.s3nx.dyz.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 145 - xiaohe
+  type: vless
+  server: 108.162.198.178
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 146 - xiaohe
+  type: vless
+  server: 172.64.158.146
+  port: 8080
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls+
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 147 - xiaohe
+  type: vless
+  server: 162.159.0.169
+  port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 148 - xiaohe
+  type: vless
+  server: 104.18.24.194
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🌐 其他地区 (Other) 149 - xiaohe
+  type: vless
+  server: 162.159.0.169
+  port: 2086
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 150 - xiaohe
+  type: vless
+  server: 172.64.229.2
+  port: 2086
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560security=tls
+    headers:
+      Host: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+- name: 🌐 其他地区 (Other) 151 - xiaohe
+  type: vless
+  server: 104.21.86.179
+  port: 443
+  uuid: a1a6a3be-2bf9-46a2-bc24-328306e49ab7
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /fVs1qv0xm8dxmnwuaPwokxgY4XlP
+    headers:
+      Host: 5-m17.joRdAn-LinK.KDNS.Fr
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🌐 OTHER 01 - xiaohe
-  - 🌐 OTHER 02 - xiaohe
-  - 🌐 OTHER 03 - xiaohe
-  - 🌐 OTHER 04 - xiaohe
-  - 🌐 OTHER 05 - xiaohe
-  - 🌐 OTHER 06 - xiaohe
-  - 🌐 OTHER 07 - xiaohe
-  - 🌐 OTHER 08 - xiaohe
-  - 🌐 OTHER 09 - xiaohe
-  - 🌐 OTHER 10 - xiaohe
-  - 🌐 OTHER 11 - xiaohe
-  - 🌐 OTHER 12 - xiaohe
-  - 🌐 OTHER 13 - xiaohe
-  - 🌐 OTHER 14 - xiaohe
-  - 🌐 OTHER 15 - xiaohe
-  - 🌐 OTHER 16 - xiaohe
-  - 🌐 OTHER 17 - xiaohe
-  - 🌐 OTHER 18 - xiaohe
-  - 🌐 OTHER 19 - xiaohe
-  - 🌐 OTHER 20 - xiaohe
-  - 🌐 OTHER 21 - xiaohe
-  - 🌐 OTHER 22 - xiaohe
-  - 🌐 OTHER 23 - xiaohe
-  - 🌐 OTHER 24 - xiaohe
-  - 🌐 OTHER 25 - xiaohe
-  - 🌐 OTHER 26 - xiaohe
-  - 🌐 OTHER 27 - xiaohe
-  - 🌐 OTHER 28 - xiaohe
-  - 🌐 OTHER 29 - xiaohe
-  - 🌐 OTHER 30 - xiaohe
-  - 🌐 OTHER 31 - xiaohe
-  - 🌐 OTHER 32 - xiaohe
-  - 🌐 OTHER 33 - xiaohe
-  - 🌐 OTHER 34 - xiaohe
-  - 🌐 OTHER 35 - xiaohe
-  - 🌐 OTHER 36 - xiaohe
-  - 🌐 OTHER 37 - xiaohe
-  - 🌐 OTHER 38 - xiaohe
-  - 🌐 OTHER 39 - xiaohe
-  - 🌐 OTHER 40 - xiaohe
-  - 🌐 OTHER 41 - xiaohe
-  - 🌐 OTHER 42 - xiaohe
-  - 🌐 OTHER 43 - xiaohe
-  - 🌐 OTHER 44 - xiaohe
-  - 🌐 OTHER 45 - xiaohe
-  - 🌐 OTHER 46 - xiaohe
-  - 🌐 OTHER 47 - xiaohe
-  - 🌐 OTHER 48 - xiaohe
-  - 🌐 OTHER 49 - xiaohe
-  - 🌐 OTHER 50 - xiaohe
-  - 🌐 OTHER 51 - xiaohe
-  - 🌐 OTHER 52 - xiaohe
-  - 🌐 OTHER 53 - xiaohe
-  - 🌐 OTHER 54 - xiaohe
-  - 🌐 OTHER 55 - xiaohe
-  - 🌐 OTHER 56 - xiaohe
-  - 🌐 OTHER 57 - xiaohe
-  - 🌐 OTHER 58 - xiaohe
-  - 🌐 OTHER 59 - xiaohe
-  - 🌐 OTHER 60 - xiaohe
-  - 🌐 OTHER 61 - xiaohe
-  - 🌐 OTHER 62 - xiaohe
-  - 🌐 OTHER 63 - xiaohe
-  - 🌐 OTHER 64 - xiaohe
-  - 🌐 OTHER 65 - xiaohe
-  - 🌐 OTHER 66 - xiaohe
-  - 🌐 OTHER 67 - xiaohe
-  - 🌐 OTHER 68 - xiaohe
-  - 🌐 OTHER 69 - xiaohe
-  - 🌐 OTHER 70 - xiaohe
-  - 🌐 OTHER 71 - xiaohe
-  - 🌐 OTHER 72 - xiaohe
-  - 🌐 OTHER 73 - xiaohe
-  - 🌐 OTHER 74 - xiaohe
-  - 🌐 OTHER 75 - xiaohe
-  - 🌐 OTHER 76 - xiaohe
-  - 🌐 OTHER 77 - xiaohe
-  - 🌐 OTHER 78 - xiaohe
-  - 🌐 OTHER 79 - xiaohe
-  - 🌐 OTHER 80 - xiaohe
-  - 🌐 OTHER 81 - xiaohe
-  - 🌐 OTHER 82 - xiaohe
-  - 🌐 OTHER 83 - xiaohe
-  - 🌐 OTHER 84 - xiaohe
-  - 🌐 OTHER 85 - xiaohe
-  - 🌐 OTHER 86 - xiaohe
-  - 🌐 OTHER 87 - xiaohe
-  - 🌐 OTHER 88 - xiaohe
-  - 🌐 OTHER 89 - xiaohe
-  - 🌐 OTHER 90 - xiaohe
-  - 🌐 OTHER 91 - xiaohe
-  - 🌐 OTHER 92 - xiaohe
-  - 🌐 OTHER 93 - xiaohe
-  - 🌐 OTHER 94 - xiaohe
-  - 🌐 OTHER 95 - xiaohe
-  - 🌐 OTHER 96 - xiaohe
-  - 🌐 OTHER 97 - xiaohe
-  - 🌐 OTHER 98 - xiaohe
-  - 🌐 OTHER 99 - xiaohe
-  - 🌐 OTHER 100 - xiaohe
-  - 🌐 OTHER 101 - xiaohe
-  - 🌐 OTHER 102 - xiaohe
-  - 🌐 OTHER 103 - xiaohe
-  - 🌐 OTHER 104 - xiaohe
-  - 🌐 OTHER 105 - xiaohe
-  - 🌐 OTHER 106 - xiaohe
-  - 🌐 OTHER 107 - xiaohe
-  - 🌐 OTHER 108 - xiaohe
-  - 🌐 OTHER 109 - xiaohe
-  - 🌐 OTHER 110 - xiaohe
-  - 🌐 OTHER 111 - xiaohe
-  - 🌐 OTHER 112 - xiaohe
-  - 🌐 OTHER 113 - xiaohe
-  - 🌐 OTHER 114 - xiaohe
-  - 🌐 OTHER 115 - xiaohe
-  - 🌐 OTHER 116 - xiaohe
-  - 🌐 OTHER 117 - xiaohe
-  - 🌐 OTHER 118 - xiaohe
-  - 🌐 OTHER 119 - xiaohe
-  - 🌐 OTHER 120 - xiaohe
-  - 🌐 OTHER 121 - xiaohe
-  - 🌐 OTHER 122 - xiaohe
-  - 🌐 OTHER 123 - xiaohe
-  - 🌐 OTHER 124 - xiaohe
-  - 🌐 OTHER 125 - xiaohe
-  - 🌐 OTHER 126 - xiaohe
-  - 🌐 OTHER 127 - xiaohe
-  - 🌐 OTHER 128 - xiaohe
-  - 🌐 OTHER 129 - xiaohe
-  - 🌐 OTHER 130 - xiaohe
-  - 🌐 OTHER 131 - xiaohe
-  - 🌐 OTHER 132 - xiaohe
-  - 🌐 OTHER 133 - xiaohe
-  - 🌐 OTHER 134 - xiaohe
-  - 🌐 OTHER 135 - xiaohe
-  - 🌐 OTHER 136 - xiaohe
-  - 🌐 OTHER 137 - xiaohe
-  - 🌐 OTHER 138 - xiaohe
-  - 🌐 OTHER 139 - xiaohe
-  - 🌐 OTHER 140 - xiaohe
-  - 🌐 OTHER 141 - xiaohe
-  - 🌐 OTHER 142 - xiaohe
-  - 🌐 OTHER 143 - xiaohe
-  - 🌐 OTHER 144 - xiaohe
-  - 🌐 OTHER 145 - xiaohe
-  - 🌐 OTHER 146 - xiaohe
-  - 🌐 OTHER 147 - xiaohe
-  - 🌐 OTHER 148 - xiaohe
-  - 🌐 OTHER 149 - xiaohe
-  - 🌐 OTHER 150 - xiaohe
-  - 🌐 OTHER 151 - xiaohe
-  - 🌐 OTHER 152 - xiaohe
-  - 🌐 OTHER 153 - xiaohe
-  - 🌐 OTHER 154 - xiaohe
-  - 🌐 OTHER 155 - xiaohe
-  - 🌐 OTHER 156 - xiaohe
-  - 🌐 OTHER 157 - xiaohe
-  - 🌐 OTHER 158 - xiaohe
-  - 🌐 OTHER 159 - xiaohe
-  - 🌐 OTHER 160 - xiaohe
-  - 🌐 OTHER 161 - xiaohe
-  - 🌐 OTHER 162 - xiaohe
-  - 🌐 OTHER 163 - xiaohe
-  - 🌐 OTHER 164 - xiaohe
-  - 🌐 OTHER 165 - xiaohe
-  - 🌐 OTHER 166 - xiaohe
-  - 🌐 OTHER 167 - xiaohe
-  - 🌐 OTHER 168 - xiaohe
-  - 🌐 OTHER 169 - xiaohe
-  - 🌐 OTHER 170 - xiaohe
-  - 🌐 OTHER 171 - xiaohe
-  - 🌐 OTHER 172 - xiaohe
-  - 🌐 OTHER 173 - xiaohe
-  - 🌐 OTHER 174 - xiaohe
-  - 🌐 OTHER 175 - xiaohe
-  - 🌐 OTHER 176 - xiaohe
-  - 🌐 OTHER 177 - xiaohe
-  - 🌐 OTHER 178 - xiaohe
-  - 🌐 OTHER 179 - xiaohe
-  - 🌐 OTHER 180 - xiaohe
-  - 🌐 OTHER 181 - xiaohe
-  - 🌐 OTHER 182 - xiaohe
-  - 🌐 OTHER 183 - xiaohe
-  - 🌐 OTHER 184 - xiaohe
-  - 🌐 OTHER 185 - xiaohe
-  - 🌐 OTHER 186 - xiaohe
-  - 🌐 OTHER 187 - xiaohe
-  - 🌐 OTHER 188 - xiaohe
-  - 🌐 OTHER 189 - xiaohe
-  - 🌐 OTHER 190 - xiaohe
-  - 🌐 OTHER 191 - xiaohe
-  - 🌐 OTHER 192 - xiaohe
-  - 🌐 OTHER 193 - xiaohe
-  - 🌐 OTHER 194 - xiaohe
-  - 🌐 OTHER 195 - xiaohe
-  - 🌐 OTHER 196 - xiaohe
-  - 🌐 OTHER 197 - xiaohe
-  - 🌐 OTHER 198 - xiaohe
-  - 🌐 OTHER 199 - xiaohe
-  - 🌐 OTHER 200 - xiaohe
-  - 🌐 OTHER 201 - xiaohe
-  - 🌐 OTHER 202 - xiaohe
-  - 🌐 OTHER 203 - xiaohe
-  - 🌐 OTHER 204 - xiaohe
-  - 🌐 OTHER 205 - xiaohe
-  - 🌐 OTHER 206 - xiaohe
-  - 🌐 OTHER 207 - xiaohe
-  - 🌐 OTHER 208 - xiaohe
-  - 🌐 OTHER 209 - xiaohe
-  - 🌐 OTHER 210 - xiaohe
-  - 🌐 OTHER 211 - xiaohe
-  - 🌐 OTHER 212 - xiaohe
-  - 🌐 OTHER 213 - xiaohe
-  - 🌐 OTHER 214 - xiaohe
-  - 🌐 OTHER 215 - xiaohe
-  - 🌐 OTHER 216 - xiaohe
-  - 🌐 OTHER 217 - xiaohe
-  - 🌐 OTHER 218 - xiaohe
-  - 🌐 OTHER 219 - xiaohe
-  - 🌐 OTHER 220 - xiaohe
-  - 🌐 OTHER 221 - xiaohe
-  - 🌐 OTHER 222 - xiaohe
-  - 🌐 OTHER 223 - xiaohe
-  - 🌐 OTHER 224 - xiaohe
-  - 🌐 OTHER 225 - xiaohe
-  - 🌐 OTHER 226 - xiaohe
-  - 🌐 OTHER 227 - xiaohe
-  - 🌐 OTHER 228 - xiaohe
-  - 🌐 OTHER 229 - xiaohe
-  - 🌐 OTHER 230 - xiaohe
-  - 🌐 OTHER 231 - xiaohe
-  - 🌐 OTHER 232 - xiaohe
-  - 🌐 OTHER 233 - xiaohe
-  - 🌐 OTHER 234 - xiaohe
-  - 🌐 OTHER 235 - xiaohe
-  - 🌐 OTHER 236 - xiaohe
-  - 🌐 OTHER 237 - xiaohe
-  - 🌐 OTHER 238 - xiaohe
-  - 🌐 OTHER 239 - xiaohe
-  - 🌐 OTHER 240 - xiaohe
-  - 🌐 OTHER 241 - xiaohe
-  - 🌐 OTHER 242 - xiaohe
-  - 🌐 OTHER 243 - xiaohe
-  - 🌐 OTHER 244 - xiaohe
-  - 🌐 OTHER 245 - xiaohe
-  - 🌐 OTHER 246 - xiaohe
-  - 🌐 OTHER 247 - xiaohe
-  - 🌐 OTHER 248 - xiaohe
-  - 🌐 OTHER 249 - xiaohe
-  - 🌐 OTHER 250 - xiaohe
-  - 🌐 OTHER 251 - xiaohe
-  - 🌐 OTHER 252 - xiaohe
-  - 🌐 OTHER 253 - xiaohe
-  - 🌐 OTHER 254 - xiaohe
-  - 🌐 OTHER 255 - xiaohe
-  - 🌐 OTHER 256 - xiaohe
-  - 🌐 OTHER 257 - xiaohe
-  - 🌐 OTHER 258 - xiaohe
-  - 🌐 OTHER 259 - xiaohe
-  - 🌐 OTHER 260 - xiaohe
-  - 🌐 OTHER 261 - xiaohe
-  - 🌐 OTHER 262 - xiaohe
-  - 🌐 OTHER 263 - xiaohe
-  - 🌐 OTHER 264 - xiaohe
-  - 🌐 OTHER 265 - xiaohe
-  - 🌐 OTHER 266 - xiaohe
-  - 🌐 OTHER 267 - xiaohe
-  - 🌐 OTHER 268 - xiaohe
-  - 🌐 OTHER 269 - xiaohe
-  - 🌐 OTHER 270 - xiaohe
-  - 🌐 OTHER 271 - xiaohe
-  - 🌐 OTHER 272 - xiaohe
-  - 🌐 OTHER 273 - xiaohe
+  - 🌐 其他地区 (Other) 01 - xiaohe
+  - 🌐 其他地区 (Other) 02 - xiaohe
+  - 🌐 其他地区 (Other) 03 - xiaohe
+  - 🌐 其他地区 (Other) 04 - xiaohe
+  - 🌐 其他地区 (Other) 05 - xiaohe
+  - 🌐 其他地区 (Other) 06 - xiaohe
+  - 🌐 其他地区 (Other) 07 - xiaohe
+  - 🌐 其他地区 (Other) 08 - xiaohe
+  - 🌐 其他地区 (Other) 09 - xiaohe
+  - 🌐 其他地区 (Other) 10 - xiaohe
+  - 🌐 其他地区 (Other) 11 - xiaohe
+  - 🌐 其他地区 (Other) 12 - xiaohe
+  - 🌐 其他地区 (Other) 13 - xiaohe
+  - 🌐 其他地区 (Other) 14 - xiaohe
+  - 🌐 其他地区 (Other) 15 - xiaohe
+  - 🌐 其他地区 (Other) 16 - xiaohe
+  - 🌐 其他地区 (Other) 17 - xiaohe
+  - 🌐 其他地区 (Other) 18 - xiaohe
+  - 🌐 其他地区 (Other) 19 - xiaohe
+  - 🌐 其他地区 (Other) 20 - xiaohe
+  - 🌐 其他地区 (Other) 21 - xiaohe
+  - 🌐 其他地区 (Other) 22 - xiaohe
+  - 🌐 其他地区 (Other) 23 - xiaohe
+  - 🌐 其他地区 (Other) 24 - xiaohe
+  - 🌐 其他地区 (Other) 25 - xiaohe
+  - 🌐 其他地区 (Other) 26 - xiaohe
+  - 🌐 其他地区 (Other) 27 - xiaohe
+  - 🌐 其他地区 (Other) 28 - xiaohe
+  - 🌐 其他地区 (Other) 29 - xiaohe
+  - 🌐 其他地区 (Other) 30 - xiaohe
+  - 🌐 其他地区 (Other) 31 - xiaohe
+  - 🌐 其他地区 (Other) 32 - xiaohe
+  - 🌐 其他地区 (Other) 33 - xiaohe
+  - 🌐 其他地区 (Other) 34 - xiaohe
+  - 🌐 其他地区 (Other) 35 - xiaohe
+  - 🌐 其他地区 (Other) 36 - xiaohe
+  - 🌐 其他地区 (Other) 37 - xiaohe
+  - 🌐 其他地区 (Other) 38 - xiaohe
+  - 🌐 其他地区 (Other) 39 - xiaohe
+  - 🌐 其他地区 (Other) 40 - xiaohe
+  - 🌐 其他地区 (Other) 41 - xiaohe
+  - 🌐 其他地区 (Other) 42 - xiaohe
+  - 🌐 其他地区 (Other) 43 - xiaohe
+  - 🌐 其他地区 (Other) 44 - xiaohe
+  - 🌐 其他地区 (Other) 45 - xiaohe
+  - 🌐 其他地区 (Other) 46 - xiaohe
+  - 🌐 其他地区 (Other) 47 - xiaohe
+  - 🌐 其他地区 (Other) 48 - xiaohe
+  - 🌐 其他地区 (Other) 49 - xiaohe
+  - 🌐 其他地区 (Other) 50 - xiaohe
+  - 🌐 其他地区 (Other) 51 - xiaohe
+  - 🌐 其他地区 (Other) 52 - xiaohe
+  - 🌐 其他地区 (Other) 53 - xiaohe
+  - 🌐 其他地区 (Other) 54 - xiaohe
+  - 🌐 其他地区 (Other) 55 - xiaohe
+  - 🌐 其他地区 (Other) 56 - xiaohe
+  - 🌐 其他地区 (Other) 57 - xiaohe
+  - 🌐 其他地区 (Other) 58 - xiaohe
+  - 🌐 其他地区 (Other) 59 - xiaohe
+  - 🌐 其他地区 (Other) 60 - xiaohe
+  - 🌐 其他地区 (Other) 61 - xiaohe
+  - 🌐 其他地区 (Other) 62 - xiaohe
+  - 🌐 其他地区 (Other) 63 - xiaohe
+  - 🌐 其他地区 (Other) 64 - xiaohe
+  - 🌐 其他地区 (Other) 65 - xiaohe
+  - 🌐 其他地区 (Other) 66 - xiaohe
+  - 🌐 其他地区 (Other) 67 - xiaohe
+  - 🌐 其他地区 (Other) 68 - xiaohe
+  - 🌐 其他地区 (Other) 69 - xiaohe
+  - 🌐 其他地区 (Other) 70 - xiaohe
+  - 🌐 其他地区 (Other) 71 - xiaohe
+  - 🌐 其他地区 (Other) 72 - xiaohe
+  - 🌐 其他地区 (Other) 73 - xiaohe
+  - 🌐 其他地区 (Other) 74 - xiaohe
+  - 🌐 其他地区 (Other) 75 - xiaohe
+  - 🌐 其他地区 (Other) 76 - xiaohe
+  - 🌐 其他地区 (Other) 77 - xiaohe
+  - 🌐 其他地区 (Other) 78 - xiaohe
+  - 🌐 其他地区 (Other) 79 - xiaohe
+  - 🌐 其他地区 (Other) 80 - xiaohe
+  - 🌐 其他地区 (Other) 81 - xiaohe
+  - 🌐 其他地区 (Other) 82 - xiaohe
+  - 🌐 其他地区 (Other) 83 - xiaohe
+  - 🌐 其他地区 (Other) 84 - xiaohe
+  - 🌐 其他地区 (Other) 85 - xiaohe
+  - 🌐 其他地区 (Other) 86 - xiaohe
+  - 🌐 其他地区 (Other) 87 - xiaohe
+  - 🌐 其他地区 (Other) 88 - xiaohe
+  - 🌐 其他地区 (Other) 89 - xiaohe
+  - 🌐 其他地区 (Other) 90 - xiaohe
+  - 🌐 其他地区 (Other) 91 - xiaohe
+  - 🌐 其他地区 (Other) 92 - xiaohe
+  - 🌐 其他地区 (Other) 93 - xiaohe
+  - 🌐 其他地区 (Other) 94 - xiaohe
+  - 🌐 其他地区 (Other) 95 - xiaohe
+  - 🌐 其他地区 (Other) 96 - xiaohe
+  - 🌐 其他地区 (Other) 97 - xiaohe
+  - 🌐 其他地区 (Other) 98 - xiaohe
+  - 🌐 其他地区 (Other) 99 - xiaohe
+  - 🌐 其他地区 (Other) 100 - xiaohe
+  - 🌐 其他地区 (Other) 101 - xiaohe
+  - 🌐 其他地区 (Other) 102 - xiaohe
+  - 🌐 其他地区 (Other) 103 - xiaohe
+  - 🌐 其他地区 (Other) 104 - xiaohe
+  - 🌐 其他地区 (Other) 105 - xiaohe
+  - 🌐 其他地区 (Other) 106 - xiaohe
+  - 🌐 其他地区 (Other) 107 - xiaohe
+  - 🌐 其他地区 (Other) 108 - xiaohe
+  - 🌐 其他地区 (Other) 109 - xiaohe
+  - 🌐 其他地区 (Other) 110 - xiaohe
+  - 🌐 其他地区 (Other) 111 - xiaohe
+  - 🌐 其他地区 (Other) 112 - xiaohe
+  - 🌐 其他地区 (Other) 113 - xiaohe
+  - 🌐 其他地区 (Other) 114 - xiaohe
+  - 🌐 其他地区 (Other) 115 - xiaohe
+  - 🌐 其他地区 (Other) 116 - xiaohe
+  - 🌐 其他地区 (Other) 117 - xiaohe
+  - 🌐 其他地区 (Other) 118 - xiaohe
+  - 🌐 其他地区 (Other) 119 - xiaohe
+  - 🌐 其他地区 (Other) 120 - xiaohe
+  - 🌐 其他地区 (Other) 121 - xiaohe
+  - 🌐 其他地区 (Other) 122 - xiaohe
+  - 🌐 其他地区 (Other) 123 - xiaohe
+  - 🌐 其他地区 (Other) 124 - xiaohe
+  - 🌐 其他地区 (Other) 125 - xiaohe
+  - 🌐 其他地区 (Other) 126 - xiaohe
+  - 🌐 其他地区 (Other) 127 - xiaohe
+  - 🌐 其他地区 (Other) 128 - xiaohe
+  - 🌐 其他地区 (Other) 129 - xiaohe
+  - 🌐 其他地区 (Other) 130 - xiaohe
+  - 🌐 其他地区 (Other) 131 - xiaohe
+  - 🌐 其他地区 (Other) 132 - xiaohe
+  - 🌐 其他地区 (Other) 133 - xiaohe
+  - 🌐 其他地区 (Other) 134 - xiaohe
+  - 🌐 其他地区 (Other) 135 - xiaohe
+  - 🌐 其他地区 (Other) 136 - xiaohe
+  - 🌐 其他地区 (Other) 137 - xiaohe
+  - 🌐 其他地区 (Other) 138 - xiaohe
+  - 🌐 其他地区 (Other) 139 - xiaohe
+  - 🌐 其他地区 (Other) 140 - xiaohe
+  - 🌐 其他地区 (Other) 141 - xiaohe
+  - 🌐 其他地区 (Other) 142 - xiaohe
+  - 🌐 其他地区 (Other) 143 - xiaohe
+  - 🌐 其他地区 (Other) 144 - xiaohe
+  - 🌐 其他地区 (Other) 145 - xiaohe
+  - 🌐 其他地区 (Other) 146 - xiaohe
+  - 🌐 其他地区 (Other) 147 - xiaohe
+  - 🌐 其他地区 (Other) 148 - xiaohe
+  - 🌐 其他地区 (Other) 149 - xiaohe
+  - 🌐 其他地区 (Other) 150 - xiaohe
+  - 🌐 其他地区 (Other) 151 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🌐 OTHER 01 - xiaohe
-  - 🌐 OTHER 02 - xiaohe
-  - 🌐 OTHER 03 - xiaohe
-  - 🌐 OTHER 04 - xiaohe
-  - 🌐 OTHER 05 - xiaohe
-  - 🌐 OTHER 06 - xiaohe
-  - 🌐 OTHER 07 - xiaohe
-  - 🌐 OTHER 08 - xiaohe
-  - 🌐 OTHER 09 - xiaohe
-  - 🌐 OTHER 10 - xiaohe
-  - 🌐 OTHER 11 - xiaohe
-  - 🌐 OTHER 12 - xiaohe
-  - 🌐 OTHER 13 - xiaohe
-  - 🌐 OTHER 14 - xiaohe
-  - 🌐 OTHER 15 - xiaohe
-  - 🌐 OTHER 16 - xiaohe
-  - 🌐 OTHER 17 - xiaohe
-  - 🌐 OTHER 18 - xiaohe
-  - 🌐 OTHER 19 - xiaohe
-  - 🌐 OTHER 20 - xiaohe
-  - 🌐 OTHER 21 - xiaohe
-  - 🌐 OTHER 22 - xiaohe
-  - 🌐 OTHER 23 - xiaohe
-  - 🌐 OTHER 24 - xiaohe
-  - 🌐 OTHER 25 - xiaohe
-  - 🌐 OTHER 26 - xiaohe
-  - 🌐 OTHER 27 - xiaohe
-  - 🌐 OTHER 28 - xiaohe
-  - 🌐 OTHER 29 - xiaohe
-  - 🌐 OTHER 30 - xiaohe
-  - 🌐 OTHER 31 - xiaohe
-  - 🌐 OTHER 32 - xiaohe
-  - 🌐 OTHER 33 - xiaohe
-  - 🌐 OTHER 34 - xiaohe
-  - 🌐 OTHER 35 - xiaohe
-  - 🌐 OTHER 36 - xiaohe
-  - 🌐 OTHER 37 - xiaohe
-  - 🌐 OTHER 38 - xiaohe
-  - 🌐 OTHER 39 - xiaohe
-  - 🌐 OTHER 40 - xiaohe
-  - 🌐 OTHER 41 - xiaohe
-  - 🌐 OTHER 42 - xiaohe
-  - 🌐 OTHER 43 - xiaohe
-  - 🌐 OTHER 44 - xiaohe
-  - 🌐 OTHER 45 - xiaohe
-  - 🌐 OTHER 46 - xiaohe
-  - 🌐 OTHER 47 - xiaohe
-  - 🌐 OTHER 48 - xiaohe
-  - 🌐 OTHER 49 - xiaohe
-  - 🌐 OTHER 50 - xiaohe
-  - 🌐 OTHER 51 - xiaohe
-  - 🌐 OTHER 52 - xiaohe
-  - 🌐 OTHER 53 - xiaohe
-  - 🌐 OTHER 54 - xiaohe
-  - 🌐 OTHER 55 - xiaohe
-  - 🌐 OTHER 56 - xiaohe
-  - 🌐 OTHER 57 - xiaohe
-  - 🌐 OTHER 58 - xiaohe
-  - 🌐 OTHER 59 - xiaohe
-  - 🌐 OTHER 60 - xiaohe
-  - 🌐 OTHER 61 - xiaohe
-  - 🌐 OTHER 62 - xiaohe
-  - 🌐 OTHER 63 - xiaohe
-  - 🌐 OTHER 64 - xiaohe
-  - 🌐 OTHER 65 - xiaohe
-  - 🌐 OTHER 66 - xiaohe
-  - 🌐 OTHER 67 - xiaohe
-  - 🌐 OTHER 68 - xiaohe
-  - 🌐 OTHER 69 - xiaohe
-  - 🌐 OTHER 70 - xiaohe
-  - 🌐 OTHER 71 - xiaohe
-  - 🌐 OTHER 72 - xiaohe
-  - 🌐 OTHER 73 - xiaohe
-  - 🌐 OTHER 74 - xiaohe
-  - 🌐 OTHER 75 - xiaohe
-  - 🌐 OTHER 76 - xiaohe
-  - 🌐 OTHER 77 - xiaohe
-  - 🌐 OTHER 78 - xiaohe
-  - 🌐 OTHER 79 - xiaohe
-  - 🌐 OTHER 80 - xiaohe
-  - 🌐 OTHER 81 - xiaohe
-  - 🌐 OTHER 82 - xiaohe
-  - 🌐 OTHER 83 - xiaohe
-  - 🌐 OTHER 84 - xiaohe
-  - 🌐 OTHER 85 - xiaohe
-  - 🌐 OTHER 86 - xiaohe
-  - 🌐 OTHER 87 - xiaohe
-  - 🌐 OTHER 88 - xiaohe
-  - 🌐 OTHER 89 - xiaohe
-  - 🌐 OTHER 90 - xiaohe
-  - 🌐 OTHER 91 - xiaohe
-  - 🌐 OTHER 92 - xiaohe
-  - 🌐 OTHER 93 - xiaohe
-  - 🌐 OTHER 94 - xiaohe
-  - 🌐 OTHER 95 - xiaohe
-  - 🌐 OTHER 96 - xiaohe
-  - 🌐 OTHER 97 - xiaohe
-  - 🌐 OTHER 98 - xiaohe
-  - 🌐 OTHER 99 - xiaohe
-  - 🌐 OTHER 100 - xiaohe
-  - 🌐 OTHER 101 - xiaohe
-  - 🌐 OTHER 102 - xiaohe
-  - 🌐 OTHER 103 - xiaohe
-  - 🌐 OTHER 104 - xiaohe
-  - 🌐 OTHER 105 - xiaohe
-  - 🌐 OTHER 106 - xiaohe
-  - 🌐 OTHER 107 - xiaohe
-  - 🌐 OTHER 108 - xiaohe
-  - 🌐 OTHER 109 - xiaohe
-  - 🌐 OTHER 110 - xiaohe
-  - 🌐 OTHER 111 - xiaohe
-  - 🌐 OTHER 112 - xiaohe
-  - 🌐 OTHER 113 - xiaohe
-  - 🌐 OTHER 114 - xiaohe
-  - 🌐 OTHER 115 - xiaohe
-  - 🌐 OTHER 116 - xiaohe
-  - 🌐 OTHER 117 - xiaohe
-  - 🌐 OTHER 118 - xiaohe
-  - 🌐 OTHER 119 - xiaohe
-  - 🌐 OTHER 120 - xiaohe
-  - 🌐 OTHER 121 - xiaohe
-  - 🌐 OTHER 122 - xiaohe
-  - 🌐 OTHER 123 - xiaohe
-  - 🌐 OTHER 124 - xiaohe
-  - 🌐 OTHER 125 - xiaohe
-  - 🌐 OTHER 126 - xiaohe
-  - 🌐 OTHER 127 - xiaohe
-  - 🌐 OTHER 128 - xiaohe
-  - 🌐 OTHER 129 - xiaohe
-  - 🌐 OTHER 130 - xiaohe
-  - 🌐 OTHER 131 - xiaohe
-  - 🌐 OTHER 132 - xiaohe
-  - 🌐 OTHER 133 - xiaohe
-  - 🌐 OTHER 134 - xiaohe
-  - 🌐 OTHER 135 - xiaohe
-  - 🌐 OTHER 136 - xiaohe
-  - 🌐 OTHER 137 - xiaohe
-  - 🌐 OTHER 138 - xiaohe
-  - 🌐 OTHER 139 - xiaohe
-  - 🌐 OTHER 140 - xiaohe
-  - 🌐 OTHER 141 - xiaohe
-  - 🌐 OTHER 142 - xiaohe
-  - 🌐 OTHER 143 - xiaohe
-  - 🌐 OTHER 144 - xiaohe
-  - 🌐 OTHER 145 - xiaohe
-  - 🌐 OTHER 146 - xiaohe
-  - 🌐 OTHER 147 - xiaohe
-  - 🌐 OTHER 148 - xiaohe
-  - 🌐 OTHER 149 - xiaohe
-  - 🌐 OTHER 150 - xiaohe
-  - 🌐 OTHER 151 - xiaohe
-  - 🌐 OTHER 152 - xiaohe
-  - 🌐 OTHER 153 - xiaohe
-  - 🌐 OTHER 154 - xiaohe
-  - 🌐 OTHER 155 - xiaohe
-  - 🌐 OTHER 156 - xiaohe
-  - 🌐 OTHER 157 - xiaohe
-  - 🌐 OTHER 158 - xiaohe
-  - 🌐 OTHER 159 - xiaohe
-  - 🌐 OTHER 160 - xiaohe
-  - 🌐 OTHER 161 - xiaohe
-  - 🌐 OTHER 162 - xiaohe
-  - 🌐 OTHER 163 - xiaohe
-  - 🌐 OTHER 164 - xiaohe
-  - 🌐 OTHER 165 - xiaohe
-  - 🌐 OTHER 166 - xiaohe
-  - 🌐 OTHER 167 - xiaohe
-  - 🌐 OTHER 168 - xiaohe
-  - 🌐 OTHER 169 - xiaohe
-  - 🌐 OTHER 170 - xiaohe
-  - 🌐 OTHER 171 - xiaohe
-  - 🌐 OTHER 172 - xiaohe
-  - 🌐 OTHER 173 - xiaohe
-  - 🌐 OTHER 174 - xiaohe
-  - 🌐 OTHER 175 - xiaohe
-  - 🌐 OTHER 176 - xiaohe
-  - 🌐 OTHER 177 - xiaohe
-  - 🌐 OTHER 178 - xiaohe
-  - 🌐 OTHER 179 - xiaohe
-  - 🌐 OTHER 180 - xiaohe
-  - 🌐 OTHER 181 - xiaohe
-  - 🌐 OTHER 182 - xiaohe
-  - 🌐 OTHER 183 - xiaohe
-  - 🌐 OTHER 184 - xiaohe
-  - 🌐 OTHER 185 - xiaohe
-  - 🌐 OTHER 186 - xiaohe
-  - 🌐 OTHER 187 - xiaohe
-  - 🌐 OTHER 188 - xiaohe
-  - 🌐 OTHER 189 - xiaohe
-  - 🌐 OTHER 190 - xiaohe
-  - 🌐 OTHER 191 - xiaohe
-  - 🌐 OTHER 192 - xiaohe
-  - 🌐 OTHER 193 - xiaohe
-  - 🌐 OTHER 194 - xiaohe
-  - 🌐 OTHER 195 - xiaohe
-  - 🌐 OTHER 196 - xiaohe
-  - 🌐 OTHER 197 - xiaohe
-  - 🌐 OTHER 198 - xiaohe
-  - 🌐 OTHER 199 - xiaohe
-  - 🌐 OTHER 200 - xiaohe
-  - 🌐 OTHER 201 - xiaohe
-  - 🌐 OTHER 202 - xiaohe
-  - 🌐 OTHER 203 - xiaohe
-  - 🌐 OTHER 204 - xiaohe
-  - 🌐 OTHER 205 - xiaohe
-  - 🌐 OTHER 206 - xiaohe
-  - 🌐 OTHER 207 - xiaohe
-  - 🌐 OTHER 208 - xiaohe
-  - 🌐 OTHER 209 - xiaohe
-  - 🌐 OTHER 210 - xiaohe
-  - 🌐 OTHER 211 - xiaohe
-  - 🌐 OTHER 212 - xiaohe
-  - 🌐 OTHER 213 - xiaohe
-  - 🌐 OTHER 214 - xiaohe
-  - 🌐 OTHER 215 - xiaohe
-  - 🌐 OTHER 216 - xiaohe
-  - 🌐 OTHER 217 - xiaohe
-  - 🌐 OTHER 218 - xiaohe
-  - 🌐 OTHER 219 - xiaohe
-  - 🌐 OTHER 220 - xiaohe
-  - 🌐 OTHER 221 - xiaohe
-  - 🌐 OTHER 222 - xiaohe
-  - 🌐 OTHER 223 - xiaohe
-  - 🌐 OTHER 224 - xiaohe
-  - 🌐 OTHER 225 - xiaohe
-  - 🌐 OTHER 226 - xiaohe
-  - 🌐 OTHER 227 - xiaohe
-  - 🌐 OTHER 228 - xiaohe
-  - 🌐 OTHER 229 - xiaohe
-  - 🌐 OTHER 230 - xiaohe
-  - 🌐 OTHER 231 - xiaohe
-  - 🌐 OTHER 232 - xiaohe
-  - 🌐 OTHER 233 - xiaohe
-  - 🌐 OTHER 234 - xiaohe
-  - 🌐 OTHER 235 - xiaohe
-  - 🌐 OTHER 236 - xiaohe
-  - 🌐 OTHER 237 - xiaohe
-  - 🌐 OTHER 238 - xiaohe
-  - 🌐 OTHER 239 - xiaohe
-  - 🌐 OTHER 240 - xiaohe
-  - 🌐 OTHER 241 - xiaohe
-  - 🌐 OTHER 242 - xiaohe
-  - 🌐 OTHER 243 - xiaohe
-  - 🌐 OTHER 244 - xiaohe
-  - 🌐 OTHER 245 - xiaohe
-  - 🌐 OTHER 246 - xiaohe
-  - 🌐 OTHER 247 - xiaohe
-  - 🌐 OTHER 248 - xiaohe
-  - 🌐 OTHER 249 - xiaohe
-  - 🌐 OTHER 250 - xiaohe
-  - 🌐 OTHER 251 - xiaohe
-  - 🌐 OTHER 252 - xiaohe
-  - 🌐 OTHER 253 - xiaohe
-  - 🌐 OTHER 254 - xiaohe
-  - 🌐 OTHER 255 - xiaohe
-  - 🌐 OTHER 256 - xiaohe
-  - 🌐 OTHER 257 - xiaohe
-  - 🌐 OTHER 258 - xiaohe
-  - 🌐 OTHER 259 - xiaohe
-  - 🌐 OTHER 260 - xiaohe
-  - 🌐 OTHER 261 - xiaohe
-  - 🌐 OTHER 262 - xiaohe
-  - 🌐 OTHER 263 - xiaohe
-  - 🌐 OTHER 264 - xiaohe
-  - 🌐 OTHER 265 - xiaohe
-  - 🌐 OTHER 266 - xiaohe
-  - 🌐 OTHER 267 - xiaohe
-  - 🌐 OTHER 268 - xiaohe
-  - 🌐 OTHER 269 - xiaohe
-  - 🌐 OTHER 270 - xiaohe
-  - 🌐 OTHER 271 - xiaohe
-  - 🌐 OTHER 272 - xiaohe
-  - 🌐 OTHER 273 - xiaohe
+  - 🌐 其他地区 (Other) 01 - xiaohe
+  - 🌐 其他地区 (Other) 02 - xiaohe
+  - 🌐 其他地区 (Other) 03 - xiaohe
+  - 🌐 其他地区 (Other) 04 - xiaohe
+  - 🌐 其他地区 (Other) 05 - xiaohe
+  - 🌐 其他地区 (Other) 06 - xiaohe
+  - 🌐 其他地区 (Other) 07 - xiaohe
+  - 🌐 其他地区 (Other) 08 - xiaohe
+  - 🌐 其他地区 (Other) 09 - xiaohe
+  - 🌐 其他地区 (Other) 10 - xiaohe
+  - 🌐 其他地区 (Other) 11 - xiaohe
+  - 🌐 其他地区 (Other) 12 - xiaohe
+  - 🌐 其他地区 (Other) 13 - xiaohe
+  - 🌐 其他地区 (Other) 14 - xiaohe
+  - 🌐 其他地区 (Other) 15 - xiaohe
+  - 🌐 其他地区 (Other) 16 - xiaohe
+  - 🌐 其他地区 (Other) 17 - xiaohe
+  - 🌐 其他地区 (Other) 18 - xiaohe
+  - 🌐 其他地区 (Other) 19 - xiaohe
+  - 🌐 其他地区 (Other) 20 - xiaohe
+  - 🌐 其他地区 (Other) 21 - xiaohe
+  - 🌐 其他地区 (Other) 22 - xiaohe
+  - 🌐 其他地区 (Other) 23 - xiaohe
+  - 🌐 其他地区 (Other) 24 - xiaohe
+  - 🌐 其他地区 (Other) 25 - xiaohe
+  - 🌐 其他地区 (Other) 26 - xiaohe
+  - 🌐 其他地区 (Other) 27 - xiaohe
+  - 🌐 其他地区 (Other) 28 - xiaohe
+  - 🌐 其他地区 (Other) 29 - xiaohe
+  - 🌐 其他地区 (Other) 30 - xiaohe
+  - 🌐 其他地区 (Other) 31 - xiaohe
+  - 🌐 其他地区 (Other) 32 - xiaohe
+  - 🌐 其他地区 (Other) 33 - xiaohe
+  - 🌐 其他地区 (Other) 34 - xiaohe
+  - 🌐 其他地区 (Other) 35 - xiaohe
+  - 🌐 其他地区 (Other) 36 - xiaohe
+  - 🌐 其他地区 (Other) 37 - xiaohe
+  - 🌐 其他地区 (Other) 38 - xiaohe
+  - 🌐 其他地区 (Other) 39 - xiaohe
+  - 🌐 其他地区 (Other) 40 - xiaohe
+  - 🌐 其他地区 (Other) 41 - xiaohe
+  - 🌐 其他地区 (Other) 42 - xiaohe
+  - 🌐 其他地区 (Other) 43 - xiaohe
+  - 🌐 其他地区 (Other) 44 - xiaohe
+  - 🌐 其他地区 (Other) 45 - xiaohe
+  - 🌐 其他地区 (Other) 46 - xiaohe
+  - 🌐 其他地区 (Other) 47 - xiaohe
+  - 🌐 其他地区 (Other) 48 - xiaohe
+  - 🌐 其他地区 (Other) 49 - xiaohe
+  - 🌐 其他地区 (Other) 50 - xiaohe
+  - 🌐 其他地区 (Other) 51 - xiaohe
+  - 🌐 其他地区 (Other) 52 - xiaohe
+  - 🌐 其他地区 (Other) 53 - xiaohe
+  - 🌐 其他地区 (Other) 54 - xiaohe
+  - 🌐 其他地区 (Other) 55 - xiaohe
+  - 🌐 其他地区 (Other) 56 - xiaohe
+  - 🌐 其他地区 (Other) 57 - xiaohe
+  - 🌐 其他地区 (Other) 58 - xiaohe
+  - 🌐 其他地区 (Other) 59 - xiaohe
+  - 🌐 其他地区 (Other) 60 - xiaohe
+  - 🌐 其他地区 (Other) 61 - xiaohe
+  - 🌐 其他地区 (Other) 62 - xiaohe
+  - 🌐 其他地区 (Other) 63 - xiaohe
+  - 🌐 其他地区 (Other) 64 - xiaohe
+  - 🌐 其他地区 (Other) 65 - xiaohe
+  - 🌐 其他地区 (Other) 66 - xiaohe
+  - 🌐 其他地区 (Other) 67 - xiaohe
+  - 🌐 其他地区 (Other) 68 - xiaohe
+  - 🌐 其他地区 (Other) 69 - xiaohe
+  - 🌐 其他地区 (Other) 70 - xiaohe
+  - 🌐 其他地区 (Other) 71 - xiaohe
+  - 🌐 其他地区 (Other) 72 - xiaohe
+  - 🌐 其他地区 (Other) 73 - xiaohe
+  - 🌐 其他地区 (Other) 74 - xiaohe
+  - 🌐 其他地区 (Other) 75 - xiaohe
+  - 🌐 其他地区 (Other) 76 - xiaohe
+  - 🌐 其他地区 (Other) 77 - xiaohe
+  - 🌐 其他地区 (Other) 78 - xiaohe
+  - 🌐 其他地区 (Other) 79 - xiaohe
+  - 🌐 其他地区 (Other) 80 - xiaohe
+  - 🌐 其他地区 (Other) 81 - xiaohe
+  - 🌐 其他地区 (Other) 82 - xiaohe
+  - 🌐 其他地区 (Other) 83 - xiaohe
+  - 🌐 其他地区 (Other) 84 - xiaohe
+  - 🌐 其他地区 (Other) 85 - xiaohe
+  - 🌐 其他地区 (Other) 86 - xiaohe
+  - 🌐 其他地区 (Other) 87 - xiaohe
+  - 🌐 其他地区 (Other) 88 - xiaohe
+  - 🌐 其他地区 (Other) 89 - xiaohe
+  - 🌐 其他地区 (Other) 90 - xiaohe
+  - 🌐 其他地区 (Other) 91 - xiaohe
+  - 🌐 其他地区 (Other) 92 - xiaohe
+  - 🌐 其他地区 (Other) 93 - xiaohe
+  - 🌐 其他地区 (Other) 94 - xiaohe
+  - 🌐 其他地区 (Other) 95 - xiaohe
+  - 🌐 其他地区 (Other) 96 - xiaohe
+  - 🌐 其他地区 (Other) 97 - xiaohe
+  - 🌐 其他地区 (Other) 98 - xiaohe
+  - 🌐 其他地区 (Other) 99 - xiaohe
+  - 🌐 其他地区 (Other) 100 - xiaohe
+  - 🌐 其他地区 (Other) 101 - xiaohe
+  - 🌐 其他地区 (Other) 102 - xiaohe
+  - 🌐 其他地区 (Other) 103 - xiaohe
+  - 🌐 其他地区 (Other) 104 - xiaohe
+  - 🌐 其他地区 (Other) 105 - xiaohe
+  - 🌐 其他地区 (Other) 106 - xiaohe
+  - 🌐 其他地区 (Other) 107 - xiaohe
+  - 🌐 其他地区 (Other) 108 - xiaohe
+  - 🌐 其他地区 (Other) 109 - xiaohe
+  - 🌐 其他地区 (Other) 110 - xiaohe
+  - 🌐 其他地区 (Other) 111 - xiaohe
+  - 🌐 其他地区 (Other) 112 - xiaohe
+  - 🌐 其他地区 (Other) 113 - xiaohe
+  - 🌐 其他地区 (Other) 114 - xiaohe
+  - 🌐 其他地区 (Other) 115 - xiaohe
+  - 🌐 其他地区 (Other) 116 - xiaohe
+  - 🌐 其他地区 (Other) 117 - xiaohe
+  - 🌐 其他地区 (Other) 118 - xiaohe
+  - 🌐 其他地区 (Other) 119 - xiaohe
+  - 🌐 其他地区 (Other) 120 - xiaohe
+  - 🌐 其他地区 (Other) 121 - xiaohe
+  - 🌐 其他地区 (Other) 122 - xiaohe
+  - 🌐 其他地区 (Other) 123 - xiaohe
+  - 🌐 其他地区 (Other) 124 - xiaohe
+  - 🌐 其他地区 (Other) 125 - xiaohe
+  - 🌐 其他地区 (Other) 126 - xiaohe
+  - 🌐 其他地区 (Other) 127 - xiaohe
+  - 🌐 其他地区 (Other) 128 - xiaohe
+  - 🌐 其他地区 (Other) 129 - xiaohe
+  - 🌐 其他地区 (Other) 130 - xiaohe
+  - 🌐 其他地区 (Other) 131 - xiaohe
+  - 🌐 其他地区 (Other) 132 - xiaohe
+  - 🌐 其他地区 (Other) 133 - xiaohe
+  - 🌐 其他地区 (Other) 134 - xiaohe
+  - 🌐 其他地区 (Other) 135 - xiaohe
+  - 🌐 其他地区 (Other) 136 - xiaohe
+  - 🌐 其他地区 (Other) 137 - xiaohe
+  - 🌐 其他地区 (Other) 138 - xiaohe
+  - 🌐 其他地区 (Other) 139 - xiaohe
+  - 🌐 其他地区 (Other) 140 - xiaohe
+  - 🌐 其他地区 (Other) 141 - xiaohe
+  - 🌐 其他地区 (Other) 142 - xiaohe
+  - 🌐 其他地区 (Other) 143 - xiaohe
+  - 🌐 其他地区 (Other) 144 - xiaohe
+  - 🌐 其他地区 (Other) 145 - xiaohe
+  - 🌐 其他地区 (Other) 146 - xiaohe
+  - 🌐 其他地区 (Other) 147 - xiaohe
+  - 🌐 其他地区 (Other) 148 - xiaohe
+  - 🌐 其他地区 (Other) 149 - xiaohe
+  - 🌐 其他地区 (Other) 150 - xiaohe
+  - 🌐 其他地区 (Other) 151 - xiaohe
 rules:
 - MATCH,PROXIES

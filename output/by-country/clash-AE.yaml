@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 AE 01 - xiaohe
+- name: 🇦🇪 阿联酋 (UAE) 01 - xiaohe
   type: vless
   server: 78.17.190.94
   port: 53289
@@ -12,17 +12,47 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
+- name: 🇦🇪 阿联酋 (UAE) 02 - xiaohe
+  type: vless
+  server: 84.235.244.108
+  port: 22573
+  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: uae.unixzone.us
+- name: 🇦🇪 阿联酋 (UAE) 03 - xiaohe
+  type: vless
+  server: 151.243.182.249
+  port: 443
+  uuid: 98673856-cd6f-4aa0-b2c9-d2ec90c0f47b
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 151.243.182.249
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 AE 01 - xiaohe
+  - 🇦🇪 阿联酋 (UAE) 01 - xiaohe
+  - 🇦🇪 阿联酋 (UAE) 02 - xiaohe
+  - 🇦🇪 阿联酋 (UAE) 03 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 AE 01 - xiaohe
+  - 🇦🇪 阿联酋 (UAE) 01 - xiaohe
+  - 🇦🇪 阿联酋 (UAE) 02 - xiaohe
+  - 🇦🇪 阿联酋 (UAE) 03 - xiaohe
 rules:
 - MATCH,PROXIES

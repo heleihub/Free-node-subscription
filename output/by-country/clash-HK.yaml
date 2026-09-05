@@ -4,831 +4,20 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇰 HK 01 - xiaohe
-  type: trojan
-  server: 185.244.208.13
-  port: 443
-  password: ND91608427
-  udp: true
-  sni: ace-starling.rooster465.autos
-  skip-cert-verify: true
-- name: 🇭🇰 HK 02 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 01 - xiaohe
   type: vless
-  server: 2126c0bf-tl4g00-u0aht1-1rz5s.hk3.hyhuawei.com
+  server: 43.161.254.71
   port: 443
-  uuid: 40e084d6-0316-11f0-90e2-f23c913c8d2b
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
   udp: true
   tls: true
   skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 03 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: e29de954-ea01-11ef-a271-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 04 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 989aa406-ea9b-11ef-97da-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 05 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 06 - xiaohe
-  type: vless
-  server: 693dce9b-tl4g00-tw661e-1isea.hk3.hyhuawei.com
-  port: 443
-  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 07 - xiaohe
-  type: vless
-  server: 6b6badbf-tl4g00-tu0ezx-1m7l4.hk3.hyhuawei.com
-  port: 443
-  uuid: bd515574-3b10-11ee-ac14-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 08 - xiaohe
-  type: vless
-  server: d77faecf-tl4g00-tnsc3a-1f0gu.hk3.hyhuawei.com
-  port: 443
-  uuid: 3085fcf8-a69c-11ec-bd7c-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 09 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 62f2374c-891b-11ef-a3f6-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 10 - xiaohe
-  type: vless
-  server: 3d71be18-tl4g00-twnp5a-ahsb.hk3.hyhuawei.com
-  port: 443
-  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 11 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 3fed19ea-1671-11f0-bd2e-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 12 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 13 - xiaohe
-  type: vless
-  server: 6b6badbf-tl4g00-tu0ezx-1m7l4.hk3.hyhuawei.com
-  port: 443
-  uuid: bd515574-3b10-11ee-ac14-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 14 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: c11ff50c-f582-11ee-94df-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 15 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 16 - xiaohe
-  type: vless
-  server: b70729d5-tl4g00-twuk0i-1hzyr.hk3.hyhuawei.com
-  port: 443
-  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 17 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 18 - xiaohe
-  type: vless
-  server: 04cf8ef1-tl4g00-tl22x4-1jbj0.hk3.hyhuawei.com
-  port: 443
-  uuid: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 19 - xiaohe
-  type: vless
-  server: 6fa50db8-tl4g00-ts40sw-14g76.hk3.hyhuawei.com
-  port: 443
-  uuid: 4729b4c8-1790-11eb-8684-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 20 - xiaohe
-  type: vless
-  server: 53a10239-tl4g00-tn57fp-5ifr.hk3.hyhuawei.com
-  port: 443
-  uuid: ecfab6c8-df5b-11ed-98a7-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: safari
-- name: 🇭🇰 HK 21 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: f609abb4-ed17-11ee-9fa2-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 22 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 45bc25b2-1a10-11ed-91c0-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 23 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 24 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 61c4be90-6235-11ec-a8bf-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 25 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 26 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 27 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 3fed19ea-1671-11f0-bd2e-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 28 - xiaohe
-  type: vless
-  server: b67bcceb-tl4g00-tpftcp-13x18.hk3.hyhuawei.com
-  port: 443
-  uuid: e4499a62-0cfe-11eb-ad8c-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 29 - xiaohe
-  type: vless
-  server: 273edc11-tl4g00-tlao2l-mv7m.hk3.hyhuawei.com
-  port: 443
-  uuid: 94d40708-8273-11ea-8fc9-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: qq
-- name: 🇭🇰 HK 30 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 0abd5d38-fdf1-11ed-bade-f23c91369f2d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 31 - xiaohe
-  type: vless
-  server: 7df939c8-tl4g00-tlvsde-1rnrp.hk3.hyhuawei.com
-  port: 443
-  uuid: 989aa406-ea9b-11ef-97da-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 32 (家宽) - xiaohe
-  type: trojan
-  server: 119.246.1.143
-  port: 443
-  password: BxceQaOe
-  udp: true
-  sni: t.me%25252fripaojiedian
-  skip-cert-verify: true
-- name: 🇭🇰 HK 33 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 34 - xiaohe
-  type: vless
-  server: 693dce9b-tl4g00-tw661e-1isea.hk3.hyhuawei.com
-  port: 443
-  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 35 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 36 - xiaohe
-  type: vless
-  server: ed633af1-tl4g00-tqx9ef-1k0yf.hk3.hyhuawei.com
-  port: 443
-  uuid: 9cc3c03e-21fd-11ee-a642-f23c91369f2d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 37 - xiaohe
-  type: vless
-  server: f429f2ca-tl4g00-twj07b-fm2v.hk3.hyhuawei.com
-  port: 443
-  uuid: 3fed19ea-1671-11f0-bd2e-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 38 - xiaohe
-  type: vless
-  server: 04a12bf4-tl4g00-ttxkqc-e06r.hk3.hyhuawei.com
-  port: 443
-  uuid: 861726bb-c61a-b0e0-99fa-5ddfdcf21902
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 39 - xiaohe
-  type: vless
-  server: 6ff2cd34-tl4g00-tr9h64-1f1f1.hk3.hyhuawei.com
-  port: 443
-  uuid: 61c4be90-6235-11ec-a8bf-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 40 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 61c4be90-6235-11ec-a8bf-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 41 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 94d40708-8273-11ea-8fc9-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 42 - xiaohe
-  type: ss
-  server: 212.192.15.86
-  port: 20210
-  cipher: aes-256-gcm
-  password: 72553320ae6bcc8f
-  udp: true
-- name: 🇭🇰 HK 43 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 0da8651e-e1f6-11ec-bd7c-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 44 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 45 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: bd515574-3b10-11ee-ac14-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 46 - xiaohe
-  type: hysteria2
-  server: 202.146.222.29
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.29
-  skip-cert-verify: true
-- name: 🇭🇰 HK 47 - xiaohe
-  type: hysteria2
-  server: 202.146.222.29
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.29
-  skip-cert-verify: true
-- name: 🇭🇰 HK 48 - xiaohe
-  type: hysteria2
-  server: 202.146.222.29
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.29
-  skip-cert-verify: true
-- name: 🇭🇰 HK 49 - xiaohe
-  type: vless
-  server: b70729d5-tl4g00-twuk0i-1hzyr.hk3.hyhuawei.com
-  port: 443
-  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: qq
-- name: 🇭🇰 HK 50 - xiaohe
-  type: vless
-  server: 4918c2c7-tl4g00-tnnrly-g43g.hk3.hyhuawei.com
-  port: 443
-  uuid: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 51 - xiaohe
-  type: vless
-  server: 693dce9b-tl4g00-tw661e-1isea.hk3.hyhuawei.com
-  port: 443
-  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: safari
-- name: 🇭🇰 HK 52 - xiaohe
-  type: vless
-  server: c17a6c0c-tl4g00-tpaqgu-1smhu.hk3.hyhuawei.com
-  port: 443
-  uuid: 62f2374c-891b-11ef-a3f6-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 53 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 336501b6-51d2-11ee-a993-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 54 - xiaohe
-  type: vless
-  server: f19ad17e-tl4g00-u1dafb-1ro8s.hk3.hyhuawei.com
-  port: 443
-  uuid: a18ef18e-293a-11ef-b76e-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 55 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 56 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 57 - xiaohe
-  type: vless
-  server: 7df939c8-tl4g00-tlvsde-1rnrp.hk3.hyhuawei.com
-  port: 443
-  uuid: 989aa406-ea9b-11ef-97da-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 58 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 0abd5d38-fdf1-11ed-bade-f23c91369f2d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 59 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 3fed19ea-1671-11f0-bd2e-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 60 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 9cc3c03e-21fd-11ee-a642-f23c91369f2d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 61 - xiaohe
-  type: vless
-  server: f070a8ea-tl4g00-u5ip77-duku.hk3.hyhuawei.com
-  port: 443
-  uuid: 8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 62 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 62f2374c-891b-11ef-a3f6-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 63 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 9cc3c03e-21fd-11ee-a642-f23c91369f2d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 64 - xiaohe
-  type: vless
-  server: b83dbba5-tl4g00-txfm0f-1qxa1.hk3.hyhuawei.com
-  port: 443
-  uuid: f609abb4-ed17-11ee-9fa2-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 65 - xiaohe
-  type: vless
-  server: 49c3de25-tl4g00-tvgkxc-hrtf.hk3.hyhuawei.com
-  port: 443
-  uuid: 0da8651e-e1f6-11ec-bd7c-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 66 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: ecfab6c8-df5b-11ed-98a7-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 67 - xiaohe
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🇭🇰 中国香港 (Hong Kong) 02 - xiaohe
   type: vless
   server: 219.77.167.19
   port: 443
@@ -841,348 +30,7 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 68 - xiaohe
-  type: vless
-  server: 3d71be18-tl4g00-twnp5a-ahsb.hk3.hyhuawei.com
-  port: 443
-  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 69 - xiaohe
-  type: hysteria2
-  server: 202.146.222.29
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.29
-  skip-cert-verify: true
-- name: 🇭🇰 HK 70 - xiaohe
-  type: hysteria2
-  server: 202.146.222.29
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.29
-  skip-cert-verify: true
-- name: 🇭🇰 HK 71 - xiaohe
-  type: ss
-  server: 212.192.15.39
-  port: 8388
-  cipher: aes-256-gcm
-  password: IfnoAHV0caMbhDAR
-  udp: true
-- name: 🇭🇰 HK 72 (家宽) - xiaohe
-  type: trojan
-  server: 119.246.1.143
-  port: 443
-  password: BxceQaOe
-  udp: true
-  sni: 119.246.1.143
-  skip-cert-verify: true
-- name: 🇭🇰 HK 73 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: c11ff50c-f582-11ee-94df-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 74 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: a2b0fd2b-716f-0df8-d4e2-03a1c00e5f1a
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 75 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 76 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 94d40708-8273-11ea-8fc9-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 77 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: fcd39788-ca23-11ed-86e2-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 78 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 336501b6-51d2-11ee-a993-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 79 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 40e084d6-0316-11f0-90e2-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 80 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: adbd0a82-3336-11ed-bd7c-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 81 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 336501b6-51d2-11ee-a993-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 82 - xiaohe
-  type: vless
-  server: e1e7c7b8-tl4g00-tnt75r-1k8ga.hk3.hyhuawei.com
-  port: 443
-  uuid: f860f2da-5035-11ed-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 83 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: bd515574-3b10-11ee-ac14-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 84 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 989aa406-ea9b-11ef-97da-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 85 - xiaohe
-  type: vless
-  server: e94a36e2-tl4g00-trhks8-1c9em.hk3.hyhuawei.com
-  port: 443
-  uuid: 336501b6-51d2-11ee-a993-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 86 - xiaohe
-  type: vless
-  server: 4918c2c7-tl4g00-tnnrly-g43g.hk3.hyhuawei.com
-  port: 443
-  uuid: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 87 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 88 - xiaohe
-  type: vless
-  server: b70729d5-tl4g00-twuk0i-1hzyr.hk3.hyhuawei.com
-  port: 443
-  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 89 - xiaohe
-  type: vless
-  server: 04cf8ef1-tl4g00-tl22x4-1jbj0.hk3.hyhuawei.com
-  port: 443
-  uuid: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: qq
-- name: 🇭🇰 HK 90 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: e29de954-ea01-11ef-a271-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 91 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 92 - xiaohe
-  type: vless
-  server: 4ab54718-tl4g00-u3xqxa-1q91p.hk3.hyhuawei.com
-  port: 443
-  uuid: c11ff50c-f582-11ee-94df-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 93 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 94 - xiaohe
-  type: vless
-  server: 273edc11-tl4g00-tlao2l-mv7m.hk3.hyhuawei.com
-  port: 443
-  uuid: 94d40708-8273-11ea-8fc9-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 95 - xiaohe
-  type: vless
-  server: 219.77.167.19
-  port: 443
-  uuid: a4c9b7cc-a816-11ed-9f65-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 96 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 03 - xiaohe
   type: vless
   server: f46e6d70-tl4g00-u2e9xs-2b2n.hk3.hyhuawei.com
   port: 443
@@ -1195,11 +43,11 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 97 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 04 - xiaohe
   type: vless
-  server: b70729d5-tl4g00-twuk0i-1hzyr.hk3.hyhuawei.com
+  server: e1e7c7b8-tl4g00-tnt75r-1k8ga.hk3.hyhuawei.com
   port: 443
-  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
+  uuid: f860f2da-5035-11ed-bb74-f23c9164ca5d
   udp: true
   tls: true
   skip-cert-verify: true
@@ -1208,37 +56,19 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 98 - xiaohe
-  type: vless
-  server: 219.77.167.19
+- name: 🇭🇰 中国香港 (Hong Kong) 05 (家宽) - xiaohe
+  type: trojan
+  server: 119.246.1.143
   port: 443
-  uuid: a4c9b7cc-a816-11ed-9f65-f23c9164ca5d
+  password: BxceQaOe
   udp: true
-  tls: true
+  sni: t.me%25252fripaojiedian
   skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 99 - xiaohe
-  type: vless
-  server: f070a8ea-tl4g00-u5ip77-duku.hk3.hyhuawei.com
-  port: 443
-  uuid: 8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 100 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 06 - xiaohe
   type: vless
   server: 219.77.167.19
   port: 443
-  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
+  uuid: 40e084d6-0316-11f0-90e2-f23c913c8d2b
   udp: true
   tls: true
   skip-cert-verify: true
@@ -1247,7 +77,33 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 101 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 07 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: adbd0a82-3336-11ed-bd7c-f23c913c8d2b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 08 - xiaohe
+  type: vless
+  server: 6b6badbf-tl4g00-tu0ezx-1m7l4.hk3.hyhuawei.com
+  port: 443
+  uuid: bd515574-3b10-11ee-ac14-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 09 - xiaohe
   type: vless
   server: 219.77.167.19
   port: 443
@@ -1260,7 +116,85 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 102 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 10 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: c11ff50c-f582-11ee-94df-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 11 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: ecfab6c8-df5b-11ed-98a7-f23c913c8d2b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 12 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 13 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 14 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 15 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: a4c9b7cc-a816-11ed-9f65-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 16 - xiaohe
   type: vless
   server: d38422b4-tl4g00-ts3rye-mrtr.hk3.hyhuawei.com
   port: 443
@@ -1273,11 +207,11 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 103 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 17 - xiaohe
   type: vless
-  server: 219.77.167.19
+  server: 2126c0bf-tl4g00-u0aht1-1rz5s.hk3.hyhuawei.com
   port: 443
-  uuid: f7d95364-607b-11ee-93af-f23c91369f2d
+  uuid: 40e084d6-0316-11f0-90e2-f23c913c8d2b
   udp: true
   tls: true
   skip-cert-verify: true
@@ -1286,11 +220,11 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 104 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 18 - xiaohe
   type: vless
   server: 219.77.167.19
   port: 443
-  uuid: ecfab6c8-df5b-11ed-98a7-f23c913c8d2b
+  uuid: 336501b6-51d2-11ee-a993-f23c9164ca5d
   udp: true
   tls: true
   skip-cert-verify: true
@@ -1299,9 +233,9 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 105 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 19 - xiaohe
   type: vless
-  server: 219.77.167.19
+  server: f070a8ea-tl4g00-u5ip77-duku.hk3.hyhuawei.com
   port: 443
   uuid: 8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9
   udp: true
@@ -1312,50 +246,11 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 106 - xiaohe
-  type: vless
-  server: 2c779dfe-tl4g00-trdynx-1rk9y.hk3.hyhuawei.com
-  port: 443
-  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 107 - xiaohe
-  type: vless
-  server: beda7e37-tl4g00-tphxte-1h5u7.hk3.hyhuawei.com
-  port: 443
-  uuid: e3fdbd22-8c17-11ee-ace4-f23c913c8d2b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 108 - xiaohe
-  type: vless
-  server: a558fe2a-tl4g00-txkkcl-1fli7.hk3.hyhuawei.com
-  port: 443
-  uuid: 0abd5d38-fdf1-11ed-bade-f23c91369f2d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 109 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 20 - xiaohe
   type: vless
   server: 219.77.167.19
   port: 443
-  uuid: 0da8651e-e1f6-11ec-bd7c-f23c913c8d2b
+  uuid: 62f2374c-891b-11ef-a3f6-f23c9164ca5d
   udp: true
   tls: true
   skip-cert-verify: true
@@ -1364,28 +259,59 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 110 - xiaohe
-  type: hysteria2
-  server: 202.146.222.174
+- name: 🇭🇰 中国香港 (Hong Kong) 21 - xiaohe
+  type: vless
+  server: 219.77.167.19
   port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.174
+  uuid: bd515574-3b10-11ee-ac14-f23c9164ca5d
+  udp: true
+  tls: true
   skip-cert-verify: true
-- name: 🇭🇰 HK 111 - xiaohe
-  type: hysteria2
-  server: 202.146.222.29
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 22 - xiaohe
+  type: vless
+  server: 7df939c8-tl4g00-tlvsde-1rnrp.hk3.hyhuawei.com
   port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.29
+  uuid: 989aa406-ea9b-11ef-97da-f23c91cfbbc9
+  udp: true
+  tls: true
   skip-cert-verify: true
-- name: 🇭🇰 HK 112 - xiaohe
-  type: hysteria2
-  server: 202.146.222.29
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 23 - xiaohe
+  type: vless
+  server: f19ad17e-tl4g00-u1dafb-1ro8s.hk3.hyhuawei.com
   port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.29
+  uuid: a18ef18e-293a-11ef-b76e-f23c91cfbbc9
+  udp: true
+  tls: true
   skip-cert-verify: true
-- name: 🇭🇰 HK 113 - xiaohe
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 24 - xiaohe
+  type: vless
+  server: f070a8ea-tl4g00-u5ip77-duku.hk3.hyhuawei.com
+  port: 443
+  uuid: 8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 25 - xiaohe
   type: vless
   server: 219.77.167.19
   port: 443
@@ -1398,45 +324,11 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 114 - xiaohe
-  type: vless
-  server: 1ba01fa4-tl4g00-tny186-4lg6.hk3.hyhuawei.com
-  port: 443
-  uuid: a4c9b7cc-a816-11ed-9f65-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 115 (家宽) - xiaohe
-  type: trojan
-  server: 119.246.1.143
-  port: 443
-  password: BxceQaOe
-  udp: true
-  sni: t.me
-  skip-cert-verify: true
-- name: 🇭🇰 HK 116 - xiaohe
-  type: vless
-  server: 693dce9b-tl4g00-tw661e-1isea.hk3.hyhuawei.com
-  port: 443
-  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-    short-id: ''
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
-- name: 🇭🇰 HK 117 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 26 - xiaohe
   type: vless
   server: 219.77.167.19
   port: 443
-  uuid: 861726bb-c61a-b0e0-99fa-5ddfdcf21902
+  uuid: a2b0fd2b-716f-0df8-d4e2-03a1c00e5f1a
   udp: true
   tls: true
   skip-cert-verify: true
@@ -1445,11 +337,11 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 118 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 27 - xiaohe
   type: vless
   server: 219.77.167.19
   port: 443
-  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
+  uuid: 40e084d6-0316-11f0-90e2-f23c913c8d2b
   udp: true
   tls: true
   skip-cert-verify: true
@@ -1458,11 +350,24 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 119 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 28 - xiaohe
+  type: vless
+  server: 49c3de25-tl4g00-tvgkxc-hrtf.hk3.hyhuawei.com
+  port: 443
+  uuid: 0da8651e-e1f6-11ec-bd7c-f23c913c8d2b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 29 - xiaohe
   type: vless
   server: 219.77.167.19
   port: 443
-  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
+  uuid: 989aa406-ea9b-11ef-97da-f23c91cfbbc9
   udp: true
   tls: true
   skip-cert-verify: true
@@ -1471,15 +376,33 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: chrome
-- name: 🇭🇰 HK 120 (家宽) - xiaohe
-  type: trojan
-  server: 119.246.1.143
+- name: 🇭🇰 中国香港 (Hong Kong) 30 - xiaohe
+  type: vless
+  server: beda7e37-tl4g00-tphxte-1h5u7.hk3.hyhuawei.com
   port: 443
-  password: BxceQaOe
+  uuid: e3fdbd22-8c17-11ee-ace4-f23c913c8d2b
   udp: true
-  sni: t.me%25252fripaojiedian
+  tls: true
   skip-cert-verify: true
-- name: 🇭🇰 HK 121 - xiaohe
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 31 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: e29de954-ea01-11ef-a271-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 32 - xiaohe
   type: vless
   server: 53a10239-tl4g00-tn57fp-5ifr.hk3.hyhuawei.com
   port: 443
@@ -1492,266 +415,1249 @@ proxies:
     short-id: ''
   servername: updates.cdn-apple.com
   client-fingerprint: qq
-- name: 🇭🇰 HK 122 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 33 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 62f2374c-891b-11ef-a3f6-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 34 - xiaohe
+  type: vless
+  server: e94a36e2-tl4g00-trhks8-1c9em.hk3.hyhuawei.com
+  port: 443
+  uuid: 336501b6-51d2-11ee-a993-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 35 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 336501b6-51d2-11ee-a993-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 36 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 0da8651e-e1f6-11ec-bd7c-f23c913c8d2b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 37 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 3fed19ea-1671-11f0-bd2e-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 38 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 39 - xiaohe
+  type: vless
+  server: 04a12bf4-tl4g00-ttxkqc-e06r.hk3.hyhuawei.com
+  port: 443
+  uuid: 861726bb-c61a-b0e0-99fa-5ddfdcf21902
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 40 - xiaohe
+  type: vless
+  server: b67bcceb-tl4g00-tpftcp-13x18.hk3.hyhuawei.com
+  port: 443
+  uuid: e4499a62-0cfe-11eb-ad8c-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 41 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 0abd5d38-fdf1-11ed-bade-f23c91369f2d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 42 - xiaohe
+  type: vless
+  server: d77faecf-tl4g00-tnsc3a-1f0gu.hk3.hyhuawei.com
+  port: 443
+  uuid: 3085fcf8-a69c-11ec-bd7c-f23c913c8d2b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 43 - xiaohe
+  type: vless
+  server: a558fe2a-tl4g00-txkkcl-1fli7.hk3.hyhuawei.com
+  port: 443
+  uuid: 0abd5d38-fdf1-11ed-bade-f23c91369f2d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 44 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 9cc3c03e-21fd-11ee-a642-f23c91369f2d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 45 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 989aa406-ea9b-11ef-97da-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 46 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 336501b6-51d2-11ee-a993-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 47 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: bd515574-3b10-11ee-ac14-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 48 - xiaohe
+  type: vless
+  server: b70729d5-tl4g00-twuk0i-1hzyr.hk3.hyhuawei.com
+  port: 443
+  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: qq
+- name: 🇭🇰 中国香港 (Hong Kong) 49 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 50 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: f7d95364-607b-11ee-93af-f23c91369f2d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 51 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: fcd39788-ca23-11ed-86e2-f23c913c8d2b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 52 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: a4c9b7cc-a816-11ed-9f65-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 53 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 54 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 55 - xiaohe
+  type: vless
+  server: 3d71be18-tl4g00-twnp5a-ahsb.hk3.hyhuawei.com
+  port: 443
+  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 56 - xiaohe
+  type: trojan
+  server: 185.244.208.13
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: ace-starling.rooster465.autos
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 57 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 58 - xiaohe
+  type: vless
+  server: 693dce9b-tl4g00-tw661e-1isea.hk3.hyhuawei.com
+  port: 443
+  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 59 - xiaohe
+  type: vless
+  server: ed633af1-tl4g00-tqx9ef-1k0yf.hk3.hyhuawei.com
+  port: 443
+  uuid: 9cc3c03e-21fd-11ee-a642-f23c91369f2d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 60 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: ecfab6c8-df5b-11ed-98a7-f23c913c8d2b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 61 - xiaohe
+  type: vless
+  server: f429f2ca-tl4g00-twj07b-fm2v.hk3.hyhuawei.com
+  port: 443
+  uuid: 3fed19ea-1671-11f0-bd2e-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 62 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 63 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 64 - xiaohe
+  type: vless
+  server: b70729d5-tl4g00-twuk0i-1hzyr.hk3.hyhuawei.com
+  port: 443
+  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 65 - xiaohe
+  type: hysteria2
+  server: 202.146.222.29
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.29
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 66 - xiaohe
+  type: hysteria2
+  server: 202.146.222.29
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.29
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 67 - xiaohe
+  type: vless
+  server: 04cf8ef1-tl4g00-tl22x4-1jbj0.hk3.hyhuawei.com
+  port: 443
+  uuid: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: qq
+- name: 🇭🇰 中国香港 (Hong Kong) 68 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 69 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: e29de954-ea01-11ef-a271-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 70 - xiaohe
+  type: ss
+  server: 212.192.15.86
+  port: 20210
+  cipher: aes-256-gcm
+  password: 72553320ae6bcc8f
+  udp: true
+- name: 🇭🇰 中国香港 (Hong Kong) 71 - xiaohe
+  type: vless
+  server: b70729d5-tl4g00-twuk0i-1hzyr.hk3.hyhuawei.com
+  port: 443
+  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 72 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: c11ff50c-f582-11ee-94df-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 73 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 74 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 75 - xiaohe
+  type: vless
+  server: 6b6badbf-tl4g00-tu0ezx-1m7l4.hk3.hyhuawei.com
+  port: 443
+  uuid: bd515574-3b10-11ee-ac14-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 76 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 77 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 9cc3c03e-21fd-11ee-a642-f23c91369f2d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 78 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 79 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 45bc25b2-1a10-11ed-91c0-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 80 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 81 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 61c4be90-6235-11ec-a8bf-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 82 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 61c4be90-6235-11ec-a8bf-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 83 - xiaohe
   type: hysteria2
   server: 202.146.222.89
   port: 443
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   sni: 202.146.222.89
   skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 84 - xiaohe
+  type: vless
+  server: b70729d5-tl4g00-twuk0i-1hzyr.hk3.hyhuawei.com
+  port: 443
+  uuid: 3be8cba8-b721-11ec-8b04-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 85 - xiaohe
+  type: vless
+  server: b83dbba5-tl4g00-txfm0f-1qxa1.hk3.hyhuawei.com
+  port: 443
+  uuid: f609abb4-ed17-11ee-9fa2-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 86 - xiaohe
+  type: vless
+  server: 1ba01fa4-tl4g00-tny186-4lg6.hk3.hyhuawei.com
+  port: 443
+  uuid: a4c9b7cc-a816-11ed-9f65-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 87 - xiaohe
+  type: vless
+  server: 6fa50db8-tl4g00-ts40sw-14g76.hk3.hyhuawei.com
+  port: 443
+  uuid: 4729b4c8-1790-11eb-8684-f23c913c8d2b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 88 - xiaohe
+  type: vless
+  server: 693dce9b-tl4g00-tw661e-1isea.hk3.hyhuawei.com
+  port: 443
+  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 89 - xiaohe
+  type: vless
+  server: 2c779dfe-tl4g00-trdynx-1rk9y.hk3.hyhuawei.com
+  port: 443
+  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 90 - xiaohe
+  type: vless
+  server: 4918c2c7-tl4g00-tnnrly-g43g.hk3.hyhuawei.com
+  port: 443
+  uuid: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 91 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 3fed19ea-1671-11f0-bd2e-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 92 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 861726bb-c61a-b0e0-99fa-5ddfdcf21902
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 93 - xiaohe
+  type: vless
+  server: 7df939c8-tl4g00-tlvsde-1rnrp.hk3.hyhuawei.com
+  port: 443
+  uuid: 989aa406-ea9b-11ef-97da-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 94 - xiaohe
+  type: vless
+  server: 04cf8ef1-tl4g00-tl22x4-1jbj0.hk3.hyhuawei.com
+  port: 443
+  uuid: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 95 - xiaohe
+  type: vless
+  server: c17a6c0c-tl4g00-tpaqgu-1smhu.hk3.hyhuawei.com
+  port: 443
+  uuid: 62f2374c-891b-11ef-a3f6-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 96 - xiaohe
+  type: vless
+  server: 693dce9b-tl4g00-tw661e-1isea.hk3.hyhuawei.com
+  port: 443
+  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 97 - xiaohe
+  type: vless
+  server: 53a10239-tl4g00-tn57fp-5ifr.hk3.hyhuawei.com
+  port: 443
+  uuid: ecfab6c8-df5b-11ed-98a7-f23c913c8d2b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: safari
+- name: 🇭🇰 中国香港 (Hong Kong) 98 - xiaohe
+  type: vless
+  server: 6ff2cd34-tl4g00-tr9h64-1f1f1.hk3.hyhuawei.com
+  port: 443
+  uuid: 61c4be90-6235-11ec-a8bf-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 99 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 0abd5d38-fdf1-11ed-bade-f23c91369f2d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 100 - xiaohe
+  type: vless
+  server: 4ab54718-tl4g00-u3xqxa-1q91p.hk3.hyhuawei.com
+  port: 443
+  uuid: c11ff50c-f582-11ee-94df-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 101 - xiaohe
+  type: vless
+  server: 3d71be18-tl4g00-twnp5a-ahsb.hk3.hyhuawei.com
+  port: 443
+  uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 102 - xiaohe
+  type: hysteria2
+  server: 202.146.222.29
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.29
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 103 - xiaohe
+  type: hysteria2
+  server: 202.146.222.29
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.29
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 104 - xiaohe
+  type: hysteria2
+  server: 202.146.222.29
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.29
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 105 - xiaohe
+  type: hysteria2
+  server: 202.146.222.29
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.29
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 106 - xiaohe
+  type: hysteria2
+  server: 202.146.222.29
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.29
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 107 - xiaohe
+  type: vless
+  server: 693dce9b-tl4g00-tw661e-1isea.hk3.hyhuawei.com
+  port: 443
+  uuid: d6abdbda-fe9d-11ec-bb74-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: safari
+- name: 🇭🇰 中国香港 (Hong Kong) 108 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 109 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: f609abb4-ed17-11ee-9fa2-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 110 (家宽) - xiaohe
+  type: trojan
+  server: 119.246.1.143
+  port: 443
+  password: BxceQaOe
+  udp: true
+  sni: 119.246.1.143
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 111 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 88f6e3c4-1d01-11ef-812c-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 112 - xiaohe
+  type: vless
+  server: 4918c2c7-tl4g00-tnnrly-g43g.hk3.hyhuawei.com
+  port: 443
+  uuid: 6ddb6a68-d5f5-ca30-3943-cf0c9876d50c
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 113 - xiaohe
+  type: vless
+  server: 219.77.167.19
+  port: 443
+  uuid: 3fed19ea-1671-11f0-bd2e-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+    short-id: ''
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 114 (家宽) - xiaohe
+  type: trojan
+  server: 119.246.1.143
+  port: 443
+  password: BxceQaOe
+  udp: true
+  sni: t.me%25252fripaojiedian
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 115 - xiaohe
+  type: hysteria2
+  server: 202.146.222.174
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.174
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇭🇰 HK 01 - xiaohe
-  - 🇭🇰 HK 02 - xiaohe
-  - 🇭🇰 HK 03 - xiaohe
-  - 🇭🇰 HK 04 - xiaohe
-  - 🇭🇰 HK 05 - xiaohe
-  - 🇭🇰 HK 06 - xiaohe
-  - 🇭🇰 HK 07 - xiaohe
-  - 🇭🇰 HK 08 - xiaohe
-  - 🇭🇰 HK 09 - xiaohe
-  - 🇭🇰 HK 10 - xiaohe
-  - 🇭🇰 HK 11 - xiaohe
-  - 🇭🇰 HK 12 - xiaohe
-  - 🇭🇰 HK 13 - xiaohe
-  - 🇭🇰 HK 14 - xiaohe
-  - 🇭🇰 HK 15 - xiaohe
-  - 🇭🇰 HK 16 - xiaohe
-  - 🇭🇰 HK 17 - xiaohe
-  - 🇭🇰 HK 18 - xiaohe
-  - 🇭🇰 HK 19 - xiaohe
-  - 🇭🇰 HK 20 - xiaohe
-  - 🇭🇰 HK 21 - xiaohe
-  - 🇭🇰 HK 22 - xiaohe
-  - 🇭🇰 HK 23 - xiaohe
-  - 🇭🇰 HK 24 - xiaohe
-  - 🇭🇰 HK 25 - xiaohe
-  - 🇭🇰 HK 26 - xiaohe
-  - 🇭🇰 HK 27 - xiaohe
-  - 🇭🇰 HK 28 - xiaohe
-  - 🇭🇰 HK 29 - xiaohe
-  - 🇭🇰 HK 30 - xiaohe
-  - 🇭🇰 HK 31 - xiaohe
-  - 🇭🇰 HK 32 (家宽) - xiaohe
-  - 🇭🇰 HK 33 - xiaohe
-  - 🇭🇰 HK 34 - xiaohe
-  - 🇭🇰 HK 35 - xiaohe
-  - 🇭🇰 HK 36 - xiaohe
-  - 🇭🇰 HK 37 - xiaohe
-  - 🇭🇰 HK 38 - xiaohe
-  - 🇭🇰 HK 39 - xiaohe
-  - 🇭🇰 HK 40 - xiaohe
-  - 🇭🇰 HK 41 - xiaohe
-  - 🇭🇰 HK 42 - xiaohe
-  - 🇭🇰 HK 43 - xiaohe
-  - 🇭🇰 HK 44 - xiaohe
-  - 🇭🇰 HK 45 - xiaohe
-  - 🇭🇰 HK 46 - xiaohe
-  - 🇭🇰 HK 47 - xiaohe
-  - 🇭🇰 HK 48 - xiaohe
-  - 🇭🇰 HK 49 - xiaohe
-  - 🇭🇰 HK 50 - xiaohe
-  - 🇭🇰 HK 51 - xiaohe
-  - 🇭🇰 HK 52 - xiaohe
-  - 🇭🇰 HK 53 - xiaohe
-  - 🇭🇰 HK 54 - xiaohe
-  - 🇭🇰 HK 55 - xiaohe
-  - 🇭🇰 HK 56 - xiaohe
-  - 🇭🇰 HK 57 - xiaohe
-  - 🇭🇰 HK 58 - xiaohe
-  - 🇭🇰 HK 59 - xiaohe
-  - 🇭🇰 HK 60 - xiaohe
-  - 🇭🇰 HK 61 - xiaohe
-  - 🇭🇰 HK 62 - xiaohe
-  - 🇭🇰 HK 63 - xiaohe
-  - 🇭🇰 HK 64 - xiaohe
-  - 🇭🇰 HK 65 - xiaohe
-  - 🇭🇰 HK 66 - xiaohe
-  - 🇭🇰 HK 67 - xiaohe
-  - 🇭🇰 HK 68 - xiaohe
-  - 🇭🇰 HK 69 - xiaohe
-  - 🇭🇰 HK 70 - xiaohe
-  - 🇭🇰 HK 71 - xiaohe
-  - 🇭🇰 HK 72 (家宽) - xiaohe
-  - 🇭🇰 HK 73 - xiaohe
-  - 🇭🇰 HK 74 - xiaohe
-  - 🇭🇰 HK 75 - xiaohe
-  - 🇭🇰 HK 76 - xiaohe
-  - 🇭🇰 HK 77 - xiaohe
-  - 🇭🇰 HK 78 - xiaohe
-  - 🇭🇰 HK 79 - xiaohe
-  - 🇭🇰 HK 80 - xiaohe
-  - 🇭🇰 HK 81 - xiaohe
-  - 🇭🇰 HK 82 - xiaohe
-  - 🇭🇰 HK 83 - xiaohe
-  - 🇭🇰 HK 84 - xiaohe
-  - 🇭🇰 HK 85 - xiaohe
-  - 🇭🇰 HK 86 - xiaohe
-  - 🇭🇰 HK 87 - xiaohe
-  - 🇭🇰 HK 88 - xiaohe
-  - 🇭🇰 HK 89 - xiaohe
-  - 🇭🇰 HK 90 - xiaohe
-  - 🇭🇰 HK 91 - xiaohe
-  - 🇭🇰 HK 92 - xiaohe
-  - 🇭🇰 HK 93 - xiaohe
-  - 🇭🇰 HK 94 - xiaohe
-  - 🇭🇰 HK 95 - xiaohe
-  - 🇭🇰 HK 96 - xiaohe
-  - 🇭🇰 HK 97 - xiaohe
-  - 🇭🇰 HK 98 - xiaohe
-  - 🇭🇰 HK 99 - xiaohe
-  - 🇭🇰 HK 100 - xiaohe
-  - 🇭🇰 HK 101 - xiaohe
-  - 🇭🇰 HK 102 - xiaohe
-  - 🇭🇰 HK 103 - xiaohe
-  - 🇭🇰 HK 104 - xiaohe
-  - 🇭🇰 HK 105 - xiaohe
-  - 🇭🇰 HK 106 - xiaohe
-  - 🇭🇰 HK 107 - xiaohe
-  - 🇭🇰 HK 108 - xiaohe
-  - 🇭🇰 HK 109 - xiaohe
-  - 🇭🇰 HK 110 - xiaohe
-  - 🇭🇰 HK 111 - xiaohe
-  - 🇭🇰 HK 112 - xiaohe
-  - 🇭🇰 HK 113 - xiaohe
-  - 🇭🇰 HK 114 - xiaohe
-  - 🇭🇰 HK 115 (家宽) - xiaohe
-  - 🇭🇰 HK 116 - xiaohe
-  - 🇭🇰 HK 117 - xiaohe
-  - 🇭🇰 HK 118 - xiaohe
-  - 🇭🇰 HK 119 - xiaohe
-  - 🇭🇰 HK 120 (家宽) - xiaohe
-  - 🇭🇰 HK 121 - xiaohe
-  - 🇭🇰 HK 122 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 01 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 02 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 03 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 04 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 05 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 06 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 07 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 08 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 09 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 10 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 11 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 12 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 13 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 14 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 15 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 16 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 17 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 18 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 19 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 20 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 21 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 22 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 23 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 24 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 25 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 26 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 27 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 28 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 29 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 30 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 31 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 32 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 33 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 34 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 35 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 36 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 37 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 38 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 39 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 40 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 41 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 42 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 43 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 44 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 45 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 46 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 47 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 48 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 49 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 50 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 51 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 52 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 53 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 54 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 55 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 56 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 57 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 58 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 59 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 60 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 61 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 62 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 63 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 64 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 65 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 66 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 67 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 68 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 69 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 70 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 71 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 72 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 73 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 74 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 75 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 76 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 77 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 78 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 79 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 80 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 81 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 82 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 83 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 84 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 85 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 86 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 87 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 88 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 89 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 90 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 91 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 92 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 93 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 94 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 95 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 96 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 97 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 98 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 99 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 100 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 101 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 102 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 103 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 104 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 105 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 106 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 107 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 108 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 109 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 110 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 111 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 112 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 113 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 114 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 115 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇰 HK 01 - xiaohe
-  - 🇭🇰 HK 02 - xiaohe
-  - 🇭🇰 HK 03 - xiaohe
-  - 🇭🇰 HK 04 - xiaohe
-  - 🇭🇰 HK 05 - xiaohe
-  - 🇭🇰 HK 06 - xiaohe
-  - 🇭🇰 HK 07 - xiaohe
-  - 🇭🇰 HK 08 - xiaohe
-  - 🇭🇰 HK 09 - xiaohe
-  - 🇭🇰 HK 10 - xiaohe
-  - 🇭🇰 HK 11 - xiaohe
-  - 🇭🇰 HK 12 - xiaohe
-  - 🇭🇰 HK 13 - xiaohe
-  - 🇭🇰 HK 14 - xiaohe
-  - 🇭🇰 HK 15 - xiaohe
-  - 🇭🇰 HK 16 - xiaohe
-  - 🇭🇰 HK 17 - xiaohe
-  - 🇭🇰 HK 18 - xiaohe
-  - 🇭🇰 HK 19 - xiaohe
-  - 🇭🇰 HK 20 - xiaohe
-  - 🇭🇰 HK 21 - xiaohe
-  - 🇭🇰 HK 22 - xiaohe
-  - 🇭🇰 HK 23 - xiaohe
-  - 🇭🇰 HK 24 - xiaohe
-  - 🇭🇰 HK 25 - xiaohe
-  - 🇭🇰 HK 26 - xiaohe
-  - 🇭🇰 HK 27 - xiaohe
-  - 🇭🇰 HK 28 - xiaohe
-  - 🇭🇰 HK 29 - xiaohe
-  - 🇭🇰 HK 30 - xiaohe
-  - 🇭🇰 HK 31 - xiaohe
-  - 🇭🇰 HK 32 (家宽) - xiaohe
-  - 🇭🇰 HK 33 - xiaohe
-  - 🇭🇰 HK 34 - xiaohe
-  - 🇭🇰 HK 35 - xiaohe
-  - 🇭🇰 HK 36 - xiaohe
-  - 🇭🇰 HK 37 - xiaohe
-  - 🇭🇰 HK 38 - xiaohe
-  - 🇭🇰 HK 39 - xiaohe
-  - 🇭🇰 HK 40 - xiaohe
-  - 🇭🇰 HK 41 - xiaohe
-  - 🇭🇰 HK 42 - xiaohe
-  - 🇭🇰 HK 43 - xiaohe
-  - 🇭🇰 HK 44 - xiaohe
-  - 🇭🇰 HK 45 - xiaohe
-  - 🇭🇰 HK 46 - xiaohe
-  - 🇭🇰 HK 47 - xiaohe
-  - 🇭🇰 HK 48 - xiaohe
-  - 🇭🇰 HK 49 - xiaohe
-  - 🇭🇰 HK 50 - xiaohe
-  - 🇭🇰 HK 51 - xiaohe
-  - 🇭🇰 HK 52 - xiaohe
-  - 🇭🇰 HK 53 - xiaohe
-  - 🇭🇰 HK 54 - xiaohe
-  - 🇭🇰 HK 55 - xiaohe
-  - 🇭🇰 HK 56 - xiaohe
-  - 🇭🇰 HK 57 - xiaohe
-  - 🇭🇰 HK 58 - xiaohe
-  - 🇭🇰 HK 59 - xiaohe
-  - 🇭🇰 HK 60 - xiaohe
-  - 🇭🇰 HK 61 - xiaohe
-  - 🇭🇰 HK 62 - xiaohe
-  - 🇭🇰 HK 63 - xiaohe
-  - 🇭🇰 HK 64 - xiaohe
-  - 🇭🇰 HK 65 - xiaohe
-  - 🇭🇰 HK 66 - xiaohe
-  - 🇭🇰 HK 67 - xiaohe
-  - 🇭🇰 HK 68 - xiaohe
-  - 🇭🇰 HK 69 - xiaohe
-  - 🇭🇰 HK 70 - xiaohe
-  - 🇭🇰 HK 71 - xiaohe
-  - 🇭🇰 HK 72 (家宽) - xiaohe
-  - 🇭🇰 HK 73 - xiaohe
-  - 🇭🇰 HK 74 - xiaohe
-  - 🇭🇰 HK 75 - xiaohe
-  - 🇭🇰 HK 76 - xiaohe
-  - 🇭🇰 HK 77 - xiaohe
-  - 🇭🇰 HK 78 - xiaohe
-  - 🇭🇰 HK 79 - xiaohe
-  - 🇭🇰 HK 80 - xiaohe
-  - 🇭🇰 HK 81 - xiaohe
-  - 🇭🇰 HK 82 - xiaohe
-  - 🇭🇰 HK 83 - xiaohe
-  - 🇭🇰 HK 84 - xiaohe
-  - 🇭🇰 HK 85 - xiaohe
-  - 🇭🇰 HK 86 - xiaohe
-  - 🇭🇰 HK 87 - xiaohe
-  - 🇭🇰 HK 88 - xiaohe
-  - 🇭🇰 HK 89 - xiaohe
-  - 🇭🇰 HK 90 - xiaohe
-  - 🇭🇰 HK 91 - xiaohe
-  - 🇭🇰 HK 92 - xiaohe
-  - 🇭🇰 HK 93 - xiaohe
-  - 🇭🇰 HK 94 - xiaohe
-  - 🇭🇰 HK 95 - xiaohe
-  - 🇭🇰 HK 96 - xiaohe
-  - 🇭🇰 HK 97 - xiaohe
-  - 🇭🇰 HK 98 - xiaohe
-  - 🇭🇰 HK 99 - xiaohe
-  - 🇭🇰 HK 100 - xiaohe
-  - 🇭🇰 HK 101 - xiaohe
-  - 🇭🇰 HK 102 - xiaohe
-  - 🇭🇰 HK 103 - xiaohe
-  - 🇭🇰 HK 104 - xiaohe
-  - 🇭🇰 HK 105 - xiaohe
-  - 🇭🇰 HK 106 - xiaohe
-  - 🇭🇰 HK 107 - xiaohe
-  - 🇭🇰 HK 108 - xiaohe
-  - 🇭🇰 HK 109 - xiaohe
-  - 🇭🇰 HK 110 - xiaohe
-  - 🇭🇰 HK 111 - xiaohe
-  - 🇭🇰 HK 112 - xiaohe
-  - 🇭🇰 HK 113 - xiaohe
-  - 🇭🇰 HK 114 - xiaohe
-  - 🇭🇰 HK 115 (家宽) - xiaohe
-  - 🇭🇰 HK 116 - xiaohe
-  - 🇭🇰 HK 117 - xiaohe
-  - 🇭🇰 HK 118 - xiaohe
-  - 🇭🇰 HK 119 - xiaohe
-  - 🇭🇰 HK 120 (家宽) - xiaohe
-  - 🇭🇰 HK 121 - xiaohe
-  - 🇭🇰 HK 122 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 01 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 02 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 03 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 04 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 05 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 06 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 07 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 08 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 09 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 10 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 11 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 12 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 13 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 14 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 15 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 16 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 17 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 18 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 19 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 20 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 21 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 22 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 23 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 24 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 25 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 26 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 27 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 28 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 29 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 30 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 31 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 32 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 33 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 34 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 35 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 36 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 37 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 38 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 39 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 40 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 41 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 42 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 43 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 44 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 45 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 46 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 47 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 48 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 49 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 50 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 51 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 52 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 53 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 54 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 55 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 56 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 57 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 58 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 59 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 60 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 61 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 62 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 63 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 64 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 65 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 66 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 67 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 68 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 69 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 70 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 71 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 72 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 73 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 74 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 75 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 76 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 77 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 78 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 79 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 80 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 81 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 82 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 83 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 84 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 85 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 86 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 87 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 88 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 89 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 90 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 91 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 92 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 93 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 94 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 95 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 96 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 97 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 98 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 99 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 100 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 101 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 102 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 103 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 104 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 105 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 106 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 107 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 108 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 109 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 110 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 111 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 112 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 113 - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 114 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 115 - xiaohe
 rules:
 - MATCH,PROXIES

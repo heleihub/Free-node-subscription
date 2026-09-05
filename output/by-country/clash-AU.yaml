@@ -4,15 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇺 AU 01 - xiaohe
-  type: trojan
-  server: 87.121.33.32
-  port: 443
-  password: FH72359861
-  udp: true
-  sni: square-pheasant.rooster465.autos
-  skip-cert-verify: true
-- name: 🇦🇺 AU 02 - xiaohe
+- name: 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
   type: vless
   server: 103.75.119.126
   port: 2087
@@ -25,20 +17,7 @@ proxies:
     path: /7586c69d3dc9
     headers:
       Host: 103.75.119.126
-- name: 🇦🇺 AU 03 - xiaohe
-  type: vless
-  server: 103.75.119.126
-  port: 2087
-  uuid: 731f177e-00aa-480c-b935-661456139a32
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /7586c69d3dc9
-    headers:
-      Host: 103.75.119.126
-- name: 🇦🇺 AU 04 - xiaohe
+- name: 🇦🇺 澳大利亚 (Australia) 02 - xiaohe
   type: trojan
   server: 103.224.212.211
   port: 443
@@ -46,23 +25,44 @@ proxies:
   udp: true
   sni: 60.72img.xyz
   skip-cert-verify: true
+- name: 🇦🇺 澳大利亚 (Australia) 03 - xiaohe
+  type: trojan
+  server: 87.121.33.32
+  port: 443
+  password: FH72359861
+  udp: true
+  sni: square-pheasant.rooster465.autos
+  skip-cert-verify: true
+- name: 🇦🇺 澳大利亚 (Australia) 04 - xiaohe
+  type: vless
+  server: 103.75.119.126
+  port: 2087
+  uuid: 731f177e-00aa-480c-b935-661456139a32
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /7586c69d3dc9
+    headers:
+      Host: 103.75.119.126
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇺 AU 01 - xiaohe
-  - 🇦🇺 AU 02 - xiaohe
-  - 🇦🇺 AU 03 - xiaohe
-  - 🇦🇺 AU 04 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 02 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 03 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 04 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇺 AU 01 - xiaohe
-  - 🇦🇺 AU 02 - xiaohe
-  - 🇦🇺 AU 03 - xiaohe
-  - 🇦🇺 AU 04 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 02 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 03 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 04 - xiaohe
 rules:
 - MATCH,PROXIES
