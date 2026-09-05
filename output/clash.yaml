@@ -1,0 +1,18 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies: []
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+- name: AUTO
+  type: url-test
+  url: http://www.google.com/generate_204
+  interval: 300
+  proxies: []
+rules:
+- MATCH,PROXIES
