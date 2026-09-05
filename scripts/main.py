@@ -14,7 +14,7 @@ import requests
 import yaml
 import maxminddb
 from datetime import datetime, timezone
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ----------------- 1. 节点抓取源池 (含指定的新网站与原仓库提取源) -----------------
 SOURCE_URLS = [
@@ -40,7 +40,7 @@ RESIDENTIAL_COUNTRY_DIR = os.path.join(OUTPUT_DIR, "residential-by-country")
 os.makedirs(COUNTRY_DIR, exist_ok=True)
 os.makedirs(RESIDENTIAL_COUNTRY_DIR, exist_ok=True)
 
-# 常见机房 ASN 库，排查出云主机后归类为住宅宽带/家宽
+# 常见机房/数据中心 ASN 库（用于排查过滤，余下归类为住宅宽带/家宽）
 DATACENTER_ASNS = {
     13335,          # Cloudflare
     16509, 14618,   # Amazon AWS
@@ -149,7 +149,7 @@ def fetch_raw_nodes():
     return list(nodes)
 
 def convert_node_to_clash(node_str, index):
-    """将链接转换为标准的 Clash 字典，附带边界防御过滤"""
+    """将链接转换为标准的 Clash 字典，严格过滤残缺字段防奔溃"""
     name = f"node_{index}"
     try:
         if node_str.startswith("vmess://"):
@@ -158,7 +158,8 @@ def convert_node_to_clash(node_str, index):
             data = json.loads(base64.b64decode(b64).decode('utf-8', errors='ignore'))
             server = str(data.get("add", "")).strip()
             port = int(data.get("port", 0))
-            if not server or port <= 0 or port > 65535:
+            uuid = str(data.get("id", "")).strip()
+            if not server or port <= 0 or port > 65535 or not uuid:
                 return None
 
             proxy = {
@@ -166,7 +167,7 @@ def convert_node_to_clash(node_str, index):
                 "type": "vmess",
                 "server": server,
                 "port": port,
-                "uuid": str(data.get("id")).strip(),
+                "uuid": uuid,
                 "alterId": int(data.get("aid", 0)),
                 "cipher": "auto",
                 "udp": True,
@@ -187,23 +188,28 @@ def convert_node_to_clash(node_str, index):
                 uuid, server, port_s, query = m.groups()
                 server = server.strip()
                 port = int(port_s)
-                if not server or port <= 0 or port > 65535:
+                uuid = uuid.strip()
+                if not server or port <= 0 or port > 65535 or not uuid:
                     return None
 
                 params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
+                is_tls = params.get("security") in ["tls", "reality"]
                 proxy = {
                     "name": name,
                     "type": "vless",
                     "server": server,
                     "port": port,
-                    "uuid": uuid.strip(),
+                    "uuid": uuid,
                     "udp": True,
-                    "tls": True if params.get("security") in ["tls", "reality"] else False,
+                    "tls": is_tls,
                     "skip-cert-verify": True
                 }
                 if params.get("security") == "reality":
+                    pbk = params.get("pbk", "").strip()
+                    if not pbk:  # 没有公钥的 Reality 节点无法启动
+                        return None
                     proxy["reality-opts"] = {
-                        "public-key": params.get("pbk", "").strip(),
+                        "public-key": pbk,
                         "short-id": params.get("sid", "").strip()
                     }
                     proxy["servername"] = params.get("sni", server).strip()
@@ -222,7 +228,8 @@ def convert_node_to_clash(node_str, index):
                 password, server, port_s, query = m.groups()
                 server = server.strip()
                 port = int(port_s)
-                if not server or port <= 0 or port > 65535:
+                password = password.strip()
+                if not server or port <= 0 or port > 65535 or not password:
                     return None
 
                 params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
@@ -231,7 +238,7 @@ def convert_node_to_clash(node_str, index):
                     "type": "trojan",
                     "server": server,
                     "port": port,
-                    "password": password.strip(),
+                    "password": password,
                     "udp": True,
                     "sni": params.get("sni", server).strip(),
                     "skip-cert-verify": True
@@ -258,12 +265,11 @@ def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
     with open("temp_clash.yaml", "w", encoding="utf-8") as f:
         yaml.dump(config, f, allow_unicode=True)
 
-    # 关键修复：指定工作目录 -d .
+    # 显式指定工作目录为当前目录
     proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_clash.yaml"])
     time.sleep(4)
 
     alive_nodes = {}
-    # 使用 Google 204 进行高标准翻墙质量探测
     test_url = "http://www.google.com/generate_204"
     headers = {"Authorization": f"Bearer {secret}"}
 
@@ -287,7 +293,7 @@ def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
                 if res:
                     alive_nodes[res[0]] = res[1]
     finally:
-        proc.terminate()
+        proc.kill()
         proc.wait()
         if os.path.exists("temp_clash.yaml"):
             os.remove("temp_clash.yaml")
@@ -296,18 +302,19 @@ def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
     return alive_nodes
 
 def classify_and_filter(alive_proxies, node_map):
-    """解析国家归属与家宽住宅属性"""
+    """并发快速解析 IP，判别国家归属与家宽住宅属性"""
     country_reader = maxminddb.open_database("Country.mmdb")
     asn_reader = maxminddb.open_database("ASN.mmdb")
     verified = []
 
-    for name, delay in alive_proxies.items():
+    def resolve_and_tag(item):
+        name, delay = item
         original_link, p_obj = node_map[name]
         server = p_obj["server"]
         try:
             ip = socket.gethostbyname(server)
         except Exception:
-            continue
+            return None
 
         country_code = "OTHER"
         try:
@@ -327,12 +334,19 @@ def classify_and_filter(alive_proxies, node_map):
         except Exception:
             pass
 
-        verified.append({
+        return {
             "link": original_link,
             "country": country_code,
             "is_residential": is_residential,
             "delay": delay
-        })
+        }
+
+    with ThreadPoolExecutor(max_workers=40) as executor:
+        futures = [executor.submit(resolve_and_tag, item) for item in alive_proxies.items()]
+        for f in as_completed(futures):
+            res = f.result()
+            if res:
+                verified.append(res)
 
     country_reader.close()
     asn_reader.close()
