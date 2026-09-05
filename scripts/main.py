@@ -16,8 +16,11 @@ import maxminddb
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# ----------------- 1. 你指定的完整源池 (含混合、V2Ray、Hy2及网页端) -----------------
+# ----------------- 1. 订阅源池 (已新增 shadowmere API 订阅) -----------------
 SOURCE_URLS = [
+    # 用户指定的优质源池与新增 API 订阅
+    "https://shadowmere.xyz/api/b64sub/",
+    "https://shadowmere.xyz/api/sub/",
     "https://raw.githubusercontent.com/ShatakVPN/ConfigForge-V2Ray/main/configs/all.txt",
     "https://raw.githubusercontent.com/10ium/HiN-VPN/main/subscription/base64/mix",
     "https://raw.githubusercontent.com/10ium/telegram-configs-collector/main/protocols/hysteria",
@@ -42,7 +45,15 @@ RESIDENTIAL_COUNTRY_DIR = os.path.join(OUTPUT_DIR, "residential-by-country")
 os.makedirs(COUNTRY_DIR, exist_ok=True)
 os.makedirs(RESIDENTIAL_COUNTRY_DIR, exist_ok=True)
 
-# 常见数据中心云厂商 ASN (剔除机房，保留家宽)
+# 知名 SS 加密方式白名单 (防止非法 cipher 导致内核闪退)
+VALID_SS_CIPHERS = {
+    "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
+    "chacha20-ietf-poly1305", "xchacha20-ietf-poly1305",
+    "2022-blake3-aes-128-gcm", "2022-blake3-aes-256-gcm",
+    "2022-blake3-chacha20-poly1305", "aes-128-ctr", "aes-192-ctr",
+    "aes-256-ctr", "aes-128-cfb", "aes-192-cfb", "aes-256-cfb", "rc4-md5"
+}
+
 DATACENTER_ASNS = {
     13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
     14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081
@@ -202,9 +213,13 @@ def convert_node_to_clash(node_str, index):
                     pbk = params.get("pbk", "").strip()
                     if not pbk:
                         return None
+                    sid = params.get("sid", "").strip()
+                    # 容错：校验 short-id 格式防闪退
+                    if sid and (len(sid) % 2 != 0 or not re.fullmatch(r'[0-9a-fA-F]+', sid)):
+                        sid = ""
                     proxy["reality-opts"] = {
                         "public-key": pbk,
-                        "short-id": params.get("sid", "").strip()
+                        "short-id": sid
                     }
                     proxy["servername"] = params.get("sni", server).strip()
                     proxy["client-fingerprint"] = params.get("fp", "chrome")
@@ -246,29 +261,39 @@ def convert_node_to_clash(node_str, index):
                 user_info, host_info = raw.split("@", 1)
                 user_info += '=' * (-len(user_info) % 4)
                 try:
-                    dec = base64.b64decode(user_info).decode('utf-8')
-                    cipher, password = dec.split(":", 1)
+                    dec = base64.b64decode(user_info).decode('utf-8', errors='ignore')
+                    if ":" in dec:
+                        cipher, password = dec.split(":", 1)
                 except Exception:
-                    return None
+                    pass
                 host_info = host_info.split("#")[0]
-                server, port_s = host_info.split(":", 1)
-                port = int(port_s)
+                if ":" in host_info:
+                    server, port_s = host_info.split(":", 1)
+                    port_s = port_s.split("/")[0]
+                    port = int(port_s) if port_s.isdigit() else 0
             else:
-                raw_b64 = raw.split("#")[0]
+                raw_b64 = raw.split("#")[0].split("?")[0]
                 raw_b64 += '=' * (-len(raw_b64) % 4)
-                dec = base64.b64decode(raw_b64).decode('utf-8')
-                m_ss = re.search(r"([^:]+):([^@]+)@([^:]+):(\d+)", dec)
-                if m_ss:
-                    cipher, password, server, port_s = m_ss.groups()
-                    port = int(port_s)
+                try:
+                    dec = base64.b64decode(raw_b64).decode('utf-8', errors='ignore')
+                    m_ss = re.search(r"([^:]+):([^@]+)@([^:]+):(\d+)", dec)
+                    if m_ss:
+                        cipher, password, server, port_s = m_ss.groups()
+                        port = int(port_s)
+                except Exception:
+                    pass
 
-            if server and port > 0:
+            cipher = cipher.lower().strip()
+            if cipher == "chacha20-poly1305":
+                cipher = "chacha20-ietf-poly1305"
+            
+            if cipher in VALID_SS_CIPHERS and server and 0 < port <= 65535 and password:
                 return {
                     "name": name,
                     "type": "ss",
                     "server": server.strip(),
                     "port": port,
-                    "cipher": cipher.strip(),
+                    "cipher": cipher,
                     "password": password.strip(),
                     "udp": True
                 }
@@ -279,7 +304,7 @@ def convert_node_to_clash(node_str, index):
             server = parsed.hostname
             port = parsed.port or 443
             auth = parsed.username or ""
-            if server and port:
+            if server and 0 < port <= 65535:
                 return {
                     "name": name,
                     "type": "hysteria2",
@@ -294,7 +319,9 @@ def convert_node_to_clash(node_str, index):
     return None
 
 def test_single_batch(proxies_batch, port=19090, secret="secret123"):
-    """测试单个批次的节点"""
+    if not proxies_batch:
+        return {}
+
     config = {
         "mixed-port": 17890,
         "mode": "rule",
@@ -309,8 +336,13 @@ def test_single_batch(proxies_batch, port=19090, secret="secret123"):
     proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_clash.yaml"])
     time.sleep(3)
 
+    if proc.poll() is not None:
+        print("[!] 警告: 发现单批内存在残缺节点导致内核闪退，自动跳过以保障主队列安全")
+        if os.path.exists("temp_clash.yaml"):
+            os.remove("temp_clash.yaml")
+        return {}
+
     batch_alive = {}
-    # 使用 Cloudflare + Google 双重权威端点兼容测活
     test_url = "http://cp.cloudflare.com/generate_204"
     headers = {"Authorization": f"Bearer {secret}"}
 
@@ -318,7 +350,7 @@ def test_single_batch(proxies_batch, port=19090, secret="secret123"):
         name = p["name"]
         url = f"http://127.0.0.1:{port}/proxies/{urllib.parse.quote(name)}/delay"
         try:
-            r = requests.get(url, params={"url": test_url, "timeout": 3500}, headers=headers, timeout=5)
+            r = requests.get(url, params={"url": test_url, "timeout": 3000}, headers=headers, timeout=4)
             if r.status_code in [200, 204]:
                 delay = r.json().get("delay", 0)
                 if delay > 0:
@@ -342,23 +374,22 @@ def test_single_batch(proxies_batch, port=19090, secret="secret123"):
     return batch_alive
 
 def run_real_delay_test(clash_proxies):
-    """滚动队列：全量测试所有节点（哪怕上万个），按 1500 个一批轮询，防止撑爆内存"""
     if not clash_proxies:
         return {}
 
     total_proxies = len(clash_proxies)
-    print(f"[*] 启动全量真连接测活，节点总规模: {total_proxies} 个，采用分批测试队列...")
+    print(f"[*] 启动全量真连接测活，过滤后合规节点总量: {total_proxies} 个...")
     
     alive_nodes = {}
-    batch_size = 1500
+    batch_size = 1200
     for i in range(0, total_proxies, batch_size):
         batch = clash_proxies[i : i + batch_size]
         print(f"[*] 正在测活第 {i+1} ~ {min(i+batch_size, total_proxies)} 个节点...")
         res = test_single_batch(batch)
         alive_nodes.update(res)
-        print(f"[+] 当前批次测活完成，累计存活节点: {len(alive_nodes)} 个")
+        print(f"[+] 当前批次存活: {len(res)} 个 | 累计存活: {len(alive_nodes)} 个")
 
-    print(f"[+] 全部节点真连接检测完毕！最终存活节点总量: {len(alive_nodes)}")
+    print(f"[+] 全部节点检测完毕！真实存活总量: {len(alive_nodes)}")
     return alive_nodes
 
 def classify_and_filter(alive_proxies, node_map):
@@ -464,7 +495,7 @@ def export_subscriptions(verified_nodes):
         export_clash_yaml(residential_clash, os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
         export_singbox_json(residential_nodes, os.path.join(OUTPUT_DIR, "residential-singbox.json"))
 
-    # 按国家分类
+    # 按国家分类全部节点
     by_cc = {}
     for n in verified_nodes:
         by_cc.setdefault(n["country"], []).append(n)
@@ -476,7 +507,7 @@ def export_subscriptions(verified_nodes):
             f.write(base64.b64encode("\n".join(links).encode()).decode())
         export_clash_yaml(proxies, os.path.join(COUNTRY_DIR, f"clash-{cc}.yaml"))
 
-    # 按家宽国家分类
+    # 按国家分类家宽节点
     res_by_cc = {}
     for n in residential_nodes:
         res_by_cc.setdefault(n["country"], []).append(n)
@@ -490,33 +521,63 @@ def export_subscriptions(verified_nodes):
 
     return by_cc, res_by_cc, len(all_links), len(residential_links)
 
-def update_readme(by_cc, res_by_cc, total_count, res_count):
-    """直接基于真实输出的统计，绝对不会显示 0"""
+def update_readme():
+    """直接扫描真实生成的物理文件统计真实数量，彻底避免 0 的乌龙"""
     repo = os.environ.get("GITHUB_REPOSITORY", "heleihub/free-node-subscription")
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
-    # 构建家宽国家表格
-    all_res_countries = sorted(res_by_cc.keys(), key=lambda c: len(res_by_cc[c]), reverse=True)
+    def count_base64_file(path):
+        if not os.path.exists(path):
+            return 0
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read().strip()
+                if not content:
+                    return 0
+                decoded = base64.b64decode(content).decode("utf-8", errors="ignore")
+                return len([line for line in decoded.splitlines() if line.strip()])
+        except Exception:
+            return 0
+
+    total_count = count_base64_file(os.path.join(OUTPUT_DIR, "v2ray.txt"))
+    res_count = count_base64_file(os.path.join(OUTPUT_DIR, "residential.txt"))
+
+    country_counts = {}
+    if os.path.exists(COUNTRY_DIR):
+        for fname in os.listdir(COUNTRY_DIR):
+            if fname.endswith(".txt"):
+                cc = fname[:-4]
+                cnt = count_base64_file(os.path.join(COUNTRY_DIR, fname))
+                if cnt > 0:
+                    country_counts[cc] = cnt
+
+    res_country_counts = {}
+    if os.path.exists(RESIDENTIAL_COUNTRY_DIR):
+        for fname in os.listdir(RESIDENTIAL_COUNTRY_DIR):
+            if fname.endswith(".txt"):
+                cc = fname[:-4]
+                cnt = count_base64_file(os.path.join(RESIDENTIAL_COUNTRY_DIR, fname))
+                if cnt > 0:
+                    res_country_counts[cc] = cnt
+
+    # 生成家宽表格
     res_table_rows = []
-    for cc in all_res_countries:
+    for cc in sorted(res_country_counts.keys(), key=lambda x: res_country_counts[x], reverse=True):
         flag, name = COUNTRY_META.get(cc, ("🌐", f"{cc} / 其他"))
-        count = len(res_by_cc.get(cc, []))
-        if count > 0:
-            v2ray_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/residential-by-country/{cc}.txt"
-            clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/residential-by-country/clash-{cc}.yaml"
-            res_table_rows.append(f"| {flag} {name} | **{count}** | [V2Ray/通用]({v2ray_cdn}) | [Clash 订阅]({clash_cdn}) |")
+        count = res_country_counts[cc]
+        v2ray_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/residential-by-country/{cc}.txt"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/residential-by-country/clash-{cc}.yaml"
+        res_table_rows.append(f"| {flag} {name} | **{count}** | [V2Ray/通用]({v2ray_cdn}) | [Clash 订阅]({clash_cdn}) |")
     res_table_str = "\n".join(res_table_rows) if res_table_rows else "| 暂无可用家宽节点 | 0 | - | - |"
 
-    # 构建全量国家表格
-    all_countries = sorted(by_cc.keys(), key=lambda c: len(by_cc[c]), reverse=True)
+    # 生成全量表格
     country_table_rows = []
-    for cc in all_countries:
+    for cc in sorted(country_counts.keys(), key=lambda x: country_counts[x], reverse=True):
         flag, name = COUNTRY_META.get(cc, ("🌐", f"{cc} / 其他"))
-        count = len(by_cc.get(cc, []))
-        if count > 0:
-            v2ray_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/by-country/{cc}.txt"
-            clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/by-country/clash-{cc}.yaml"
-            country_table_rows.append(f"| {flag} {name} | **{count}** | [V2Ray/通用]({v2ray_cdn}) | [Clash 订阅]({clash_cdn}) |")
+        count = country_counts[cc]
+        v2ray_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/by-country/{cc}.txt"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/by-country/clash-{cc}.yaml"
+        country_table_rows.append(f"| {flag} {name} | **{count}** | [V2Ray/通用]({v2ray_cdn}) | [Clash 订阅]({clash_cdn}) |")
     country_table_str = "\n".join(country_table_rows) if country_table_rows else "| 暂无可用节点 | 0 | - | - |"
 
     readme_content = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
@@ -524,7 +585,7 @@ def update_readme(by_cc, res_by_cc, total_count, res_count):
 > 🕒 **最近更新时间**: `{now_utc}`  
 > 🟢 **全部可用节点数量**: `{total_count}` 个  
 > 🏠 **甄选家宽节点数量**: `{res_count}` 个  
-> ⚡ **真连接保证**: 所有节点由 `mihomo` 代理内核建立实际网络通道握手测活，真实可用。
+> ⚡ **真实可用保障**: 所有节点由 `mihomo` 代理内核建立实际网络通道握手测活，拒绝虚假通畅与死节点。
 
 ---
 
@@ -580,5 +641,5 @@ if __name__ == "__main__":
 
     alive_dict = run_real_delay_test(clash_list)
     verified = classify_and_filter(alive_dict, node_map)
-    by_cc, res_by_cc, total_cnt, res_cnt = export_subscriptions(verified)
-    update_readme(by_cc, res_by_cc, total_cnt, res_cnt)
+    export_subscriptions(verified)
+    update_readme()
