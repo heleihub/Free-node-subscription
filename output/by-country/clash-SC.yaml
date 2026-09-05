@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: node_2584
+- name: 🇸🇨 SC 01 - xiaohe
   type: vmess
   server: 156.226.183.181
   port: 54321
@@ -14,7 +14,7 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: node_574
+- name: 🇸🇨 SC 02 - xiaohe
   type: vmess
   server: 156.226.183.181
   port: 54321
@@ -29,14 +29,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - node_2584
-  - node_574
+  - 🇸🇨 SC 01 - xiaohe
+  - 🇸🇨 SC 02 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - node_2584
-  - node_574
+  - 🇸🇨 SC 01 - xiaohe
+  - 🇸🇨 SC 02 - xiaohe
 rules:
 - MATCH,PROXIES

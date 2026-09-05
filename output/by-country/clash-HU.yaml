@@ -4,7 +4,23 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: node_50
+- name: 🇭🇺 HU 01 - xiaohe
+  type: trojan
+  server: 46.29.142.57
+  port: 4443
+  password: C0ldyfh-vpnjantit.com
+  udp: true
+  sni: hu2.vpnjantit.com
+  skip-cert-verify: true
+- name: 🇭🇺 HU 02 - xiaohe
+  type: trojan
+  server: 46.29.142.57
+  port: 4443
+  password: C0ldyfh-vpnjantit.com
+  udp: true
+  sni: hu2.vpnjantit.com
+  skip-cert-verify: true
+- name: 🇭🇺 HU 03 - xiaohe
   type: trojan
   server: 46.29.142.57
   port: 4443
@@ -17,12 +33,16 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - node_50
+  - 🇭🇺 HU 01 - xiaohe
+  - 🇭🇺 HU 02 - xiaohe
+  - 🇭🇺 HU 03 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - node_50
+  - 🇭🇺 HU 01 - xiaohe
+  - 🇭🇺 HU 02 - xiaohe
+  - 🇭🇺 HU 03 - xiaohe
 rules:
 - MATCH,PROXIES

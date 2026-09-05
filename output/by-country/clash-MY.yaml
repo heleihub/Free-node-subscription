@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: node_2257
+- name: 🇲🇾 MY 01 - xiaohe
   type: vless
   server: 38.60.168.98
   port: 2087
@@ -17,7 +17,7 @@ proxies:
     path: /db55c40bbc75
     headers:
       Host: 38.60.168.98
-- name: node_3086
+- name: 🇲🇾 MY 02 - xiaohe
   type: trojan
   server: 47.250.84.25
   port: 443
@@ -25,19 +25,49 @@ proxies:
   udp: true
   sni: moltbot.doctoroyy.net
   skip-cert-verify: true
+- name: 🇲🇾 MY 03 - xiaohe
+  type: vless
+  server: 38.60.168.98
+  port: 2087
+  uuid: 8a346b7c-5b95-4845-affa-0e5d9929e9ae
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /db55c40bbc75
+    headers:
+      Host: 38.60.168.98
+- name: 🇲🇾 MY 04 - xiaohe
+  type: vless
+  server: 38.60.168.98
+  port: 2087
+  uuid: 8a346b7c-5b95-4845-affa-0e5d9929e9ae
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /db55c40bbc75
+    headers:
+      Host: 38.60.168.98
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - node_2257
-  - node_3086
+  - 🇲🇾 MY 01 - xiaohe
+  - 🇲🇾 MY 02 - xiaohe
+  - 🇲🇾 MY 03 - xiaohe
+  - 🇲🇾 MY 04 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - node_2257
-  - node_3086
+  - 🇲🇾 MY 01 - xiaohe
+  - 🇲🇾 MY 02 - xiaohe
+  - 🇲🇾 MY 03 - xiaohe
+  - 🇲🇾 MY 04 - xiaohe
 rules:
 - MATCH,PROXIES

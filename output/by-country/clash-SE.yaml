@@ -4,24 +4,48 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: node_672
+- name: 🇸🇪 SE 01 - xiaohe
   type: hysteria2
   server: se.allgoodvpn.su
   port: 8443
   password: 0db4a6c709ca4a46153af8a401b7138a
   sni: se.allgoodvpn.su
   skip-cert-verify: true
+- name: 🇸🇪 SE 02 - xiaohe
+  type: vless
+  server: 202.155.11.249
+  port: 443
+  uuid: 0a2dde28-70da-4863-a06f-35d007d94d35
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /cdn/v3/live
+    headers:
+      Host: cf2.rumedia-cdn.com
+- name: 🇸🇪 SE 03 - xiaohe
+  type: hysteria2
+  server: jackvpn23.mooo.com
+  port: 17538
+  password: 036c648f927d4d86a82dcf629db8cbe1
+  sni: jackvpn23.mooo.com
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - node_672
+  - 🇸🇪 SE 01 - xiaohe
+  - 🇸🇪 SE 02 - xiaohe
+  - 🇸🇪 SE 03 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - node_672
+  - 🇸🇪 SE 01 - xiaohe
+  - 🇸🇪 SE 02 - xiaohe
+  - 🇸🇪 SE 03 - xiaohe
 rules:
 - MATCH,PROXIES

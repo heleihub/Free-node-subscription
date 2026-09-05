@@ -4,24 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇨🇿 CZ 03 (家宽) - xiaohe
+- name: 🇮🇪 IE 01 - xiaohe
   type: ss
-  server: 45.129.142.41
-  port: 47425
-  cipher: chacha20-ietf-poly1305
-  password: lIoNSMeYLX8QGHnOp0DTBR0W91/CHVDEjPqjMDuYcdQ=
+  server: 52.210.185.41
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
   udp: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇨🇿 CZ 03 (家宽) - xiaohe
+  - 🇮🇪 IE 01 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇨🇿 CZ 03 (家宽) - xiaohe
+  - 🇮🇪 IE 01 - xiaohe
 rules:
 - MATCH,PROXIES

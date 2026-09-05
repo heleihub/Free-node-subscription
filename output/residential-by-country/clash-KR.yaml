@@ -4,33 +4,33 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: node_2182
-  type: ss
-  server: 221.139.79.57
-  port: 13979
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
-  udp: true
-- name: node_3121
+- name: 🇰🇷 KR 12 (家宽) - xiaohe
   type: ss
   server: 49.254.204.133
   port: 1774
   cipher: aes-256-cfb
   password: 1234!@#$
   udp: true
+- name: 🇰🇷 KR 17 (家宽) - xiaohe
+  type: ss
+  server: 211.178.105.134
+  port: 6123
+  cipher: aes-256-cfb
+  password: qwerREWQ@@
+  udp: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - node_2182
-  - node_3121
+  - 🇰🇷 KR 12 (家宽) - xiaohe
+  - 🇰🇷 KR 17 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - node_2182
-  - node_3121
+  - 🇰🇷 KR 12 (家宽) - xiaohe
+  - 🇰🇷 KR 17 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

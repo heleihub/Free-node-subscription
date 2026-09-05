@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: node_2608
+- name: 🇫🇷 FR 01 - xiaohe
   type: vless
   server: 45.144.28.39
   port: 2096
@@ -16,104 +16,29 @@ proxies:
   ws-opts:
     path: /
     headers:
-      Host: 45.144.28.39
-- name: node_2606
-  type: vmess
-  server: 162.19.204.71
-  port: 1234
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  skip-cert-verify: true
-- name: node_2405
-  type: vless
-  server: 152.228.162.19
-  port: 80
-  uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vless/
-    headers:
-      Host: 152.228.162.19
-- name: node_745
-  type: ss
-  server: 54.36.174.140
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: node_1108
-  type: vless
-  server: 152.228.162.19
-  port: 80
-  uuid: f5c47e9c-914a-4a91-a81e-a5a77bc10fc1
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vless/
-    headers:
-      Host: 152.228.162.19
-- name: node_2472
-  type: ss
-  server: 54.36.174.134
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
-  udp: true
-- name: node_2028
+      Host: usejh2.neobo-tooth.ru
+- name: 🇫🇷 FR 02 - xiaohe
   type: hysteria2
   server: 35.181.166.40
   port: 443
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   sni: 35.181.166.40
   skip-cert-verify: true
-- name: node_992
-  type: vless
-  server: 45.144.28.39
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-  udp: true
-  tls: false
+- name: 🇫🇷 FR 03 - xiaohe
+  type: hysteria2
+  server: 35.181.166.40
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 35.181.166.40
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: usejh2.neobo-tooth.ru
-- name: node_1783
-  type: vless
-  server: 45.144.28.39
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-  udp: true
-  tls: false
+- name: 🇫🇷 FR 04 - xiaohe
+  type: hysteria2
+  server: 35.181.169.140
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 35.181.169.140
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: usejh2.neobo-tooth.ru
-- name: node_1737
-  type: vless
-  server: 51.77.217.70
-  port: 2053
-  uuid: c543f005-59f7-40c1-9ae6-37505691d5be
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: UKvonm_uE7TSwksQIVQuNYgYwmcidr_g4lDIE2JW_Ag
-    short-id: 4868e772d098f0af
-  servername: www.google.com
-  client-fingerprint: firefox
-- name: node_1378
+- name: 🇫🇷 FR 05 - xiaohe
   type: vless
   server: 146.59.35.134
   port: 8443
@@ -126,20 +51,14 @@ proxies:
     path: /download.php
     headers:
       Host: chopin.adaspoloandco.com
-- name: node_584
-  type: vless
-  server: 146.59.35.134
-  port: 8443
-  uuid: f798a2c4-c51b-409d-b349-ca8455b36796
-  udp: true
-  tls: true
+- name: 🇫🇷 FR 06 - xiaohe
+  type: hysteria2
+  server: vpn-fr-002.fastervpn.world
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-fr-002.fastervpn.world
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /download.php
-    headers:
-      Host: chopin.adaspoloandco.com
-- name: node_638
+- name: 🇫🇷 FR 07 - xiaohe
   type: vless
   server: 149.202.58.99
   port: 443
@@ -152,242 +71,263 @@ proxies:
     path: /vws/
     headers:
       Host: bab-6.site
-- name: node_1830
+- name: 🇫🇷 FR 08 - xiaohe
+  type: vless
+  server: 149.202.58.99
+  port: 443
+  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vws/
+    headers:
+      Host: bab-6.site
+- name: 🇫🇷 FR 09 - xiaohe
+  type: vless
+  server: 45.144.28.39
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: usejh2.neobo-tooth.ru
+- name: 🇫🇷 FR 10 - xiaohe
+  type: vless
+  server: 149.202.58.99
+  port: 443
+  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vws/
+    headers:
+      Host: 149.202.58.99
+- name: 🇫🇷 FR 11 - xiaohe
   type: ss
   server: 51.255.13.232
   port: 8388
   cipher: chacha20-ietf-poly1305
   password: BqnqToih0PbU
   udp: true
-- name: node_357
+- name: 🇫🇷 FR 12 - xiaohe
   type: vless
-  server: 51.77.217.70
-  port: 2053
-  uuid: c543f005-59f7-40c1-9ae6-37505691d5be
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: UKvonm_uE7TSwksQIVQuNYgYwmcidr_g4lDIE2JW_Ag
-    short-id: 4868e772d098f0af
-  servername: www.google.com
-  client-fingerprint: chrome
-- name: node_520
-  type: vless
-  server: 45.144.28.39
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  server: 152.228.162.19
+  port: 80
+  uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /vless/
     headers:
-      Host: usejh2.neobo-tooth.ru
-- name: node_2699
-  type: vless
-  server: 45.144.28.39
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 45.144.28.39
-- name: node_2724
-  type: vless
-  server: 51.77.217.70
-  port: 2053
-  uuid: c543f005-59f7-40c1-9ae6-37505691d5be
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: UKvonm_uE7TSwksQIVQuNYgYwmcidr_g4lDIE2JW_Ag
-    short-id: 4868e772d098f0af
-  servername: www.google.com
-  client-fingerprint: chrome
-- name: node_2672
-  type: vless
-  server: fr.selqora.ir
-  port: 31663
-  uuid: 7037b6a1-d8f0-40af-99e9-41bad4c32c51
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: HbzPMj4dHY0RX8oZCiFU60HPoc5pCc5iuORNYlTCOWY
-    short-id: 32bf1b3fe9c072a9
-  servername: amp-api-edge.apps.apple.com
-  client-fingerprint: chrome
-- name: node_2886
-  type: vless
-  server: 169.58.143.21
-  port: 443
-  uuid: 25f3beef-a4b6-40bc-aa74-17a0f89f683c
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: telegram.us
-- name: node_2969
+      Host: 152.228.162.19
+- name: 🇫🇷 FR 13 - xiaohe
   type: ss
-  server: 54.36.174.140
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: ytw2awn
+  server: 51.83.192.80
+  port: 8388
+  cipher: aes-256-gcm
+  password: itzvpn@321
   udp: true
-- name: node_3000
+- name: 🇫🇷 FR 14 - xiaohe
   type: vless
-  server: 169.58.143.21
+  server: 149.202.58.99
   port: 443
-  uuid: 25f3beef-a4b6-40bc-aa74-17a0f89f683c
+  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
   udp: true
   tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /vws/
     headers:
-      Host: telegram.us
-- name: node_3105
-  type: vless
-  server: 51.77.217.70
-  port: 2053
-  uuid: c543f005-59f7-40c1-9ae6-37505691d5be
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: UKvonm_uE7TSwksQIVQuNYgYwmcidr_g4lDIE2JW_Ag
-    short-id: 4868e772d098f0af
-  servername: www.google.com
-  client-fingerprint: chrome
-- name: node_3378
+      Host: 149.202.58.99
+- name: 🇫🇷 FR 15 - xiaohe
   type: ss
   server: 54.36.174.134
   port: 443
   cipher: chacha20-ietf-poly1305
   password: ytw2awn
   udp: true
-- name: node_3388
+- name: 🇫🇷 FR 16 - xiaohe
+  type: ss
+  server: 54.36.174.140
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
+  udp: true
+- name: 🇫🇷 FR 17 - xiaohe
+  type: ss
+  server: 54.36.174.134
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
+  udp: true
+- name: 🇫🇷 FR 18 - xiaohe
+  type: ss
+  server: 51.255.13.232
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: BqnqToih0PbU
+  udp: true
+- name: 🇫🇷 FR 19 - xiaohe
   type: vless
-  server: 51.77.217.70
-  port: 2053
-  uuid: c543f005-59f7-40c1-9ae6-37505691d5be
+  server: 169.58.143.21
+  port: 443
+  uuid: 25f3beef-a4b6-40bc-aa74-17a0f89f683c
   udp: true
   tls: true
   skip-cert-verify: true
-  reality-opts:
-    public-key: UKvonm_uE7TSwksQIVQuNYgYwmcidr_g4lDIE2JW_Ag
-    short-id: 4868e772d098f0af
-  servername: www.google.com
-  client-fingerprint: chrome
-- name: node_3448
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: telegram.us
+- name: 🇫🇷 FR 20 - xiaohe
+  type: ss
+  server: 54.36.174.140
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: ytw2awn
+  udp: true
+- name: 🇫🇷 FR 21 - xiaohe
+  type: vless
+  server: 169.58.143.21
+  port: 443
+  uuid: 25f3beef-a4b6-40bc-aa74-17a0f89f683c
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: telegram.us
+- name: 🇫🇷 FR 22 - xiaohe
+  type: vless
+  server: 152.228.162.19
+  port: 80
+  uuid: f5c47e9c-914a-4a91-a81e-a5a77bc10fc1
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: 152.228.162.19
+- name: 🇫🇷 FR 23 - xiaohe
+  type: vmess
+  server: 162.19.204.71
+  port: 1234
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: 🇫🇷 FR 24 - xiaohe
+  type: vless
+  server: chopin.adaspoloandco.com
+  port: 8443
+  uuid: f798a2c4-c51b-409d-b349-ca8455b36796
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /download.php
+    headers:
+      Host: chopin.adaspoloandco.com
+- name: 🇫🇷 FR 25 - xiaohe
+  type: vless
+  server: 152.228.162.19
+  port: 80
+  uuid: 5ce84688-f535-46ad-a512-37b17becf6ea
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: akamaized.net
+- name: 🇫🇷 FR 26 - xiaohe
   type: hysteria2
   server: 35.181.166.40
   port: 443
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   sni: 35.181.166.40
   skip-cert-verify: true
-- name: node_3529
-  type: vless
-  server: 45.144.28.39
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: usejh2.neobo-tooth.ru
-- name: node_3319
-  type: vless
-  server: gr068.techinyab.ir
-  port: 443
-  uuid: 9343f183-7a16-4bdd-9c65-b0c21feca40b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: YRKpNLfduSsOl3l-CCUkhZDEjvcKytnuELqnWjLZI1M
-    short-id: 98fa0b00d09419f7
-  servername: play.google.com
-  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - node_2608
-  - node_2606
-  - node_2405
-  - node_745
-  - node_1108
-  - node_2472
-  - node_2028
-  - node_992
-  - node_1783
-  - node_1737
-  - node_1378
-  - node_584
-  - node_638
-  - node_1830
-  - node_357
-  - node_520
-  - node_2699
-  - node_2724
-  - node_2672
-  - node_2886
-  - node_2969
-  - node_3000
-  - node_3105
-  - node_3378
-  - node_3388
-  - node_3448
-  - node_3529
-  - node_3319
+  - 🇫🇷 FR 01 - xiaohe
+  - 🇫🇷 FR 02 - xiaohe
+  - 🇫🇷 FR 03 - xiaohe
+  - 🇫🇷 FR 04 - xiaohe
+  - 🇫🇷 FR 05 - xiaohe
+  - 🇫🇷 FR 06 - xiaohe
+  - 🇫🇷 FR 07 - xiaohe
+  - 🇫🇷 FR 08 - xiaohe
+  - 🇫🇷 FR 09 - xiaohe
+  - 🇫🇷 FR 10 - xiaohe
+  - 🇫🇷 FR 11 - xiaohe
+  - 🇫🇷 FR 12 - xiaohe
+  - 🇫🇷 FR 13 - xiaohe
+  - 🇫🇷 FR 14 - xiaohe
+  - 🇫🇷 FR 15 - xiaohe
+  - 🇫🇷 FR 16 - xiaohe
+  - 🇫🇷 FR 17 - xiaohe
+  - 🇫🇷 FR 18 - xiaohe
+  - 🇫🇷 FR 19 - xiaohe
+  - 🇫🇷 FR 20 - xiaohe
+  - 🇫🇷 FR 21 - xiaohe
+  - 🇫🇷 FR 22 - xiaohe
+  - 🇫🇷 FR 23 - xiaohe
+  - 🇫🇷 FR 24 - xiaohe
+  - 🇫🇷 FR 25 - xiaohe
+  - 🇫🇷 FR 26 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - node_2608
-  - node_2606
-  - node_2405
-  - node_745
-  - node_1108
-  - node_2472
-  - node_2028
-  - node_992
-  - node_1783
-  - node_1737
-  - node_1378
-  - node_584
-  - node_638
-  - node_1830
-  - node_357
-  - node_520
-  - node_2699
-  - node_2724
-  - node_2672
-  - node_2886
-  - node_2969
-  - node_3000
-  - node_3105
-  - node_3378
-  - node_3388
-  - node_3448
-  - node_3529
-  - node_3319
+  - 🇫🇷 FR 01 - xiaohe
+  - 🇫🇷 FR 02 - xiaohe
+  - 🇫🇷 FR 03 - xiaohe
+  - 🇫🇷 FR 04 - xiaohe
+  - 🇫🇷 FR 05 - xiaohe
+  - 🇫🇷 FR 06 - xiaohe
+  - 🇫🇷 FR 07 - xiaohe
+  - 🇫🇷 FR 08 - xiaohe
+  - 🇫🇷 FR 09 - xiaohe
+  - 🇫🇷 FR 10 - xiaohe
+  - 🇫🇷 FR 11 - xiaohe
+  - 🇫🇷 FR 12 - xiaohe
+  - 🇫🇷 FR 13 - xiaohe
+  - 🇫🇷 FR 14 - xiaohe
+  - 🇫🇷 FR 15 - xiaohe
+  - 🇫🇷 FR 16 - xiaohe
+  - 🇫🇷 FR 17 - xiaohe
+  - 🇫🇷 FR 18 - xiaohe
+  - 🇫🇷 FR 19 - xiaohe
+  - 🇫🇷 FR 20 - xiaohe
+  - 🇫🇷 FR 21 - xiaohe
+  - 🇫🇷 FR 22 - xiaohe
+  - 🇫🇷 FR 23 - xiaohe
+  - 🇫🇷 FR 24 - xiaohe
+  - 🇫🇷 FR 25 - xiaohe
+  - 🇫🇷 FR 26 - xiaohe
 rules:
 - MATCH,PROXIES

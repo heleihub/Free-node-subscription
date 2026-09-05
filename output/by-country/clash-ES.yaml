@@ -4,7 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: node_136
+- name: 🇪🇸 ES 01 - xiaohe
+  type: ss
+  server: 108.181.121.226
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: WSyL4XTwNsdv
+  udp: true
+- name: 🇪🇸 ES 02 - xiaohe
   type: ss
   server: 140.174.184.5
   port: 8388
@@ -16,12 +23,14 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - node_136
+  - 🇪🇸 ES 01 - xiaohe
+  - 🇪🇸 ES 02 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - node_136
+  - 🇪🇸 ES 01 - xiaohe
+  - 🇪🇸 ES 02 - xiaohe
 rules:
 - MATCH,PROXIES

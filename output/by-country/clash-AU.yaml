@@ -4,7 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: node_2430
+- name: 🇦🇺 AU 01 - xiaohe
+  type: hysteria2
+  server: vpn-au-002.fastervpn.world
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-au-002.fastervpn.world
+  skip-cert-verify: true
+- name: 🇦🇺 AU 02 - xiaohe
   type: trojan
   server: 103.224.212.211
   port: 443
@@ -12,15 +19,7 @@ proxies:
   udp: true
   sni: 60.72img.xyz
   skip-cert-verify: true
-- name: node_1453
-  type: trojan
-  server: 87.121.33.32
-  port: 443
-  password: FH72359861
-  udp: true
-  sni: square-pheasant.rooster465.autos
-  skip-cert-verify: true
-- name: node_1328
+- name: 🇦🇺 AU 03 - xiaohe
   type: vless
   server: 103.75.119.126
   port: 2087
@@ -33,7 +32,15 @@ proxies:
     path: /7586c69d3dc9
     headers:
       Host: 103.75.119.126
-- name: node_2780
+- name: 🇦🇺 AU 04 - xiaohe
+  type: trojan
+  server: 87.121.33.32
+  port: 443
+  password: FH72359861
+  udp: true
+  sni: square-pheasant.rooster465.autos
+  skip-cert-verify: true
+- name: 🇦🇺 AU 05 - xiaohe
   type: vless
   server: 103.75.119.126
   port: 2087
@@ -51,18 +58,20 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - node_2430
-  - node_1453
-  - node_1328
-  - node_2780
+  - 🇦🇺 AU 01 - xiaohe
+  - 🇦🇺 AU 02 - xiaohe
+  - 🇦🇺 AU 03 - xiaohe
+  - 🇦🇺 AU 04 - xiaohe
+  - 🇦🇺 AU 05 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - node_2430
-  - node_1453
-  - node_1328
-  - node_2780
+  - 🇦🇺 AU 01 - xiaohe
+  - 🇦🇺 AU 02 - xiaohe
+  - 🇦🇺 AU 03 - xiaohe
+  - 🇦🇺 AU 04 - xiaohe
+  - 🇦🇺 AU 05 - xiaohe
 rules:
 - MATCH,PROXIES

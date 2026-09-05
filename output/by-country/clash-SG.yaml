@@ -4,14 +4,14 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: node_1900
+- name: 🇸🇬 SG 01 - xiaohe
   type: hysteria2
   server: 13.250.120.9
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 13.250.120.9
   skip-cert-verify: true
-- name: node_983
+- name: 🇸🇬 SG 02 - xiaohe
   type: vmess
   server: 149.88.23.202
   port: 18000
@@ -21,14 +21,31 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: node_1011
+- name: 🇸🇬 SG 03 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 04 - xiaohe
   type: hysteria2
   server: 54.151.142.26
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 54.151.142.26
   skip-cert-verify: true
-- name: node_2335
+- name: 🇸🇬 SG 05 - xiaohe
+  type: hysteria2
+  server: 47.129.0.20
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 47.129.0.20
+  skip-cert-verify: true
+- name: 🇸🇬 SG 06 - xiaohe
   type: vmess
   server: 149.88.23.202
   port: 18000
@@ -38,14 +55,127 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: node_1029
+- name: 🇸🇬 SG 07 - xiaohe
+  type: trojan
+  server: 139.59.238.97
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: 139.59.238.97
+  skip-cert-verify: true
+- name: 🇸🇬 SG 08 - xiaohe
+  type: hysteria2
+  server: 47.129.0.20
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 47.129.0.20
+  skip-cert-verify: true
+- name: 🇸🇬 SG 09 - xiaohe
+  type: ss
+  server: 176.97.64.144
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: TFElG2FVqyqG
+  udp: true
+- name: 🇸🇬 SG 10 - xiaohe
+  type: ss
+  server: 167.150.100.115
+  port: 27755
+  cipher: 2022-blake3-aes-256-gcm
+  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
+  udp: true
+- name: 🇸🇬 SG 11 - xiaohe
+  type: hysteria2
+  server: 47.129.0.20
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 47.129.0.20
+  skip-cert-verify: true
+- name: 🇸🇬 SG 12 - xiaohe
+  type: vless
+  server: 134.122.154.210
+  port: 443
+  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 13 - xiaohe
+  type: hysteria2
+  server: sg1.xiaoliyu.cyou
+  port: 1933
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: sg1.xiaoliyu.cyou
+  skip-cert-verify: true
+- name: 🇸🇬 SG 14 - xiaohe
   type: hysteria2
   server: 13.212.76.106
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 13.212.76.106
   skip-cert-verify: true
-- name: node_894
+- name: 🇸🇬 SG 15 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 16 - xiaohe
+  type: trojan
+  server: 81.28.13.223
+  port: 443
+  password: PD07395842
+  udp: true
+  sni: optimum-bull.rooster465.autos
+  skip-cert-verify: true
+- name: 🇸🇬 SG 17 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 18 - xiaohe
+  type: trojan
+  server: 139.59.238.97
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: 139.59.238.97
+  skip-cert-verify: true
+- name: 🇸🇬 SG 19 - xiaohe
+  type: trojan
+  server: 139.59.238.97
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: 139.59.238.97
+  skip-cert-verify: true
+- name: 🇸🇬 SG 20 - xiaohe
+  type: trojan
+  server: 139.59.238.97
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: ww12.levikogjgfdd.ir
+  skip-cert-verify: true
+- name: 🇸🇬 SG 21 - xiaohe
+  type: vmess
+  server: 149.88.23.207
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 22 - xiaohe
   type: trojan
   server: ww12.levikogjgfdd.ir
   port: 50573
@@ -53,15 +183,55 @@ proxies:
   udp: true
   sni: ww12.levikogjgfdd.ir
   skip-cert-verify: true
-- name: node_1010
-  type: trojan
-  server: 81.28.13.69
+- name: 🇸🇬 SG 23 - xiaohe
+  type: hysteria2
+  server: 47.129.0.20
   port: 443
-  password: NQ26071394
-  udp: true
-  sni: quiet-condor.rooster465.autos
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 47.129.0.20
   skip-cert-verify: true
-- name: node_2107
+- name: 🇸🇬 SG 24 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 SG 25 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 SG 26 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 27 - xiaohe
+  type: vmess
+  server: 149.88.23.207
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 28 - xiaohe
+  type: hysteria2
+  server: 47.129.0.20
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 47.129.0.20
+  skip-cert-verify: true
+- name: 🇸🇬 SG 29 - xiaohe
   type: vmess
   server: ww11.levikogjgfdd.ir
   port: 18000
@@ -71,7 +241,185 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: node_865
+- name: 🇸🇬 SG 30 - xiaohe
+  type: trojan
+  server: ww12.levikogjgfdd.ir
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: ww12.levikogjgfdd.ir
+  skip-cert-verify: true
+- name: 🇸🇬 SG 31 - xiaohe
+  type: trojan
+  server: 139.59.238.97
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: ww12.levikogjgfdd.ir
+  skip-cert-verify: true
+- name: 🇸🇬 SG 32 - xiaohe
+  type: hysteria2
+  server: 54.151.142.26
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 54.151.142.26
+  skip-cert-verify: true
+- name: 🇸🇬 SG 33 - xiaohe
+  type: trojan
+  server: 91.243.81.39
+  port: 443
+  password: CF68213490
+  udp: true
+  sni: harmless-lab.rooster465.autos
+  skip-cert-verify: true
+- name: 🇸🇬 SG 34 - xiaohe
+  type: vless
+  server: 134.122.154.210
+  port: 443
+  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 35 - xiaohe
+  type: vmess
+  server: 149.88.23.207
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 36 - xiaohe
+  type: hysteria2
+  server: 54.151.142.26
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 54.151.142.26
+  skip-cert-verify: true
+- name: 🇸🇬 SG 37 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 SG 38 - xiaohe
+  type: hysteria2
+  server: 47.129.0.20
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 47.129.0.20
+  skip-cert-verify: true
+- name: 🇸🇬 SG 39 - xiaohe
+  type: vless
+  server: 134.122.154.210
+  port: 443
+  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 40 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 41 - xiaohe
+  type: trojan
+  server: 81.28.13.69
+  port: 443
+  password: NQ26071394
+  udp: true
+  sni: quiet-condor.rooster465.autos
+  skip-cert-verify: true
+- name: 🇸🇬 SG 42 - xiaohe
+  type: vmess
+  server: 149.88.23.207
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 43 - xiaohe
+  type: vmess
+  server: ww11.levikogjgfdd.ir
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 44 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 45 - xiaohe
+  type: vmess
+  server: 149.88.23.207
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 46 - xiaohe
+  type: hysteria2
+  server: 54.151.142.26
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 54.151.142.26
+  skip-cert-verify: true
+- name: 🇸🇬 SG 47 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 SG 48 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 49 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 SG 50 - xiaohe
+  type: trojan
+  server: ww12.levikogjgfdd.ir
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: telegram-leviko_v2ray
+  skip-cert-verify: true
+- name: 🇸🇬 SG 51 - xiaohe
   type: vless
   server: 149.118.55.234
   port: 443
@@ -84,50 +432,28 @@ proxies:
     path: /xlordgrim/sg
     headers:
       Host: edge.xlordgrim.com
-- name: node_2039
-  type: trojan
-  server: 139.59.238.97
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+- name: 🇸🇬 SG 52 - xiaohe
+  type: ss
+  server: 134.185.94.128
+  port: 56927
+  cipher: 2022-blake3-chacha20-poly1305
+  password: JtkbIj4+qk/NSxl76apJZvxcu/vuJj2t3RiQWcMTQ5A=
   udp: true
-  sni: ww12.levikogjgfdd.ir
-  skip-cert-verify: true
-- name: node_2452
-  type: vmess
-  server: 149.88.23.202
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_2415
-  type: vmess
-  server: 149.88.23.207
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_2433
+- name: 🇸🇬 SG 53 - xiaohe
   type: hysteria2
   server: 13.212.76.106
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 13.212.76.106
   skip-cert-verify: true
-- name: node_1102
-  type: trojan
-  server: ww12.levikogjgfdd.ir
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: ww12.levikogjgfdd.ir
+- name: 🇸🇬 SG 54 - xiaohe
+  type: hysteria2
+  server: 13.250.120.9
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.250.120.9
   skip-cert-verify: true
-- name: node_2387
+- name: 🇸🇬 SG 55 - xiaohe
   type: vmess
   server: 185.36.192.228
   port: 35488
@@ -137,55 +463,7 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: node_2333
-  type: trojan
-  server: 139.59.238.97
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: ww12.levikogjgfdd.ir
-  skip-cert-verify: true
-- name: node_929
-  type: vless
-  server: 134.122.154.210
-  port: 443
-  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_2032
-  type: hysteria2
-  server: 13.212.76.106
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.76.106
-  skip-cert-verify: true
-- name: node_1467
-  type: hysteria2
-  server: 47.129.0.20
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 47.129.0.20
-  skip-cert-verify: true
-- name: node_388
-  type: vmess
-  server: 149.88.23.202
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_319
-  type: vless
-  server: 134.122.154.210
-  port: 443
-  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_279
+- name: 🇸🇬 SG 56 - xiaohe
   type: trojan
   server: 139.59.238.97
   port: 50573
@@ -193,7 +471,7 @@ proxies:
   udp: true
   sni: 139.59.238.97
   skip-cert-verify: true
-- name: node_1705
+- name: 🇸🇬 SG 57 - xiaohe
   type: vless
   server: 134.122.154.210
   port: 443
@@ -201,284 +479,150 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: node_1278
-  type: hysteria2
-  server: 47.129.0.20
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 47.129.0.20
-  skip-cert-verify: true
-- name: node_891
-  type: vmess
-  server: 149.88.23.202
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_1519
-  type: hysteria2
-  server: 13.212.76.106
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.76.106
-  skip-cert-verify: true
-- name: node_558
-  type: vless
-  server: 134.122.154.210
-  port: 443
-  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_157
-  type: trojan
-  server: 91.243.81.39
-  port: 443
-  password: CF68213490
-  udp: true
-  sni: harmless-lab.rooster465.autos
-  skip-cert-verify: true
-- name: node_1934
-  type: trojan
-  server: 139.59.238.97
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: 139.59.238.97
-  skip-cert-verify: true
-- name: node_2010
+- name: 🇸🇬 SG 58 - xiaohe
   type: hysteria2
   server: 54.151.142.26
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 54.151.142.26
   skip-cert-verify: true
-- name: node_1039
-  type: trojan
-  server: 139.59.238.97
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: 139.59.238.97
-  skip-cert-verify: true
-- name: node_1297
-  type: hysteria2
-  server: 47.129.0.20
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 47.129.0.20
-  skip-cert-verify: true
-- name: node_1223
-  type: hysteria2
-  server: 13.250.120.9
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.250.120.9
-  skip-cert-verify: true
-- name: node_1811
-  type: ss
-  server: 167.150.100.115
-  port: 27755
-  cipher: 2022-blake3-aes-256-gcm
-  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
-  udp: true
-- name: node_1761
-  type: hysteria2
-  server: 47.129.0.20
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 47.129.0.20
-  skip-cert-verify: true
-- name: node_1679
+- name: 🇸🇬 SG 59 - xiaohe
   type: vmess
-  server: 149.88.23.202
+  server: 149.88.23.207
   port: 18000
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   alterId: 0
   cipher: auto
   udp: true
   tls: false
-  skip-cert-verify: true
-- name: node_642
-  type: trojan
-  server: 81.28.13.223
-  port: 443
-  password: PD07395842
-  udp: true
-  sni: optimum-bull.rooster465.autos
-  skip-cert-verify: true
-- name: node_3247
-  type: vmess
-  server: 149.88.23.202
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_3252
-  type: ss
-  server: 176.97.64.144
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: TFElG2FVqyqG
-  udp: true
-- name: node_3295
-  type: trojan
-  server: 139.59.238.97
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: 139.59.238.97
-  skip-cert-verify: true
-- name: node_3444
-  type: vmess
-  server: 149.88.23.202
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_3192
-  type: vmess
-  server: ww11.levikogjgfdd.ir
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_3538
-  type: hysteria2
-  server: 13.212.76.106
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.76.106
-  skip-cert-verify: true
-- name: node_3602
-  type: vmess
-  server: 149.88.23.202
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: node_4830
-  type: trojan
-  server: 139.59.238.97
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: 139.59.238.97
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - node_1900
-  - node_983
-  - node_1011
-  - node_2335
-  - node_1029
-  - node_894
-  - node_1010
-  - node_2107
-  - node_865
-  - node_2039
-  - node_2452
-  - node_2415
-  - node_2433
-  - node_1102
-  - node_2387
-  - node_2333
-  - node_929
-  - node_2032
-  - node_1467
-  - node_388
-  - node_319
-  - node_279
-  - node_1705
-  - node_1278
-  - node_891
-  - node_1519
-  - node_558
-  - node_157
-  - node_1934
-  - node_2010
-  - node_1039
-  - node_1297
-  - node_1223
-  - node_1811
-  - node_1761
-  - node_1679
-  - node_642
-  - node_3247
-  - node_3252
-  - node_3295
-  - node_3444
-  - node_3192
-  - node_3538
-  - node_3602
-  - node_4830
+  - 🇸🇬 SG 01 - xiaohe
+  - 🇸🇬 SG 02 - xiaohe
+  - 🇸🇬 SG 03 - xiaohe
+  - 🇸🇬 SG 04 - xiaohe
+  - 🇸🇬 SG 05 - xiaohe
+  - 🇸🇬 SG 06 - xiaohe
+  - 🇸🇬 SG 07 - xiaohe
+  - 🇸🇬 SG 08 - xiaohe
+  - 🇸🇬 SG 09 - xiaohe
+  - 🇸🇬 SG 10 - xiaohe
+  - 🇸🇬 SG 11 - xiaohe
+  - 🇸🇬 SG 12 - xiaohe
+  - 🇸🇬 SG 13 - xiaohe
+  - 🇸🇬 SG 14 - xiaohe
+  - 🇸🇬 SG 15 - xiaohe
+  - 🇸🇬 SG 16 - xiaohe
+  - 🇸🇬 SG 17 - xiaohe
+  - 🇸🇬 SG 18 - xiaohe
+  - 🇸🇬 SG 19 - xiaohe
+  - 🇸🇬 SG 20 - xiaohe
+  - 🇸🇬 SG 21 - xiaohe
+  - 🇸🇬 SG 22 - xiaohe
+  - 🇸🇬 SG 23 - xiaohe
+  - 🇸🇬 SG 24 - xiaohe
+  - 🇸🇬 SG 25 - xiaohe
+  - 🇸🇬 SG 26 - xiaohe
+  - 🇸🇬 SG 27 - xiaohe
+  - 🇸🇬 SG 28 - xiaohe
+  - 🇸🇬 SG 29 - xiaohe
+  - 🇸🇬 SG 30 - xiaohe
+  - 🇸🇬 SG 31 - xiaohe
+  - 🇸🇬 SG 32 - xiaohe
+  - 🇸🇬 SG 33 - xiaohe
+  - 🇸🇬 SG 34 - xiaohe
+  - 🇸🇬 SG 35 - xiaohe
+  - 🇸🇬 SG 36 - xiaohe
+  - 🇸🇬 SG 37 - xiaohe
+  - 🇸🇬 SG 38 - xiaohe
+  - 🇸🇬 SG 39 - xiaohe
+  - 🇸🇬 SG 40 - xiaohe
+  - 🇸🇬 SG 41 - xiaohe
+  - 🇸🇬 SG 42 - xiaohe
+  - 🇸🇬 SG 43 - xiaohe
+  - 🇸🇬 SG 44 - xiaohe
+  - 🇸🇬 SG 45 - xiaohe
+  - 🇸🇬 SG 46 - xiaohe
+  - 🇸🇬 SG 47 - xiaohe
+  - 🇸🇬 SG 48 - xiaohe
+  - 🇸🇬 SG 49 - xiaohe
+  - 🇸🇬 SG 50 - xiaohe
+  - 🇸🇬 SG 51 - xiaohe
+  - 🇸🇬 SG 52 - xiaohe
+  - 🇸🇬 SG 53 - xiaohe
+  - 🇸🇬 SG 54 - xiaohe
+  - 🇸🇬 SG 55 - xiaohe
+  - 🇸🇬 SG 56 - xiaohe
+  - 🇸🇬 SG 57 - xiaohe
+  - 🇸🇬 SG 58 - xiaohe
+  - 🇸🇬 SG 59 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - node_1900
-  - node_983
-  - node_1011
-  - node_2335
-  - node_1029
-  - node_894
-  - node_1010
-  - node_2107
-  - node_865
-  - node_2039
-  - node_2452
-  - node_2415
-  - node_2433
-  - node_1102
-  - node_2387
-  - node_2333
-  - node_929
-  - node_2032
-  - node_1467
-  - node_388
-  - node_319
-  - node_279
-  - node_1705
-  - node_1278
-  - node_891
-  - node_1519
-  - node_558
-  - node_157
-  - node_1934
-  - node_2010
-  - node_1039
-  - node_1297
-  - node_1223
-  - node_1811
-  - node_1761
-  - node_1679
-  - node_642
-  - node_3247
-  - node_3252
-  - node_3295
-  - node_3444
-  - node_3192
-  - node_3538
-  - node_3602
-  - node_4830
+  - 🇸🇬 SG 01 - xiaohe
+  - 🇸🇬 SG 02 - xiaohe
+  - 🇸🇬 SG 03 - xiaohe
+  - 🇸🇬 SG 04 - xiaohe
+  - 🇸🇬 SG 05 - xiaohe
+  - 🇸🇬 SG 06 - xiaohe
+  - 🇸🇬 SG 07 - xiaohe
+  - 🇸🇬 SG 08 - xiaohe
+  - 🇸🇬 SG 09 - xiaohe
+  - 🇸🇬 SG 10 - xiaohe
+  - 🇸🇬 SG 11 - xiaohe
+  - 🇸🇬 SG 12 - xiaohe
+  - 🇸🇬 SG 13 - xiaohe
+  - 🇸🇬 SG 14 - xiaohe
+  - 🇸🇬 SG 15 - xiaohe
+  - 🇸🇬 SG 16 - xiaohe
+  - 🇸🇬 SG 17 - xiaohe
+  - 🇸🇬 SG 18 - xiaohe
+  - 🇸🇬 SG 19 - xiaohe
+  - 🇸🇬 SG 20 - xiaohe
+  - 🇸🇬 SG 21 - xiaohe
+  - 🇸🇬 SG 22 - xiaohe
+  - 🇸🇬 SG 23 - xiaohe
+  - 🇸🇬 SG 24 - xiaohe
+  - 🇸🇬 SG 25 - xiaohe
+  - 🇸🇬 SG 26 - xiaohe
+  - 🇸🇬 SG 27 - xiaohe
+  - 🇸🇬 SG 28 - xiaohe
+  - 🇸🇬 SG 29 - xiaohe
+  - 🇸🇬 SG 30 - xiaohe
+  - 🇸🇬 SG 31 - xiaohe
+  - 🇸🇬 SG 32 - xiaohe
+  - 🇸🇬 SG 33 - xiaohe
+  - 🇸🇬 SG 34 - xiaohe
+  - 🇸🇬 SG 35 - xiaohe
+  - 🇸🇬 SG 36 - xiaohe
+  - 🇸🇬 SG 37 - xiaohe
+  - 🇸🇬 SG 38 - xiaohe
+  - 🇸🇬 SG 39 - xiaohe
+  - 🇸🇬 SG 40 - xiaohe
+  - 🇸🇬 SG 41 - xiaohe
+  - 🇸🇬 SG 42 - xiaohe
+  - 🇸🇬 SG 43 - xiaohe
+  - 🇸🇬 SG 44 - xiaohe
+  - 🇸🇬 SG 45 - xiaohe
+  - 🇸🇬 SG 46 - xiaohe
+  - 🇸🇬 SG 47 - xiaohe
+  - 🇸🇬 SG 48 - xiaohe
+  - 🇸🇬 SG 49 - xiaohe
+  - 🇸🇬 SG 50 - xiaohe
+  - 🇸🇬 SG 51 - xiaohe
+  - 🇸🇬 SG 52 - xiaohe
+  - 🇸🇬 SG 53 - xiaohe
+  - 🇸🇬 SG 54 - xiaohe
+  - 🇸🇬 SG 55 - xiaohe
+  - 🇸🇬 SG 56 - xiaohe
+  - 🇸🇬 SG 57 - xiaohe
+  - 🇸🇬 SG 58 - xiaohe
+  - 🇸🇬 SG 59 - xiaohe
 rules:
 - MATCH,PROXIES

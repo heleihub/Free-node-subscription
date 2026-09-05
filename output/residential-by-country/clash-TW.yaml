@@ -4,20 +4,6 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 TW 01 - xiaohe
-  type: hysteria2
-  server: 160.187.100.109
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 160.187.100.109
-  skip-cert-verify: true
-- name: 🇹🇼 TW 02 - xiaohe
-  type: hysteria2
-  server: vpn-tw-002.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-tw-002.fastervpn.world
-  skip-cert-verify: true
 - name: 🇹🇼 TW 03 (家宽) - xiaohe
   type: vless
   server: 60.248.219.78
@@ -31,13 +17,6 @@ proxies:
     path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     headers:
       Host: 60.248.219.78
-- name: 🇹🇼 TW 04 - xiaohe
-  type: hysteria2
-  server: 103.115.109.49
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 103.115.109.49
-  skip-cert-verify: true
 - name: 🇹🇼 TW 05 (家宽) - xiaohe
   type: ss
   server: r3mrcg00129437x.cybervena.com
@@ -53,13 +32,6 @@ proxies:
   udp: true
   sni: a03.taipeicitygovernment.cn.ua
   skip-cert-verify: true
-- name: 🇹🇼 TW 07 - xiaohe
-  type: hysteria2
-  server: 103.115.109.49
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 103.115.109.49
-  skip-cert-verify: true
 - name: 🇹🇼 TW 08 (家宽) - xiaohe
   type: ss
   server: 36.224.152.189
@@ -67,20 +39,6 @@ proxies:
   cipher: chacha20-ietf-poly1305
   password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
   udp: true
-- name: 🇹🇼 TW 09 - xiaohe
-  type: hysteria2
-  server: 160.187.100.109
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 160.187.100.109
-  skip-cert-verify: true
-- name: 🇹🇼 TW 10 - xiaohe
-  type: hysteria2
-  server: 103.115.109.49
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 103.115.109.49
-  skip-cert-verify: true
 - name: 🇹🇼 TW 11 (家宽) - xiaohe
   type: ss
   server: 36.224.151.80
@@ -109,41 +67,6 @@ proxies:
     short-id: ''
   servername: addons.mozilla.org
   client-fingerprint: qq
-- name: 🇹🇼 TW 14 - xiaohe
-  type: hysteria2
-  server: 160.187.100.109
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 160.187.100.109
-  skip-cert-verify: true
-- name: 🇹🇼 TW 15 - xiaohe
-  type: hysteria2
-  server: vpn-tw-002.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-tw-002.fastervpn.world
-  skip-cert-verify: true
-- name: 🇹🇼 TW 16 - xiaohe
-  type: hysteria2
-  server: vpn-tw-002.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-tw-002.fastervpn.world
-  skip-cert-verify: true
-- name: 🇹🇼 TW 17 - xiaohe
-  type: hysteria2
-  server: vpn-tw-002.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-tw-002.fastervpn.world
-  skip-cert-verify: true
-- name: 🇹🇼 TW 18 - xiaohe
-  type: hysteria2
-  server: 160.187.100.109
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 160.187.100.109
-  skip-cert-verify: true
 - name: 🇹🇼 TW 19 (家宽) - xiaohe
   type: trojan
   server: 61.222.160.199
@@ -165,16 +88,6 @@ proxies:
     short-id: ''
   servername: addons.mozilla.org
   client-fingerprint: firefox
-- name: 🇹🇼 TW 21 - xiaohe
-  type: vmess
-  server: 165.154.195.38
-  port: 35034
-  uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
 - name: 🇹🇼 TW 22 (家宽) - xiaohe
   type: trojan
   server: 203.69.207.175
@@ -196,16 +109,6 @@ proxies:
     path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     headers:
       Host: 60.248.219.52
-- name: 🇹🇼 TW 24 - xiaohe
-  type: vmess
-  server: 165.154.195.38
-  port: 35034
-  uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
 - name: 🇹🇼 TW 25 (家宽) - xiaohe
   type: trojan
   server: 125.227.152.109
@@ -252,30 +155,17 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 TW 01 - xiaohe
-  - 🇹🇼 TW 02 - xiaohe
   - 🇹🇼 TW 03 (家宽) - xiaohe
-  - 🇹🇼 TW 04 - xiaohe
   - 🇹🇼 TW 05 (家宽) - xiaohe
   - 🇹🇼 TW 06 (家宽) - xiaohe
-  - 🇹🇼 TW 07 - xiaohe
   - 🇹🇼 TW 08 (家宽) - xiaohe
-  - 🇹🇼 TW 09 - xiaohe
-  - 🇹🇼 TW 10 - xiaohe
   - 🇹🇼 TW 11 (家宽) - xiaohe
   - 🇹🇼 TW 12 (家宽) - xiaohe
   - 🇹🇼 TW 13 (家宽) - xiaohe
-  - 🇹🇼 TW 14 - xiaohe
-  - 🇹🇼 TW 15 - xiaohe
-  - 🇹🇼 TW 16 - xiaohe
-  - 🇹🇼 TW 17 - xiaohe
-  - 🇹🇼 TW 18 - xiaohe
   - 🇹🇼 TW 19 (家宽) - xiaohe
   - 🇹🇼 TW 20 (家宽) - xiaohe
-  - 🇹🇼 TW 21 - xiaohe
   - 🇹🇼 TW 22 (家宽) - xiaohe
   - 🇹🇼 TW 23 (家宽) - xiaohe
-  - 🇹🇼 TW 24 - xiaohe
   - 🇹🇼 TW 25 (家宽) - xiaohe
   - 🇹🇼 TW 26 (家宽) - xiaohe
   - 🇹🇼 TW 27 (家宽) - xiaohe
@@ -285,30 +175,17 @@ proxy-groups:
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 TW 01 - xiaohe
-  - 🇹🇼 TW 02 - xiaohe
   - 🇹🇼 TW 03 (家宽) - xiaohe
-  - 🇹🇼 TW 04 - xiaohe
   - 🇹🇼 TW 05 (家宽) - xiaohe
   - 🇹🇼 TW 06 (家宽) - xiaohe
-  - 🇹🇼 TW 07 - xiaohe
   - 🇹🇼 TW 08 (家宽) - xiaohe
-  - 🇹🇼 TW 09 - xiaohe
-  - 🇹🇼 TW 10 - xiaohe
   - 🇹🇼 TW 11 (家宽) - xiaohe
   - 🇹🇼 TW 12 (家宽) - xiaohe
   - 🇹🇼 TW 13 (家宽) - xiaohe
-  - 🇹🇼 TW 14 - xiaohe
-  - 🇹🇼 TW 15 - xiaohe
-  - 🇹🇼 TW 16 - xiaohe
-  - 🇹🇼 TW 17 - xiaohe
-  - 🇹🇼 TW 18 - xiaohe
   - 🇹🇼 TW 19 (家宽) - xiaohe
   - 🇹🇼 TW 20 (家宽) - xiaohe
-  - 🇹🇼 TW 21 - xiaohe
   - 🇹🇼 TW 22 (家宽) - xiaohe
   - 🇹🇼 TW 23 (家宽) - xiaohe
-  - 🇹🇼 TW 24 - xiaohe
   - 🇹🇼 TW 25 (家宽) - xiaohe
   - 🇹🇼 TW 26 (家宽) - xiaohe
   - 🇹🇼 TW 27 (家宽) - xiaohe
