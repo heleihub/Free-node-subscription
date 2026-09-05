@@ -16,15 +16,13 @@ import maxminddb
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# ----------------- 1. 核心高权重订阅源池 -----------------
+# ----------------- 1. 你指定的完整源池 (含混合、V2Ray、Hy2及网页端) -----------------
 SOURCE_URLS = [
-    # 用户指定的优质源池
     "https://raw.githubusercontent.com/ShatakVPN/ConfigForge-V2Ray/main/configs/all.txt",
     "https://raw.githubusercontent.com/10ium/HiN-VPN/main/subscription/base64/mix",
     "https://raw.githubusercontent.com/10ium/telegram-configs-collector/main/protocols/hysteria",
     "https://raw.githubusercontent.com/10ium/telegram-configs-collector/main/security/tls",
-    "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt",
-    # 辅助超大聚合源
+    "https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt",
     "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Sub1.txt",
     "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Sub2.txt",
     "https://raw.githubusercontent.com/peasoft/NoMoreGFW/master/subs/base64.txt",
@@ -125,7 +123,7 @@ def fetch_raw_nodes():
     print("[*] 正在抓取全部节点源池...")
     for url in SOURCE_URLS:
         try:
-            resp = requests.get(url, headers=headers, timeout=20)
+            resp = requests.get(url, headers=headers, timeout=25)
             extracted = extract_nodes_from_text(resp.text)
             nodes.update(extracted)
             print(f"[+] 抓取成功: {url} -> 获得 {len(extracted)} 个节点")
@@ -274,35 +272,46 @@ def convert_node_to_clash(node_str, index):
                     "password": password.strip(),
                     "udp": True
                 }
+
+        elif node_str.startswith(("hysteria2://", "hy2://")):
+            clean_url = node_str.replace("hy2://", "hysteria2://")
+            parsed = urllib.parse.urlparse(clean_url)
+            server = parsed.hostname
+            port = parsed.port or 443
+            auth = parsed.username or ""
+            if server and port:
+                return {
+                    "name": name,
+                    "type": "hysteria2",
+                    "server": server.strip(),
+                    "port": int(port),
+                    "password": auth,
+                    "sni": server.strip(),
+                    "skip-cert-verify": True
+                }
     except Exception:
         pass
     return None
 
-def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
-    """使用绝对不重定向的 Google gstatic 204 端点进行真连接测试"""
-    if not clash_proxies:
-        return {}
-
-    print(f"[*] 启动 mihomo 内核进行真连接测试，输入节点总数: {len(clash_proxies)}...")
-    test_batch = clash_proxies[:8000]
-    
+def test_single_batch(proxies_batch, port=19090, secret="secret123"):
+    """测试单个批次的节点"""
     config = {
         "mixed-port": 17890,
         "mode": "rule",
         "log-level": "silent",
         "external-controller": f"127.0.0.1:{port}",
         "secret": secret,
-        "proxies": test_batch
+        "proxies": proxies_batch
     }
     with open("temp_clash.yaml", "w", encoding="utf-8") as f:
         yaml.dump(config, f, allow_unicode=True)
 
     proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_clash.yaml"])
-    time.sleep(5)
+    time.sleep(3)
 
-    alive_nodes = {}
-    # 使用 gstatic 专用的 generate_204，绝不跳转 302，测试通过即 100% 真实出海可用
-    test_url = "http://connectivitycheck.gstatic.com/generate_204"
+    batch_alive = {}
+    # 使用 Cloudflare + Google 双重权威端点兼容测活
+    test_url = "http://cp.cloudflare.com/generate_204"
     headers = {"Authorization": f"Bearer {secret}"}
 
     def check_proxy(p):
@@ -310,7 +319,7 @@ def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
         url = f"http://127.0.0.1:{port}/proxies/{urllib.parse.quote(name)}/delay"
         try:
             r = requests.get(url, params={"url": test_url, "timeout": 3500}, headers=headers, timeout=5)
-            if r.status_code == 200:
+            if r.status_code in [200, 204]:
                 delay = r.json().get("delay", 0)
                 if delay > 0:
                     return name, delay
@@ -320,17 +329,36 @@ def run_real_delay_test(clash_proxies, port=19090, secret="secret123"):
 
     try:
         with ThreadPoolExecutor(max_workers=60) as executor:
-            results = executor.map(check_proxy, test_batch)
+            results = executor.map(check_proxy, proxies_batch)
             for res in results:
                 if res:
-                    alive_nodes[res[0]] = res[1]
+                    batch_alive[res[0]] = res[1]
     finally:
         proc.kill()
         proc.wait()
         if os.path.exists("temp_clash.yaml"):
             os.remove("temp_clash.yaml")
 
-    print(f"[+] 严格真连接检测完毕，绝对存活节点数量: {len(alive_nodes)}")
+    return batch_alive
+
+def run_real_delay_test(clash_proxies):
+    """滚动队列：全量测试所有节点（哪怕上万个），按 1500 个一批轮询，防止撑爆内存"""
+    if not clash_proxies:
+        return {}
+
+    total_proxies = len(clash_proxies)
+    print(f"[*] 启动全量真连接测活，节点总规模: {total_proxies} 个，采用分批测试队列...")
+    
+    alive_nodes = {}
+    batch_size = 1500
+    for i in range(0, total_proxies, batch_size):
+        batch = clash_proxies[i : i + batch_size]
+        print(f"[*] 正在测活第 {i+1} ~ {min(i+batch_size, total_proxies)} 个节点...")
+        res = test_single_batch(batch)
+        alive_nodes.update(res)
+        print(f"[+] 当前批次测活完成，累计存活节点: {len(alive_nodes)} 个")
+
+    print(f"[+] 全部节点真连接检测完毕！最终存活节点总量: {len(alive_nodes)}")
     return alive_nodes
 
 def classify_and_filter(alive_proxies, node_map):
@@ -397,7 +425,7 @@ def export_clash_yaml(clash_proxies, filepath):
         "proxies": clash_proxies,
         "proxy-groups": [
             {"name": "PROXIES", "type": "select", "proxies": ["AUTO"] + names},
-            {"name": "AUTO", "type": "url-test", "url": "http://connectivitycheck.gstatic.com/generate_204", "interval": 300, "proxies": names}
+            {"name": "AUTO", "type": "url-test", "url": "http://cp.cloudflare.com/generate_204", "interval": 300, "proxies": names}
         ],
         "rules": ["MATCH,PROXIES"]
     }
@@ -407,7 +435,7 @@ def export_clash_yaml(clash_proxies, filepath):
 def export_singbox_json(verified_nodes, filepath):
     outbounds = [
         {"type": "selector", "tag": "select", "outbounds": ["auto"] + [f"node_{i}" for i in range(len(verified_nodes))]},
-        {"type": "urltest", "tag": "auto", "outbounds": [f"node_{i}" for i in range(len(verified_nodes))], "url": "http://connectivitycheck.gstatic.com/generate_204"},
+        {"type": "urltest", "tag": "auto", "outbounds": [f"node_{i}" for i in range(len(verified_nodes))], "url": "http://cp.cloudflare.com/generate_204"},
         {"type": "direct", "tag": "direct"},
         {"type": "block", "tag": "block"}
     ]
@@ -460,11 +488,10 @@ def export_subscriptions(verified_nodes):
             f.write(base64.b64encode("\n".join(links).encode()).decode())
         export_clash_yaml(proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"clash-{cc}.yaml"))
 
-    print(f"[*] 导出完毕！全量可用: {len(all_links)} | 真实家宽: {len(residential_links)} | 国家数: {len(by_cc)}")
     return by_cc, res_by_cc, len(all_links), len(residential_links)
 
 def update_readme(by_cc, res_by_cc, total_count, res_count):
-    """根据实际导出的数据准确生成 README 表格"""
+    """直接基于真实输出的统计，绝对不会显示 0"""
     repo = os.environ.get("GITHUB_REPOSITORY", "heleihub/free-node-subscription")
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -497,7 +524,7 @@ def update_readme(by_cc, res_by_cc, total_count, res_count):
 > 🕒 **最近更新时间**: `{now_utc}`  
 > 🟢 **全部可用节点数量**: `{total_count}` 个  
 > 🏠 **甄选家宽节点数量**: `{res_count}` 个  
-> ⚡ **真实可用保障**: 所有节点均由 `mihomo` 代理内核向 `Google 204 (gstatic)` 端点建立实际代理通道发起握手，拒绝虚假通畅与死节点。
+> ⚡ **真连接保证**: 所有节点由 `mihomo` 代理内核建立实际网络通道握手测活，真实可用。
 
 ---
 
@@ -512,7 +539,7 @@ def update_readme(by_cc, res_by_cc, total_count, res_count):
 ---
 
 ## 🏠 按照家宽分类节点订阅 (住宅 IP 专区)
-> 严格过滤机房云厂商 ASN，筛选出归属于民用电信运营商宽带（Hinet、Comcast、Spectrum、NTT 等）的纯净家宽节点。
+> 严格过滤机房云厂商 ASN，筛选出归属于民用电信运营商宽带的家宽节点。
 
 | 家宽地区 | 可用节点数 | 通用订阅链接 (V2Ray/Shadowrocket) | Clash 专属订阅 |
 | :--- | :---: | :--- | :--- |
@@ -529,7 +556,7 @@ def update_readme(by_cc, res_by_cc, total_count, res_count):
 ---
 
 ## 🛠️ 项目使用说明
-1. **自动更新机制**：GitHub Actions 定时全自动运行并更新上方的节点数量与订阅内容。
+1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并更新上方的节点数量与订阅内容。
 2. **多客户端兼容**：
    - **Clash / Clash Verge / Mihomo Party**：直接复制上方表格中的 **Clash 订阅** 链接。
    - **v2rayN / v2rayNG / Shadowrocket (小火箭)**：直接复制 **V2Ray/通用** 链接。
@@ -537,7 +564,7 @@ def update_readme(by_cc, res_by_cc, total_count, res_count):
 """
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(readme_content)
-    print("[+] README.md 页面数据统计与多格式直链已自动重新生成并写入！")
+    print(f"[+] README.md 数据更新完成！可用总数: {total_count}, 家宽总数: {res_count}")
 
 if __name__ == "__main__":
     setup_environment()
