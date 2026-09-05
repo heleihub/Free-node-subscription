@@ -12,7 +12,7 @@
       "type": "urltest",
       "tag": "auto",
       "outbounds": [],
-      "url": "http://www.google.com/generate_204"
+      "url": "http://connectivitycheck.gstatic.com/generate_204"
     },
     {
       "type": "direct",
