@@ -1,0 +1,43 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: node_1004
+  type: vless
+  server: 78.17.190.94
+  port: 53289
+  uuid: 9a913f1c-28b3-4d0b-aa77-698302252ab7
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: node_1522
+  type: vless
+  server: 31.58.181.88
+  port: 8443
+  uuid: e3c57af3-51e0-4e06-bfd8-f05cc37d5069
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: AERbWB2uslqIzm1hSlOZZEH3Y9qg_zlWRRyLfh97kXc
+    short-id: ''
+  servername: tradingview.com
+  client-fingerprint: firefox
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - node_1004
+  - node_1522
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - node_1004
+  - node_1522
+rules:
+- MATCH,PROXIES

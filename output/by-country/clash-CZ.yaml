@@ -1,0 +1,54 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: node_1869
+  type: hysteria2
+  server: 195.133.24.124
+  port: 443
+  password: OD6gGbGU9a
+  sni: 195.133.24.124
+  skip-cert-verify: true
+- name: node_679
+  type: hysteria2
+  server: 195.133.24.124
+  port: 443
+  password: OD6gGbGU9a
+  sni: 195.133.24.124
+  skip-cert-verify: true
+- name: node_1683
+  type: ss
+  server: 45.129.142.41
+  port: 47425
+  cipher: chacha20-ietf-poly1305
+  password: lIoNSMeYLX8QGHnOp0DTBR0W91/CHVDEjPqjMDuYcdQ=
+  udp: true
+- name: node_3488
+  type: hysteria2
+  server: 195.133.24.124
+  port: 443
+  password: OD6gGbGU9a
+  sni: 195.133.24.124
+  skip-cert-verify: true
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - node_1869
+  - node_679
+  - node_1683
+  - node_3488
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - node_1869
+  - node_679
+  - node_1683
+  - node_3488
+rules:
+- MATCH,PROXIES

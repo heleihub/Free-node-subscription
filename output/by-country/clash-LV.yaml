@@ -1,0 +1,105 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: node_1028
+  type: vless
+  server: 89.36.161.222
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: laoye.in-gect.fun
+- name: node_1878
+  type: vless
+  server: 89.36.161.222
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 89.36.161.222
+- name: node_482
+  type: hysteria2
+  server: 104.165.205.40
+  port: 8443
+  password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
+  sni: 104.165.205.40
+  skip-cert-verify: true
+- name: node_227
+  type: hysteria2
+  server: 85.159.228.22
+  port: 443
+  password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+  sni: 85.159.228.22
+  skip-cert-verify: true
+- name: node_2902
+  type: ss
+  server: 185.135.86.175
+  port: 9094
+  cipher: aes-256-cfb
+  password: rpgbNnU9rDDU4aWZ
+  udp: true
+- name: node_3191
+  type: vless
+  server: 89.36.161.222
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: laoye.in-gect.fun
+- name: node_3576
+  type: vless
+  server: 89.36.161.222
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: laoye.in-gect.fun
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - node_1028
+  - node_1878
+  - node_482
+  - node_227
+  - node_2902
+  - node_3191
+  - node_3576
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - node_1028
+  - node_1878
+  - node_482
+  - node_227
+  - node_2902
+  - node_3191
+  - node_3576
+rules:
+- MATCH,PROXIES

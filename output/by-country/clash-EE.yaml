@@ -1,0 +1,203 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: node_2017
+  type: vless
+  server: 94.183.170.248
+  port: 8443
+  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: node_2143
+  type: vless
+  server: 94.183.170.248
+  port: 8443
+  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: node_2496
+  type: vless
+  server: 94.183.170.135
+  port: 443
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.170.135
+- name: node_2110
+  type: vless
+  server: 94.183.170.248
+  port: 443
+  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.170.248
+- name: node_971
+  type: vless
+  server: 94.183.170.135
+  port: 8443
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: node_804
+  type: vless
+  server: 94.183.170.135
+  port: 443
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.170.135
+- name: node_1531
+  type: vless
+  server: 94.183.170.135
+  port: 443
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.170.135
+- name: node_5
+  type: vless
+  server: estproxy3.lockdwn.com
+  port: 8443
+  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: node_1458
+  type: vless
+  server: 94.183.170.248
+  port: 443
+  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.170.248
+- name: node_538
+  type: vless
+  server: 94.183.170.135
+  port: 8443
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: node_327
+  type: vless
+  server: estproxy3.lockdwn.com
+  port: 443
+  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: estproxy3.lockdwn.com
+- name: node_2749
+  type: vless
+  server: 94.183.170.135
+  port: 443
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: estproxy4.lockdwn.com
+- name: node_2796
+  type: vless
+  server: 94.183.170.135
+  port: 8443
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: node_3215
+  type: trojan
+  server: 109.206.241.10
+  port: 449
+  password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+  udp: true
+  sni: russiapower.accesscam.org
+  skip-cert-verify: true
+- name: node_3613
+  type: vless
+  server: 94.183.170.135
+  port: 8443
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - node_2017
+  - node_2143
+  - node_2496
+  - node_2110
+  - node_971
+  - node_804
+  - node_1531
+  - node_5
+  - node_1458
+  - node_538
+  - node_327
+  - node_2749
+  - node_2796
+  - node_3215
+  - node_3613
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - node_2017
+  - node_2143
+  - node_2496
+  - node_2110
+  - node_971
+  - node_804
+  - node_1531
+  - node_5
+  - node_1458
+  - node_538
+  - node_327
+  - node_2749
+  - node_2796
+  - node_3215
+  - node_3613
+rules:
+- MATCH,PROXIES

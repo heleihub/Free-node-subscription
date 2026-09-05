@@ -1,0 +1,48 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: node_2019
+  type: vless
+  server: 192.145.31.5
+  port: 443
+  uuid: 9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 192.145.31.5
+- name: node_2494
+  type: vless
+  server: 192.145.31.5
+  port: 443
+  uuid: 9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 192.145.31.5
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - node_2019
+  - node_2494
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - node_2019
+  - node_2494
+rules:
+- MATCH,PROXIES

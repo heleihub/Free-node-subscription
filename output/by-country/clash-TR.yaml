@@ -1,0 +1,68 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: node_1971
+  type: vless
+  server: 91.228.227.172
+  port: 110
+  uuid: 367111be-17b4-4abc-aae0-3d7fe72aa3ec
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: node_2569
+  type: vless
+  server: 91.228.227.172
+  port: 110
+  uuid: 393280e5-746f-4d09-b406-bf0ddbb86307
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: node_1067
+  type: trojan
+  server: 45.74.158.25
+  port: 2087
+  password: v2whz6ahmyy2f84j
+  udp: true
+  sni: pus.mmdaqaorg2.ir
+  skip-cert-verify: true
+- name: node_1706
+  type: vless
+  server: 91.228.227.172
+  port: 110
+  uuid: cfa3451d-4ee4-4912-aebe-78c2df96250d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: node_2995
+  type: vless
+  server: 91.228.227.172
+  port: 443
+  uuid: 393280e5-746f-4d09-b406-bf0ddbb86307
+  udp: true
+  tls: false
+  skip-cert-verify: true
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - node_1971
+  - node_2569
+  - node_1067
+  - node_1706
+  - node_2995
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - node_1971
+  - node_2569
+  - node_1067
+  - node_1706
+  - node_2995
+rules:
+- MATCH,PROXIES

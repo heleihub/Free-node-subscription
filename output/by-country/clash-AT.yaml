@@ -1,0 +1,33 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: node_1427
+  type: vless
+  server: 152.53.1.40
+  port: 443
+  uuid: edde565e-41f5-400e-84ea-7b87a3e84488
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+    short-id: 43dcff53849b81e6
+  servername: at.quattro-tech.ru
+  client-fingerprint: qq
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - node_1427
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - node_1427
+rules:
+- MATCH,PROXIES

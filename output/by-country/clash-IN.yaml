@@ -1,0 +1,67 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: node_814
+  type: vless
+  server: 194.61.31.126
+  port: 2053
+  uuid: 50ddfd92-dc79-4777-a256-41e34d56836e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: R06_DTSjzQI9DswvRz9OqSBECfSwlpCMPR4DCc9oXyw
+    short-id: c0cb7457deebbc70
+  servername: www.apple.com
+  client-fingerprint: firefox
+- name: node_2015
+  type: trojan
+  server: 34.131.228.210
+  port: 443
+  password: M7v%w11Se*
+  udp: true
+  sni: hyfuuf6.wsone.icu
+  skip-cert-verify: true
+- name: node_1541
+  type: vless
+  server: 194.61.31.126
+  port: 2053
+  uuid: 50ddfd92-dc79-4777-a256-41e34d56836e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: R06_DTSjzQI9DswvRz9OqSBECfSwlpCMPR4DCc9oXyw
+    short-id: c0cb7457deebbc70
+  servername: www.apple.com
+  client-fingerprint: firefox
+- name: node_360
+  type: hysteria2
+  server: vpn-in-001.fastervpn.world
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: vpn-in-001.fastervpn.world
+  skip-cert-verify: true
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - node_814
+  - node_2015
+  - node_1541
+  - node_360
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - node_814
+  - node_2015
+  - node_1541
+  - node_360
+rules:
+- MATCH,PROXIES
