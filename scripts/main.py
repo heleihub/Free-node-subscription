@@ -78,25 +78,25 @@ DATACENTER_RDNS_KEYWORDS = [
 ]
 
 COUNTRY_NAMES = {
-    "HK": "香港",
-    "TW": "台湾",
-    "JP": "日本",
-    "SG": "新加坡",
-    "US": "美国",
-    "KR": "韩国",
-    "DE": "德国",
-    "GB": "英国",
-    "CA": "加拿大",
-    "FR": "法国",
-    "NL": "荷兰",
-    "RU": "俄罗斯",
-    "IN": "印度",
-    "AU": "澳大利亚",
-    "IT": "意大利",
-    "ES": "西班牙",
-    "TR": "土耳其",
-    "AE": "阿联酋",
-    "OTHER": "其他",
+    "HK": "中国香港 (Hong Kong)",
+    "TW": "中国台湾 (Taiwan)",
+    "JP": "日本 (Japan)",
+    "SG": "新加坡 (Singapore)",
+    "US": "美国 (United States)",
+    "KR": "韩国 (South Korea)",
+    "DE": "德国 (Germany)",
+    "GB": "英国 (United Kingdom)",
+    "CA": "加拿大 (Canada)",
+    "FR": "法国 (France)",
+    "NL": "荷兰 (Netherlands)",
+    "RU": "俄罗斯 (Russia)",
+    "IN": "印度 (India)",
+    "AU": "澳大利亚 (Australia)",
+    "IT": "意大利 (Italy)",
+    "ES": "西班牙 (Spain)",
+    "TR": "土耳其 (Turkey)",
+    "AE": "阿联酋 (UAE)",
+    "OTHER": "其他地区 (Other)",
 }
 
 # 节点原始备注关键词匹配国家字典（防止 Anycast/Cloudflare 误杀）
@@ -116,7 +116,7 @@ NAME_COUNTRY_RULES = [
 ]
 
 def get_country_flag(country_code):
-    if not country_code or country_code.upper() in ["OTHER", "ZZ", "XX", "T1"]:
+    if not country_code or country_code.upper() in ["OTHER", "ZZ", "XX"]:
         return "🌐"
     try:
         cc = country_code.upper()
@@ -198,7 +198,6 @@ def fetch_raw_nodes():
     return list(nodes)
 
 def get_node_original_ps(node_str):
-    """提取节点原本的备注名称，用于辅助判定国家"""
     try:
         if node_str.startswith("vmess://"):
             b64 = node_str[8:]
@@ -470,11 +469,7 @@ def get_rdns_host(ip):
         return ""
 
 def classify_and_filter(alive_proxies, node_map):
-    """
-    深度国家判断逻辑：
-    1. 优先查 MaxMind Country.mmdb
-    2. 若 IP 返回 T1/Anycast/OTHER，自动从节点原备注中正则匹配提取国家（消灭 OTHER）
-    """
+    """解析国家与家宽属性，带有 Anycast 回溯消除 OTHER"""
     country_reader = maxminddb.open_database("Country.mmdb")
     asn_reader = maxminddb.open_database("ASN.mmdb")
     verified = []
@@ -489,7 +484,7 @@ def classify_and_filter(alive_proxies, node_map):
         except Exception:
             return None
 
-        # 1. 尝试使用 MMDB 本地解析
+        # 1. MMDB 离线国家解析
         country_code = "OTHER"
         try:
             c = country_reader.get(ip)
@@ -500,7 +495,7 @@ def classify_and_filter(alive_proxies, node_map):
         except Exception:
             pass
 
-        # 2. 如果查出来是 OTHER/Anycast，回溯原备注里的国家特征进行精准提取
+        # 2. 如果是 Anycast 导致 OTHER，通过原备注追溯
         if country_code == "OTHER":
             for target_cc, keywords in NAME_COUNTRY_RULES:
                 if any(kw in orig_ps for kw in keywords):
@@ -534,7 +529,7 @@ def classify_and_filter(alive_proxies, node_map):
             "delay": delay
         }
 
-    print("[*] 正在解析可用节点的真实国家与家宽属性...")
+    print("[*] 正在解析可用节点的出口国家归属与真家宽反向特征...")
     with ThreadPoolExecutor(max_workers=50) as executor:
         futures = [executor.submit(resolve_and_classify, item) for item in alive_proxies.items()]
         for f in as_completed(futures):
@@ -577,14 +572,7 @@ def export_singbox_json(clash_proxies, filepath):
         json.dump(config, f, indent=2, ensure_ascii=False)
 
 def format_node_group(nodes_list, res_tag_force=False):
-    """
-    格式规范化：
-    1. 带上真彩色国旗
-    2. 带上中文国家名称（解决 Windows 字体渲染问题）
-    3. 每个订阅独立从 01 开始依次编号
-    4. 结尾加上 - xiaohe
-    示例：🇹🇼 台湾 01 (家宽) - xiaohe / 🇯🇵 日本 02 - xiaohe
-    """
+    """独立分组重命名，确保每个独立订阅文件内的序号都从 01 开始连续递增，且带上 xiaohe 署名"""
     formatted_links = []
     formatted_proxies = []
     
@@ -599,7 +587,6 @@ def format_node_group(nodes_list, res_tag_force=False):
         is_res = item["is_residential"] or res_tag_force
         tag = " (家宽)" if is_res else ""
         
-        # 终极规范命名
         node_name = f"{flag} {c_name} {idx:02d}{tag} - xiaohe"
         
         new_proxy = dict(item["clash_proxy"])
@@ -614,14 +601,14 @@ def format_node_group(nodes_list, res_tag_force=False):
 def export_subscriptions(verified_nodes):
     residential_nodes = [n for n in verified_nodes if n["is_residential"]]
 
-    # 1. 导出【全部节点】(从 01 开始编号)
+    # 1. 导出全部节点
     all_links, all_proxies = format_node_group(verified_nodes)
     with open(os.path.join(OUTPUT_DIR, "v2ray.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(all_links).encode()).decode())
     export_clash_yaml(all_proxies, os.path.join(OUTPUT_DIR, "clash.yaml"))
     export_singbox_json(all_proxies, os.path.join(OUTPUT_DIR, "singbox.json"))
 
-    # 2. 导出【全量家宽节点】(从 01 开始重新连续编号)
+    # 2. 导出全部家宽节点
     res_links, res_proxies = format_node_group(residential_nodes, res_tag_force=True)
     with open(os.path.join(OUTPUT_DIR, "residential.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(res_links).encode()).decode())
@@ -629,7 +616,7 @@ def export_subscriptions(verified_nodes):
         export_clash_yaml(res_proxies, os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
         export_singbox_json(res_proxies, os.path.join(OUTPUT_DIR, "residential-singbox.json"))
 
-    # 3. 导出【按国家分类全部节点】(各国家单独从 01 开始排号)
+    # 3. 按国家分类全部节点
     by_cc = {}
     for n in verified_nodes:
         by_cc.setdefault(n["country"], []).append(n)
@@ -640,7 +627,7 @@ def export_subscriptions(verified_nodes):
             f.write(base64.b64encode("\n".join(c_links).encode()).decode())
         export_clash_yaml(c_proxies, os.path.join(COUNTRY_DIR, f"clash-{cc}.yaml"))
 
-    # 4. 导出【按国家分类家宽节点】(各国家家宽单独从 01 开始排号)
+    # 4. 按国家分类家宽节点
     res_by_cc = {}
     for n in residential_nodes:
         res_by_cc.setdefault(n["country"], []).append(n)
@@ -652,7 +639,7 @@ def export_subscriptions(verified_nodes):
         export_clash_yaml(cr_proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"clash-{cc}.yaml"))
 
     print(f"[*] 导出完毕！全部存活: {len(all_links)} | 真家宽: {len(res_links)} | 涉及国家: {len(by_cc)}")
-    return by_cc, res_by_cc, len(all_links), len(residential_links)
+    return by_cc, res_by_cc, len(all_links), len(res_links)
 
 def update_readme():
     repo = os.environ.get("GITHUB_REPOSITORY", "heleihub/free-node-subscription")
