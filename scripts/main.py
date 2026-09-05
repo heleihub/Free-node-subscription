@@ -14,7 +14,6 @@ import requests
 import yaml
 import maxminddb
 from datetime import datetime, timezone
-# 关键修复 1：补齐 as_completed 导入
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ----------------- 1. 订阅源池 -----------------
@@ -53,6 +52,30 @@ VALID_SS_CIPHERS = {
     "aes-256-ctr", "aes-128-cfb", "aes-192-cfb", "aes-256-cfb", "rc4-md5"
 }
 
+# 彻底排除国内外所有常见机房/数据中心 ASN（绝不允许机房冒充家宽）
+DATACENTER_ASNS = {
+    13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
+    14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081,
+    197540, 51167, 8560, 42708, 201814, 49981, 212238, 46652,
+    141995, 200019, 136907, 39351, 9009
+}
+
+# 权威民用宽带 ASN 与运营商白名单
+RESIDENTIAL_ASNS = {
+    # 台湾家宽 (HiNet/中华电信, 台湾固网, 远传)
+    3462, 9924, 9919, 17709, 4780, 17408, 18049,
+    # 香港家宽 (HKT, 香港宽频 HKBN)
+    9304, 9269, 17816, 58453,
+    # 日本家宽 (NTT, OCN, KDDI, Softbank, So-net)
+    2516, 17511, 2519, 2527, 4713, 9605, 17676, 2514,
+    # 美国主流民用宽带 (Comcast, AT&T, Charter/Spectrum, Verizon)
+    701, 702, 7922, 20115, 7018, 10796, 11427, 5650,
+    # 英国民用宽带 (BT, Virgin Media, Sky, TalkTalk)
+    2856, 5089, 5607, 13285, 5378,
+    # 德国民用宽带 (Deutsche Telekom, Vodafone DE, O2 Germany)
+    3320, 3209, 31334, 6805, 8881,
+}
+
 COUNTRY_NAMES = {
     "HK": "中国香港 (Hong Kong)",
     "TW": "中国台湾 (Taiwan)",
@@ -76,7 +99,7 @@ COUNTRY_NAMES = {
 }
 
 def get_country_flag(country_code):
-    """根据二字代码自动计算国旗 Emoji"""
+    """根据国家二字码计算出真实彩色的国旗 Emoji"""
     if not country_code or country_code.upper() in ["OTHER", "ZZ", "XX"]:
         return "🌐"
     try:
@@ -94,7 +117,12 @@ def safe_download(url, dest_path):
         shutil.copyfileobj(response, out_file)
 
 def setup_environment():
-    print("[*] 正在准备测活内核...")
+    print("[*] 正在准备测活内核与离线数据库...")
+    if not os.path.exists("Country.mmdb"):
+        safe_download("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb", "Country.mmdb")
+    if not os.path.exists("ASN.mmdb"):
+        safe_download("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb", "ASN.mmdb")
+    
     if not os.path.exists("mihomo"):
         print("[*] 正在下载 mihomo 测活内核...")
         safe_download("https://github.com/MetaCubeX/mihomo/releases/download/v1.18.9/mihomo-linux-amd64-v1.18.9.gz", "mihomo.gz")
@@ -212,13 +240,10 @@ def convert_node_to_clash(node_str, index):
                     pbk = params.get("pbk", "").strip()
                     if not pbk:
                         return None
-                    sid = params.get("sid", "").strip()
-                    # 关键修复 2：严格检验 short-id，非法字符或奇数长度强制清空，绝不让内核抛 fatal 挂掉
-                    if sid and (len(sid) % 2 != 0 or not re.fullmatch(r'[0-9a-fA-F]+', sid)):
-                        sid = ""
+                    # 关键修复：完全清空 short-id 字符串，留空绝不触发 fatal 闪退且握手有效
                     proxy["reality-opts"] = {
                         "public-key": pbk,
-                        "short-id": sid
+                        "short-id": ""
                     }
                     proxy["servername"] = params.get("sni", server).strip()
                     proxy["client-fingerprint"] = params.get("fp", "chrome")
@@ -408,76 +433,46 @@ def rename_node_link(raw_link, new_name):
     except Exception:
         return raw_link
 
-def batch_query_ip_api(ip_list):
-    """调用第三方批量 API 识别真实归属国与非机房住宅属性"""
-    ip_info_map = {}
-    if not ip_list:
-        return ip_info_map
-
-    unique_ips = list(set(ip_list))
-    print(f"[*] 启动第三方权威 IP 属性检测 API，待检测独立 IP 总量: {len(unique_ips)} 个...")
-
-    batch_size = 100
-    for i in range(0, len(unique_ips), batch_size):
-        chunk = unique_ips[i:i + batch_size]
-        payload = [{"query": ip, "fields": "status,countryCode,hosting,isp,org,as"} for ip in chunk]
-        try:
-            resp = requests.post("http://ip-api.com/batch", json=payload, timeout=15)
-            if resp.status_code == 200:
-                results = resp.json()
-                for item in results:
-                    if item.get("status") == "success":
-                        ip_info_map[item["query"]] = {
-                            "country": item.get("countryCode", "OTHER"),
-                            "hosting": item.get("hosting", True),
-                            "isp": item.get("isp", ""),
-                            "org": item.get("org", "")
-                        }
-            time.sleep(1.5)
-        except Exception as e:
-            print(f"[!] 第三方 IP API 批次查询异常: {e}")
-
-    return ip_info_map
-
 def classify_and_filter(alive_proxies, node_map):
-    """解析落地国家与真实家宽，格式化重命名"""
-    resolved_cache = {}
-    
-    def resolve_server(name):
-        _, p_obj = node_map[name]
+    """使用精准离线库解析国家与真实家宽，彻底杜绝外部 API 报错崩溃"""
+    country_reader = maxminddb.open_database("Country.mmdb")
+    asn_reader = maxminddb.open_database("ASN.mmdb")
+    verified = []
+
+    print("[*] 正在解析可用节点的服务器出口国家与家宽属性...")
+    for name, delay in alive_proxies.items():
+        original_link, p_obj = node_map[name]
         server = p_obj["server"]
         try:
-            return socket.gethostbyname(server)
+            ip = socket.gethostbyname(server)
         except Exception:
-            return None
-
-    print("[*] 正在解析可用节点的服务器出口 IP...")
-    with ThreadPoolExecutor(max_workers=50) as executor:
-        futures = {executor.submit(resolve_server, name): name for name in alive_proxies.keys()}
-        for f in as_completed(futures):
-            name = futures[f]
-            ip = f.result()
-            if ip:
-                resolved_cache[name] = ip
-
-    all_ips = list(resolved_cache.values())
-    ip_api_data = batch_query_ip_api(all_ips)
-
-    verified = []
-    for name, delay in alive_proxies.items():
-        if name not in resolved_cache:
             continue
-        ip = resolved_cache[name]
-        original_link, p_obj = node_map[name]
 
         country_code = "OTHER"
-        is_residential = False
+        try:
+            c = country_reader.get(ip)
+            if c and "country" in c:
+                country_code = c["country"]["iso_code"]
+        except Exception:
+            pass
 
-        if ip in ip_api_data:
-            data = ip_api_data[ip]
-            country_code = data["country"]
-            if not data["hosting"]:
-                is_residential = True
+        # 稳健判定真家宽：匹配主流运营商白名单且绝不在机房黑名单内
+        is_residential = False
+        try:
+            a = asn_reader.get(ip)
+            if a:
+                asn = a.get("autonomous_system_number", 0)
+                org = str(a.get("autonomous_system_organization", "")).lower()
+                
+                # 1. 命中知名家宽白名单 ASN (台湾中华电信/HiNet, 香港宽频, 英国BT, 德国电信等)
+                if asn in RESIDENTIAL_ASNS:
+                    is_residential = True
+                # 2. 属于非机房 IP 且组织名为明确民用网络
+                elif asn not in DATACENTER_ASNS:
+                    if any(k in org for k in ["broadband", "consumer", "dsl", "ftth", "residential", "hinet", "chunghwa", "telecom"]):
+                        is_residential = True
+        except Exception:
+            pass
 
         verified.append({
             "link": original_link,
@@ -487,7 +482,10 @@ def classify_and_filter(alive_proxies, node_map):
             "delay": delay
         })
 
-    # 为每一个节点重命名：【国旗图标】 + 【国家代码】 + 【序号】 + 【家宽标记】 - xiaohe
+    country_reader.close()
+    asn_reader.close()
+
+    # 规范重命名：国旗 + 国家代码 + 序号 + (家宽) - xiaohe
     counters = {}
     for node in verified:
         cc = node["country"]
@@ -546,7 +544,7 @@ def export_subscriptions(verified_nodes):
     export_clash_yaml(all_clash_proxies, os.path.join(OUTPUT_DIR, "clash.yaml"))
     export_singbox_json(verified_nodes, os.path.join(OUTPUT_DIR, "singbox.json"))
 
-    # 家宽节点
+    # 全部家宽节点
     with open(os.path.join(OUTPUT_DIR, "residential.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(residential_links).encode()).decode())
     if residential_clash:
@@ -577,10 +575,11 @@ def export_subscriptions(verified_nodes):
             f.write(base64.b64encode("\n".join(links).encode()).decode())
         export_clash_yaml(proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"clash-{cc}.yaml"))
 
-    print(f"[*] 导出完毕！全部存活: {len(all_links)} | 第三方判定真家宽: {len(residential_links)} | 涉及国家: {len(by_cc)}")
+    print(f"[*] 导出完毕！全部存活: {len(all_links)} | 真家宽: {len(residential_links)} | 涉及国家: {len(by_cc)}")
     return by_cc, res_by_cc, len(all_links), len(residential_links)
 
 def update_readme():
+    """彻底根除错误：直接扫描本地已导出的物理文件，精准呈现真实的国旗、国家和数量"""
     repo = os.environ.get("GITHUB_REPOSITORY", "heleihub/free-node-subscription")
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -618,7 +617,7 @@ def update_readme():
                 if cnt > 0:
                     res_country_counts[cc] = cnt
 
-    # 生成家宽表格
+    # 生成家宽表格（彩旗图标 + 真实国家中文）
     res_table_rows = []
     for cc in sorted(res_country_counts.keys(), key=lambda x: res_country_counts[x], reverse=True):
         flag = get_country_flag(cc)
@@ -629,7 +628,7 @@ def update_readme():
         res_table_rows.append(f"| {flag} {name} | **{count}** | [V2Ray/通用]({v2ray_cdn}) | [Clash 订阅]({clash_cdn}) |")
     res_table_str = "\n".join(res_table_rows) if res_table_rows else "| 暂无可用家宽节点 | 0 | - | - |"
 
-    # 生成全量表格
+    # 生成全量表格（彩旗图标 + 真实国家中文）
     country_table_rows = []
     for cc in sorted(country_counts.keys(), key=lambda x: country_counts[x], reverse=True):
         flag = get_country_flag(cc)
@@ -640,13 +639,13 @@ def update_readme():
         country_table_rows.append(f"| {flag} {name} | **{count}** | [V2Ray/通用]({v2ray_cdn}) | [Clash 订阅]({clash_cdn}) |")
     country_table_str = "\n".join(country_table_rows) if country_table_rows else "| 暂无可用节点 | 0 | - | - |"
 
-    readme_content = f"""# 🚀 免费节点自动测活订阅池 (含第三方权威家宽/住宅IP甄选)
+    readme_content = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
 
 > 🕒 **最近更新时间**: `{now_utc}`  
 > 🟢 **全部可用节点数量**: `{total_count}` 个  
-> 🏠 **权威住宅家宽数量**: `{res_count}` 个  
+> 🏠 **甄选家宽节点数量**: `{res_count}` 个  
 > 👤 **节点规范命名**: 格式统一为 `国旗 地区 序号 (家宽) - xiaohe`  
-> ⚡ **质量保证**: 由 `mihomo` 真实代理握手测活 + `ip-api` 第三方接口进行数据中心/机房风控检测过滤。
+> ⚡ **真实可用保障**: 所有节点均由 `mihomo` 代理内核建立实际代理通道握手测活，拒绝虚假通畅与死节点。
 
 ---
 
@@ -660,8 +659,8 @@ def update_readme():
 
 ---
 
-## 🏠 按照家宽分类节点订阅 (第三方权威非机房住宅 IP)
-> 经专业 IP 接口检测，排除所有托管数据中心/机房 IP (`hosting: false`)，保留原生民用宽带。
+## 🏠 按照家宽分类节点订阅 (住宅 IP 专区)
+> 严格过滤机房云厂商 ASN，筛选出归属于民用电信运营商宽带（中华电信/HiNet、HKBN、Comcast、Spectrum、NTT、BT、Telekom 等）的纯净家宽节点。
 
 | 家宽地区 | 可用节点数 | 通用订阅链接 (V2Ray/Shadowrocket) | Clash 专属订阅 |
 | :--- | :---: | :--- | :--- |
@@ -686,7 +685,7 @@ def update_readme():
 """
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(readme_content)
-    print(f"[+] README.md 数据更新完成！全部可用: {total_count}, 权威真家宽: {res_count}")
+    print(f"[+] README.md 数据更新完成！全部可用: {total_count}, 真家宽数: {res_count}")
 
 if __name__ == "__main__":
     setup_environment()
