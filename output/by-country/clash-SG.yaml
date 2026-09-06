@@ -5,107 +5,70 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇸🇬 新加坡 (Singapore) 01 - xiaohe
-  type: vmess
-  server: 149.88.23.202
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 02 - xiaohe
-  type: hysteria2
-  server: 13.250.120.9
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.250.120.9
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 03 - xiaohe
   type: hysteria2
   server: 47.129.241.226
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 47.129.241.226
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 04 - xiaohe
-  type: hysteria2
-  server: 54.151.142.26
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 54.151.142.26
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 05 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 02 - xiaohe
   type: hysteria2
   server: 13.212.76.106
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 03 - xiaohe
+  type: hysteria2
+  server: 13.250.120.9
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.250.120.9
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 04 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 05 - xiaohe
+  type: trojan
+  server: 139.59.238.97
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: 139.59.238.97
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 06 - xiaohe
   type: hysteria2
-  server: 13.212.83.43
+  server: 13.250.120.9
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.83.43
+  sni: 13.250.120.9
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 07 - xiaohe
   type: vless
-  server: 134.122.154.210
+  server: 149.118.55.234
   port: 443
-  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
+  uuid: 58f7687b-5209-4dcd-a11e-6e4eb2191378
   udp: true
-  tls: false
+  tls: true
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /xlordgrim/sg
+    headers:
+      Host: edge.xlordgrim.com
 - name: 🇸🇬 新加坡 (Singapore) 08 - xiaohe
-  type: vless
-  server: 134.122.154.210
-  port: 443
-  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
+  type: trojan
+  server: ww12.levikogjgfdd.ir
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
   udp: true
-  tls: false
+  sni: telegram-leviko_v2ray
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 09 - xiaohe
-  type: hysteria2
-  server: 13.212.76.106
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.76.106
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 10 - xiaohe
-  type: vless
-  server: 134.122.154.210
-  port: 443
-  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 11 - xiaohe
-  type: vless
-  server: 134.122.154.210
-  port: 443
-  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 12 - xiaohe
-  type: vmess
-  server: 149.88.23.202
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 13 - xiaohe
-  type: hysteria2
-  server: 13.212.76.106
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.76.106
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 14 - xiaohe
   type: trojan
   server: ww12.levikogjgfdd.ir
   port: 50573
@@ -113,21 +76,29 @@ proxies:
   udp: true
   sni: ww12.levikogjgfdd.ir
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 15 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 10 - xiaohe
   type: hysteria2
-  server: 13.212.32.171
+  server: 47.129.0.20
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.32.171
+  sni: 47.129.0.20
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 16 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 11 - xiaohe
+  type: trojan
+  server: 81.28.13.69
+  port: 443
+  password: NQ26071394
+  udp: true
+  sni: quiet-condor.rooster465.autos
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 12 - xiaohe
   type: hysteria2
-  server: 13.250.120.9
+  server: 54.151.142.26
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.250.120.9
+  sni: 54.151.142.26
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 17 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 13 - xiaohe
   type: vmess
   server: 149.88.23.202
   port: 18000
@@ -136,6 +107,37 @@ proxies:
   cipher: auto
   udp: true
   tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 14 - xiaohe
+  type: trojan
+  server: 139.59.238.97
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: telegram-leviko_v2ray
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 15 - xiaohe
+  type: vless
+  server: 134.122.154.210
+  port: 443
+  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 16 - xiaohe
+  type: vless
+  server: 134.122.154.210
+  port: 443
+  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 17 - xiaohe
+  type: hysteria2
+  server: 47.129.0.20
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 47.129.0.20
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 18 - xiaohe
   type: hysteria2
@@ -146,103 +148,19 @@ proxies:
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 19 - xiaohe
   type: hysteria2
-  server: 47.129.0.20
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 47.129.0.20
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 20 - xiaohe
-  type: trojan
-  server: 81.28.13.223
-  port: 443
-  password: PD07395842
-  udp: true
-  sni: optimum-bull.rooster465.autos
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 21 - xiaohe
-  type: hysteria2
-  server: 13.212.76.106
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.76.106
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 22 - xiaohe
-  type: vmess
-  server: 149.88.23.207
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 23 - xiaohe
-  type: vless
-  server: 149.118.55.234
-  port: 443
-  uuid: 58f7687b-5209-4dcd-a11e-6e4eb2191378
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /xlordgrim/sg
-    headers:
-      Host: edge.xlordgrim.com
-- name: 🇸🇬 新加坡 (Singapore) 24 - xiaohe
-  type: hysteria2
-  server: 54.151.142.26
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 54.151.142.26
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 25 - xiaohe
-  type: trojan
-  server: ww12.levikogjgfdd.ir
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: telegram-leviko_v2ray
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 26 - xiaohe
-  type: trojan
-  server: 91.243.81.39
-  port: 443
-  password: CF68213490
-  udp: true
-  sni: harmless-lab.rooster465.autos
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 27 - xiaohe
-  type: trojan
-  server: 139.59.238.97
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: ww12.levikogjgfdd.ir
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 28 - xiaohe
-  type: hysteria2
-  server: 13.212.76.106
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.76.106
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 29 - xiaohe
-  type: hysteria2
   server: 13.250.120.9
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 13.250.120.9
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 30 - xiaohe
-  type: trojan
-  server: ww12.levikogjgfdd.ir
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: telegram-leviko_v2ray
+- name: 🇸🇬 新加坡 (Singapore) 20 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 31 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 21 - xiaohe
   type: vmess
   server: 149.88.23.202
   port: 18000
@@ -252,12 +170,88 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 32 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 22 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 23 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 24 - xiaohe
   type: hysteria2
   server: 13.250.120.9
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 13.250.120.9
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 25 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 26 - xiaohe
+  type: hysteria2
+  server: 13.212.193.153
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.193.153
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 27 - xiaohe
+  type: hysteria2
+  server: 13.250.120.9
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.250.120.9
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 28 - xiaohe
+  type: hysteria2
+  server: 47.129.0.20
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 47.129.0.20
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 29 - xiaohe
+  type: vmess
+  server: 149.88.23.202
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 30 - xiaohe
+  type: hysteria2
+  server: 13.212.32.171
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.32.171
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 31 - xiaohe
+  type: hysteria2
+  server: 13.250.120.9
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.250.120.9
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 32 - xiaohe
+  type: hysteria2
+  server: 54.151.142.26
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 54.151.142.26
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 33 - xiaohe
   type: trojan
@@ -265,9 +259,31 @@ proxies:
   port: 50573
   password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
   udp: true
-  sni: 139.59.238.97
+  sni: ww12.levikogjgfdd.ir
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 34 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 35 - xiaohe
+  type: hysteria2
+  server: 13.212.76.106
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.212.76.106
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 36 - xiaohe
+  type: trojan
+  server: ww12.levikogjgfdd.ir
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: telegram-leviko_v2ray
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 37 - xiaohe
   type: trojan
   server: 139.59.238.97
   port: 50573
@@ -275,29 +291,36 @@ proxies:
   udp: true
   sni: ww12.levikogjgfdd.ir
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 35 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 38 - xiaohe
   type: trojan
-  server: 81.28.13.69
+  server: 81.28.13.223
   port: 443
-  password: NQ26071394
+  password: PD07395842
   udp: true
-  sni: quiet-condor.rooster465.autos
+  sni: optimum-bull.rooster465.autos
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 36 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 39 - xiaohe
+  type: hysteria2
+  server: 54.151.142.26
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 54.151.142.26
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 40 - xiaohe
+  type: hysteria2
+  server: sg1.xiaoliyu.cyou
+  port: 1933
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: sg1.xiaoliyu.cyou
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 41 - xiaohe
   type: hysteria2
   server: 47.129.0.20
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
   sni: 47.129.0.20
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 37 - xiaohe
-  type: hysteria2
-  server: 13.212.76.106
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.76.106
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 38 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 42 - xiaohe
   type: trojan
   server: ww12.levikogjgfdd.ir
   port: 50573
@@ -305,14 +328,15 @@ proxies:
   udp: true
   sni: ww12.levikogjgfdd.ir
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 39 - xiaohe
-  type: hysteria2
-  server: 13.212.193.153
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.193.153
+- name: 🇸🇬 新加坡 (Singapore) 43 - xiaohe
+  type: trojan
+  server: ww12.levikogjgfdd.ir
+  port: 50573
+  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  udp: true
+  sni: ww12.levikogjgfdd.ir
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 40 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 44 - xiaohe
   type: vless
   server: 134.122.154.210
   port: 443
@@ -320,29 +344,31 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 41 - xiaohe
-  type: hysteria2
-  server: 54.151.142.26
+- name: 🇸🇬 新加坡 (Singapore) 45 - xiaohe
+  type: vless
+  server: 134.122.154.210
   port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 54.151.142.26
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 42 - xiaohe
-  type: hysteria2
-  server: 13.250.120.9
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.250.120.9
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 43 - xiaohe
-  type: trojan
-  server: 139.59.238.97
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
+  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
   udp: true
-  sni: ww12.levikogjgfdd.ir
+  tls: false
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 44 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 46 - xiaohe
+  type: vless
+  server: 134.122.154.210
+  port: 443
+  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 47 - xiaohe
+  type: trojan
+  server: 91.243.81.39
+  port: 443
+  password: CF68213490
+  udp: true
+  sni: harmless-lab.rooster465.autos
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 48 - xiaohe
   type: vless
   server: 149.118.55.234
   port: 443
@@ -355,38 +381,6 @@ proxies:
     path: /xlordgrim/sg
     headers:
       Host: edge.xlordgrim.com
-- name: 🇸🇬 新加坡 (Singapore) 45 - xiaohe
-  type: hysteria2
-  server: 47.129.0.20
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 47.129.0.20
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 46 - xiaohe
-  type: trojan
-  server: 139.59.238.97
-  port: 50573
-  password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
-  udp: true
-  sni: telegram-leviko_v2ray
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 47 - xiaohe
-  type: vmess
-  server: ww11.levikogjgfdd.ir
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 48 - xiaohe
-  type: hysteria2
-  server: 47.129.0.20
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 47.129.0.20
-  skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 49 - xiaohe
   type: vmess
   server: 149.88.23.202
@@ -399,7 +393,7 @@ proxies:
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 50 - xiaohe
   type: trojan
-  server: ww12.levikogjgfdd.ir
+  server: 139.59.238.97
   port: 50573
   password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
   udp: true
@@ -407,40 +401,53 @@ proxies:
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 51 - xiaohe
   type: hysteria2
-  server: 13.250.120.9
+  server: 13.212.83.43
   port: 443
   password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.250.120.9
+  sni: 13.212.83.43
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 52 - xiaohe
-  type: hysteria2
-  server: 47.129.0.20
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 47.129.0.20
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 53 - xiaohe
-  type: hysteria2
-  server: 13.212.76.106
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.212.76.106
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 54 - xiaohe
-  type: hysteria2
-  server: sg1.xiaoliyu.cyou
-  port: 1933
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: sg1.xiaoliyu.cyou
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 55 - xiaohe
   type: ss
   server: 176.97.64.144
   port: 8388
   cipher: chacha20-ietf-poly1305
   password: TFElG2FVqyqG
   udp: true
+- name: 🇸🇬 新加坡 (Singapore) 53 - xiaohe
+  type: ss
+  server: 167.150.100.115
+  port: 27755
+  cipher: 2022-blake3-aes-256-gcm
+  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
+  udp: true
+- name: 🇸🇬 新加坡 (Singapore) 54 - xiaohe
+  type: vmess
+  server: 149.88.23.207
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 55 - xiaohe
+  type: vmess
+  server: ww11.levikogjgfdd.ir
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 56 - xiaohe
+  type: hysteria2
+  server: 47.129.0.20
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 47.129.0.20
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 57 - xiaohe
   type: vmess
   server: 149.88.23.202
   port: 18000
@@ -450,27 +457,20 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 57 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 58 - xiaohe
+  type: hysteria2
+  server: 13.250.120.9
+  port: 443
+  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+  sni: 13.250.120.9
+  skip-cert-verify: true
+- name: 🇸🇬 新加坡 (Singapore) 59 - xiaohe
   type: vless
   server: 134.122.154.210
   port: 443
   uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
   udp: true
   tls: false
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 58 - xiaohe
-  type: ss
-  server: 167.150.100.115
-  port: 27755
-  cipher: 2022-blake3-aes-256-gcm
-  password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
-  udp: true
-- name: 🇸🇬 新加坡 (Singapore) 59 - xiaohe
-  type: hysteria2
-  server: 13.250.120.9
-  port: 443
-  password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-  sni: 13.250.120.9
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES

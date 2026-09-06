@@ -29,42 +29,22 @@ proxies:
   ws-opts:
     path: /4bc027a44532
     headers:
-      Host: Telegram-Leviko_v2ray
+      Host: 178.95.170.83
 - name: 🇵🇱 PL 03 - xiaohe
   type: vless
-  server: 94.183.209.59
-  port: 443
-  uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
+  server: 178.95.170.115
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /4bc027a44532
     headers:
-      Host: 94.183.209.59
+      Host: 178.95.170.115
 - name: 🇵🇱 PL 04 - xiaohe
   type: vless
-  server: 94.183.209.42
-  port: 443
-  uuid: 84c898c4-6990-4121-ae51-27d989f5ce39
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: pl3.lckdwn.ru
-- name: 🇵🇱 PL 05 - xiaohe
-  type: ss
-  server: 217.30.10.44
-  port: 9052
-  cipher: aes-256-cfb
-  password: jt2ekBNc9HuVtm2a
-  udp: true
-- name: 🇵🇱 PL 06 - xiaohe
-  type: vless
   server: 94.183.209.59
   port: 443
   uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
@@ -76,7 +56,7 @@ proxies:
     path: /
     headers:
       Host: 94.183.209.59
-- name: 🇵🇱 PL 07 - xiaohe
+- name: 🇵🇱 PL 05 - xiaohe
   type: vless
   server: 94.183.209.58
   port: 443
@@ -89,6 +69,32 @@ proxies:
     path: /
     headers:
       Host: pl2.lckdwn.ru
+- name: 🇵🇱 PL 06 - xiaohe
+  type: vless
+  server: 178.95.170.98
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4bc027a44532
+    headers:
+      Host: 178.95.170.98
+- name: 🇵🇱 PL 07 - xiaohe
+  type: vless
+  server: 94.183.209.42
+  port: 443
+  uuid: 84c898c4-6990-4121-ae51-27d989f5ce39
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: pl3.lckdwn.ru
 - name: 🇵🇱 PL 08 - xiaohe
   type: vless
   server: 94.183.209.59
@@ -103,52 +109,19 @@ proxies:
     headers:
       Host: 94.183.209.59
 - name: 🇵🇱 PL 09 - xiaohe
-  type: ss
-  server: 194.61.121.93
-  port: 7538
-  cipher: chacha20-ietf-poly1305
-  password: U9YAoqBgg5VyGBc6vQv1sN
+  type: vless
+  server: 178.95.170.115
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
   udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4bc027a44532
+    headers:
+      Host: 178.95.170.115
 - name: 🇵🇱 PL 10 - xiaohe
-  type: vless
-  server: 94.183.209.58
-  port: 443
-  uuid: 78791f9e-fe09-4d4f-88ec-895764bae0d6
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: pl2.lckdwn.ru
-- name: 🇵🇱 PL 11 - xiaohe
-  type: vless
-  server: 178.95.170.83
-  port: 2087
-  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /4bc027a44532
-    headers:
-      Host: 178.95.170.83
-- name: 🇵🇱 PL 12 - xiaohe
-  type: vless
-  server: 178.95.170.98
-  port: 2087
-  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /4bc027a44532
-    headers:
-      Host: 178.95.170.98
-- name: 🇵🇱 PL 13 - xiaohe
   type: vless
   server: 178.95.170.115
   port: 2087
@@ -161,6 +134,33 @@ proxies:
     path: /4bc027a44532
     headers:
       Host: Telegram-Leviko_v2ray
+- name: 🇵🇱 PL 11 - xiaohe
+  type: ss
+  server: 194.61.121.93
+  port: 7538
+  cipher: chacha20-ietf-poly1305
+  password: U9YAoqBgg5VyGBc6vQv1sN
+  udp: true
+- name: 🇵🇱 PL 12 - xiaohe
+  type: vless
+  server: 94.183.209.59
+  port: 443
+  uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.209.59
+- name: 🇵🇱 PL 13 - xiaohe
+  type: ss
+  server: 217.30.10.44
+  port: 9052
+  cipher: aes-256-cfb
+  password: jt2ekBNc9HuVtm2a
+  udp: true
 - name: 🇵🇱 PL 14 - xiaohe
   type: vless
   server: 178.95.170.83
@@ -173,17 +173,30 @@ proxies:
   ws-opts:
     path: /4bc027a44532
     headers:
-      Host: 178.95.170.83
+      Host: Telegram-Leviko_v2ray
 - name: 🇵🇱 PL 15 - xiaohe
+  type: vless
+  server: 94.183.209.58
+  port: 443
+  uuid: 78791f9e-fe09-4d4f-88ec-895764bae0d6
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: pl2.lckdwn.ru
+- name: 🇵🇱 PL 16 - xiaohe
   type: hysteria2
   server: admin.wwwinternetvideo.click
   port: 443
   password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
   sni: admin.wwwinternetvideo.click
   skip-cert-verify: true
-- name: 🇵🇱 PL 16 - xiaohe
+- name: 🇵🇱 PL 17 - xiaohe
   type: vless
-  server: 178.95.170.115
+  server: 178.95.170.83
   port: 2087
   uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
   udp: true
@@ -193,8 +206,8 @@ proxies:
   ws-opts:
     path: /4bc027a44532
     headers:
-      Host: 178.95.170.115
-- name: 🇵🇱 PL 17 - xiaohe
+      Host: 178.95.170.83
+- name: 🇵🇱 PL 18 - xiaohe
   type: vless
   server: 94.183.209.42
   port: 443
@@ -207,19 +220,6 @@ proxies:
     path: /
     headers:
       Host: 94.183.209.42
-- name: 🇵🇱 PL 18 - xiaohe
-  type: vless
-  server: 178.95.170.115
-  port: 2087
-  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /4bc027a44532
-    headers:
-      Host: 178.95.170.115
 proxy-groups:
 - name: PROXIES
   type: select

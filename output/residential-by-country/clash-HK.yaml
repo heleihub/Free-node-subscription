@@ -18,7 +18,7 @@ proxies:
   port: 443
   password: BxceQaOe
   udp: true
-  sni: t.me%25252fripaojiedian
+  sni: t.me
   skip-cert-verify: true
 - name: 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
   type: trojan
@@ -26,7 +26,7 @@ proxies:
   port: 443
   password: BxceQaOe
   udp: true
-  sni: t.me
+  sni: t.me%25252fripaojiedian
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
