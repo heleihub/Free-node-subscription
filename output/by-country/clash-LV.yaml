@@ -5,18 +5,12 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇱🇻 LV 01 - xiaohe
-  type: vless
-  server: 89.36.161.222
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  type: ss
+  server: 185.135.86.175
+  port: 9082
+  cipher: aes-256-cfb
+  password: 45xgMgm386pjWjTx
   udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: laoye.in-gect.fun
 - name: 🇱🇻 LV 02 - xiaohe
   type: vless
   server: 89.36.161.222
@@ -44,13 +38,6 @@ proxies:
     headers:
       Host: laoye.in-gect.fun
 - name: 🇱🇻 LV 04 - xiaohe
-  type: hysteria2
-  server: hy2-latvia2.unlimited-access.ru
-  port: 443
-  password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
-  sni: hy2-latvia2.unlimited-access.ru
-  skip-cert-verify: true
-- name: 🇱🇻 LV 05 - xiaohe
   type: vless
   server: 89.36.161.222
   port: 2096
@@ -63,6 +50,13 @@ proxies:
     path: /
     headers:
       Host: laoye.in-gect.fun
+- name: 🇱🇻 LV 05 - xiaohe
+  type: hysteria2
+  server: 85.159.228.22
+  port: 443
+  password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+  sni: 85.159.228.22
+  skip-cert-verify: true
 - name: 🇱🇻 LV 06 - xiaohe
   type: vless
   server: 89.36.161.222
@@ -75,14 +69,20 @@ proxies:
   ws-opts:
     path: /
     headers:
-      Host: 89.36.161.222
+      Host: laoye.in-gect.fun
 - name: 🇱🇻 LV 07 - xiaohe
-  type: hysteria2
-  server: hy2-latvia2.unlimited-access.ru
-  port: 443
-  password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
-  sni: hy2-latvia2.unlimited-access.ru
+  type: vless
+  server: 89.36.161.222
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  udp: true
+  tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 89.36.161.222
 - name: 🇱🇻 LV 08 - xiaohe
   type: vless
   server: 89.36.161.222
@@ -96,13 +96,6 @@ proxies:
     path: /
     headers:
       Host: laoye.in-gect.fun
-- name: 🇱🇻 LV 09 - xiaohe
-  type: hysteria2
-  server: 85.159.228.22
-  port: 443
-  password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
-  sni: 85.159.228.22
-  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
@@ -116,7 +109,6 @@ proxy-groups:
   - 🇱🇻 LV 06 - xiaohe
   - 🇱🇻 LV 07 - xiaohe
   - 🇱🇻 LV 08 - xiaohe
-  - 🇱🇻 LV 09 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -130,6 +122,5 @@ proxy-groups:
   - 🇱🇻 LV 06 - xiaohe
   - 🇱🇻 LV 07 - xiaohe
   - 🇱🇻 LV 08 - xiaohe
-  - 🇱🇻 LV 09 - xiaohe
 rules:
 - MATCH,PROXIES

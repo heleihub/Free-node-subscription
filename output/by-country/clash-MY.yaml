@@ -38,6 +38,39 @@ proxies:
     path: /db55c40bbc75
     headers:
       Host: 38.60.168.98
+- name: 🇲🇾 MY 04 - xiaohe
+  type: vless
+  server: 38.60.168.98
+  port: 2087
+  uuid: 8a346b7c-5b95-4845-affa-0e5d9929e9ae
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /db55c40bbc75
+    headers:
+      Host: 38.60.168.98
+- name: 🇲🇾 MY 05 - xiaohe
+  type: vless
+  server: 38.60.168.98
+  port: 2087
+  uuid: 8a346b7c-5b95-4845-affa-0e5d9929e9ae
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /db55c40bbc75
+    headers:
+      Host: 38.60.168.98
+- name: 🇲🇾 MY 06 - xiaohe
+  type: ss
+  server: 118.107.222.231
+  port: 65443
+  cipher: aes-256-cfb
+  password: 7eadc6dbe2ae
+  udp: true
 proxy-groups:
 - name: PROXIES
   type: select
@@ -46,6 +79,9 @@ proxy-groups:
   - 🇲🇾 MY 01 - xiaohe
   - 🇲🇾 MY 02 - xiaohe
   - 🇲🇾 MY 03 - xiaohe
+  - 🇲🇾 MY 04 - xiaohe
+  - 🇲🇾 MY 05 - xiaohe
+  - 🇲🇾 MY 06 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -54,5 +90,8 @@ proxy-groups:
   - 🇲🇾 MY 01 - xiaohe
   - 🇲🇾 MY 02 - xiaohe
   - 🇲🇾 MY 03 - xiaohe
+  - 🇲🇾 MY 04 - xiaohe
+  - 🇲🇾 MY 05 - xiaohe
+  - 🇲🇾 MY 06 - xiaohe
 rules:
 - MATCH,PROXIES

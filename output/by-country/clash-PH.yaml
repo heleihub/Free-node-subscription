@@ -30,6 +30,19 @@ proxies:
     path: /04461917b179
     headers:
       Host: 149.104.109.17
+- name: 🇵🇭 PH 03 - xiaohe
+  type: vless
+  server: 149.104.109.17
+  port: 2087
+  uuid: 9ed3dcb3-b71a-4ae1-8210-95e33615d7e6
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /04461917b179
+    headers:
+      Host: 149.104.109.17
 proxy-groups:
 - name: PROXIES
   type: select
@@ -37,6 +50,7 @@ proxy-groups:
   - AUTO
   - 🇵🇭 PH 01 - xiaohe
   - 🇵🇭 PH 02 - xiaohe
+  - 🇵🇭 PH 03 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -44,5 +58,6 @@ proxy-groups:
   proxies:
   - 🇵🇭 PH 01 - xiaohe
   - 🇵🇭 PH 02 - xiaohe
+  - 🇵🇭 PH 03 - xiaohe
 rules:
 - MATCH,PROXIES

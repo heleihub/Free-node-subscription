@@ -4,24 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe
+- name: 🇹🇭 TH 01 - xiaohe
   type: ss
-  server: 221.139.79.57
-  port: 13979
+  server: 103.169.67.34
+  port: 65443
   cipher: aes-256-cfb
-  password: qwerREWQ@@
+  password: 7eadc6dbe2ae
   udp: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe
+  - 🇹🇭 TH 01 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe
+  - 🇹🇭 TH 01 - xiaohe
 rules:
 - MATCH,PROXIES

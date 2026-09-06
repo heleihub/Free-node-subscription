@@ -5,19 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
-  type: vless
-  server: 103.75.119.126
-  port: 2087
-  uuid: 731f177e-00aa-480c-b935-661456139a32
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /7586c69d3dc9
-    headers:
-      Host: 103.75.119.126
-- name: 🇦🇺 澳大利亚 (Australia) 02 - xiaohe
   type: trojan
   server: 103.224.212.211
   port: 443
@@ -25,14 +12,15 @@ proxies:
   udp: true
   sni: 60.72img.xyz
   skip-cert-verify: true
-- name: 🇦🇺 澳大利亚 (Australia) 03 - xiaohe
-  type: hysteria2
-  server: 103.75.119.12
-  port: 55813
-  password: 8e2419a7-ef0d-4b19-b52b-3333a0edcba8
-  sni: 103.75.119.12
+- name: 🇦🇺 澳大利亚 (Australia) 02 - xiaohe
+  type: trojan
+  server: 87.121.33.32
+  port: 443
+  password: FH72359861
+  udp: true
+  sni: square-pheasant.rooster465.autos
   skip-cert-verify: true
-- name: 🇦🇺 澳大利亚 (Australia) 04 - xiaohe
+- name: 🇦🇺 澳大利亚 (Australia) 03 - xiaohe
   type: vless
   server: 103.75.119.126
   port: 2087
@@ -45,13 +33,12 @@ proxies:
     path: /7586c69d3dc9
     headers:
       Host: 103.75.119.126
-- name: 🇦🇺 澳大利亚 (Australia) 05 - xiaohe
-  type: trojan
-  server: 87.121.33.32
-  port: 443
-  password: FH72359861
-  udp: true
-  sni: square-pheasant.rooster465.autos
+- name: 🇦🇺 澳大利亚 (Australia) 04 - xiaohe
+  type: hysteria2
+  server: 103.75.119.12
+  port: 55813
+  password: 8e2419a7-ef0d-4b19-b52b-3333a0edcba8
+  sni: 103.75.119.12
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
@@ -62,7 +49,6 @@ proxy-groups:
   - 🇦🇺 澳大利亚 (Australia) 02 - xiaohe
   - 🇦🇺 澳大利亚 (Australia) 03 - xiaohe
   - 🇦🇺 澳大利亚 (Australia) 04 - xiaohe
-  - 🇦🇺 澳大利亚 (Australia) 05 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -72,6 +58,5 @@ proxy-groups:
   - 🇦🇺 澳大利亚 (Australia) 02 - xiaohe
   - 🇦🇺 澳大利亚 (Australia) 03 - xiaohe
   - 🇦🇺 澳大利亚 (Australia) 04 - xiaohe
-  - 🇦🇺 澳大利亚 (Australia) 05 - xiaohe
 rules:
 - MATCH,PROXIES

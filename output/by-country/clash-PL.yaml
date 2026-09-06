@@ -6,7 +6,7 @@ log-level: info
 proxies:
 - name: 🇵🇱 PL 01 - xiaohe
   type: vless
-  server: 94.183.209.42
+  server: pl3.lckdwn.ru
   port: 443
   uuid: 84c898c4-6990-4121-ae51-27d989f5ce39
   udp: true
@@ -19,70 +19,72 @@ proxies:
       Host: pl3.lckdwn.ru
 - name: 🇵🇱 PL 02 - xiaohe
   type: vless
-  server: 178.95.170.83
-  port: 2087
-  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  server: 94.183.209.59
+  port: 443
+  uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /4bc027a44532
+    path: /
     headers:
-      Host: 178.95.170.83
+      Host: 94.183.209.59
 - name: 🇵🇱 PL 03 - xiaohe
-  type: vless
-  server: 178.95.170.115
-  port: 2087
-  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  type: ss
+  server: 217.30.10.44
+  port: 9041
+  cipher: aes-256-cfb
+  password: U6qnYRhfyDmn8sgn
   udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /4bc027a44532
-    headers:
-      Host: Telegram-Leviko_v2ray
 - name: 🇵🇱 PL 04 - xiaohe
   type: vless
-  server: 178.95.170.98
-  port: 2087
-  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  server: 94.183.209.59
+  port: 443
+  uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /4bc027a44532
+    path: /
     headers:
-      Host: 178.95.170.98
+      Host: 94.183.209.59
 - name: 🇵🇱 PL 05 - xiaohe
-  type: vless
-  server: 178.95.170.115
-  port: 2087
-  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
-  udp: true
-  tls: false
+  type: hysteria2
+  server: admin.wwwinternetvideo.click
+  port: 443
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  sni: admin.wwwinternetvideo.click
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /4bc027a44532
-    headers:
-      Host: 178.95.170.115
 - name: 🇵🇱 PL 06 - xiaohe
+  type: ss
+  server: 217.30.10.44
+  port: 9071
+  cipher: aes-256-cfb
+  password: mENfxTFQpRKKh4As
+  udp: true
+- name: 🇵🇱 PL 07 - xiaohe
   type: vless
-  server: 178.95.170.83
-  port: 2087
-  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  server: 94.183.209.42
+  port: 443
+  uuid: 84c898c4-6990-4121-ae51-27d989f5ce39
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /4bc027a44532
+    path: /
     headers:
-      Host: 178.95.170.83
-- name: 🇵🇱 PL 07 - xiaohe
+      Host: 94.183.209.42
+- name: 🇵🇱 PL 08 - xiaohe
+  type: ss
+  server: 217.30.10.44
+  port: 9076
+  cipher: aes-256-cfb
+  password: S2zDyyPcmZN2h8EC
+  udp: true
+- name: 🇵🇱 PL 09 - xiaohe
   type: vless
   server: 94.183.209.58
   port: 443
@@ -95,32 +97,6 @@ proxies:
     path: /
     headers:
       Host: pl2.lckdwn.ru
-- name: 🇵🇱 PL 08 - xiaohe
-  type: vless
-  server: 94.183.209.42
-  port: 443
-  uuid: 84c898c4-6990-4121-ae51-27d989f5ce39
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 94.183.209.42
-- name: 🇵🇱 PL 09 - xiaohe
-  type: vless
-  server: 94.183.209.42
-  port: 443
-  uuid: 84c898c4-6990-4121-ae51-27d989f5ce39
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 94.183.209.42
 - name: 🇵🇱 PL 10 - xiaohe
   type: vless
   server: 94.183.209.58
@@ -135,13 +111,111 @@ proxies:
     headers:
       Host: pl2.lckdwn.ru
 - name: 🇵🇱 PL 11 - xiaohe
-  type: ss
-  server: 194.61.121.93
-  port: 7538
-  cipher: chacha20-ietf-poly1305
-  password: U9YAoqBgg5VyGBc6vQv1sN
-  udp: true
+  type: hysteria2
+  server: streambox.wwwinternetvideo.click
+  port: 443
+  password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
+  sni: streambox.wwwinternetvideo.click
+  skip-cert-verify: true
 - name: 🇵🇱 PL 12 - xiaohe
+  type: vless
+  server: 94.183.209.42
+  port: 443
+  uuid: 84c898c4-6990-4121-ae51-27d989f5ce39
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: pl3.lckdwn.ru
+- name: 🇵🇱 PL 13 - xiaohe
+  type: vless
+  server: 178.95.170.98
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4bc027a44532
+    headers:
+      Host: 178.95.170.98
+- name: 🇵🇱 PL 14 - xiaohe
+  type: vless
+  server: 94.183.209.58
+  port: 443
+  uuid: 78791f9e-fe09-4d4f-88ec-895764bae0d6
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.209.58
+- name: 🇵🇱 PL 15 - xiaohe
+  type: vless
+  server: 178.95.170.83
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4bc027a44532
+    headers:
+      Host: 178.95.170.83
+- name: 🇵🇱 PL 16 - xiaohe
+  type: vless
+  server: 178.95.170.115
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4bc027a44532
+    headers:
+      Host: 178.95.170.115
+- name: 🇵🇱 PL 17 - xiaohe
+  type: vless
+  server: 94.183.209.59
+  port: 443
+  uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.209.59
+- name: 🇵🇱 PL 18 - xiaohe
+  type: vless
+  server: 94.183.209.42
+  port: 443
+  uuid: 84c898c4-6990-4121-ae51-27d989f5ce39
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.209.42
+- name: 🇵🇱 PL 19 - xiaohe
+  type: hysteria2
+  server: admin.wwwinternetvideo.click
+  port: 443
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  sni: admin.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: 🇵🇱 PL 20 - xiaohe
   type: vless
   server: 178.95.170.83
   port: 2087
@@ -154,46 +228,73 @@ proxies:
     path: /4bc027a44532
     headers:
       Host: Telegram-Leviko_v2ray
-- name: 🇵🇱 PL 13 - xiaohe
+- name: 🇵🇱 PL 21 - xiaohe
+  type: ss
+  server: 194.61.121.93
+  port: 7538
+  cipher: chacha20-ietf-poly1305
+  password: U9YAoqBgg5VyGBc6vQv1sN
+  udp: true
+- name: 🇵🇱 PL 22 - xiaohe
   type: vless
-  server: 94.183.209.59
-  port: 443
-  uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
+  server: 178.95.170.115
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /4bc027a44532
     headers:
-      Host: 94.183.209.59
-- name: 🇵🇱 PL 14 - xiaohe
+      Host: Telegram-Leviko_v2ray
+- name: 🇵🇱 PL 23 - xiaohe
   type: vless
-  server: 94.183.209.59
-  port: 443
-  uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
+  server: 178.95.170.83
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /4bc027a44532
     headers:
-      Host: 94.183.209.59
-- name: 🇵🇱 PL 15 - xiaohe
+      Host: 178.95.170.83
+- name: 🇵🇱 PL 24 - xiaohe
   type: vless
-  server: 94.183.209.59
-  port: 443
-  uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
+  server: 178.95.170.83
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /4bc027a44532
     headers:
-      Host: 94.183.209.59
-- name: 🇵🇱 PL 16 - xiaohe
+      Host: telegram-leviko_v2ray
+- name: 🇵🇱 PL 25 - xiaohe
+  type: hysteria2
+  server: admin.wwwinternetvideo.click
+  port: 443
+  password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+  sni: admin.wwwinternetvideo.click
+  skip-cert-verify: true
+- name: 🇵🇱 PL 26 - xiaohe
+  type: vless
+  server: 178.95.170.83
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4bc027a44532
+    headers:
+      Host: 178.95.170.83
+- name: 🇵🇱 PL 27 - xiaohe
   type: vless
   server: 178.95.170.115
   port: 2087
@@ -227,6 +328,17 @@ proxy-groups:
   - 🇵🇱 PL 14 - xiaohe
   - 🇵🇱 PL 15 - xiaohe
   - 🇵🇱 PL 16 - xiaohe
+  - 🇵🇱 PL 17 - xiaohe
+  - 🇵🇱 PL 18 - xiaohe
+  - 🇵🇱 PL 19 - xiaohe
+  - 🇵🇱 PL 20 - xiaohe
+  - 🇵🇱 PL 21 - xiaohe
+  - 🇵🇱 PL 22 - xiaohe
+  - 🇵🇱 PL 23 - xiaohe
+  - 🇵🇱 PL 24 - xiaohe
+  - 🇵🇱 PL 25 - xiaohe
+  - 🇵🇱 PL 26 - xiaohe
+  - 🇵🇱 PL 27 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -248,5 +360,16 @@ proxy-groups:
   - 🇵🇱 PL 14 - xiaohe
   - 🇵🇱 PL 15 - xiaohe
   - 🇵🇱 PL 16 - xiaohe
+  - 🇵🇱 PL 17 - xiaohe
+  - 🇵🇱 PL 18 - xiaohe
+  - 🇵🇱 PL 19 - xiaohe
+  - 🇵🇱 PL 20 - xiaohe
+  - 🇵🇱 PL 21 - xiaohe
+  - 🇵🇱 PL 22 - xiaohe
+  - 🇵🇱 PL 23 - xiaohe
+  - 🇵🇱 PL 24 - xiaohe
+  - 🇵🇱 PL 25 - xiaohe
+  - 🇵🇱 PL 26 - xiaohe
+  - 🇵🇱 PL 27 - xiaohe
 rules:
 - MATCH,PROXIES
