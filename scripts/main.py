@@ -724,7 +724,10 @@ def update_readme():
         country_table_rows.append(f"| {flag} {c_name} | {count} | {col_v2} | {col_clash} | {col_sb} |")
     country_table_str = "\n".join(country_table_rows) if country_table_rows else "| 暂无可用节点 | 0 | - | - | - |"
 
-    readme_content = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
+    owner_str = repo_name.split('/')[0] if '/' in repo_name else 'heleihub'
+    repo_str = repo_name.split('/')[1] if '/' in repo_name else 'Free-node-subscription'
+
+    part1 = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
 
 > 🕒 **最近更新时间**: `{now_utc}`  
 > 🟢 **全部可用节点数量**: `{total_count}` 个  
@@ -766,7 +769,7 @@ def update_readme():
 > 如果你希望将本 GitHub 仓库设置为 **Private (私有仓库)** 保护节点资产，外部客户端无法直接拉取原生 Raw 或公共 CDN 链接，可以通过以下 Cloudflare Worker 搭建轻量级私密网关反代：
 
 ### 1. 获取 GitHub 永久个人令牌 (PAT)
-1. 进入 GitHub $\rightarrow$ **Settings** $\rightarrow$ **Developer Settings** $\rightarrow$ **Personal access tokens (classic)**。
+1. 进入 GitHub -> **Settings** -> **Developer Settings** -> **Personal access tokens (classic)**。
 2. 点击 **Generate new token (classic)**，勾选 `repo` 权限，有效期设为 `No expiration`（永不过期）。
 3. 复制保存生成的以 `ghp_` 开头的 Token。
 
@@ -774,33 +777,33 @@ def update_readme():
 登录 Cloudflare Dashboard，创建一个新的 Worker 并粘贴以下代码部署：
 
 ```javascript
-export default {{
-  async fetch(request) {{
+export default {
+  async fetch(request) {
     const GITHUB_TOKEN = "ghp_你的GitHub永久访问令牌"; // 填入第1步生成的Token
-    const OWNER = "{repo_name.split('/')[0] if '/' in repo_name else 'heleihub'}";
-    const REPO = "{repo_name.split('/')[1] if '/' in repo_name else 'Free-node-subscription'}";
+    const OWNER = \"""" + owner_str + """\";
+    const REPO = \"""" + repo_str + """\";
     const BRANCH = "main";
 
     const url = new URL(request.url);
     const filePath = "output" + url.pathname;
-    const ghUrl = `[https://raw.githubusercontent.com/$](https://raw.githubusercontent.com/$){{OWNER}}/${{REPO}}/${{BRANCH}}/${{filePath}}`;
+    const ghUrl = "[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)" + OWNER + "/" + REPO + "/" + BRANCH + "/" + filePath;
     
-    const res = await fetch(ghUrl, {{
-      headers: {{
-        "Authorization": `token ${{GITHUB_TOKEN}}`,
+    const res = await fetch(ghUrl, {
+      headers: {
+        "Authorization": "token " + GITHUB_TOKEN,
         "User-Agent": "Cloudflare-Worker"
-      }}
-    }});
+      }
+    });
 
-    if (!res.ok) {{
-      return new Response("Not Found", {{ status: 404 }});
-    }}
+    if (!res.ok) {
+      return new Response("Not Found", { status: 404 });
+    }
 
-    return new Response(await res.text(), {{
-      headers: {{ 
+    return new Response(await res.text(), {
+      headers: { 
         "Content-Type": "text/plain; charset=utf-8",
         "Cache-Control": "no-cache" 
-      }}
-    }});
-  }}
-}}
+      }
+    });
+  }
+}
