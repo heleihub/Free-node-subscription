@@ -15,6 +15,51 @@ proxies:
   tls: false
   skip-cert-verify: true
 - name: 🇯🇵 日本 (Japan) 02 - xiaohe
+  type: hysteria2
+  server: freedom.chenlan.top
+  port: 12765
+  password: STYyftThFn
+  sni: freedom.chenlan.top
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 03 - xiaohe
+  type: hysteria2
+  server: 45.88.43.116
+  port: 52454
+  password: 6c077487-06af-4fb1-9e46-d485d98f0a31
+  sni: 45.88.43.116
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 04 - xiaohe
+  type: trojan
+  server: 45.32.57.242
+  port: 27242
+  password: i99Cef
+  udp: true
+  sni: download.windowsupdate.com
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 05 - xiaohe
+  type: vless
+  server: 14.137.238.193
+  port: 10000
+  uuid: 8b92dfff-ddfd-4a37-841d-6f7bf7ab43b6
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 06 - xiaohe
+  type: vless
+  server: 14.137.238.141
+  port: 10000
+  uuid: 8b92dfff-ddfd-4a37-841d-6f7bf7ab43b6
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 07 - xiaohe
+  type: ss
+  server: 84.247.155.196
+  port: 80
+  cipher: aes-256-gcm
+  password: 3eOFeNssde7PYYMv
+  udp: true
+- name: 🇯🇵 日本 (Japan) 08 - xiaohe
   type: vless
   server: 38.175.203.11
   port: 443
@@ -22,7 +67,15 @@ proxies:
   udp: true
   tls: true
   skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 03 - xiaohe
+- name: 🇯🇵 日本 (Japan) 09 - xiaohe
+  type: trojan
+  server: aa.ccmusic.jp
+  port: 443
+  password: tsuchiya
+  udp: true
+  sni: aa.ccmusic.jp
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 10 - xiaohe
   type: vmess
   server: 155.248.176.44
   port: 55216
@@ -32,68 +85,19 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 04 - xiaohe
-  type: trojan
-  server: 95.85.94.176
-  port: 443
-  password: PQ05174892
-  udp: true
-  sni: moral-dolphin.rooster465.autos
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 05 - xiaohe
-  type: ss
-  server: 176.97.73.215
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: ma6zc4JoLRJA
-  udp: true
-- name: 🇯🇵 日本 (Japan) 06 - xiaohe
-  type: trojan
-  server: 31.223.184.41
-  port: 443
-  password: PQ05174892
-  udp: true
-  sni: lucky-marmot.rooster465.autos
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 07 - xiaohe
-  type: vless
-  server: 14.137.238.141
-  port: 10000
-  uuid: 8b92dfff-ddfd-4a37-841d-6f7bf7ab43b6
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 08 - xiaohe
-  type: trojan
-  server: aa.ccmusic.jp
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: aa.ccmusic.jp
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 09 - xiaohe
-  type: vless
-  server: 134.122.202.244
-  port: 44915
-  uuid: 0ca45842-71e2-47fe-889f-9e75f93ea459
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 10 - xiaohe
-  type: ss
-  server: 84.247.155.196
-  port: 443
-  cipher: aes-256-gcm
-  password: 3eOFeNssde7PYYMv
-  udp: true
 - name: 🇯🇵 日本 (Japan) 11 - xiaohe
-  type: trojan
-  server: 45.32.57.242
-  port: 27242
-  password: i99Cef
+  type: vless
+  server: 172.111.146.64
+  port: 80
+  uuid: 904f8ffa-4652-4076-8f2f-e586807840ec
   udp: true
-  sni: download.windowsupdate.com
+  tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: join---i10vpn---join---i10vpn---join---i10vpn---join---i10vpn
 - name: 🇯🇵 日本 (Japan) 12 - xiaohe
   type: vless
   server: 137.220.221.179
@@ -103,17 +107,48 @@ proxies:
   tls: false
   skip-cert-verify: true
 - name: 🇯🇵 日本 (Japan) 13 - xiaohe
+  type: trojan
+  server: 31.223.184.41
+  port: 443
+  password: PQ05174892
+  udp: true
+  sni: lucky-marmot.rooster465.autos
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 14 - xiaohe
   type: ss
   server: 84.247.155.196
-  port: 80
+  port: 443
   cipher: aes-256-gcm
   password: 3eOFeNssde7PYYMv
   udp: true
-- name: 🇯🇵 日本 (Japan) 14 - xiaohe
+- name: 🇯🇵 日本 (Japan) 15 - xiaohe
+  type: trojan
+  server: 95.85.94.176
+  port: 443
+  password: PQ05174892
+  udp: true
+  sni: moral-dolphin.rooster465.autos
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 16 - xiaohe
+  type: trojan
+  server: 185.200.65.251
+  port: 443
+  password: UQfj7bdfjibTjpUHfg72aew51S7fB32g
+  udp: true
+  sni: portal.buildtunnel.com
+  skip-cert-verify: true
+- name: 🇯🇵 日本 (Japan) 17 - xiaohe
+  type: ss
+  server: 176.97.73.215
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: ma6zc4JoLRJA
+  udp: true
+- name: 🇯🇵 日本 (Japan) 18 - xiaohe
   type: vless
-  server: 14.137.238.193
-  port: 10000
-  uuid: 8b92dfff-ddfd-4a37-841d-6f7bf7ab43b6
+  server: 134.122.202.244
+  port: 44915
+  uuid: 0ca45842-71e2-47fe-889f-9e75f93ea459
   udp: true
   tls: false
   skip-cert-verify: true
@@ -136,6 +171,10 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 12 - xiaohe
   - 🇯🇵 日本 (Japan) 13 - xiaohe
   - 🇯🇵 日本 (Japan) 14 - xiaohe
+  - 🇯🇵 日本 (Japan) 15 - xiaohe
+  - 🇯🇵 日本 (Japan) 16 - xiaohe
+  - 🇯🇵 日本 (Japan) 17 - xiaohe
+  - 🇯🇵 日本 (Japan) 18 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -155,5 +194,9 @@ proxy-groups:
   - 🇯🇵 日本 (Japan) 12 - xiaohe
   - 🇯🇵 日本 (Japan) 13 - xiaohe
   - 🇯🇵 日本 (Japan) 14 - xiaohe
+  - 🇯🇵 日本 (Japan) 15 - xiaohe
+  - 🇯🇵 日本 (Japan) 16 - xiaohe
+  - 🇯🇵 日本 (Japan) 17 - xiaohe
+  - 🇯🇵 日本 (Japan) 18 - xiaohe
 rules:
 - MATCH,PROXIES

@@ -10,7 +10,7 @@ proxies:
   port: 443
   password: BxceQaOe
   udp: true
-  sni: t.me%25252fripaojiedian
+  sni: t.me%2Fripaojiedian
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES

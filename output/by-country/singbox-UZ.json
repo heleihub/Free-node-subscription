@@ -6,14 +6,16 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇺🇿 UZ 01 - xiaohe"
+        "🇺🇿 UZ 01 - xiaohe",
+        "🇺🇿 UZ 02 - xiaohe"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇺🇿 UZ 01 - xiaohe"
+        "🇺🇿 UZ 01 - xiaohe",
+        "🇺🇿 UZ 02 - xiaohe"
       ],
       "url": "http://cp.cloudflare.com/generate_204"
     },

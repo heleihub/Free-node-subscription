@@ -5,19 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇮🇳 印度 (India) 01 - xiaohe
-  type: vless
-  server: 4.240.110.47
-  port: 443
-  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vws/
-    headers:
-      Host: bab-6.site
-- name: 🇮🇳 印度 (India) 02 - xiaohe
   type: hysteria2
   server: vpn-in-001.fastervpn.world
   port: 443
@@ -30,13 +17,11 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇮🇳 印度 (India) 01 - xiaohe
-  - 🇮🇳 印度 (India) 02 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
   - 🇮🇳 印度 (India) 01 - xiaohe
-  - 🇮🇳 印度 (India) 02 - xiaohe
 rules:
 - MATCH,PROXIES
