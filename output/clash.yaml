@@ -3,17 +3,517 @@ socks-port: 7891
 allow-lan: true
 mode: Rule
 log-level: info
-proxies: []
+proxies:
+- name: 🇺🇸 美国 01 - xiaohe
+  type: vless
+  server: 172.64.158.146
+  port: 2052
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  servername: 172.64.158.146
+  network: ws
+- name: 🇺🇸 美国 02 - xiaohe
+  type: vless
+  server: 172.64.158.146
+  port: 8880
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  servername: 8nj2r.2k8t.f88.hh.vavava.kdns.fr
+  network: ws
+- name: 🇺🇸 美国 03 - xiaohe
+  type: vmess
+  server: 104.21.82.183
+  port: 8880
+  uuid: 5a7021e0-26b4-45d6-b175-fe551601ca97
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  network: ws
+- name: 🇺🇸 美国 04 - xiaohe
+  type: vless
+  server: 172.64.158.146
+  port: 2082
+  uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  servername: 172.64.158.146
+  network: ws
+- name: 🇺🇸 美国 05 - xiaohe
+  type: trojan
+  server: 172.67.188.109
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 06 - xiaohe
+  type: trojan
+  server: 104.18.152.144
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 07 - xiaohe
+  type: trojan
+  server: 104.18.12.149
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 08 - xiaohe
+  type: trojan
+  server: 104.19.229.21
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 09 - xiaohe
+  type: trojan
+  server: 104.18.152.103
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 10 - xiaohe
+  type: vless
+  server: 172.67.223.26
+  port: 443
+  uuid: a1a6a3be-2bf9-46a2-bc24-328306e49ab7
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: 0-M17.kUWAit-liNe.Kdns.FR
+  network: ws
+- name: 🇺🇸 美国 11 - xiaohe
+  type: trojan
+  server: 104.18.152.108
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 12 - xiaohe
+  type: trojan
+  server: 104.16.174.143
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 13 - xiaohe
+  type: vless
+  server: 104.21.92.49
+  port: 443
+  uuid: a90c264d-3853-4eef-9a3d-628b2d02d15e
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: 8-M19.OmAN-LInK.KdNS.FR
+  network: ws
+- name: 🇺🇸 美国 14 - xiaohe
+  type: vless
+  server: 172.67.223.78
+  port: 443
+  uuid: a1a6a3be-2bf9-46a2-bc24-328306e49ab7
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: 6-m17.JORDAn-liNk.KDNS.fR
+  network: ws
+- name: 🇺🇸 美国 15 - xiaohe
+  type: trojan
+  server: 172.67.221.242
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 16 - xiaohe
+  type: trojan
+  server: 104.16.174.46
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 17 - xiaohe
+  type: trojan
+  server: 104.18.152.246
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 18 - xiaohe
+  type: vless
+  server: cos-cdn-g.alicdn.win
+  port: 443
+  uuid: 2d597e01-d00a-4af0-916f-44195e9b1cac
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: mms-statlc-61uzul-e.hzedu.men
+  network: ws
+- name: 🇺🇸 美国 19 - xiaohe
+  type: trojan
+  server: 104.16.174.34
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 20 - xiaohe
+  type: vmess
+  server: gov.uk
+  port: 443
+  uuid: 77848824-93b7-4b89-ffd0-e91afff406ce
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: zheshiscp.com
+  network: ws
+- name: 🇺🇸 美国 21 - xiaohe
+  type: trojan
+  server: join-telegram-channel-tirexnet.trex.kdns.fr
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇺🇸 美国 22 - xiaohe
+  type: ss
+  server: 121.46.230.232
+  port: 65443
+- name: 🇺🇸 美国 23 - xiaohe
+  type: ss
+  server: 121.46.230.233
+  port: 65443
+- name: 🇩🇪 德国 01 - xiaohe
+  type: trojan
+  server: 104.17.111.8
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇩🇪 德国 02 - xiaohe
+  type: trojan
+  server: 86.38.214.205
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇩🇪 德国 03 - xiaohe
+  type: trojan
+  server: 8.6.112.0
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇩🇪 德国 04 - xiaohe
+  type: trojan
+  server: 172.67.74.2
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇩🇪 德国 05 - xiaohe
+  type: trojan
+  server: 172.67.149.60
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇩🇪 德国 06 - xiaohe
+  type: trojan
+  server: 5.249.164.28
+  port: 25615
+  password: kakashka13222
+  udp: true
+  sni: op-1.firecone.eu
+- name: 🇩🇪 德国 07 - xiaohe
+  type: vless
+  server: 188.220.67.245
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  servername: 188.220.67.245
+  network: ws
+- name: 🇩🇪 德国 08 - xiaohe
+  type: vless
+  server: 178.95.170.83
+  port: 2087
+  uuid: bf443e4a-aa9e-4509-abf0-d0f6828d57be
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  servername: Telegram-Leviko_v2ray
+  network: ws
+- name: 🇩🇪 德国 09 - xiaohe
+  type: trojan
+  server: join-telegram-channel.tirexnet.kdns.fr
+  port: 443
+  password: humanity
+  udp: true
+  sni: www.ignitelimit.com
+- name: 🇩🇪 德国 10 - xiaohe
+  type: vless
+  server: 69.46.46.107
+  port: 443
+  uuid: 31d2e039-d9fa-e591-25e4-deb7ed6d4b91
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: silent-ember-4448-production.up.railway.app
+  network: ws
+- name: 🇩🇪 德国 11 - xiaohe
+  type: vless
+  server: 31.77.61.89
+  port: 443
+  uuid: ef5f6054-61c7-4ce8-a35b-dbcec449f242
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: jobinvest.ru
+  network: tcp
+- name: 🇩🇪 德国 12 - xiaohe
+  type: vless
+  server: 207.241.172.254
+  port: 4777
+  uuid: 12a9194f-16fc-4fb9-a6eb-441c076b70e2
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: amp-api-edge.apps.apple.com
+  network: tcp
+- name: 🇩🇪 德国 13 - xiaohe
+  type: vless
+  server: mageia.ubuntuhosting.host
+  port: 443
+  uuid: d7430ae7-320c-4658-808b-3006d0627d82
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: mageia.ubuntuhosting.host
+  network: grpc
+- name: 🇩🇪 德国 14 - xiaohe
+  type: vless
+  server: rrr.windconnect.pro
+  port: 443
+  uuid: af00e0c4-decf-48f2-9013-56abe9c9efcd
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: rrr.windconnect.pro
+  network: tcp
+- name: 🇩🇪 德国 15 - xiaohe
+  type: vless
+  server: fr.selqora.ir
+  port: 31663
+  uuid: 7037b6a1-d8f0-40af-99e9-41bad4c32c51
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: amp-api-edge.apps.apple.com
+  network: tcp
+- name: 🌐 其他 01 - xiaohe
+  type: vless
+  server: 201.34.137.15
+  port: 4100
+  uuid: 716903b1-e6bf-4420-9e27-65e4451692e9
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  servername: 201.34.137.15
+  network: ws
+- name: 🌐 其他 02 - xiaohe
+  type: vless
+  server: ru05.abvpn.ru
+  port: 443
+  uuid: a289a3d3-5833-4b28-8809-ae72898a98d0
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: ru05.abvpn.ru
+  network: ws
+- name: 🇰🇷 韩国 01 - xiaohe
+  type: ss
+  server: 121.46.230.138
+  port: 65443
+- name: 🇰🇷 韩国 02 - xiaohe
+  type: vless
+  server: 129.154.192.50
+  port: 2053
+  uuid: 48e84fcc-ecb1-48a3-a596-88fea84887f5
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: www.ibm.com
+  network: tcp
+- name: 🇯🇵 日本 01 - xiaohe
+  type: vless
+  server: 18.183.215.124
+  port: 28573
+  uuid: 871bfce7-8440-4394-8d82-56b51f20fdad
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: www.sony.com
+  network: raw
+- name: 🇯🇵 日本 02 - xiaohe
+  type: vless
+  server: 52.68.64.80
+  port: 25892
+  uuid: 31d84170-673e-4653-afaf-0656656be6dc
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: www.sony.com
+  network: tcp
+- name: 🇸🇬 新加坡 01 - xiaohe
+  type: vless
+  server: 149.118.55.234
+  port: 443
+  uuid: 58f7687b-5209-4dcd-a11e-6e4eb2191378
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: www.zoom.com
+  network: ws
+- name: 🇸🇬 新加坡 02 - xiaohe
+  type: vless
+  server: uh-sg01.ziyoufly.xyz
+  port: 55555
+  uuid: c2a08e4d-da8f-435e-90e8-65600ee185be
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  servername: d1.awsstatic.com
+  network: tcp
 proxy-groups:
 - name: 节点选择
   type: select
   proxies:
   - 自动选择
+  - 🇺🇸 美国 01 - xiaohe
+  - 🇺🇸 美国 02 - xiaohe
+  - 🇺🇸 美国 03 - xiaohe
+  - 🇺🇸 美国 04 - xiaohe
+  - 🇺🇸 美国 05 - xiaohe
+  - 🇺🇸 美国 06 - xiaohe
+  - 🇺🇸 美国 07 - xiaohe
+  - 🇺🇸 美国 08 - xiaohe
+  - 🇺🇸 美国 09 - xiaohe
+  - 🇺🇸 美国 10 - xiaohe
+  - 🇺🇸 美国 11 - xiaohe
+  - 🇺🇸 美国 12 - xiaohe
+  - 🇺🇸 美国 13 - xiaohe
+  - 🇺🇸 美国 14 - xiaohe
+  - 🇺🇸 美国 15 - xiaohe
+  - 🇺🇸 美国 16 - xiaohe
+  - 🇺🇸 美国 17 - xiaohe
+  - 🇺🇸 美国 18 - xiaohe
+  - 🇺🇸 美国 19 - xiaohe
+  - 🇺🇸 美国 20 - xiaohe
+  - 🇺🇸 美国 21 - xiaohe
+  - 🇺🇸 美国 22 - xiaohe
+  - 🇺🇸 美国 23 - xiaohe
+  - 🇩🇪 德国 01 - xiaohe
+  - 🇩🇪 德国 02 - xiaohe
+  - 🇩🇪 德国 03 - xiaohe
+  - 🇩🇪 德国 04 - xiaohe
+  - 🇩🇪 德国 05 - xiaohe
+  - 🇩🇪 德国 06 - xiaohe
+  - 🇩🇪 德国 07 - xiaohe
+  - 🇩🇪 德国 08 - xiaohe
+  - 🇩🇪 德国 09 - xiaohe
+  - 🇩🇪 德国 10 - xiaohe
+  - 🇩🇪 德国 11 - xiaohe
+  - 🇩🇪 德国 12 - xiaohe
+  - 🇩🇪 德国 13 - xiaohe
+  - 🇩🇪 德国 14 - xiaohe
+  - 🇩🇪 德国 15 - xiaohe
+  - 🌐 其他 01 - xiaohe
+  - 🌐 其他 02 - xiaohe
+  - 🇰🇷 韩国 01 - xiaohe
+  - 🇰🇷 韩国 02 - xiaohe
+  - 🇯🇵 日本 01 - xiaohe
+  - 🇯🇵 日本 02 - xiaohe
+  - 🇸🇬 新加坡 01 - xiaohe
+  - 🇸🇬 新加坡 02 - xiaohe
 - name: 自动选择
   type: url-test
   url: http://www.gstatic.com/generate_204
   interval: 300
-  proxies: []
+  proxies:
+  - 🇺🇸 美国 01 - xiaohe
+  - 🇺🇸 美国 02 - xiaohe
+  - 🇺🇸 美国 03 - xiaohe
+  - 🇺🇸 美国 04 - xiaohe
+  - 🇺🇸 美国 05 - xiaohe
+  - 🇺🇸 美国 06 - xiaohe
+  - 🇺🇸 美国 07 - xiaohe
+  - 🇺🇸 美国 08 - xiaohe
+  - 🇺🇸 美国 09 - xiaohe
+  - 🇺🇸 美国 10 - xiaohe
+  - 🇺🇸 美国 11 - xiaohe
+  - 🇺🇸 美国 12 - xiaohe
+  - 🇺🇸 美国 13 - xiaohe
+  - 🇺🇸 美国 14 - xiaohe
+  - 🇺🇸 美国 15 - xiaohe
+  - 🇺🇸 美国 16 - xiaohe
+  - 🇺🇸 美国 17 - xiaohe
+  - 🇺🇸 美国 18 - xiaohe
+  - 🇺🇸 美国 19 - xiaohe
+  - 🇺🇸 美国 20 - xiaohe
+  - 🇺🇸 美国 21 - xiaohe
+  - 🇺🇸 美国 22 - xiaohe
+  - 🇺🇸 美国 23 - xiaohe
+  - 🇩🇪 德国 01 - xiaohe
+  - 🇩🇪 德国 02 - xiaohe
+  - 🇩🇪 德国 03 - xiaohe
+  - 🇩🇪 德国 04 - xiaohe
+  - 🇩🇪 德国 05 - xiaohe
+  - 🇩🇪 德国 06 - xiaohe
+  - 🇩🇪 德国 07 - xiaohe
+  - 🇩🇪 德国 08 - xiaohe
+  - 🇩🇪 德国 09 - xiaohe
+  - 🇩🇪 德国 10 - xiaohe
+  - 🇩🇪 德国 11 - xiaohe
+  - 🇩🇪 德国 12 - xiaohe
+  - 🇩🇪 德国 13 - xiaohe
+  - 🇩🇪 德国 14 - xiaohe
+  - 🇩🇪 德国 15 - xiaohe
+  - 🌐 其他 01 - xiaohe
+  - 🌐 其他 02 - xiaohe
+  - 🇰🇷 韩国 01 - xiaohe
+  - 🇰🇷 韩国 02 - xiaohe
+  - 🇯🇵 日本 01 - xiaohe
+  - 🇯🇵 日本 02 - xiaohe
+  - 🇸🇬 新加坡 01 - xiaohe
+  - 🇸🇬 新加坡 02 - xiaohe
 rules:
 - GEOIP,LAN,DIRECT
 - GEOIP,CN,DIRECT

@@ -1,0 +1,48 @@
+{
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "urltest",
+        "🇩🇪 德国 01 - xiaohe",
+        "🇩🇪 德国 02 - xiaohe",
+        "🇩🇪 德国 03 - xiaohe",
+        "🇩🇪 德国 04 - xiaohe",
+        "🇩🇪 德国 05 - xiaohe",
+        "🇩🇪 德国 06 - xiaohe",
+        "🇩🇪 德国 07 - xiaohe",
+        "🇩🇪 德国 08 - xiaohe",
+        "🇩🇪 德国 09 - xiaohe",
+        "🇩🇪 德国 10 - xiaohe",
+        "🇩🇪 德国 11 - xiaohe",
+        "🇩🇪 德国 12 - xiaohe",
+        "🇩🇪 德国 13 - xiaohe",
+        "🇩🇪 德国 14 - xiaohe",
+        "🇩🇪 德国 15 - xiaohe"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "urltest",
+      "outbounds": [
+        "🇩🇪 德国 01 - xiaohe",
+        "🇩🇪 德国 02 - xiaohe",
+        "🇩🇪 德国 03 - xiaohe",
+        "🇩🇪 德国 04 - xiaohe",
+        "🇩🇪 德国 05 - xiaohe",
+        "🇩🇪 德国 06 - xiaohe",
+        "🇩🇪 德国 07 - xiaohe",
+        "🇩🇪 德国 08 - xiaohe",
+        "🇩🇪 德国 09 - xiaohe",
+        "🇩🇪 德国 10 - xiaohe",
+        "🇩🇪 德国 11 - xiaohe",
+        "🇩🇪 德国 12 - xiaohe",
+        "🇩🇪 德国 13 - xiaohe",
+        "🇩🇪 德国 14 - xiaohe",
+        "🇩🇪 德国 15 - xiaohe"
+      ],
+      "url": "http://cp.cloudflare.com/generate_204"
+    }
+  ]
+}
