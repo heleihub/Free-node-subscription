@@ -13,6 +13,14 @@ proxies:
   udp: true
 - name: 🇮🇹 意大利 (Italy) 02 - xiaohe
   type: vless
+  server: 204.216.216.23
+  port: 10086
+  uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇮🇹 意大利 (Italy) 03 - xiaohe
+  type: vless
   server: 151.241.215.109
   port: 443
   uuid: 699ce9a1-abbb-4525-988e-b940381352e8
@@ -24,20 +32,30 @@ proxies:
     path: /
     headers:
       Host: 151.241.215.109
-- name: 🇮🇹 意大利 (Italy) 03 - xiaohe
-  type: vless
+- name: 🇮🇹 意大利 (Italy) 04 - xiaohe
+  type: vmess
   server: 57.131.32.191
-  port: 80
-  uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
+  port: 8443
+  uuid: 848af33c-81f2-40c9-93b2-4681d056936b
+  alterId: 0
+  cipher: auto
   udp: true
-  tls: false
+  tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /vless/
+    path: /vmess/
     headers:
-      Host: ov-italy1.09vpn.com
-- name: 🇮🇹 意大利 (Italy) 04 - xiaohe
+      Host: OV-Italy1.09vpn.com
+- name: 🇮🇹 意大利 (Italy) 05 - xiaohe
+  type: vless
+  server: 204.216.216.23
+  port: 10086
+  uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇮🇹 意大利 (Italy) 06 - xiaohe
   type: vless
   server: 151.241.215.109
   port: 443
@@ -59,6 +77,8 @@ proxy-groups:
   - 🇮🇹 意大利 (Italy) 02 - xiaohe
   - 🇮🇹 意大利 (Italy) 03 - xiaohe
   - 🇮🇹 意大利 (Italy) 04 - xiaohe
+  - 🇮🇹 意大利 (Italy) 05 - xiaohe
+  - 🇮🇹 意大利 (Italy) 06 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -68,5 +88,7 @@ proxy-groups:
   - 🇮🇹 意大利 (Italy) 02 - xiaohe
   - 🇮🇹 意大利 (Italy) 03 - xiaohe
   - 🇮🇹 意大利 (Italy) 04 - xiaohe
+  - 🇮🇹 意大利 (Italy) 05 - xiaohe
+  - 🇮🇹 意大利 (Italy) 06 - xiaohe
 rules:
 - MATCH,PROXIES

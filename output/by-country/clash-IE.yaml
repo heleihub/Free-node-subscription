@@ -6,14 +6,14 @@ log-level: info
 proxies:
 - name: 🇮🇪 IE 01 - xiaohe
   type: ss
-  server: 52.210.185.41
+  server: 34.247.86.118
   port: 443
   cipher: aes-256-cfb
   password: amazonskr05
   udp: true
 - name: 🇮🇪 IE 02 - xiaohe
   type: ss
-  server: 54.246.193.66
+  server: 52.210.185.41
   port: 443
   cipher: aes-256-cfb
   password: amazonskr05
