@@ -1,10 +1,3 @@
----
-
-### 二、 预览排版效果：优化后的 `README.md` 完整内容
-
-可以直接把当前代码粘贴到 `README.md` 中进行对比[cite: 5]：
-
-```markdown
 # 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
 
 > 🕒 **最近更新时间**: `2026-09-06 10:21:50 UTC`  
@@ -17,11 +10,11 @@
 
 ## 📌 全部节点总订阅链接
 
-| 客户端 / 格式 | 节点总数 | 免翻 CDN 直链 (国内直连) | 原生 Raw 直链 (开启代理) |
-| :--- | :---: | :---: | :---: |
-| 🚀 **Clash (YAML)** | `1220` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/heleihub/Free-node-subscription@main/output/clash.yaml) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/heleihub/Free-node-subscription/main/output/clash.yaml) |
-| ⚡ **V2Ray (Base64)** | `1220` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/heleihub/Free-node-subscription@main/output/v2ray.txt) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/heleihub/Free-node-subscription/main/output/v2ray.txt) |
-| 📦 **sing-box (JSON)** | `1220` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/heleihub/Free-node-subscription@main/output/singbox.json) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/heleihub/Free-node-subscription/main/output/singbox.json) |
+| 客户端 / 格式 | 节点总数 | 免翻 CDN 直链 (国内直连推荐) | 官方原生 Raw 直链 (开启代理推荐) |
+| :--- | :---: | :--- | :--- |
+| 🚀 **Clash (YAML)** | `1220` | [📋 复制免翻 CDN 直链](https://cdn.jsdelivr.net/gh/heleihub/Free-node-subscription@main/output/clash.yaml) | [🔗 官方 Raw 直链](https://raw.githubusercontent.com/heleihub/Free-node-subscription/main/output/clash.yaml) |
+| ⚡ **V2Ray (Base64)** | `1220` | [📋 复制免翻 CDN 直链](https://cdn.jsdelivr.net/gh/heleihub/Free-node-subscription@main/output/v2ray.txt) | [🔗 官方 Raw 直链](https://raw.githubusercontent.com/heleihub/Free-node-subscription/main/output/v2ray.txt) |
+| 📦 **sing-box (JSON)** | `1220` | [📋 复制免翻 CDN 直链](https://cdn.jsdelivr.net/gh/heleihub/Free-node-subscription@main/output/singbox.json) | [🔗 官方 Raw 直链](https://raw.githubusercontent.com/heleihub/Free-node-subscription/main/output/singbox.json) |
 
 ---
 
@@ -70,12 +63,12 @@
 > 如果你希望将本 GitHub 仓库设置为 **Private (私有仓库)** 保护节点资产，外部客户端无法直接拉取原生 Raw 或公共 CDN 链接，可以通过以下 Cloudflare Worker 搭建轻量级私密网关反代：
 
 ### 1. 获取 GitHub 永久个人令牌 (PAT)
-1. 进入 GitHub $\rightarrow$ **Settings** $\rightarrow$ **Developer Settings** $\rightarrow$ **Personal access tokens (classic)**。
+1. 进入 GitHub -> **Settings** -> **Developer Settings** -> **Personal access tokens (classic)**。
 2. 点击 **Generate new token (classic)**，勾选 `repo` 权限，有效期设为 `No expiration`（永不过期）。
 3. 复制保存生成的以 `ghp_` 开头的 Token。
 
 ### 2. 部署 Cloudflare Worker
-登录 Cloudflare Dashboard，创建一个新的 Worker 并粘贴以下代码部署：
+登录 Cloudflare Dashboard，创建一个新的 Worker，复制以下脚本粘贴并部署：
 
 ```javascript
 export default {
@@ -87,11 +80,11 @@ export default {
 
     const url = new URL(request.url);
     const filePath = "output" + url.pathname;
-    const ghUrl = `[https://raw.githubusercontent.com/$](https://raw.githubusercontent.com/$){OWNER}/${REPO}/${BRANCH}/${filePath}`;
+    const ghUrl = ["https:", "", "raw.githubusercontent.com", OWNER, REPO, BRANCH, filePath].join("/");
     
     const res = await fetch(ghUrl, {
       headers: {
-        "Authorization": `token ${GITHUB_TOKEN}`,
+        "Authorization": "token " + GITHUB_TOKEN,
         "User-Agent": "Cloudflare-Worker"
       }
     });
