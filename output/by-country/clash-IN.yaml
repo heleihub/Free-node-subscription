@@ -17,27 +17,17 @@ proxies:
     path: /vws/
     headers:
       Host: bab-6.site
-- name: 🇮🇳 印度 (India) 02 - xiaohe
-  type: trojan
-  server: 35.244.28.130
-  port: 443
-  password: M7v%w11Se*
-  udp: true
-  sni: tttyder.wsone.icu
-  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇮🇳 印度 (India) 01 - xiaohe
-  - 🇮🇳 印度 (India) 02 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
   - 🇮🇳 印度 (India) 01 - xiaohe
-  - 🇮🇳 印度 (India) 02 - xiaohe
 rules:
 - MATCH,PROXIES

@@ -39,13 +39,6 @@ proxies:
     headers:
       Host: 38.60.168.98
 - name: 🇲🇾 MY 04 - xiaohe
-  type: ss
-  server: 118.107.222.231
-  port: 65443
-  cipher: aes-256-cfb
-  password: 7eadc6dbe2ae
-  udp: true
-- name: 🇲🇾 MY 05 - xiaohe
   type: vless
   server: 38.60.168.98
   port: 2087
@@ -58,6 +51,13 @@ proxies:
     path: /db55c40bbc75
     headers:
       Host: 38.60.168.98
+- name: 🇲🇾 MY 05 - xiaohe
+  type: ss
+  server: 118.107.222.231
+  port: 65443
+  cipher: aes-256-cfb
+  password: 7eadc6dbe2ae
+  udp: true
 proxy-groups:
 - name: PROXIES
   type: select

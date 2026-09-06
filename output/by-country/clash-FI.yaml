@@ -6,17 +6,10 @@ log-level: info
 proxies:
 - name: 🇫🇮 FI 01 - xiaohe
   type: hysteria2
-  server: fast.wwwinternetvideo.click
+  server: fin1.apexvpn.space
   port: 443
-  password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
-  sni: fast.wwwinternetvideo.click
-  skip-cert-verify: true
-- name: 🇫🇮 FI 02 - xiaohe
-  type: hysteria2
-  server: fast.wwwinternetvideo.click
-  port: 443
-  password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
-  sni: fast.wwwinternetvideo.click
+  password: 9311376a-814b-49b3-af70-9c7e7507e20f
+  sni: fin1.apexvpn.space
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
@@ -24,13 +17,11 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇫🇮 FI 01 - xiaohe
-  - 🇫🇮 FI 02 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
   - 🇫🇮 FI 01 - xiaohe
-  - 🇫🇮 FI 02 - xiaohe
 rules:
 - MATCH,PROXIES
