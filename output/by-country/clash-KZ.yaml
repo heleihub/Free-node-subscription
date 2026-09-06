@@ -13,13 +13,6 @@ proxies:
   skip-cert-verify: true
 - name: 🇰🇿 KZ 02 - xiaohe
   type: hysteria2
-  server: kz03hy01.tcp-reset-club.net
-  port: 443
-  password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
-  sni: kz03hy01.tcp-reset-club.net
-  skip-cert-verify: true
-- name: 🇰🇿 KZ 03 - xiaohe
-  type: hysteria2
   server: 194.238.40.185
   port: 443
   password: eb0e3aec-f67f-4fa2-8577-b0bff0484e77
@@ -32,7 +25,6 @@ proxy-groups:
   - AUTO
   - 🇰🇿 KZ 01 - xiaohe
   - 🇰🇿 KZ 02 - xiaohe
-  - 🇰🇿 KZ 03 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -40,6 +32,5 @@ proxy-groups:
   proxies:
   - 🇰🇿 KZ 01 - xiaohe
   - 🇰🇿 KZ 02 - xiaohe
-  - 🇰🇿 KZ 03 - xiaohe
 rules:
 - MATCH,PROXIES

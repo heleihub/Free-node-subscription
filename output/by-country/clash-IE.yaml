@@ -6,6 +6,13 @@ log-level: info
 proxies:
 - name: 🇮🇪 IE 01 - xiaohe
   type: ss
+  server: 34.247.86.118
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇮🇪 IE 02 - xiaohe
+  type: ss
   server: 52.210.185.41
   port: 443
   cipher: aes-256-cfb
@@ -17,11 +24,13 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇮🇪 IE 01 - xiaohe
+  - 🇮🇪 IE 02 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
   - 🇮🇪 IE 01 - xiaohe
+  - 🇮🇪 IE 02 - xiaohe
 rules:
 - MATCH,PROXIES

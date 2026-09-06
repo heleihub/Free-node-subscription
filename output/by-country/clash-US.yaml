@@ -5,11 +5,14 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇺🇸 美国 (United States) 01 - xiaohe
-  type: hysteria2
-  server: hy2.123266.xyz
-  port: 33333
-  password: bce6c821-200d-421f-bf3d-7159e5246ea0
-  sni: hy2.123266.xyz
+  type: vmess
+  server: 165.140.216.142
+  port: 443
+  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
   skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 02 - xiaohe
   type: hysteria2
@@ -20,177 +23,94 @@ proxies:
   skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 03 - xiaohe
   type: hysteria2
-  server: 155.248.209.237
-  port: 33333
-  password: bce6c821-200d-421f-bf3d-7159e5246ea0
-  sni: 155.248.209.237
+  server: 163.192.14.135
+  port: 50160
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: 163.192.14.135
   skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 04 - xiaohe
   type: ss
-  server: 15.204.246.111
-  port: 5498
-  cipher: aes-256-gcm
-  password: lGqs95QkFHo2NV
+  server: 38.180.135.156
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: YHtesZ0qvgtg
   udp: true
 - name: 🇺🇸 美国 (United States) 05 - xiaohe
-  type: hysteria2
-  server: hy2.561891.xyz
-  port: 44356
-  password: dongtaiwang.com
-  sni: hy2.561891.xyz
-  skip-cert-verify: true
+  type: ss
+  server: 37.19.198.244
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
 - name: 🇺🇸 美国 (United States) 06 - xiaohe
   type: trojan
-  server: 64.94.95.115
+  server: 64.94.95.118
   port: 57142
   password: kkzh2prsyr2ik47as615
   udp: true
-  sni: static.rutube.ru
+  sni: 64.94.95.118
   skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 07 - xiaohe
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: 33333
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 08 - xiaohe
   type: hysteria2
   server: us4.xiaoliyu.cyou
   port: 4433
   password: 19f72087-4591-4d72-930b-2697078ec2be
   sni: us4.xiaoliyu.cyou
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 08 - xiaohe
-  type: trojan
-  server: us01.duotg.top
-  port: 38261
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 09 - xiaohe
-  type: trojan
-  server: us01.duotg.top
-  port: 46292
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
+  type: hysteria2
+  server: us4.xiaoliyu.cyou
+  port: 4433
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: us4.xiaoliyu.cyou
   skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 10 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 54657
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: us01.duotg.top
+  type: hysteria2
+  server: us4.xiaoliyu.cyou
+  port: 4433
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: us4.xiaoliyu.cyou
   skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 11 - xiaohe
+  type: vmess
+  server: 84.17.41.2
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 12 - xiaohe
+  type: hysteria2
+  server: 163.192.14.135
+  port: 50160
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: 163.192.14.135
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 13 - xiaohe
+  type: trojan
+  server: 18.65.190.65
+  port: 443
+  password: 5c777277-17f2-4272-ae65-7bd00fa4fbaa
+  udp: true
+  sni: wel-jp.optage.moe
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 14 - xiaohe
   type: hysteria2
   server: 204.152.221.119
   port: 4434
   password: 28a91bb2-51fe-48e1-9865-ec8bc9e48890
   sni: 204.152.221.119
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 12 - xiaohe
-  type: vmess
-  server: 67.220.72.237
-  port: 22324
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 13 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 46292
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 14 - xiaohe
-  type: vmess
-  server: 84.17.41.2
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 15 - xiaohe
-  type: ss
-  server: 138.199.43.159
-  port: 8080
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-  udp: true
-- name: 🇺🇸 美国 (United States) 16 - xiaohe
-  type: vmess
-  server: 84.17.41.2
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 17 - xiaohe
-  type: vmess
-  server: 38.110.1.246
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 18 - xiaohe
-  type: vless
-  server: 2.27.205.59
-  port: 443
-  uuid: c21631d5-36c9-4664-b575-97eca17456be
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 2.27.205.59
-- name: 🇺🇸 美国 (United States) 19 - xiaohe
-  type: hysteria2
-  server: 159.223.157.129
-  port: 8443
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  sni: 159.223.157.129
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 20 - xiaohe
-  type: hysteria2
-  server: us4.xiaoliyu.cyou
-  port: 4433
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: us4.xiaoliyu.cyou
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 21 - xiaohe
-  type: trojan
-  server: 64.94.95.117
-  port: 57142
-  password: kkzh2prsyr2ik47as615
-  udp: true
-  sni: 64.94.95.117
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 22 - xiaohe
-  type: trojan
-  server: 64.94.95.117
-  port: 57142
-  password: kkzh2prsyr2ik47as615
-  udp: true
-  sni: static.rutube.ru
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 23 - xiaohe
-  type: hysteria2
-  server: us4.xiaoliyu.cyou
-  port: 4433
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: us4.xiaoliyu.cyou
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 24 - xiaohe
   type: vmess
   server: 165.140.216.141
   port: 443
@@ -200,61 +120,41 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 25 - xiaohe
-  type: vless
-  server: 162.159.140.78
-  port: 8880
-  uuid: c18fd69e-92ba-446e-981b-213dbb551593
+- name: 🇺🇸 美国 (United States) 16 - xiaohe
+  type: vmess
+  server: 216.106.183.35
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 1
+  cipher: auto
   udp: true
   tls: false
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /pyip=ProxyIP.KR.CMLiussss.net
-    headers:
-      Host: billowing-wind-5b29.133-323.workers.dev
-- name: 🇺🇸 美国 (United States) 26 - xiaohe
-  type: vless
-  server: 38.107.236.166
-  port: 8443
-  uuid: 48572af1-d091-457b-a86e-4a457e99927f
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vless/
-    headers:
-      Host: 3h-unitedstates3.09vpn.com
-- name: 🇺🇸 美国 (United States) 27 - xiaohe
+- name: 🇺🇸 美国 (United States) 17 - xiaohe
   type: vmess
-  server: 38.91.107.49
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  server: 216.106.183.35
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
   alterId: 0
   cipher: auto
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 28 - xiaohe
-  type: trojan
-  server: 64.94.95.115
-  port: 57142
-  password: kkzh2prsyr2ik47as615
+- name: 🇺🇸 美国 (United States) 18 - xiaohe
+  type: ss
+  server: 107.151.182.197
+  port: 8080
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
   udp: true
-  sni: 64.94.95.115
+- name: 🇺🇸 美国 (United States) 19 - xiaohe
+  type: hysteria2
+  server: 155.248.209.237
+  port: 33333
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.237
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 29 - xiaohe
-  type: vmess
-  server: 67.220.95.3
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 30 - xiaohe
+- name: 🇺🇸 美国 (United States) 20 - xiaohe
   type: vmess
   server: 84.17.41.2
   port: 18000
@@ -264,89 +164,41 @@ proxies:
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 31 - xiaohe
+- name: 🇺🇸 美国 (United States) 21 - xiaohe
   type: hysteria2
-  server: 159.223.157.129
-  port: 8443
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  sni: 159.223.157.129
+  server: us4.xiaoliyu.cyou
+  port: 4433
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: us4.xiaoliyu.cyou
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 32 - xiaohe
-  type: vless
-  server: 147.189.129.144
-  port: 2087
-  uuid: 090a3fa8-973f-4812-9b69-ed982082a933
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /4ad49ed0a3d5
-    headers:
-      Host: 147.189.129.144
-- name: 🇺🇸 美国 (United States) 33 - xiaohe
-  type: vless
-  server: 154.9.227.100
-  port: 443
-  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vws/
-    headers:
-      Host: bab-6.site
-- name: 🇺🇸 美国 (United States) 34 - xiaohe
-  type: trojan
-  server: 64.94.95.118
-  port: 57142
-  password: kkzh2prsyr2ik47as615
-  udp: true
-  sni: static.rutube.ru
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 35 - xiaohe
+- name: 🇺🇸 美国 (United States) 22 - xiaohe
   type: vmess
   server: 67.220.72.237
   port: 22324
   uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 1
+  alterId: 0
   cipher: auto
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 36 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 46292
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+- name: 🇺🇸 美国 (United States) 23 - xiaohe
+  type: vmess
+  server: 67.220.72.237
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
   udp: true
-  sni: www.microsoft.com%23free+x114+%40outline_vpn
+  tls: false
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 37 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 20065
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
+- name: 🇺🇸 美国 (United States) 24 - xiaohe
+  type: hysteria2
+  server: 163.192.14.135
+  port: 50160
+  password: 099830134df5ac3a04a4b21d39b8c395
+  sni: 163.192.14.135
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 38 - xiaohe
-  type: ss
-  server: 38.180.135.156
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: YHtesZ0qvgtg
-  udp: true
-- name: 🇺🇸 美国 (United States) 39 - xiaohe
-  type: trojan
-  server: us01.duotg.top
-  port: 27732
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 40 - xiaohe
+- name: 🇺🇸 美国 (United States) 25 - xiaohe
   type: trojan
   server: 107.150.105.84
   port: 59385
@@ -354,15 +206,7 @@ proxies:
   udp: true
   sni: www.microsoft.com
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 41 - xiaohe
-  type: trojan
-  server: us01.duotg.top
-  port: 38261
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: us01.duotg.top
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 42 - xiaohe
+- name: 🇺🇸 美国 (United States) 26 - xiaohe
   type: trojan
   server: us01.duotg.top
   port: 46292
@@ -370,14 +214,101 @@ proxies:
   udp: true
   sni: us01.duotg.top
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 43 - xiaohe
-  type: hysteria2
-  server: hy2.123266.xyz
-  port: 33333
-  password: bce6c821-200d-421f-bf3d-7159e5246ea0
-  sni: hy2.123266.xyz
+- name: 🇺🇸 美国 (United States) 27 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 38261
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 44 - xiaohe
+- name: 🇺🇸 美国 (United States) 28 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 38261
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 29 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com%233%F0%9F%90%B2%40oneclickvpnkeyshysteria2%3A%2F%2Fumndu7jgfyujpvjvm2sw9hl0rryljngzvwru2hzwehyzkkrx%40hold.wwwinternetvideo.click%3A443%2F%3Finsecure%3D1
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 30 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 31 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 43022
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 32 - xiaohe
+  type: trojan
+  server: 64.94.95.117
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.117
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 33 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 59385
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 34 - xiaohe
+  type: hysteria2
+  server: us4.xiaoliyu.cyou
+  port: 4433
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: us4.xiaoliyu.cyou
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 35 - xiaohe
+  type: ss
+  server: 15.204.246.111
+  port: 5498
+  cipher: aes-256-gcm
+  password: lGqs95QkFHo2NV
+  udp: true
+- name: 🇺🇸 美国 (United States) 36 - xiaohe
+  type: trojan
+  server: 64.94.95.115
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.115
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 37 - xiaohe
+  type: trojan
+  server: 64.94.95.115
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 38 - xiaohe
+  type: trojan
+  server: 64.94.95.114
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.114
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 39 - xiaohe
   type: vless
   server: 144.225.246.111
   port: 443
@@ -390,21 +321,27 @@ proxies:
     path: /@zyzzzoao
     headers:
       Host: cf.udpid.org
-- name: 🇺🇸 美国 (United States) 45 - xiaohe
-  type: hysteria2
-  server: us4.xiaoliyu.cyou
-  port: 4433
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: us4.xiaoliyu.cyou
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 46 - xiaohe
-  type: ss
-  server: 156.146.38.168
+- name: 🇺🇸 美国 (United States) 40 - xiaohe
+  type: vless
+  server: web-6fa261-bd2cf5-production.up.railway.app
   port: 443
-  cipher: aes-128-gcm
-  password: shadowsocks
+  uuid: cd71c2ce-0a1c-1190-8029-6020d0bdd219
   udp: true
-- name: 🇺🇸 美国 (United States) 47 - xiaohe
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /ws/cd71c2ce-0a1c-1190-8029-6020d0bdd219
+    headers:
+      Host: web-6fa261-bd2cf5-production.up.railway.app
+- name: 🇺🇸 美国 (United States) 41 - xiaohe
+  type: ss
+  server: 198.98.53.130
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇺🇸 美国 (United States) 42 - xiaohe
   type: vless
   server: 2.27.205.59
   port: 443
@@ -417,107 +354,45 @@ proxies:
     path: /
     headers:
       Host: neth8.lunariai.ru
-- name: 🇺🇸 美国 (United States) 48 - xiaohe
-  type: vmess
-  server: 84.17.41.2
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 49 - xiaohe
-  type: trojan
-  server: 64.94.95.115
-  port: 57142
-  password: kkzh2prsyr2ik47as615
-  udp: true
-  sni: 64.94.95.115
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 50 - xiaohe
-  type: hysteria2
-  server: hy2.123266.xyz
-  port: 33333
-  password: bce6c821-200d-421f-bf3d-7159e5246ea0
-  sni: hy2.123266.xyz
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 51 - xiaohe
-  type: hysteria2
-  server: us4.xiaoliyu.cyou
-  port: 4433
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: us4.xiaoliyu.cyou
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 52 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 20065
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 53 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 54657
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: us01.duotg.top
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 54 - xiaohe
-  type: hysteria2
-  server: us4.xiaoliyu.cyou
-  port: 4433
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: us4.xiaoliyu.cyou
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 55 - xiaohe
+- name: 🇺🇸 美国 (United States) 43 - xiaohe
   type: ss
-  server: 15.204.246.108
-  port: 8881
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-  udp: true
-- name: 🇺🇸 美国 (United States) 56 - xiaohe
-  type: ss
-  server: 198.98.53.130
+  server: 37.19.198.236
   port: 443
-  cipher: chacha20-ietf-poly1305
-  password: eDfN7SODQceIOmIAbtJJtK
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-- name: 🇺🇸 美国 (United States) 57 - xiaohe
+- name: 🇺🇸 美国 (United States) 44 - xiaohe
+  type: ss
+  server: 15.204.246.111
+  port: 5498
+  cipher: aes-256-gcm
+  password: lGqs95QkFHo2NV
+  udp: true
+- name: 🇺🇸 美国 (United States) 45 - xiaohe
+  type: ss
+  server: 37.19.198.160
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 美国 (United States) 46 - xiaohe
   type: vmess
-  server: 38.110.1.246
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  server: 165.140.216.142
+  port: 443
+  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
   alterId: 0
   cipher: auto
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 58 - xiaohe
-  type: vless
-  server: altaria.proxy.rlwy.net
-  port: 50745
-  uuid: 895f982f-2ba8-4367-93aa-97586cc404d1
+- name: 🇺🇸 美国 (United States) 47 - xiaohe
+  type: ss
+  server: 156.146.38.167
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: altaria.proxy.rlwy.net
-- name: 🇺🇸 美国 (United States) 59 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 46292
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com%23free+x114+%40outline_vpn
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 60 - xiaohe
+- name: 🇺🇸 美国 (United States) 48 - xiaohe
   type: trojan
   server: us01.duotg.top
   port: 59385
@@ -525,22 +400,29 @@ proxies:
   udp: true
   sni: us01.duotg.top
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 61 - xiaohe
+- name: 🇺🇸 美国 (United States) 49 - xiaohe
   type: trojan
   server: us01.duotg.top
-  port: 20065
+  port: 27732
   password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
   udp: true
-  sni: www.microsoft.com
+  sni: us01.duotg.top
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 62 - xiaohe
+- name: 🇺🇸 美国 (United States) 50 - xiaohe
   type: ss
-  server: 107.151.182.197
-  port: 8080
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
+  server: 15.204.246.189
+  port: 8119
+  cipher: aes-256-gcm
+  password: cdBIDV42DCwnfIN
   udp: true
-- name: 🇺🇸 美国 (United States) 63 - xiaohe
+- name: 🇺🇸 美国 (United States) 51 - xiaohe
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: 33333
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 52 - xiaohe
   type: vless
   server: 31.169.125.12
   port: 443
@@ -553,27 +435,18 @@ proxies:
     path: /
     headers:
       Host: us6.lunariai.ru
-- name: 🇺🇸 美国 (United States) 64 - xiaohe
-  type: trojan
-  server: 64.94.95.114
-  port: 57142
-  password: kkzh2prsyr2ik47as615
-  udp: true
-  sni: 64.94.95.114
+- name: 🇺🇸 美国 (United States) 53 - xiaohe
+  type: hysteria2
+  server: 155.248.209.237
+  port: 33333
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: 155.248.209.237
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 65 - xiaohe
-  type: trojan
-  server: us01.duotg.top
-  port: 59385
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: us01.duotg.top
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 66 - xiaohe
+- name: 🇺🇸 美国 (United States) 54 - xiaohe
   type: vless
-  server: 213.165.47.248
-  port: 8443
-  uuid: 57a2ff90-fadd-4655-9624-c51374ab6f32
+  server: us6.lunariai.ru
+  port: 443
+  uuid: 170e1be8-e51b-4a82-a779-3ad27b78607c
   udp: true
   tls: false
   skip-cert-verify: true
@@ -581,30 +454,230 @@ proxies:
   ws-opts:
     path: /
     headers:
-      Host: 213.165.47.248
+      Host: us6.lunariai.ru
+- name: 🇺🇸 美国 (United States) 55 - xiaohe
+  type: ss
+  server: 15.204.246.108
+  port: 8881
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+  udp: true
+- name: 🇺🇸 美国 (United States) 56 - xiaohe
+  type: vmess
+  server: 216.106.185.141
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 57 - xiaohe
+  type: trojan
+  server: 64.94.95.114
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 58 - xiaohe
+  type: ss
+  server: 108.181.0.177
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 美国 (United States) 59 - xiaohe
+  type: vless
+  server: 69.46.46.125
+  port: 443
+  uuid: bba42dd4-b9fe-0903-2345-8c75399f5ac8
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /ws/bba42dd4-b9fe-0903-2345-8c75399f5ac8
+    headers:
+      Host: norl-production.up.railway.app
+- name: 🇺🇸 美国 (United States) 60 - xiaohe
+  type: hysteria2
+  server: hy2.561891.xyz
+  port: 44356
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 61 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 38261
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 62 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 63 - xiaohe
+  type: trojan
+  server: 64.94.95.115
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.115
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 64 - xiaohe
+  type: hysteria2
+  server: hy2.561891.xyz
+  port: 44356
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 65 - xiaohe
+  type: hysteria2
+  server: hy2.561891.xyz
+  port: 44356
+  password: dongtaiwang.com
+  sni: hy2.561891.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 66 - xiaohe
+  type: trojan
+  server: 64.94.95.118
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.118
+  skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 67 - xiaohe
   type: trojan
-  server: 207.246.97.36
-  port: 29739
-  password: i99Cef
+  server: 107.150.105.84
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
   udp: true
-  sni: download.windowsupdate.com
+  sni: 107.150.105.84
   skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 68 - xiaohe
-  type: ss
-  server: 65.49.217.190
-  port: 23456
-  cipher: aes-256-gcm
-  password: N2JiY2IxNjU3ZDg3
+  type: trojan
+  server: 64.94.95.117
+  port: 57142
+  password: kkzh2prsyr2ik47as615
   udp: true
+  sni: static.rutube.ru
+  skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 69 - xiaohe
+  type: vmess
+  server: 67.220.72.237
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 70 - xiaohe
+  type: vmess
+  server: 67.220.72.237
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 1
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 71 - xiaohe
+  type: vless
+  server: 2.27.205.59
+  port: 443
+  uuid: c21631d5-36c9-4664-b575-97eca17456be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 2.27.205.59
+- name: 🇺🇸 美国 (United States) 72 - xiaohe
+  type: vmess
+  server: 67.220.72.237
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 73 - xiaohe
+  type: hysteria2
+  server: hy2.123266.xyz
+  port: 33333
+  password: bce6c821-200d-421f-bf3d-7159e5246ea0
+  sni: hy2.123266.xyz
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 74 - xiaohe
+  type: ss
+  server: 144.31.243.2
+  port: 16015
+  cipher: chacha20-ietf-poly1305
+  password: J1InuU6QRT5JOh1mQfkjU2
+  udp: true
+- name: 🇺🇸 美国 (United States) 75 - xiaohe
+  type: vless
+  server: us6.lunariai.ru
+  port: 443
+  uuid: 170e1be8-e51b-4a82-a779-3ad27b78607c
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: us6.lunariai.ru
+- name: 🇺🇸 美国 (United States) 76 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 27732
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 77 - xiaohe
+  type: ss
+  server: 37.19.198.243
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 美国 (United States) 78 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 38261
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 79 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 27732
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 80 - xiaohe
   type: hysteria2
   server: 155.248.209.237
   port: 33333
   password: bce6c821-200d-421f-bf3d-7159e5246ea0
   sni: 155.248.209.237
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 70 - xiaohe
+- name: 🇺🇸 美国 (United States) 81 - xiaohe
   type: trojan
   server: us01.duotg.top
   port: 54657
@@ -612,7 +685,199 @@ proxies:
   udp: true
   sni: www.microsoft.com
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 71 - xiaohe
+- name: 🇺🇸 美国 (United States) 82 - xiaohe
+  type: vmess
+  server: 67.220.85.46
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 83 - xiaohe
+  type: vmess
+  server: 38.110.1.246
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 84 - xiaohe
+  type: hysteria2
+  server: us4.xiaoliyu.cyou
+  port: 4433
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: us4.xiaoliyu.cyou
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 85 - xiaohe
+  type: vless
+  server: 199.232.78.159
+  port: 443
+  uuid: 330847c8-123e-4f1e-aea4-f22ae1abaec4
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
+    headers:
+      Host: pane2.global.ssl.fastly.net
+- name: 🇺🇸 美国 (United States) 86 - xiaohe
+  type: ss
+  server: 173.244.56.9
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 美国 (United States) 87 - xiaohe
+  type: trojan
+  server: 64.94.95.115
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 88 - xiaohe
+  type: hysteria2
+  server: 159.223.157.129
+  port: 8443
+  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
+  sni: 159.223.157.129
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 89 - xiaohe
+  type: hysteria2
+  server: us4.xiaoliyu.cyou
+  port: 4433
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: us4.xiaoliyu.cyou
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 90 - xiaohe
+  type: ss
+  server: 138.199.43.159
+  port: 8080
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+  udp: true
+- name: 🇺🇸 美国 (United States) 91 - xiaohe
+  type: vless
+  server: 2.27.205.59
+  port: 443
+  uuid: c21631d5-36c9-4664-b575-97eca17456be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: neth8.lunariai.ru
+- name: 🇺🇸 美国 (United States) 92 - xiaohe
+  type: vmess
+  server: 67.220.95.3
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 93 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 43022
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 94 - xiaohe
+  type: hysteria2
+  server: us4.xiaoliyu.cyou
+  port: 4433
+  password: 19f72087-4591-4d72-930b-2697078ec2be
+  sni: us4.xiaoliyu.cyou
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 95 - xiaohe
+  type: vless
+  server: 199.232.78.159
+  port: 443
+  uuid: c53fb39f-1e03-4ed4-ac4b-3dbdbda870c6
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
+    headers:
+      Host: pan1.global.ssl.fastly.net
+- name: 🇺🇸 美国 (United States) 96 - xiaohe
+  type: trojan
+  server: 207.246.97.36
+  port: 29739
+  password: i99Cef
+  udp: true
+  sni: download.windowsupdate.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 97 - xiaohe
+  type: vmess
+  server: 67.220.72.237
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 98 - xiaohe
+  type: trojan
+  server: 64.94.95.117
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.117
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 99 - xiaohe
+  type: hysteria2
+  server: srv-a04472.21freedom.net
+  port: 11592
+  password: d4f8d5e26b
+  sni: srv-a04472.21freedom.net
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 100 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 46292
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: 107.150.105.84
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 101 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 102 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 54657
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 103 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: 107.150.105.84
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 104 - xiaohe
   type: trojan
   server: us01.duotg.top
   port: 46292
@@ -620,22 +885,56 @@ proxies:
   udp: true
   sni: www.microsoft.com%23%F0%9F%90%B297%40oneclickvpnkeys
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 72 - xiaohe
-  type: ss
-  server: 15.204.247.124
-  port: 2375
-  cipher: aes-256-gcm
-  password: faBAoD54k87UJG7
-  udp: true
-- name: 🇺🇸 美国 (United States) 73 - xiaohe
+- name: 🇺🇸 美国 (United States) 105 - xiaohe
   type: trojan
-  server: us01.duotg.top
-  port: 54657
+  server: 107.150.105.84
+  port: 46292
   password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
   udp: true
-  sni: us01.duotg.top
+  sni: www.microsoft.com
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 74 - xiaohe
+- name: 🇺🇸 美国 (United States) 106 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 107 - xiaohe
+  type: trojan
+  server: 64.94.95.114
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.114
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 108 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 59385
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 109 - xiaohe
+  type: vmess
+  server: 84.17.41.2
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 110 - xiaohe
+  type: hysteria2
+  server: 23.95.75.28
+  port: 55511
+  password: 8e2419a7-ef0d-4b19-b52b-3333a0edcba8
+  sni: 23.95.75.28
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 111 - xiaohe
   type: vless
   server: 31.76.88.10
   port: 443
@@ -648,102 +947,15 @@ proxies:
     path: /cdn/v3/live
     headers:
       Host: cf5.rumedia-cdn.com
-- name: 🇺🇸 美国 (United States) 75 - xiaohe
-  type: trojan
-  server: 64.94.95.117
-  port: 57142
-  password: kkzh2prsyr2ik47as615
-  udp: true
-  sni: static.rutube.ru
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 76 - xiaohe
-  type: hysteria2
-  server: 163.192.14.135
-  port: 50160
-  password: 099830134df5ac3a04a4b21d39b8c395
-  sni: 163.192.14.135
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 77 - xiaohe
-  type: vmess
-  server: 165.140.216.141
-  port: 443
-  uuid: e7d72a8d-26f2-4b54-b366-0c43e0bcba7d
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 78 - xiaohe
-  type: ss
-  server: 156.146.38.169
-  port: 443
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 美国 (United States) 79 - xiaohe
-  type: trojan
-  server: 18.65.190.65
-  port: 443
-  password: 5c777277-17f2-4272-ae65-7bd00fa4fbaa
-  udp: true
-  sni: wel-jp.optage.moe
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 80 - xiaohe
-  type: hysteria2
-  server: us4.xiaoliyu.cyou
-  port: 4433
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: us4.xiaoliyu.cyou
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 81 - xiaohe
-  type: vmess
-  server: 169.197.142.22
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 82 - xiaohe
-  type: trojan
-  server: us01.duotg.top
-  port: 20065
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 83 - xiaohe
-  type: trojan
-  server: us01.duotg.top
-  port: 54657
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: us01.duotg.top
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 84 - xiaohe
+- name: 🇺🇸 美国 (United States) 112 - xiaohe
   type: trojan
   server: 107.150.105.84
-  port: 38261
+  port: 43022
   password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
   udp: true
   sni: www.microsoft.com
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 85 - xiaohe
-  type: hysteria2
-  server: srv-a04472.21freedom.net
-  port: 11592
-  password: d4f8d5e26b
-  sni: srv-a04472.21freedom.net
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 86 - xiaohe
-  type: hysteria2
-  server: 155.248.209.237
-  port: 33333
-  password: bce6c821-200d-421f-bf3d-7159e5246ea0
-  sni: 155.248.209.237
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 87 - xiaohe
+- name: 🇺🇸 美国 (United States) 113 - xiaohe
   type: trojan
   server: 64.94.95.118
   port: 57142
@@ -751,112 +963,21 @@ proxies:
   udp: true
   sni: 64.94.95.118
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 88 - xiaohe
-  type: ss
-  server: 173.244.56.9
-  port: 443
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 美国 (United States) 89 - xiaohe
+- name: 🇺🇸 美国 (United States) 114 - xiaohe
   type: trojan
-  server: us01.duotg.top
-  port: 20065
+  server: 107.150.105.84
+  port: 54657
   password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
   udp: true
-  sni: www.microsoft.com%233%F0%9F%90%B2%40oneclickvpnkeyshysteria2%3A%2F%2Fumndu7jgfyujpvjvm2sw9hl0rryljngzvwru2hzwehyzkkrx%40hold.wwwinternetvideo.click%3A443%2F%3Finsecure%3D1
+  sni: www.microsoft.com
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 90 - xiaohe
-  type: hysteria2
-  server: 155.248.209.237
-  port: 33333
-  password: bce6c821-200d-421f-bf3d-7159e5246ea0
-  sni: 155.248.209.237
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 91 - xiaohe
-  type: ss
-  server: 15.204.246.189
-  port: 8119
-  cipher: aes-256-gcm
-  password: cdBIDV42DCwnfIN
-  udp: true
-- name: 🇺🇸 美国 (United States) 92 - xiaohe
+- name: 🇺🇸 美国 (United States) 115 - xiaohe
   type: trojan
-  server: 64.94.95.117
-  port: 57142
-  password: kkzh2prsyr2ik47as615
+  server: 107.150.105.84
+  port: 54657
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
   udp: true
-  sni: 64.94.95.117
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 93 - xiaohe
-  type: ss
-  server: 108.181.0.177
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: G5p6ww4o67HB
-  udp: true
-- name: 🇺🇸 美国 (United States) 94 - xiaohe
-  type: vmess
-  server: 165.140.216.142
-  port: 443
-  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 95 - xiaohe
-  type: hysteria2
-  server: us4.xiaoliyu.cyou
-  port: 4433
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: us4.xiaoliyu.cyou
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 96 - xiaohe
-  type: vmess
-  server: 107.175.91.118
-  port: 443
-  uuid: 1bb1f95f-7425-4442-93f7-8fc1bd1a2001
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /v2ray-wisp
-    headers:
-      Host: ''
-- name: 🇺🇸 美国 (United States) 97 - xiaohe
-  type: vmess
-  server: 67.220.95.3
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 98 - xiaohe
-  type: ss
-  server: 37.19.198.243
-  port: 443
-  cipher: aes-128-gcm
-  password: shadowsocks
-  udp: true
-- name: 🇺🇸 美国 (United States) 99 - xiaohe
-  type: hysteria2
-  server: srv-a04472.21freedom.net
-  port: 11592
-  password: d4f8d5e26b
-  sni: srv-a04472.21freedom.net
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 100 - xiaohe
-  type: hysteria2
-  server: 23.95.75.28
-  port: 55511
-  password: 8e2419a7-ef0d-4b19-b52b-3333a0edcba8
-  sni: 23.95.75.28
+  sni: us01.duotg.top
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
@@ -963,6 +1084,21 @@ proxy-groups:
   - 🇺🇸 美国 (United States) 98 - xiaohe
   - 🇺🇸 美国 (United States) 99 - xiaohe
   - 🇺🇸 美国 (United States) 100 - xiaohe
+  - 🇺🇸 美国 (United States) 101 - xiaohe
+  - 🇺🇸 美国 (United States) 102 - xiaohe
+  - 🇺🇸 美国 (United States) 103 - xiaohe
+  - 🇺🇸 美国 (United States) 104 - xiaohe
+  - 🇺🇸 美国 (United States) 105 - xiaohe
+  - 🇺🇸 美国 (United States) 106 - xiaohe
+  - 🇺🇸 美国 (United States) 107 - xiaohe
+  - 🇺🇸 美国 (United States) 108 - xiaohe
+  - 🇺🇸 美国 (United States) 109 - xiaohe
+  - 🇺🇸 美国 (United States) 110 - xiaohe
+  - 🇺🇸 美国 (United States) 111 - xiaohe
+  - 🇺🇸 美国 (United States) 112 - xiaohe
+  - 🇺🇸 美国 (United States) 113 - xiaohe
+  - 🇺🇸 美国 (United States) 114 - xiaohe
+  - 🇺🇸 美国 (United States) 115 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -1068,5 +1204,20 @@ proxy-groups:
   - 🇺🇸 美国 (United States) 98 - xiaohe
   - 🇺🇸 美国 (United States) 99 - xiaohe
   - 🇺🇸 美国 (United States) 100 - xiaohe
+  - 🇺🇸 美国 (United States) 101 - xiaohe
+  - 🇺🇸 美国 (United States) 102 - xiaohe
+  - 🇺🇸 美国 (United States) 103 - xiaohe
+  - 🇺🇸 美国 (United States) 104 - xiaohe
+  - 🇺🇸 美国 (United States) 105 - xiaohe
+  - 🇺🇸 美国 (United States) 106 - xiaohe
+  - 🇺🇸 美国 (United States) 107 - xiaohe
+  - 🇺🇸 美国 (United States) 108 - xiaohe
+  - 🇺🇸 美国 (United States) 109 - xiaohe
+  - 🇺🇸 美国 (United States) 110 - xiaohe
+  - 🇺🇸 美国 (United States) 111 - xiaohe
+  - 🇺🇸 美国 (United States) 112 - xiaohe
+  - 🇺🇸 美国 (United States) 113 - xiaohe
+  - 🇺🇸 美国 (United States) 114 - xiaohe
+  - 🇺🇸 美国 (United States) 115 - xiaohe
 rules:
 - MATCH,PROXIES
