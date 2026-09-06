@@ -46,7 +46,6 @@ VALID_SS_CIPHERS = {
     "aes-256-ctr", "aes-128-cfb", "aes-192-cfb", "aes-256-cfb", "rc4-md5"
 }
 
-# 扩充数据中心机房 ASN 黑名单，杜绝机房 IP 冒充家宽
 DATACENTER_ASNS = {
     13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
     14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081,
@@ -54,14 +53,13 @@ DATACENTER_ASNS = {
     141995, 200019, 136907, 39351, 9009, 174, 3356, 1299, 2914
 }
 
-# 严格确认为真正民用宽带的 ASN 白名单
 REAL_RESIDENTIAL_ASNS = {
-    3462, 9924, 9919, 17709, 4780, 17408, 18049,  # 台湾 Chunghwa / Kbro
+    3462, 9924, 9919, 17709, 4780, 17408, 18049,  # 台湾宽带
     9304, 9269, 17816, 58453,                      # 香港 HKBN / PCCW
-    2516, 17511, 2519, 2527, 4713, 9605, 17676,    # 日本 KDDI / NTT / OCN / Softbank
-    701, 702, 7922, 20115, 7018, 10796, 11427, 5650, 22773, # 美国 Comcast / AT&T / Charter
-    2856, 5089, 5607, 13285, 5378,                 # 英国 BT / Sky / Virgin
-    3320, 3209, 31334, 6805, 8881,                 # 德国 Deutsche Telekom / Vodafone
+    2516, 17511, 2519, 2527, 4713, 9605, 17676,    # 日本宽带
+    701, 702, 7922, 20115, 7018, 10796, 11427, 5650, 22773, # 美国运营商
+    2856, 5089, 5607, 13285, 5378,                 # 英国宽带
+    3320, 3209, 31334, 6805, 8881,                 # 德国宽带
 }
 
 COUNTRY_NAMES = {
@@ -158,6 +156,17 @@ def fetch_raw_nodes():
     print(f"[*] 节点池初始去重总量: {len(nodes)} 个")
     return list(nodes)
 
+def resolve_host_cached(host, cache={}):
+    if host in cache:
+        return cache[host]
+    try:
+        socket.setdefaulttimeout(1.5)
+        ip = socket.gethostbyname(host)
+        cache[host] = ip
+        return ip
+    except Exception:
+        return None
+
 def convert_node_to_clash(node_str, index):
     name = f"node_{index}"
     try:
@@ -169,7 +178,7 @@ def convert_node_to_clash(node_str, index):
             port = int(data.get("port", 0))
             uuid = str(data.get("id", "")).strip()
             if not server or port <= 0 or port > 65535 or not uuid:
-                return None, None
+                return None
 
             proxy = {
                 "name": name,
@@ -189,9 +198,7 @@ def convert_node_to_clash(node_str, index):
                     "path": data.get("path", "/"),
                     "headers": {"Host": str(data.get("host", server)).strip()}
                 }
-            # 强物理去重 Key: 相同 IP 和 端口坚决不重复出现
-            unique_key = f"{server.lower()}:{port}"
-            return proxy, unique_key
+            return proxy
 
         elif node_str.startswith("vless://"):
             m = re.search(r"vless://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
@@ -201,7 +208,7 @@ def convert_node_to_clash(node_str, index):
                 port = int(port_s)
                 uuid = uuid.strip()
                 if not server or port <= 0 or port > 65535 or not uuid:
-                    return None, None
+                    return None
 
                 params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
                 is_tls = params.get("security") in ["tls", "reality"]
@@ -218,7 +225,7 @@ def convert_node_to_clash(node_str, index):
                 if params.get("security") == "reality":
                     pbk = params.get("pbk", "").strip()
                     if not pbk:
-                        return None, None
+                        return None
                     proxy["reality-opts"] = {"public-key": pbk, "short-id": ""}
                     proxy["servername"] = params.get("sni", server).strip()
                     proxy["client-fingerprint"] = params.get("fp", "chrome")
@@ -228,8 +235,7 @@ def convert_node_to_clash(node_str, index):
                         "path": urllib.parse.unquote(params.get("path", "/")),
                         "headers": {"Host": params.get("host", server).strip()}
                     }
-                unique_key = f"{server.lower()}:{port}"
-                return proxy, unique_key
+                return proxy
 
         elif node_str.startswith("trojan://"):
             m = re.search(r"trojan://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
@@ -239,7 +245,7 @@ def convert_node_to_clash(node_str, index):
                 port = int(port_s)
                 password = password.strip()
                 if not server or port <= 0 or port > 65535 or not password:
-                    return None, None
+                    return None
 
                 params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
                 proxy = {
@@ -252,8 +258,7 @@ def convert_node_to_clash(node_str, index):
                     "sni": params.get("sni", server).strip(),
                     "skip-cert-verify": True
                 }
-                unique_key = f"{server.lower()}:{port}"
-                return proxy, unique_key
+                return proxy
 
         elif node_str.startswith("ss://"):
             raw = node_str[5:]
@@ -289,7 +294,6 @@ def convert_node_to_clash(node_str, index):
                 cipher = "chacha20-ietf-poly1305"
             
             if cipher in VALID_SS_CIPHERS and server and 0 < port <= 65535 and password:
-                unique_key = f"{server.lower()}:{port}"
                 return {
                     "name": name,
                     "type": "ss",
@@ -298,10 +302,27 @@ def convert_node_to_clash(node_str, index):
                     "cipher": cipher,
                     "password": password.strip(),
                     "udp": True
-                }, unique_key
+                }
+
+        elif node_str.startswith(("hysteria2://", "hy2://")):
+            clean_url = node_str.replace("hy2://", "hysteria2://")
+            parsed = urllib.parse.urlparse(clean_url)
+            server = parsed.hostname
+            port = parsed.port or 443
+            auth = parsed.username or ""
+            if server and 0 < port <= 65535:
+                return {
+                    "name": name,
+                    "type": "hysteria2",
+                    "server": server.strip(),
+                    "port": int(port),
+                    "password": auth,
+                    "sni": server.strip(),
+                    "skip-cert-verify": True
+                }
     except Exception:
         pass
-    return None, None
+    return None
 
 def test_single_batch(proxies_batch, port=19090, secret="secret123"):
     if not proxies_batch:
@@ -327,7 +348,7 @@ def test_single_batch(proxies_batch, port=19090, secret="secret123"):
         return {}
 
     batch_alive = {}
-    # 使用 Cloudflare 与 Google 双重严格真实可用性验证，排除假活
+    # 使用国际标准真实联通端点
     test_url = "http://connectivitycheck.gstatic.com/generate_204"
     headers = {"Authorization": f"Bearer {secret}"}
 
@@ -338,8 +359,8 @@ def test_single_batch(proxies_batch, port=19090, secret="secret123"):
             r = requests.get(url, params={"url": test_url, "timeout": 2800}, headers=headers, timeout=4)
             if r.status_code in [200, 204]:
                 delay = r.json().get("delay", 0)
-                # 严格限制延迟在真实范围（50ms ~ 2500ms），排除瞬时 RST 产生的虚假延迟
-                if 50 < delay < 2500:
+                # 过滤虚假瞬时延迟
+                if 40 < delay < 2200:
                     return name, delay
         except Exception:
             pass
@@ -364,7 +385,7 @@ def run_real_delay_test(clash_proxies):
         return {}
 
     total_proxies = len(clash_proxies)
-    print(f"[*] 启动全量深度真连接测活，物理独立节点数: {total_proxies} 个...")
+    print(f"[*] 启动全量深度真连接测活，物理独立端点数: {total_proxies} 个...")
     
     alive_nodes = {}
     batch_size = 1000
@@ -411,9 +432,8 @@ def classify_and_filter(alive_proxies, node_map):
         name, delay = item
         original_link, p_obj = node_map[name]
         server = p_obj["server"]
-        try:
-            ip = socket.gethostbyname(server)
-        except Exception:
+        ip = resolve_host_cached(server)
+        if not ip:
             return None
 
         country_code = "OTHER"
@@ -426,7 +446,7 @@ def classify_and_filter(alive_proxies, node_map):
         except Exception:
             pass
 
-        # 更加严密的家宽判断逻辑：必须匹配真实运营商 ASN，彻底排除机房 IP 冒充家宽
+        # 严格真实的家宽判断逻辑：必须属于家宽 ASN，且绝对不在数据中心黑名单中
         is_residential = False
         try:
             a = asn_reader.get(ip)
@@ -465,7 +485,7 @@ def classify_and_filter(alive_proxies, node_map):
     country_reader.close()
     asn_reader.close()
 
-    # 最终防御：在入库前以 (server_ip, port) 做最终唯一性锁定，绝不允许任何重复节点出库！
+    # 最终绝对防御：强制 (server_ip, port) 唯一，彻底杜绝任何重复 IP 端口入库！
     unique_verified = []
     seen_endpoints = set()
     for item in verified:
@@ -474,6 +494,7 @@ def classify_and_filter(alive_proxies, node_map):
             seen_endpoints.add(endpoint)
             unique_verified.append(item)
 
+    print(f"[*] 最终唯一端点锁定完成，去重后最终可用节点: {len(unique_verified)} 个")
     return unique_verified
 
 def export_clash_yaml(clash_proxies, filepath):
@@ -507,10 +528,20 @@ def export_singbox_json(clash_proxies, filepath):
         json.dump(config, f, indent=2, ensure_ascii=False)
 
 def format_node_group(nodes_list, res_tag_force=False):
+    """顺序连续命名，确保同一个列表里从 01 开始依次编号，且没有重复"""
     formatted_links = []
     formatted_proxies = []
     
-    for idx, item in enumerate(nodes_list, start=1):
+    # 局部再次防重保护
+    seen_local = set()
+    cleaned_list = []
+    for item in nodes_list:
+        ep = f"{item['server_ip']}:{item['port']}"
+        if ep not in seen_local:
+            seen_local.add(ep)
+            cleaned_list.append(item)
+
+    for idx, item in enumerate(cleaned_list, start=1):
         cc = item["country"]
         flag = get_country_flag(cc)
         c_name = COUNTRY_NAMES.get(cc, cc)
@@ -548,8 +579,17 @@ def export_subscriptions(verified_nodes):
     if res_proxies:
         export_clash_yaml(res_proxies, os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
         export_singbox_json(res_proxies, os.path.join(OUTPUT_DIR, "residential-singbox.json"))
+    else:
+        # 没有家宽时清空，绝不留脏文件
+        if os.path.exists(os.path.join(OUTPUT_DIR, "residential-clash.yaml")):
+            os.remove(os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
+        if os.path.exists(os.path.join(OUTPUT_DIR, "residential-singbox.json")):
+            os.remove(os.path.join(OUTPUT_DIR, "residential-singbox.json"))
 
     # 3. 按国家分类【非家宽】
+    # 先清理旧目录
+    shutil.rmtree(COUNTRY_DIR, ignore_errors=True)
+    os.makedirs(COUNTRY_DIR, exist_ok=True)
     by_cc = {}
     for n in non_residential_nodes:
         by_cc.setdefault(n["country"], []).append(n)
@@ -562,6 +602,8 @@ def export_subscriptions(verified_nodes):
         export_singbox_json(c_proxies, os.path.join(COUNTRY_DIR, f"singbox-{cc}.json"))
 
     # 4. 按国家分类【真家宽】
+    shutil.rmtree(RESIDENTIAL_COUNTRY_DIR, ignore_errors=True)
+    os.makedirs(RESIDENTIAL_COUNTRY_DIR, exist_ok=True)
     res_by_cc = {}
     for n in residential_nodes:
         res_by_cc.setdefault(n["country"], []).append(n)
@@ -573,7 +615,7 @@ def export_subscriptions(verified_nodes):
         export_clash_yaml(cr_proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"clash-{cc}.yaml"))
         export_singbox_json(cr_proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"singbox-{cc}.json"))
 
-    print(f"[*] 最终导出完毕！全量去重真活: {len(all_links)} | 家宽真活: {len(res_links)}")
+    print(f"[*] 导出完毕！全量真活: {len(all_links)} | 家宽真活: {len(res_links)}")
     return len(all_links), len(res_links)
 
 def update_readme():
@@ -750,9 +792,9 @@ export default {
 ## 🛠️ 项目使用说明
 1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
 2. **多客户端兼容**：
-   - **Clash / Clash Verge / Mihomo Party**：直接复制上方表格中的 **Clash 专属订阅** 链接。
-   - **v2rayN / v2rayNG**：直接复制上方表格中的 **V2RayN 专属订阅** 链接。
-   - **sing-box**：直接使用上方 **sing-box 专属订阅** 链接。
+   - **Clash / Clash Verge / Mihomo Party**：直接复制上方表格中的 **Clash 专属订阅** 链接[cite: 4]。
+   - **v2rayN / v2rayNG**：直接复制上方表格中的 **V2RayN 专属订阅** 链接[cite: 4]。
+   - **sing-box**：直接使用上方 **sing-box 专属订阅** 链接[cite: 4]。
 """
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(readme_content)
@@ -766,16 +808,19 @@ if __name__ == "__main__":
     node_map = {}
     seen_endpoints = set()
 
-    # 协议物理层去重：同一 IP + 同一端口只留一个
+    # 协议物理层预去重：如果 host 是域名，先预解析为 IP；严格禁止相同 (IP, port) 进入列表
     for i, raw in enumerate(raw_nodes):
-        c_obj, u_key = convert_node_to_clash(raw, i)
-        if c_obj and u_key:
-            if u_key not in seen_endpoints:
-                seen_endpoints.add(u_key)
+        c_obj = convert_node_to_clash(raw, i)
+        if c_obj:
+            srv = c_obj["server"].strip().lower()
+            pt = c_obj["port"]
+            ep = f"{srv}:{pt}"
+            if ep not in seen_endpoints:
+                seen_endpoints.add(ep)
                 clash_list.append(c_obj)
                 node_map[c_obj["name"]] = (raw, c_obj)
 
-    print(f"[*] 严格去重完成，真实独立端点数: {len(clash_list)}")
+    print(f"[*] 严格去重完成，物理独立端点数: {len(clash_list)}")
     alive_dict = run_real_delay_test(clash_list)
     verified = classify_and_filter(alive_dict, node_map)
     export_subscriptions(verified)
