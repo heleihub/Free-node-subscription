@@ -41,8 +41,13 @@ SCRAPE_WEBSITES = [
 OUTPUT_DIR = "output"
 COUNTRY_DIR = os.path.join(OUTPUT_DIR, "by-country")
 RESIDENTIAL_COUNTRY_DIR = os.path.join(OUTPUT_DIR, "residential-by-country")
-os.makedirs(COUNTRY_DIR, exist_ok=True)
-os.makedirs(RESIDENTIAL_COUNTRY_DIR, exist_ok=True)
+
+def ensure_directories():
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    os.makedirs(COUNTRY_DIR, exist_ok=True)
+    os.makedirs(RESIDENTIAL_COUNTRY_DIR, exist_ok=True)
+
+ensure_directories()
 
 VALID_SS_CIPHERS = {
     "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
@@ -99,7 +104,6 @@ COUNTRY_NAMES = {
     "OTHER": "其他地区 (Other)",
 }
 
-# 节点原始备注关键词匹配国家字典（防止 Anycast/Cloudflare 误杀）
 NAME_COUNTRY_RULES = [
     ("HK", ["hk", "hongkong", "hong kong", "香港"]),
     ("TW", ["tw", "taiwan", "台湾", "台北", "hinet"]),
@@ -116,7 +120,7 @@ NAME_COUNTRY_RULES = [
 ]
 
 def get_country_flag(country_code):
-    if not country_code or country_code.upper() in ["OTHER", "ZZ", "XX"]:
+    if not country_code or country_code.upper() in ["OTHER", "ZZ", "XX", "T1"]:
         return "🌐"
     try:
         cc = country_code.upper()
@@ -469,7 +473,6 @@ def get_rdns_host(ip):
         return ""
 
 def classify_and_filter(alive_proxies, node_map):
-    """解析国家与家宽属性，带有 Anycast 回溯消除 OTHER"""
     country_reader = maxminddb.open_database("Country.mmdb")
     asn_reader = maxminddb.open_database("ASN.mmdb")
     verified = []
@@ -484,25 +487,22 @@ def classify_and_filter(alive_proxies, node_map):
         except Exception:
             return None
 
-        # 1. MMDB 离线国家解析
         country_code = "OTHER"
         try:
             c = country_reader.get(ip)
             if c and "country" in c:
                 code = c["country"]["iso_code"]
                 if code not in ["T1", "A1", "A2", "OTHER"]:
-                    country_code = code
+                    country_code = code.upper()
         except Exception:
             pass
 
-        # 2. 如果是 Anycast 导致 OTHER，通过原备注追溯
         if country_code == "OTHER":
             for target_cc, keywords in NAME_COUNTRY_RULES:
                 if any(kw in orig_ps for kw in keywords):
-                    country_code = target_cc
+                    country_code = target_cc.upper()
                     break
 
-        # 3. 家宽判定
         is_residential = False
         try:
             a = asn_reader.get(ip)
@@ -524,7 +524,7 @@ def classify_and_filter(alive_proxies, node_map):
         return {
             "link": original_link,
             "clash_proxy": dict(p_obj),
-            "country": country_code,
+            "country": str(country_code).upper(),
             "is_residential": is_residential,
             "delay": delay
         }
@@ -572,7 +572,6 @@ def export_singbox_json(clash_proxies, filepath):
         json.dump(config, f, indent=2, ensure_ascii=False)
 
 def format_node_group(nodes_list, res_tag_force=False):
-    """独立分组重命名，确保每个独立订阅文件内的序号都从 01 开始连续递增，且带上 xiaohe 署名"""
     formatted_links = []
     formatted_proxies = []
     
@@ -599,6 +598,7 @@ def format_node_group(nodes_list, res_tag_force=False):
     return formatted_links, formatted_proxies
 
 def export_subscriptions(verified_nodes):
+    ensure_directories()
     residential_nodes = [n for n in verified_nodes if n["is_residential"]]
 
     # 1. 导出全部节点
@@ -626,6 +626,7 @@ def export_subscriptions(verified_nodes):
         with open(os.path.join(COUNTRY_DIR, f"{cc}.txt"), "w", encoding="utf-8") as f:
             f.write(base64.b64encode("\n".join(c_links).encode()).decode())
         export_clash_yaml(c_proxies, os.path.join(COUNTRY_DIR, f"clash-{cc}.yaml"))
+        export_singbox_json(c_proxies, os.path.join(COUNTRY_DIR, f"singbox-{cc}.json"))
 
     # 4. 按国家分类家宽节点
     res_by_cc = {}
@@ -637,12 +638,14 @@ def export_subscriptions(verified_nodes):
         with open(os.path.join(RESIDENTIAL_COUNTRY_DIR, f"{cc}.txt"), "w", encoding="utf-8") as f:
             f.write(base64.b64encode("\n".join(cr_links).encode()).decode())
         export_clash_yaml(cr_proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"clash-{cc}.yaml"))
+        export_singbox_json(cr_proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"singbox-{cc}.json"))
 
     print(f"[*] 导出完毕！全部存活: {len(all_links)} | 真家宽: {len(res_links)} | 涉及国家: {len(by_cc)}")
     return by_cc, res_by_cc, len(all_links), len(res_links)
 
 def update_readme():
-    repo = os.environ.get("GITHUB_REPOSITORY", "heleihub/free-node-subscription")
+    ensure_directories()
+    repo_name = os.environ.get("GITHUB_REPOSITORY", "heleihub/Free-node-subscription").strip()
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
     def count_base64_file(path):
@@ -679,27 +682,47 @@ def update_readme():
                 if cnt > 0:
                     res_country_counts[cc] = cnt
 
-    # 生成家宽表格
+    # 生成精简防错位家宽表格
     res_table_rows = []
     for cc in sorted(res_country_counts.keys(), key=lambda x: res_country_counts[x], reverse=True):
         flag = get_country_flag(cc)
         c_name = COUNTRY_NAMES.get(cc, cc)
         count = res_country_counts[cc]
-        v2ray_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/residential-by-country/{cc}.txt"
-        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/residential-by-country/clash-{cc}.yaml"
-        res_table_rows.append(f"| {flag} {c_name} | **{count}** | [V2Ray/通用]({v2ray_cdn}) | [Clash 订阅]({clash_cdn}) |")
-    res_table_str = "\n".join(res_table_rows) if res_table_rows else "| 暂无可用家宽节点 | 0 | - | - |"
+        
+        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/{cc}.txt"
+        v2_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/{cc}.txt"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/clash-{cc}.yaml"
+        clash_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/clash-{cc}.yaml"
+        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/singbox-{cc}.json"
+        sb_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/singbox-{cc}.json"
+        
+        col_v2 = f"[CDN]({v2_cdn}) · [Raw]({v2_raw})"
+        col_clash = f"[CDN]({clash_cdn}) · [Raw]({clash_raw})"
+        col_sb = f"[CDN]({sb_cdn}) · [Raw]({sb_raw})"
+        
+        res_table_rows.append(f"| {flag} {c_name} | {count} | {col_v2} | {col_clash} | {col_sb} |")
+    res_table_str = "\n".join(res_table_rows) if res_table_rows else "| 暂无可用家宽节点 | 0 | - | - | - |"
 
-    # 生成全量表格
+    # 生成精简防错位全量表格
     country_table_rows = []
     for cc in sorted(country_counts.keys(), key=lambda x: country_counts[x], reverse=True):
         flag = get_country_flag(cc)
         c_name = COUNTRY_NAMES.get(cc, cc)
         count = country_counts[cc]
-        v2ray_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/by-country/{cc}.txt"
-        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo}@main/output/by-country/clash-{cc}.yaml"
-        country_table_rows.append(f"| {flag} {c_name} | **{count}** | [V2Ray/通用]({v2ray_cdn}) | [Clash 订阅]({clash_cdn}) |")
-    country_table_str = "\n".join(country_table_rows) if country_table_rows else "| 暂无可用节点 | 0 | - | - |"
+        
+        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/{cc}.txt"
+        v2_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/{cc}.txt"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/clash-{cc}.yaml"
+        clash_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/clash-{cc}.yaml"
+        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/singbox-{cc}.json"
+        sb_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/singbox-{cc}.json"
+        
+        col_v2 = f"[CDN]({v2_cdn}) · [Raw]({v2_raw})"
+        col_clash = f"[CDN]({clash_cdn}) · [Raw]({clash_raw})"
+        col_sb = f"[CDN]({sb_cdn}) · [Raw]({sb_raw})"
+        
+        country_table_rows.append(f"| {flag} {c_name} | {count} | {col_v2} | {col_clash} | {col_sb} |")
+    country_table_str = "\n".join(country_table_rows) if country_table_rows else "| 暂无可用节点 | 0 | - | - | - |"
 
     readme_content = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
 
@@ -711,57 +734,73 @@ def update_readme():
 
 ---
 
-## 📌 全部节点总订阅链接 (支持 Clash / V2Ray / sing-box)
+## 📌 全部节点总订阅链接
 
-| 客户端 / 格式类型 | 节点总数 | 免翻 CDN 订阅直链 (复制到客户端直接使用) |
-| :--- | :---: | :--- |
-| 🚀 **Clash (YAML 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo}@main/output/clash.yaml` |
-| ⚡ **V2Ray / 通用 Base64** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo}@main/output/v2ray.txt` |
-| 📦 **sing-box (JSON 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo}@main/output/singbox.json` |
+| 客户端 / 格式 | 节点总数 | 免翻 CDN 直链 (国内直连) | 原生 Raw 直链 (开启代理) |
+| :--- | :---: | :---: | :---: |
+| 🚀 **Clash (YAML)** | `{total_count}` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/clash.yaml) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/clash.yaml) |
+| ⚡ **V2Ray (Base64)** | `{total_count}` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/v2ray.txt) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/v2ray.txt) |
+| 📦 **sing-box (JSON)** | `{total_count}` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/singbox.json) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/singbox.json) |
 
 ---
 
 ## 🏠 按照家宽分类节点订阅 (住宅 IP 专区)
 > 经 MaxMind ASN 数据库与 rDNS 宽带特征探测，排除所有云主机/数据中心，保留真实民用宽带。
 
-| 家宽地区 | 可用节点数 | 通用订阅链接 (V2Ray/Shadowrocket) | Clash 专属订阅 |
-| :--- | :---: | :--- | :--- |
+| 地区/国家 | 节点数 | 通用 Base64 | Clash (YAML) | sing-box (JSON) |
+| :--- | :---: | :---: | :---: | :---: |
 {res_table_str}
 
 ---
 
 ## 🗺️ 按照国家分类节点订阅 (全部可用节点)
 
-| 地区/国家 | 可用节点数 | 通用订阅链接 (V2Ray/Shadowrocket) | Clash 专属订阅 |
-| :--- | :---: | :--- | :--- |
+| 地区/国家 | 节点数 | 通用 Base64 | Clash (YAML) | sing-box (JSON) |
+| :--- | :---: | :---: | :---: | :---: |
 {country_table_str}
 
 ---
 
-## 🛠️ 项目使用说明
-1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
-2. **多客户端兼容**：
-   - **Clash / Clash Verge / Mihomo Party**：直接复制上方表格中的 **Clash 订阅** 链接。
-   - **v2rayN / v2rayNG / Shadowrocket (小火箭)**：直接复制 **V2Ray/通用** 链接。
-   - **sing-box**：直接使用上方 `singbox.json` 直链。
-"""
-    with open("README.md", "w", encoding="utf-8") as f:
-        f.write(readme_content)
-    print(f"[+] README.md 数据更新完成！全部可用: {total_count}, 真家宽数: {res_count}")
+## 🔒 私有仓库（Private）无感免翻订阅方案 (基于 Cloudflare Workers)
 
-if __name__ == "__main__":
-    setup_environment()
-    raw_nodes = fetch_raw_nodes()
+> 如果你希望将本 GitHub 仓库设置为 **Private (私有仓库)** 保护节点资产，外部客户端无法直接拉取原生 Raw 或公共 CDN 链接，可以通过以下 Cloudflare Worker 搭建轻量级私密网关反代：
 
-    clash_list = []
-    node_map = {}
-    for i, raw in enumerate(raw_nodes):
-        c_obj = convert_node_to_clash(raw, i)
-        if c_obj:
-            clash_list.append(c_obj)
-            node_map[c_obj["name"]] = (raw, c_obj)
+### 1. 获取 GitHub 永久个人令牌 (PAT)
+1. 进入 GitHub $\rightarrow$ **Settings** $\rightarrow$ **Developer Settings** $\rightarrow$ **Personal access tokens (classic)**。
+2. 点击 **Generate new token (classic)**，勾选 `repo` 权限，有效期设为 `No expiration`（永不过期）。
+3. 复制保存生成的以 `ghp_` 开头的 Token。
 
-    alive_dict = run_real_delay_test(clash_list)
-    verified = classify_and_filter(alive_dict, node_map)
-    export_subscriptions(verified)
-    update_readme()
+### 2. 部署 Cloudflare Worker
+登录 Cloudflare Dashboard，创建一个新的 Worker 并粘贴以下代码部署：
+
+```javascript
+export default {{
+  async fetch(request) {{
+    const GITHUB_TOKEN = "ghp_你的GitHub永久访问令牌"; // 填入第1步生成的Token
+    const OWNER = "{repo_name.split('/')[0] if '/' in repo_name else 'heleihub'}";
+    const REPO = "{repo_name.split('/')[1] if '/' in repo_name else 'Free-node-subscription'}";
+    const BRANCH = "main";
+
+    const url = new URL(request.url);
+    const filePath = "output" + url.pathname;
+    const ghUrl = `[https://raw.githubusercontent.com/$](https://raw.githubusercontent.com/$){{OWNER}}/${{REPO}}/${{BRANCH}}/${{filePath}}`;
+    
+    const res = await fetch(ghUrl, {{
+      headers: {{
+        "Authorization": `token ${{GITHUB_TOKEN}}`,
+        "User-Agent": "Cloudflare-Worker"
+      }}
+    }});
+
+    if (!res.ok) {{
+      return new Response("Not Found", {{ status: 404 }});
+    }}
+
+    return new Response(await res.text(), {{
+      headers: {{ 
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-cache" 
+      }}
+    }});
+  }}
+}}
