@@ -18,19 +18,6 @@ proxies:
     headers:
       Host: cf2.rumedia-cdn.com
 - name: 🇸🇪 SE 02 - xiaohe
-  type: vless
-  server: 202.155.11.249
-  port: 443
-  uuid: 0a2dde28-70da-4863-a06f-35d007d94d35
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /cdn/v3/live
-    headers:
-      Host: cf2.rumedia-cdn.com
-- name: 🇸🇪 SE 03 - xiaohe
   type: hysteria2
   server: se.allgoodvpn.su
   port: 8443
@@ -44,7 +31,6 @@ proxy-groups:
   - AUTO
   - 🇸🇪 SE 01 - xiaohe
   - 🇸🇪 SE 02 - xiaohe
-  - 🇸🇪 SE 03 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -52,6 +38,5 @@ proxy-groups:
   proxies:
   - 🇸🇪 SE 01 - xiaohe
   - 🇸🇪 SE 02 - xiaohe
-  - 🇸🇪 SE 03 - xiaohe
 rules:
 - MATCH,PROXIES

@@ -11,26 +11,17 @@ proxies:
   password: OD6gGbGU9a
   sni: 195.133.24.124
   skip-cert-verify: true
-- name: 🇨🇿 CZ 02 - xiaohe
-  type: hysteria2
-  server: 195.133.24.124
-  port: 443
-  password: OD6gGbGU9a
-  sni: 195.133.24.124
-  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇨🇿 CZ 01 - xiaohe
-  - 🇨🇿 CZ 02 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
   - 🇨🇿 CZ 01 - xiaohe
-  - 🇨🇿 CZ 02 - xiaohe
 rules:
 - MATCH,PROXIES
