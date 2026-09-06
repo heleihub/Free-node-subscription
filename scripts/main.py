@@ -1,453 +1,835 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 import os
 import re
+import sys
 import json
+import time
+import gzip
 import base64
+import shutil
 import socket
-import ssl
+import urllib.request
 import urllib.parse
-from datetime import datetime, timezone, timedelta
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import subprocess
 import requests
 import yaml
+import maxminddb
+from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# ============================
-# 基础路径定义
-# ============================
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT_DIR = os.path.join(BASE_DIR, "output")
-BY_COUNTRY_DIR = os.path.join(OUTPUT_DIR, "by-country")
-RES_BY_COUNTRY_DIR = os.path.join(OUTPUT_DIR, "residential-by-country")
-TEMPLATE_PATH = os.path.join(BASE_DIR, "README.template.md")
-README_PATH = os.path.join(BASE_DIR, "README.md")
-
-# 订阅源列表（包含 Clash 与 Base64 混合源）
+# ----------------- 1. 订阅源池 -----------------
 SOURCE_URLS = [
-    "https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml",
-    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
-    "https://raw.githubusercontent.com/aiboxchannel/v2ray/main/list.txt",
+    "https://shadowmere.xyz/api/b64sub/",
+    "https://shadowmere.xyz/api/sub/",
+    "https://raw.githubusercontent.com/ShatakVPN/ConfigForge-V2Ray/main/configs/all.txt",
+    "https://raw.githubusercontent.com/10ium/HiN-VPN/main/subscription/base64/mix",
+    "https://raw.githubusercontent.com/10ium/telegram-configs-collector/main/protocols/hysteria",
+    "https://raw.githubusercontent.com/10ium/telegram-configs-collector/main/security/tls",
+    "https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt",
+    "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Sub1.txt",
+    "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Sub2.txt",
+    "https://raw.githubusercontent.com/peasoft/NoMoreGFW/master/subs/base64.txt",
     "https://raw.githubusercontent.com/freefq/free/master/v2",
-    "https://raw.githubusercontent.com/ssrsub/ssr/master/v2ray",
+    "https://raw.githubusercontent.com/mfuu/v2ray/master/v2ray",
 ]
 
-# 国家与国旗对应字典
-COUNTRY_MAP = {
-    "HK": {"zh": "香港", "flag": "🇭🇰"},
-    "TW": {"zh": "台湾", "flag": "🇹🇼"},
-    "JP": {"zh": "日本", "flag": "🇯🇵"},
-    "KR": {"zh": "韩国", "flag": "🇰🇷"},
-    "SG": {"zh": "新加坡", "flag": "🇸🇬"},
-    "US": {"zh": "美国", "flag": "🇺🇸"},
-    "GB": {"zh": "英国", "flag": "🇬🇧"},
-    "DE": {"zh": "德国", "flag": "🇩🇪"},
-    "FR": {"zh": "法国", "flag": "🇫🇷"},
-    "CA": {"zh": "加拿大", "flag": "🇨🇦"},
-    "AU": {"zh": "澳大利亚", "flag": "🇦🇺"},
-    "OTHER": {"zh": "其他", "flag": "🌐"}
+SCRAPE_WEBSITES = [
+    "https://outlinekeys.com/protocols/vless/",
+    "https://shadowmere.xyz/api/vless",
+    "https://shadowmere.xyz/",
+]
+
+OUTPUT_DIR = "output"
+COUNTRY_DIR = os.path.join(OUTPUT_DIR, "by-country")
+RESIDENTIAL_COUNTRY_DIR = os.path.join(OUTPUT_DIR, "residential-by-country")
+
+def ensure_directories():
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    os.makedirs(COUNTRY_DIR, exist_ok=True)
+    os.makedirs(RESIDENTIAL_COUNTRY_DIR, exist_ok=True)
+
+ensure_directories()
+
+VALID_SS_CIPHERS = {
+    "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
+    "chacha20-ietf-poly1305", "xchacha20-ietf-poly1305",
+    "2022-blake3-aes-128-gcm", "2022-blake3-aes-256-gcm",
+    "2022-blake3-chacha20-poly1305", "aes-128-ctr", "aes-192-ctr",
+    "aes-256-ctr", "aes-128-cfb", "aes-192-cfb", "aes-256-cfb", "rc4-md5"
 }
 
-# 常见国家识别正则
-REGEX_COUNTRY = {
-    "HK": re.compile(r"香港|HK|Hong Kong|🇭🇰", re.I),
-    "TW": re.compile(r"台湾|TW|Taiwan|🇹🇼", re.I),
-    "JP": re.compile(r"日本|JP|Japan|🇯🇵", re.I),
-    "KR": re.compile(r"韩国|KR|Korea|🇰🇷", re.I),
-    "SG": re.compile(r"新加坡|SG|Singapore|🇸🇬", re.I),
-    "US": re.compile(r"美国|US|United States|家宽|🇺🇸", re.I),
-    "GB": re.compile(r"英国|GB|UK|United Kingdom|🇬🇧", re.I),
-    "DE": re.compile(r"德国|DE|Germany|🇩🇪", re.I),
-    "FR": re.compile(r"法国|FR|France|🇫🇷", re.I),
-    "CA": re.compile(r"加拿大|CA|Canada|🇨🇦", re.I),
-    "AU": re.compile(r"澳大利亚|AU|Australia|🇦🇺", re.I),
+DATACENTER_ASNS = {
+    13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
+    14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081,
+    197540, 51167, 8560, 42708, 201814, 49981, 212238, 46652,
+    141995, 200019, 136907, 39351, 9009
 }
 
-# ============================
-# 真实测活模块（TLS + TCP 握手验证）
-# ============================
-def check_node_availability(host, port, tls=False, sni=None, timeout=2.0):
-    """
-    建立 TCP 连接，并针对 TLS 协议强行校验握手，过滤虚假开放端口
-    """
+RESIDENTIAL_ASNS = {
+    3462, 9924, 9919, 17709, 4780, 17408, 18049,
+    9304, 9269, 17816, 58453,
+    2516, 17511, 2519, 2527, 4713, 9605, 17676, 2514,
+    701, 702, 7922, 20115, 7018, 10796, 11427, 5650, 22773,
+    2856, 5089, 5607, 13285, 5378,
+    3320, 3209, 31334, 6805, 8881,
+}
+
+RESIDENTIAL_RDNS_KEYWORDS = [
+    "dynamic", "broadband", "dsl", "dial", "pppoe", "pool", "user", 
+    "cust", "home", "res", "dhcp", "ftth", "cable", "hinet-ip", "kbro"
+]
+
+DATACENTER_RDNS_KEYWORDS = [
+    "vps", "server", "cloud", "compute", "datacenter", "hosting", "dedicated", "node"
+]
+
+COUNTRY_NAMES = {
+    "HK": "中国香港 (Hong Kong)",
+    "TW": "中国台湾 (Taiwan)",
+    "JP": "日本 (Japan)",
+    "SG": "新加坡 (Singapore)",
+    "US": "美国 (United States)",
+    "KR": "韩国 (South Korea)",
+    "DE": "德国 (Germany)",
+    "GB": "英国 (United Kingdom)",
+    "CA": "加拿大 (Canada)",
+    "FR": "法国 (France)",
+    "NL": "荷兰 (Netherlands)",
+    "RU": "俄罗斯 (Russia)",
+    "IN": "印度 (India)",
+    "AU": "澳大利亚 (Australia)",
+    "IT": "意大利 (Italy)",
+    "ES": "西班牙 (Spain)",
+    "TR": "土耳其 (Turkey)",
+    "AE": "阿联酋 (UAE)",
+    "OTHER": "其他地区 (Other)",
+}
+
+NAME_COUNTRY_RULES = [
+    ("HK", ["hk", "hongkong", "hong kong", "香港"]),
+    ("TW", ["tw", "taiwan", "台湾", "台北", "hinet"]),
+    ("JP", ["jp", "japan", "日本", "东京", "大阪"]),
+    ("SG", ["sg", "singapore", "新加坡", "狮城"]),
+    ("US", ["us", "united states", "usa", "美国", "洛杉矶", "硅谷"]),
+    ("KR", ["kr", "korea", "韩国", "首尔"]),
+    ("DE", ["de", "germany", "德国", "法兰克福"]),
+    ("GB", ["gb", "uk", "united kingdom", "英国", "伦敦"]),
+    ("CA", ["ca", "canada", "加拿大"]),
+    ("FR", ["fr", "france", "法国", "巴黎"]),
+    ("NL", ["nl", "netherlands", "荷兰", "阿姆斯特丹"]),
+    ("RU", ["ru", "russia", "俄罗斯", "莫斯科"]),
+]
+
+def get_country_flag(country_code):
+    if not country_code or country_code.upper() in ["OTHER", "ZZ", "XX", "T1"]:
+        return "🌐"
     try:
-        port = int(port)
-        sock = socket.create_connection((host, port), timeout=timeout)
-        if tls:
-            context = ssl.create_default_context()
-            context.check_hostname = False
-            context.verify_mode = ssl.CERT_NONE
-            server_name = sni if sni else host
-            with context.wrap_socket(sock, server_hostname=server_name) as ssock:
-                ssock.settimeout(timeout)
-                return True
-        sock.close()
-        return True
+        cc = country_code.upper()
+        if len(cc) == 2 and cc.isalpha():
+            return chr(ord(cc[0]) + 127397) + chr(ord(cc[1]) + 127397)
     except Exception:
-        return False
+        pass
+    return "🌐"
 
-# ============================
-# 节点解析与提取
-# ============================
-def parse_single_link(link):
-    link = link.strip()
-    if not link:
-        return None
+def safe_download(url, dest_path):
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+    req = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(req, timeout=30) as response, open(dest_path, 'wb') as out_file:
+        shutil.copyfileobj(response, out_file)
 
+def setup_environment():
+    print("[*] 正在准备测活内核与离线数据库...")
+    if not os.path.exists("Country.mmdb"):
+        safe_download("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb", "Country.mmdb")
+    if not os.path.exists("ASN.mmdb"):
+        safe_download("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb", "ASN.mmdb")
+    
+    if not os.path.exists("mihomo"):
+        print("[*] 正在下载 mihomo 测活内核...")
+        safe_download("https://github.com/MetaCubeX/mihomo/releases/download/v1.18.9/mihomo-linux-amd64-v1.18.9.gz", "mihomo.gz")
+        with gzip.open("mihomo.gz", "rb") as f_in, open("mihomo", "wb") as f_out:
+            shutil.copyfileobj(f_in, f_out)
+        os.chmod("mihomo", 0o755)
+        if os.path.exists("mihomo.gz"):
+            os.remove("mihomo.gz")
+
+def extract_nodes_from_text(text):
+    results = set()
+    if not text:
+        return results
+    for _ in range(2):
+        try:
+            padded = text.strip() + '=' * (-len(text.strip()) % 4)
+            decoded = base64.b64decode(padded).decode('utf-8', errors='ignore')
+            if any(p in decoded for p in ["vmess://", "vless://", "ss://", "trojan://", "hysteria2://"]):
+                text += "\n" + decoded
+        except Exception:
+            pass
+
+    pattern = r'((?:vmess|vless|ss|trojan|hysteria2|hy2)://[^\s"\'<>]+)'
+    for m in re.findall(pattern, text):
+        clean = m.strip().rstrip(".,;\"')")
+        results.add(clean)
+    return results
+
+def fetch_raw_nodes():
+    nodes = set()
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Accept": "*/*"
+    }
+
+    print("[*] 正在抓取全部节点源池...")
+    for url in SOURCE_URLS:
+        try:
+            resp = requests.get(url, headers=headers, timeout=25)
+            extracted = extract_nodes_from_text(resp.text)
+            nodes.update(extracted)
+            print(f"[+] 抓取成功: {url} -> 获得 {len(extracted)} 个节点")
+        except Exception as e:
+            print(f"[!] 拉取失败 {url}: {e}")
+
+    for site in SCRAPE_WEBSITES:
+        try:
+            resp = requests.get(site, headers=headers, timeout=20)
+            if resp.status_code == 200:
+                extracted = extract_nodes_from_text(resp.text)
+                nodes.update(extracted)
+                print(f"[+] 网页提取成功: {site} -> 获得 {len(extracted)} 个节点")
+        except Exception as e:
+            print(f"[!] 网页提取失败 {site}: {e}")
+            
+    print(f"[*] 节点池初始去重总量: {len(nodes)} 个")
+    return list(nodes)
+
+def get_node_original_ps(node_str):
     try:
-        if link.startswith("vmess://"):
-            b64_str = link[8:]
-            b64_str += '=' * ((4 - len(b64_str) % 4) % 4)
-            data = json.loads(base64.b64decode(b64_str).decode('utf-8', errors='ignore'))
-            server = data.get("add")
+        if node_str.startswith("vmess://"):
+            b64 = node_str[8:]
+            b64 += '=' * (-len(b64) % 4)
+            data = json.loads(base64.b64decode(b64).decode('utf-8', errors='ignore'))
+            return str(data.get("ps", "")).lower()
+        elif "#" in node_str:
+            return urllib.parse.unquote(node_str.split("#", 1)[1]).lower()
+    except Exception:
+        pass
+    return ""
+
+def convert_node_to_clash(node_str, index):
+    name = f"node_{index}"
+    try:
+        if node_str.startswith("vmess://"):
+            b64 = node_str[8:]
+            b64 += '=' * (-len(b64) % 4)
+            data = json.loads(base64.b64decode(b64).decode('utf-8', errors='ignore'))
+            server = str(data.get("add", "")).strip()
             port = int(data.get("port", 0))
-            if not server or not port:
+            uuid = str(data.get("id", "")).strip()
+            if not server or port <= 0 or port > 65535 or not uuid:
                 return None
-            return {
+
+            proxy = {
+                "name": name,
                 "type": "vmess",
                 "server": server,
                 "port": port,
-                "uuid": data.get("id", ""),
-                "tls": str(data.get("tls", "")).lower() == "tls",
-                "sni": data.get("sni", data.get("host", server)),
-                "network": data.get("net", "tcp"),
-                "path": data.get("path", ""),
-                "raw": link,
-                "orig_name": data.get("ps", "")
+                "uuid": uuid,
+                "alterId": int(data.get("aid", 0)),
+                "cipher": "auto",
+                "udp": True,
+                "tls": True if data.get("tls") in ["tls", "1"] else False,
+                "skip-cert-verify": True
             }
+            if data.get("net") == "ws":
+                proxy["network"] = "ws"
+                proxy["ws-opts"] = {
+                    "path": data.get("path", "/"),
+                    "headers": {"Host": str(data.get("host", server)).strip()}
+                }
+            return proxy
 
-        elif link.startswith("vless://") or link.startswith("trojan://"):
-            proto = link.split("://")[0]
-            parsed = urllib.parse.urlparse(link)
-            uuid_val = parsed.username
-            server = parsed.hostname
-            port = parsed.port
-            if not server or not port:
-                return None
-            qs = urllib.parse.parse_qs(parsed.query)
-            security = qs.get("security", [""])[0].lower()
-            tls = security in ["tls", "reality"]
-            sni = qs.get("sni", [server])[0]
-            return {
-                "type": proto,
-                "server": server,
-                "port": port,
-                "uuid": uuid_val or "",
-                "tls": tls,
-                "sni": sni,
-                "network": qs.get("type", ["tcp"])[0],
-                "raw": link,
-                "orig_name": urllib.parse.unquote(parsed.fragment or "")
-            }
+        elif node_str.startswith("vless://"):
+            m = re.search(r"vless://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
+            if m:
+                uuid, server, port_s, query = m.groups()
+                server = server.strip()
+                port = int(port_s)
+                uuid = uuid.strip()
+                if not server or port <= 0 or port > 65535 or not uuid:
+                    return None
 
-        elif link.startswith("ss://"):
-            parsed = urllib.parse.urlparse(link)
+                params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
+                is_tls = params.get("security") in ["tls", "reality"]
+                proxy = {
+                    "name": name,
+                    "type": "vless",
+                    "server": server,
+                    "port": port,
+                    "uuid": uuid,
+                    "udp": True,
+                    "tls": is_tls,
+                    "skip-cert-verify": True
+                }
+                if params.get("security") == "reality":
+                    pbk = params.get("pbk", "").strip()
+                    if not pbk:
+                        return None
+                    proxy["reality-opts"] = {
+                        "public-key": pbk,
+                        "short-id": ""
+                    }
+                    proxy["servername"] = params.get("sni", server).strip()
+                    proxy["client-fingerprint"] = params.get("fp", "chrome")
+                if params.get("type") == "ws":
+                    proxy["network"] = "ws"
+                    proxy["ws-opts"] = {
+                        "path": urllib.parse.unquote(params.get("path", "/")),
+                        "headers": {"Host": params.get("host", server).strip()}
+                    }
+                return proxy
+
+        elif node_str.startswith("trojan://"):
+            m = re.search(r"trojan://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
+            if m:
+                password, server, port_s, query = m.groups()
+                server = server.strip()
+                port = int(port_s)
+                password = password.strip()
+                if not server or port <= 0 or port > 65535 or not password:
+                    return None
+
+                params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
+                proxy = {
+                    "name": name,
+                    "type": "trojan",
+                    "server": server,
+                    "port": port,
+                    "password": password,
+                    "udp": True,
+                    "sni": params.get("sni", server).strip(),
+                    "skip-cert-verify": True
+                }
+                return proxy
+
+        elif node_str.startswith("ss://"):
+            raw = node_str[5:]
+            server, port, password, cipher = "", 0, "", ""
+            if "@" in raw:
+                user_info, host_info = raw.split("@", 1)
+                user_info += '=' * (-len(user_info) % 4)
+                try:
+                    dec = base64.b64decode(user_info).decode('utf-8', errors='ignore')
+                    if ":" in dec:
+                        cipher, password = dec.split(":", 1)
+                except Exception:
+                    pass
+                host_info = host_info.split("#")[0]
+                if ":" in host_info:
+                    server, port_s = host_info.split(":", 1)
+                    port_s = port_s.split("/")[0]
+                    port = int(port_s) if port_s.isdigit() else 0
+            else:
+                raw_b64 = raw.split("#")[0].split("?")[0]
+                raw_b64 += '=' * (-len(raw_b64) % 4)
+                try:
+                    dec = base64.b64decode(raw_b64).decode('utf-8', errors='ignore')
+                    m_ss = re.search(r"([^:]+):([^@]+)@([^:]+):(\d+)", dec)
+                    if m_ss:
+                        cipher, password, server, port_s = m_ss.groups()
+                        port = int(port_s)
+                except Exception:
+                    pass
+
+            cipher = cipher.lower().strip()
+            if cipher == "chacha20-poly1305":
+                cipher = "chacha20-ietf-poly1305"
+            
+            if cipher in VALID_SS_CIPHERS and server and 0 < port <= 65535 and password:
+                return {
+                    "name": name,
+                    "type": "ss",
+                    "server": server.strip(),
+                    "port": port,
+                    "cipher": cipher,
+                    "password": password.strip(),
+                    "udp": True
+                }
+
+        elif node_str.startswith(("hysteria2://", "hy2://")):
+            clean_url = node_str.replace("hy2://", "hysteria2://")
+            parsed = urllib.parse.urlparse(clean_url)
             server = parsed.hostname
-            port = parsed.port
-            if not server or not port:
-                return None
-            return {
-                "type": "ss",
-                "server": server,
-                "port": port,
-                "uuid": parsed.username or "",
-                "tls": False,
-                "sni": None,
-                "network": "tcp",
-                "raw": link,
-                "orig_name": urllib.parse.unquote(parsed.fragment or "")
-            }
+            port = parsed.port or 443
+            auth = parsed.username or ""
+            if server and 0 < port <= 65535:
+                return {
+                    "name": name,
+                    "type": "hysteria2",
+                    "server": server.strip(),
+                    "port": int(port),
+                    "password": auth,
+                    "sni": server.strip(),
+                    "skip-cert-verify": True
+                }
     except Exception:
         pass
     return None
 
-def fetch_and_parse_all():
-    all_nodes = []
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+def test_single_batch(proxies_batch, port=19090, secret="secret123"):
+    if not proxies_batch:
+        return {}
 
-    for url in SOURCE_URLS:
+    config = {
+        "mixed-port": 17890,
+        "mode": "rule",
+        "log-level": "silent",
+        "external-controller": f"127.0.0.1:{port}",
+        "secret": secret,
+        "proxies": proxies_batch
+    }
+    with open("temp_clash.yaml", "w", encoding="utf-8") as f:
+        yaml.dump(config, f, allow_unicode=True)
+
+    proc = subprocess.Popen(["./mihomo", "-d", ".", "-f", "temp_clash.yaml"])
+    time.sleep(3)
+
+    if proc.poll() is not None:
+        if os.path.exists("temp_clash.yaml"):
+            os.remove("temp_clash.yaml")
+        return {}
+
+    batch_alive = {}
+    test_url = "http://cp.cloudflare.com/generate_204"
+    headers = {"Authorization": f"Bearer {secret}"}
+
+    def check_proxy(p):
+        name = p["name"]
+        url = f"http://127.0.0.1:{port}/proxies/{urllib.parse.quote(name)}/delay"
         try:
-            r = requests.get(url, headers=headers, timeout=12)
-            if r.status_code != 200:
-                continue
-            text = r.text.strip()
+            r = requests.get(url, params={"url": test_url, "timeout": 4500}, headers=headers, timeout=6)
+            if r.status_code in [200, 204]:
+                delay = r.json().get("delay", 0)
+                if delay > 0:
+                    return name, delay
+        except Exception:
+            pass
+        return None
 
-            # 尝试作为 Clash YAML 解析
-            if "proxies:" in text:
-                try:
-                    data = yaml.safe_load(text)
-                    for p in data.get("proxies", []):
-                        ptype = p.get("type")
-                        if ptype in ["vmess", "vless", "trojan", "ss"]:
-                            node = {
-                                "type": ptype,
-                                "server": p.get("server"),
-                                "port": int(p.get("port", 0)),
-                                "uuid": p.get("uuid", p.get("password", "")),
-                                "tls": p.get("tls", False),
-                                "sni": p.get("servername", p.get("sni", p.get("server"))),
-                                "network": p.get("network", "tcp"),
-                                "orig_name": p.get("name", "")
-                            }
-                            # 重构原始 link 备用
-                            if node["type"] == "vless":
-                                node["raw"] = f"vless://{node['uuid']}@{node['server']}:{node['port']}?security={'tls' if node['tls'] else 'none'}#{urllib.parse.quote(node['orig_name'])}"
-                            elif node["type"] == "trojan":
-                                node["raw"] = f"trojan://{node['uuid']}@{node['server']}:{node['port']}#{urllib.parse.quote(node['orig_name'])}"
-                            else:
-                                node["raw"] = ""
-                            if node["server"] and node["port"]:
-                                all_nodes.append(node)
-                    continue
-                except Exception:
-                    pass
+    try:
+        with ThreadPoolExecutor(max_workers=60) as executor:
+            results = executor.map(check_proxy, proxies_batch)
+            for res in results:
+                if res:
+                    batch_alive[res[0]] = res[1]
+    finally:
+        proc.kill()
+        proc.wait()
+        if os.path.exists("temp_clash.yaml"):
+            os.remove("temp_clash.yaml")
 
-            # 尝试作为 Base64 解码
-            decoded_text = text
-            try:
-                b64 = text + '=' * ((4 - len(text) % 4) % 4)
-                decoded_text = base64.b64decode(b64).decode('utf-8', errors='ignore')
-            except Exception:
-                decoded_text = text
+    return batch_alive
 
-            for line in decoded_text.splitlines():
-                n = parse_single_link(line)
-                if n:
-                    all_nodes.append(n)
+def run_real_delay_test(clash_proxies):
+    if not clash_proxies:
+        return {}
 
-        except Exception as e:
-            print(f"[!] 抓取源失败 {url}: {e}")
+    total_proxies = len(clash_proxies)
+    print(f"[*] 启动全量真连接测活，过滤后合规节点总量: {total_proxies} 个...")
+    
+    alive_nodes = {}
+    batch_size = 1200
+    for i in range(0, total_proxies, batch_size):
+        batch = clash_proxies[i : i + batch_size]
+        print(f"[*] 正在测活第 {i+1} ~ {min(i+batch_size, total_proxies)} 个节点...")
+        res = test_single_batch(batch)
+        alive_nodes.update(res)
+        print(f"[+] 当前批次存活: {len(res)} 个 | 累计存活: {len(alive_nodes)} 个")
 
-    return all_nodes
+    print(f"[+] 全部节点检测完毕！真实存活总量: {len(alive_nodes)}")
+    return alive_nodes
+
+def rename_node_link(raw_link, new_name):
+    try:
+        if raw_link.startswith("vmess://"):
+            b64 = raw_link[8:]
+            b64 += '=' * (-len(b64) % 4)
+            data = json.loads(base64.b64decode(b64).decode('utf-8', errors='ignore'))
+            data["ps"] = new_name
+            new_b64 = base64.b64encode(json.dumps(data, ensure_ascii=False).encode()).decode()
+            return f"vmess://{new_b64}"
+        elif "#" in raw_link:
+            base_url = raw_link.split("#")[0]
+            return f"{base_url}#{urllib.parse.quote(new_name)}"
+        else:
+            return f"{raw_link}#{urllib.parse.quote(new_name)}"
+    except Exception:
+        return raw_link
+
+def get_rdns_host(ip):
+    try:
+        socket.setdefaulttimeout(1.5)
+        host, _, _ = socket.gethostbyaddr(ip)
+        return host.lower()
+    except Exception:
+        return ""
+
+def classify_and_filter(alive_proxies, node_map):
+    country_reader = maxminddb.open_database("Country.mmdb")
+    asn_reader = maxminddb.open_database("ASN.mmdb")
+    verified = []
+
+    def resolve_and_classify(item):
+        name, delay = item
+        original_link, p_obj = node_map[name]
+        server = p_obj["server"]
+        orig_ps = get_node_original_ps(original_link)
+        try:
+            ip = socket.gethostbyname(server)
+        except Exception:
+            return None
+
+        country_code = "OTHER"
+        try:
+            c = country_reader.get(ip)
+            if c and "country" in c:
+                code = c["country"]["iso_code"]
+                if code not in ["T1", "A1", "A2", "OTHER"]:
+                    country_code = code.upper()
+        except Exception:
+            pass
+
+        if country_code == "OTHER":
+            for target_cc, keywords in NAME_COUNTRY_RULES:
+                if any(kw in orig_ps for kw in keywords):
+                    country_code = target_cc.upper()
+                    break
+
+        is_residential = False
+        try:
+            a = asn_reader.get(ip)
+            asn = a.get("autonomous_system_number", 0) if a else 0
+            org = str(a.get("autonomous_system_organization", "")).lower() if a else ""
+            
+            if asn in RESIDENTIAL_ASNS:
+                is_residential = True
+            elif asn not in DATACENTER_ASNS:
+                rdns = get_rdns_host(ip)
+                if not any(k in rdns for k in DATACENTER_RDNS_KEYWORDS):
+                    if any(k in rdns for k in RESIDENTIAL_RDNS_KEYWORDS):
+                        is_residential = True
+                    elif any(k in org for k in ["broadband", "consumer", "dsl", "ftth", "residential", "hinet", "chunghwa"]):
+                        is_residential = True
+        except Exception:
+            pass
+
+        return {
+            "link": original_link,
+            "clash_proxy": dict(p_obj),
+            "country": str(country_code).upper(),
+            "is_residential": is_residential,
+            "delay": delay
+        }
+
+    print("[*] 正在解析可用节点的出口国家归属与真家宽反向特征...")
+    with ThreadPoolExecutor(max_workers=50) as executor:
+        futures = [executor.submit(resolve_and_classify, item) for item in alive_proxies.items()]
+        for f in as_completed(futures):
+            res = f.result()
+            if res:
+                verified.append(res)
+
+    country_reader.close()
+    asn_reader.close()
+    return verified
 
 # ============================
-# 严格底层去重模块
+# 核心修复：底层四元组去重逻辑
 # ============================
-def deduplicate_nodes(nodes):
-    """
-    根据 协议 + 服务器IP/域名 + 端口 + 认证信息 严格去重
-    彻底杜绝因别名自增编号导致的未去重问题
-    """
+def get_proxy_unique_key(p):
+    ptype = p.get("type", "")
+    server = str(p.get("server", "")).strip().lower()
+    port = str(p.get("port", "")).strip()
+    secret = str(p.get("uuid", p.get("password", ""))).strip()
+    return f"{ptype}://{server}:{port}@{secret}"
+
+def deduplicate_verified(nodes_list):
     seen = set()
-    unique = []
-    for n in nodes:
-        key = f"{n['type']}://{n['server'].lower().strip()}:{n['port']}@{str(n.get('uuid', '')).strip()}"
+    unique_list = []
+    for item in nodes_list:
+        key = get_proxy_unique_key(item["clash_proxy"])
         if key not in seen:
             seen.add(key)
-            unique.append(n)
-    return unique
+            unique_list.append(item)
+    return unique_list
 
-# ============================
-# 国家与家宽属性判断
-# ============================
-def identify_country_and_isp(node):
-    text_to_search = f"{node.get('orig_name', '')} {node.get('sni', '')} {node.get('server', '')}"
-    
-    # 1. 判定国家
-    matched_country = "OTHER"
-    for c_code, reg in REGEX_COUNTRY.items():
-        if reg.search(text_to_search):
-            matched_country = c_code
-            break
-    
-    # 2. 判定家宽 / 住宅节点
-    is_res = False
-    if re.search(r"家宽|住宅|Residential|ISP|Home", text_to_search, re.I):
-        is_res = True
-
-    return matched_country, is_res
-
-# ============================
-# 统一名称格式生成
-# ============================
-def format_node_name(country_code, index, is_res=False):
-    """
-    统一格式：{国旗} {国家中文} {序号:02d}{家宽标记} - xiaohe
-    示例：🇺🇸 美国 01 (家宽) - xiaohe 或 🇭🇰 香港 02 - xiaohe
-    """
-    info = COUNTRY_MAP.get(country_code, COUNTRY_MAP["OTHER"])
-    tag = " (家宽)" if is_res else ""
-    return f"{info['flag']} {info['zh']} {index:02d}{tag} - xiaohe"
-
-# ============================
-# 配置构建辅助函数
-# ============================
-def build_clash_proxy(node):
-    p = {
-        "name": node["final_name"],
-        "type": node["type"],
-        "server": node["server"],
-        "port": node["port"]
-    }
-    if node["type"] in ["vless", "vmess"]:
-        p["uuid"] = node["uuid"]
-        p["alterId"] = 0
-        p["cipher"] = "auto"
-        p["udp"] = True
-        p["tls"] = node.get("tls", False)
-        if node.get("sni"):
-            p["servername"] = node["sni"]
-        if node.get("network"):
-            p["network"] = node["network"]
-    elif node["type"] == "trojan":
-        p["password"] = node["uuid"]
-        p["udp"] = True
-        p["sni"] = node.get("sni", node["server"])
-    return p
-
-def dump_clash(proxies, filepath):
-    names = [p["name"] for p in proxies]
+def export_clash_yaml(clash_proxies, filepath):
+    names = [p["name"] for p in clash_proxies]
     config = {
         "port": 7890,
         "socks-port": 7891,
         "allow-lan": True,
-        "mode": "Rule",
+        "mode": "rule",
         "log-level": "info",
-        "proxies": proxies,
+        "proxies": clash_proxies,
         "proxy-groups": [
-            {"name": "节点选择", "type": "select", "proxies": ["自动选择"] + names},
-            {"name": "自动选择", "type": "url-test", "url": "http://www.gstatic.com/generate_204", "interval": 300, "proxies": names}
+            {"name": "PROXIES", "type": "select", "proxies": ["AUTO"] + names},
+            {"name": "AUTO", "type": "url-test", "url": "http://cp.cloudflare.com/generate_204", "interval": 300, "proxies": names}
         ],
-        "rules": ["GEOIP,LAN,DIRECT", "GEOIP,CN,DIRECT", "MATCH,节点选择"]
+        "rules": ["MATCH,PROXIES"]
     }
     with open(filepath, "w", encoding="utf-8") as f:
         yaml.dump(config, f, allow_unicode=True, sort_keys=False)
 
-def dump_singbox(proxies, filepath):
-    tags = [p["name"] for p in proxies]
-    config = {
-        "outbounds": [
-            {"type": "selector", "tag": "select", "outbounds": ["urltest"] + tags},
-            {"type": "urltest", "tag": "urltest", "outbounds": tags, "url": "http://cp.cloudflare.com/generate_204"}
-        ]
-    }
+def export_singbox_json(clash_proxies, filepath):
+    names = [p["name"] for p in clash_proxies]
+    outbounds = [
+        {"type": "selector", "tag": "select", "outbounds": ["auto"] + names},
+        {"type": "urltest", "tag": "auto", "outbounds": names, "url": "http://cp.cloudflare.com/generate_204"},
+        {"type": "direct", "tag": "direct"},
+        {"type": "block", "tag": "block"}
+    ]
+    config = {"version": 1, "outbounds": outbounds}
     with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(config, f, ensure_ascii=False, indent=2)
+        json.dump(config, f, indent=2, ensure_ascii=False)
 
-def dump_txt_b64(nodes, filepath):
-    links = [n["raw"] for n in nodes if n.get("raw")]
-    content = "\n".join(links)
-    b64 = base64.b64encode(content.encode("utf-8")).decode("utf-8")
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(b64)
+def format_node_group(nodes_list, res_tag_force=False):
+    # 先做严格去重，避免重复编号 01, 02, 03
+    deduped = deduplicate_verified(nodes_list)
+    formatted_links = []
+    formatted_proxies = []
+    
+    counters = {}
+    for item in deduped:
+        cc = item["country"]
+        counters[cc] = counters.get(cc, 0) + 1
+        idx = counters[cc]
+        flag = get_country_flag(cc)
+        c_name = COUNTRY_NAMES.get(cc, cc)
+        
+        is_res = item["is_residential"] or res_tag_force
+        tag = " (家宽)" if is_res else ""
+        
+        # 统一命名规范：无论走不走代理、何种协议，输出格式完全一致
+        node_name = f"{flag} {c_name} {idx:02d}{tag} - xiaohe"
+        
+        new_proxy = dict(item["clash_proxy"])
+        new_proxy["name"] = node_name
+        formatted_proxies.append(new_proxy)
+        
+        new_link = rename_node_link(item["link"], node_name)
+        formatted_links.append(new_link)
+        
+    return formatted_links, formatted_proxies
 
-# ============================
-# 保存全部分类文件
-# ============================
-def save_all_outputs(nodes):
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    os.makedirs(BY_COUNTRY_DIR, exist_ok=True)
-    os.makedirs(RES_BY_COUNTRY_DIR, exist_ok=True)
+def export_subscriptions(verified_nodes):
+    ensure_directories()
+    # 先在全量列表中去重
+    verified_nodes = deduplicate_verified(verified_nodes)
+    residential_nodes = [n for n in verified_nodes if n["is_residential"]]
 
-    # 1. 归组分类
-    country_groups = {}
-    res_country_groups = {}
-    all_res_nodes = []
+    # 1. 导出全部聚合节点
+    all_links, all_proxies = format_node_group(verified_nodes)
+    with open(os.path.join(OUTPUT_DIR, "v2ray.txt"), "w", encoding="utf-8") as f:
+        f.write(base64.b64encode("\n".join(all_links).encode()).decode())
+    export_clash_yaml(all_proxies, os.path.join(OUTPUT_DIR, "clash.yaml"))
+    export_singbox_json(all_proxies, os.path.join(OUTPUT_DIR, "singbox.json"))
 
-    for n in nodes:
-        c_code, is_res = identify_country_and_isp(n)
-        n["country"] = c_code
-        n["is_res"] = is_res
-        country_groups.setdefault(c_code, []).append(n)
-        if is_res:
-            res_country_groups.setdefault(c_code, []).append(n)
-            all_res_nodes.append(n)
+    # 2. 导出全部家宽聚合节点
+    res_links, res_proxies = format_node_group(residential_nodes, res_tag_force=True)
+    with open(os.path.join(OUTPUT_DIR, "residential.txt"), "w", encoding="utf-8") as f:
+        f.write(base64.b64encode("\n".join(res_links).encode()).decode())
+    if res_proxies:
+        export_clash_yaml(res_proxies, os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
+        export_singbox_json(res_proxies, os.path.join(OUTPUT_DIR, "residential-singbox.json"))
 
-    # 2. 统一重命名（按各国家组内顺序生成 01, 02 规范名称）
-    all_clash_proxies = []
-    for c_code, c_nodes in country_groups.items():
-        for idx, n in enumerate(c_nodes, start=1):
-            n["final_name"] = format_node_name(c_code, idx, n["is_res"])
-            all_clash_proxies.append(build_clash_proxy(n))
+    # 3. 按国家分类输出全部节点
+    by_cc = {}
+    for n in verified_nodes:
+        by_cc.setdefault(n["country"], []).append(n)
 
-    # 3. 输出全聚合文件
-    dump_clash(all_clash_proxies, os.path.join(OUTPUT_DIR, "clash.yaml"))
-    dump_singbox(all_clash_proxies, os.path.join(OUTPUT_DIR, "singbox.json"))
-    dump_txt_b64(nodes, os.path.join(OUTPUT_DIR, "v2ray.txt"))
+    for cc, n_list in by_cc.items():
+        c_links, c_proxies = format_node_group(n_list)
+        with open(os.path.join(COUNTRY_DIR, f"{cc}.txt"), "w", encoding="utf-8") as f:
+            f.write(base64.b64encode("\n".join(c_links).encode()).decode())
+        export_clash_yaml(c_proxies, os.path.join(COUNTRY_DIR, f"clash-{cc}.yaml"))
+        export_singbox_json(c_proxies, os.path.join(COUNTRY_DIR, f"singbox-{cc}.json"))
 
-    # 4. 输出全家宽聚合文件
-    res_clash_proxies = [build_clash_proxy(n) for n in all_res_nodes]
-    dump_clash(res_clash_proxies, os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
-    dump_singbox(res_clash_proxies, os.path.join(OUTPUT_DIR, "residential-singbox.json"))
-    dump_txt_b64(all_res_nodes, os.path.join(OUTPUT_DIR, "residential.txt"))
+    # 4. 按国家分类输出家宽节点
+    res_by_cc = {}
+    for n in residential_nodes:
+        res_by_cc.setdefault(n["country"], []).append(n)
 
-    # 5. 输出 output/by-country/ 下的各个国家文件
-    for c_code, c_nodes in country_groups.items():
-        c_proxies = [build_clash_proxy(n) for n in c_nodes]
-        dump_txt_b64(c_nodes, os.path.join(BY_COUNTRY_DIR, f"{c_code}.txt"))
-        dump_clash(c_proxies, os.path.join(BY_COUNTRY_DIR, f"clash-{c_code}.yaml"))
-        dump_singbox(c_proxies, os.path.join(BY_COUNTRY_DIR, f"singbox-c_{c_code}.json"))
+    for cc, n_list in res_by_cc.items():
+        cr_links, cr_proxies = format_node_group(n_list, res_tag_force=True)
+        with open(os.path.join(RESIDENTIAL_COUNTRY_DIR, f"{cc}.txt"), "w", encoding="utf-8") as f:
+            f.write(base64.b64encode("\n".join(cr_links).encode()).decode())
+        export_clash_yaml(cr_proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"clash-{cc}.yaml"))
+        export_singbox_json(cr_proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"singbox-{cc}.json"))
 
-    # 6. 输出 output/residential-by-country/ 下的各个家宽国家文件
-    for c_code, c_nodes in res_country_groups.items():
-        c_proxies = [build_clash_proxy(n) for n in c_nodes]
-        dump_txt_b64(c_nodes, os.path.join(RES_BY_COUNTRY_DIR, f"{c_code}.txt"))
-        dump_clash(c_proxies, os.path.join(RES_BY_COUNTRY_DIR, f"clash-{c_code}.yaml"))
-        dump_singbox(c_proxies, os.path.join(RES_BY_COUNTRY_DIR, f"singbox-{c_code}.json"))
+    print(f"[*] 导出完毕！全部存活: {len(all_links)} | 真家宽: {len(res_links)} | 涉及国家: {len(by_cc)}")
+    return by_cc, res_by_cc, len(all_links), len(res_links)
 
-    return len(nodes), len(all_res_nodes)
+def update_readme():
+    ensure_directories()
+    repo_name = os.environ.get("GITHUB_REPOSITORY", "heleihub/Free-node-subscription").strip()
+    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
-# ============================
-# README 更新模块
-# ============================
-def update_readme(total_count, res_count):
-    if not os.path.exists(TEMPLATE_PATH):
-        return
-    with open(TEMPLATE_PATH, "r", encoding="utf-8") as f:
-        tpl = f.read()
+    def count_base64_file(path):
+        if not os.path.exists(path):
+            return 0
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read().strip()
+                if not content:
+                    return 0
+                decoded = base64.b64decode(content).decode("utf-8", errors="ignore")
+                return len([line for line in decoded.splitlines() if line.strip()])
+        except Exception:
+            return 0
 
-    beijing_time = (datetime.now(timezone.utc) + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S")
-    rendered = tpl.replace("{{UPDATE_TIME}}", beijing_time)
-    rendered = rendered.replace("{{TOTAL_COUNT}}", str(total_count))
-    rendered = rendered.replace("{{RESIDENTIAL_COUNT}}", str(res_count))
+    total_count = count_base64_file(os.path.join(OUTPUT_DIR, "v2ray.txt"))
+    res_count = count_base64_file(os.path.join(OUTPUT_DIR, "residential.txt"))
 
-    with open(README_PATH, "w", encoding="utf-8") as f:
-        f.write(rendered)
+    country_counts = {}
+    if os.path.exists(COUNTRY_DIR):
+        for fname in os.listdir(COUNTRY_DIR):
+            if fname.endswith(".txt"):
+                cc = fname[:-4]
+                cnt = count_base64_file(os.path.join(COUNTRY_DIR, fname))
+                if cnt > 0:
+                    country_counts[cc] = cnt
 
-# ============================
-# 主执行入口
-# ============================
-def main():
-    print("[*] 正在抓取上游节点列表...")
-    raw_nodes = fetch_and_parse_all()
-    print(f"[*] 抓取完成，共获得 {len(raw_nodes)} 个节点")
+    res_country_counts = {}
+    if os.path.exists(RESIDENTIAL_COUNTRY_DIR):
+        for fname in os.listdir(RESIDENTIAL_COUNTRY_DIR):
+            if fname.endswith(".txt"):
+                cc = fname[:-4]
+                cnt = count_base64_file(os.path.join(RESIDENTIAL_COUNTRY_DIR, fname))
+                if cnt > 0:
+                    res_country_counts[cc] = cnt
 
-    # 安全检查：若未抓取到节点，不覆盖原有数据，直接退出
-    if not raw_nodes:
-        print("[!] 抓取到的有效节点为 0，为防止误删现有仓库文件，停止更新并保留现状。")
-        return
+    res_table_rows = []
+    for cc in sorted(res_country_counts.keys(), key=lambda x: res_country_counts[x], reverse=True):
+        flag = get_country_flag(cc)
+        c_name = COUNTRY_NAMES.get(cc, cc)
+        count = res_country_counts[cc]
+        
+        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/{cc}.txt"
+        v2_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/{cc}.txt"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/clash-{cc}.yaml"
+        clash_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/clash-{cc}.yaml"
+        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/singbox-{cc}.json"
+        sb_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/singbox-{cc}.json"
+        
+        col_v2 = f"[CDN]({v2_cdn}) · [Raw]({v2_raw})"
+        col_clash = f"[CDN]({clash_cdn}) · [Raw]({clash_raw})"
+        col_sb = f"[CDN]({sb_cdn}) · [Raw]({sb_raw})"
+        
+        res_table_rows.append(f"| {flag} {c_name} | {count} | {col_v2} | {col_clash} | {col_sb} |")
+    res_table_str = "\n".join(res_table_rows) if res_table_rows else "| 暂无可用家宽节点 | 0 | - | - | - |"
 
-    print("[*] 开始底层连接参数严格去重...")
-    unique_nodes = deduplicate_nodes(raw_nodes)
-    print(f"[*] 去重后剩余节点数: {len(unique_nodes)}")
+    country_table_rows = []
+    for cc in sorted(country_counts.keys(), key=lambda x: country_counts[x], reverse=True):
+        flag = get_country_flag(cc)
+        c_name = COUNTRY_NAMES.get(cc, cc)
+        count = country_counts[cc]
+        
+        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/{cc}.txt"
+        v2_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/{cc}.txt"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/clash-{cc}.yaml"
+        clash_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/clash-{cc}.yaml"
+        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/singbox-{cc}.json"
+        sb_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/singbox-{cc}.json"
+        
+        col_v2 = f"[CDN]({v2_cdn}) · [Raw]({v2_raw})"
+        col_clash = f"[CDN]({clash_cdn}) · [Raw]({clash_raw})"
+        col_sb = f"[CDN]({sb_cdn}) · [Raw]({sb_raw})"
+        
+        country_table_rows.append(f"| {flag} {c_name} | {count} | {col_v2} | {col_clash} | {col_sb} |")
+    country_table_str = "\n".join(country_table_rows) if country_table_rows else "| 暂无可用节点 | 0 | - | - | - |"
 
-    print("[*] 开始并发测活 (TCP 连通性 + TLS 握手)...")
-    valid_nodes = []
-    with ThreadPoolExecutor(max_workers=50) as executor:
-        future_map = {
-            executor.submit(
-                check_node_availability,
-                node["server"],
-                node["port"],
-                node.get("tls", False),
-                node.get("sni")
-            ): node
-            for node in unique_nodes
-        }
-        for future in as_completed(future_map):
-            node = future_map[future]
-            if future.result():
-                valid_nodes.append(node)
+    readme_content = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
 
-    print(f"[*] 测活完成，真实可用节点: {len(valid_nodes)}")
-    if not valid_nodes:
-        print("[!] 经测活后无存活节点，保留原有订阅文件不变。")
-        return
+> 🕒 **最近更新时间**: `{now_utc}`  
+> 🟢 **全部可用节点数量**: `{total_count}` 个  
+> 🏠 **甄选家宽节点数量**: `{res_count}` 个  
+> 👤 **定制规范命名**: 所有订阅节点均重命名为 `国旗 地区 序号 (家宽) - xiaohe`  
+> ⚡ **真实可用保障**: 所有节点由 `mihomo` 代理内核建立实际网络通道握手测活，拒绝虚假通畅与死节点。
 
-    print("[*] 正在分类并生成全部国家与家宽配置文件...")
-    total, res_cnt = save_all_outputs(valid_nodes)
-    update_readme(total, res_cnt)
-    print(f"[✔] 全部分类订阅更新完成！有效节点: {total}，家宽节点: {res_cnt}")
+---
 
-if __name__ == "__main__":
-    main()
+## 📌 全部节点总订阅链接
+
+| 客户端 / 格式 | 节点总数 | 免翻 CDN 直链 (国内直连) | 原生 Raw 直链 (开启代理) |
+| :--- | :---: | :---: | :---: |
+| 🚀 **Clash (YAML)** | `{total_count}` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/clash.yaml) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/clash.yaml) |
+| ⚡ **V2Ray (Base64)** | `{total_count}` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/v2ray.txt) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/v2ray.txt) |
+| 📦 **sing-box (JSON)** | `{total_count}` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/singbox.json) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/singbox.json) |
+
+---
+
+## 🏠 按照家宽分类节点订阅 (住宅 IP 专区)
+> 经 MaxMind ASN 数据库与 rDNS 宽带特征探测，排除所有云主机/数据中心，保留真实民用宽带。
+
+| 地区/国家 | 节点数 | 通用 Base64 | Clash (YAML) | sing-box (JSON) |
+| :--- | :---: | :---: | :---: | :---: |
+{res_table_str}
+
+---
+
+## 🗺️ 按照国家分类节点订阅 (全部可用节点)
+
+| 地区/国家 | 节点数 | 通用 Base64 | Clash (YAML) | sing-box (JSON) |
+| :--- | :---: | :---: | :---: | :---: |
+{country_table_str}
+
+---
+
+## ⭐ 项目热度
+
+[![Star History Chart](https://api.star-history.com/svg?repos={repo_name}&type=Date)](https://star-history.com/#{repo_name}&Date)
+
+---
+
+## 🔒 私有仓库（Private）无感免翻订阅方案 (基于 Cloudflare Workers)
+
+> 如果你希望将本 GitHub 仓库设置为 **Private (私有仓库)** 保护节点资产，外部客户端无法直接拉取原生 Raw 或公共 CDN 链接，可以通过以下 Cloudflare Worker 搭建轻量级私密网关反代：
+
+### 1. 获取 GitHub 永久个人令牌 (PAT)
+1. 进入 GitHub $\rightarrow$ **Settings** $\rightarrow$ **Developer Settings** $\rightarrow$ **Personal access tokens (classic)**。
+2. 点击 **Generate new token (classic)**，勾选 `repo` 权限，有效期设为 `No expiration`（永不过期）。
+3. 复制保存生成的以 `ghp_` 开头的 Token。
+
+### 2. 部署 Cloudflare Worker
+登录 Cloudflare Dashboard，创建一个新的 Worker 并粘贴以下代码部署：
+
+```javascript
+export default {{
+  async fetch(request) {{
+    const GITHUB_TOKEN = "ghp_你的GitHub永久访问令牌"; // 填入第1步生成的Token
+    const OWNER = "{repo_name.split('/')[0] if '/' in repo_name else 'heleihub'}";
+    const REPO = "{repo_name.split('/')[1] if '/' in repo_name else 'Free-node-subscription'}";
+    const BRANCH = "main";
+
+    const url = new URL(request.url);
+    const filePath = "output" + url.pathname;
+    const ghUrl = `[https://raw.githubusercontent.com/$](https://raw.githubusercontent.com/$){{OWNER}}/${{REPO}}/${{BRANCH}}/${{filePath}}`;
+    
+    const res = await fetch(ghUrl, {{
+      headers: {{
+        "Authorization": `token ${{GITHUB_TOKEN}}`,
+        "User-Agent": "Cloudflare-Worker"
+      }}
+    }});
+
+    if (!res.ok) {{
+      return new Response("Not Found", {{ status: 404 }});
+    }}
+
+    return new Response(await res.text(), {{
+      headers: {{ 
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-cache" 
+      }}
+    }});
+  }}
+}}
