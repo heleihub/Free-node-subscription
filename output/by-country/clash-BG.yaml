@@ -7,19 +7,6 @@ proxies:
 - name: 🇧🇬 BG 01 - xiaohe
   type: vless
   server: 192.145.31.5
-  port: 443
-  uuid: 9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 192.145.31.5
-- name: 🇧🇬 BG 02 - xiaohe
-  type: vless
-  server: 192.145.31.5
   port: 8443
   uuid: 9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a
   udp: true
@@ -31,13 +18,11 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇧🇬 BG 01 - xiaohe
-  - 🇧🇬 BG 02 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
   - 🇧🇬 BG 01 - xiaohe
-  - 🇧🇬 BG 02 - xiaohe
 rules:
 - MATCH,PROXIES
