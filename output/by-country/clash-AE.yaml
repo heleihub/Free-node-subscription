@@ -19,6 +19,19 @@ proxies:
       Host: uae.unixzone.us
 - name: 🇦🇪 阿联酋 (UAE) 02 - xiaohe
   type: vless
+  server: 185.112.249.201
+  port: 8443
+  uuid: 9b18ccef-b9e0-41d1-8990-9d970569e142
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /proxyip=bpb.yousef.isegaro.com
+    headers:
+      Host: web-socket.tgdaosheng.ggff.net
+- name: 🇦🇪 阿联酋 (UAE) 03 - xiaohe
+  type: vless
   server: 151.243.182.249
   port: 443
   uuid: 98673856-cd6f-4aa0-b2c9-d2ec90c0f47b
@@ -30,13 +43,6 @@ proxies:
     path: /
     headers:
       Host: 151.243.182.249
-- name: 🇦🇪 阿联酋 (UAE) 03 - xiaohe
-  type: hysteria2
-  server: cabinet.wwwinternetvideo.click
-  port: 443
-  password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-  sni: cabinet.wwwinternetvideo.click
-  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select

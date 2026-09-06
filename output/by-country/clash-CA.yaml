@@ -5,20 +5,38 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇨🇦 加拿大 (Canada) 01 - xiaohe
-  type: hysteria2
-  server: 15.223.122.197
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 15.223.122.197
-  skip-cert-verify: true
-- name: 🇨🇦 加拿大 (Canada) 02 - xiaohe
   type: ss
-  server: 51.222.200.165
-  port: 5000
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
+  server: 137.184.174.93
+  port: 8080
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
   udp: true
+- name: 🇨🇦 加拿大 (Canada) 02 - xiaohe
+  type: vless
+  server: 184.107.106.68
+  port: 443
+  uuid: 716426fa-bcb7-4eb9-b460-36399ebf740d
+  udp: true
+  tls: true
+  skip-cert-verify: true
 - name: 🇨🇦 加拿大 (Canada) 03 - xiaohe
+  type: vmess
+  server: 23.162.200.198
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇨🇦 加拿大 (Canada) 04 - xiaohe
+  type: ss
+  server: 35.182.46.155
+  port: 443
+  cipher: aes-256-cfb
+  password: amazonskr05
+  udp: true
+- name: 🇨🇦 加拿大 (Canada) 05 - xiaohe
   type: vless
   server: maple.adaspoloandco.com
   port: 8443
@@ -31,89 +49,21 @@ proxies:
     path: /uploader.php
     headers:
       Host: maple.adaspoloandco.com
-- name: 🇨🇦 加拿大 (Canada) 04 - xiaohe
-  type: ss
-  server: 137.184.174.93
-  port: 8080
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-  udp: true
-- name: 🇨🇦 加拿大 (Canada) 05 - xiaohe
-  type: vless
-  server: lizca2.footballfantasyforum.com
-  port: 443
-  uuid: 716426fa-bcb7-4eb9-b460-36399ebf740d
-  udp: true
-  tls: true
-  skip-cert-verify: true
 - name: 🇨🇦 加拿大 (Canada) 06 - xiaohe
-  type: ss
-  server: 15.223.182.66
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
-  udp: true
-- name: 🇨🇦 加拿大 (Canada) 07 - xiaohe
-  type: hysteria2
-  server: vpn-ca-001.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-ca-001.fastervpn.world
-  skip-cert-verify: true
-- name: 🇨🇦 加拿大 (Canada) 08 - xiaohe
-  type: ss
-  server: 51.79.49.116
-  port: 8882
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-  udp: true
-- name: 🇨🇦 加拿大 (Canada) 09 - xiaohe
-  type: hysteria2
-  server: 15.223.183.81
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 15.223.183.81
-  skip-cert-verify: true
-- name: 🇨🇦 加拿大 (Canada) 10 - xiaohe
-  type: ss
-  server: 154.127.56.212
-  port: 65443
-  cipher: aes-256-cfb
-  password: 7eadc6dbe2ae
-  udp: true
-- name: 🇨🇦 加拿大 (Canada) 11 - xiaohe
-  type: vless
-  server: 184.107.106.68
-  port: 443
-  uuid: 716426fa-bcb7-4eb9-b460-36399ebf740d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-- name: 🇨🇦 加拿大 (Canada) 12 - xiaohe
-  type: ss
-  server: 35.182.46.155
-  port: 443
-  cipher: aes-256-cfb
-  password: amazonskr05
-  udp: true
-- name: 🇨🇦 加拿大 (Canada) 13 - xiaohe
-  type: vmess
-  server: 23.162.200.198
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇨🇦 加拿大 (Canada) 14 - xiaohe
   type: ss
   server: 138.197.141.58
   port: 8080
   cipher: rc4-md5
   password: 14fFPrbezE3HDZzsMOr6
   udp: true
-- name: 🇨🇦 加拿大 (Canada) 15 - xiaohe
+- name: 🇨🇦 加拿大 (Canada) 07 - xiaohe
+  type: ss
+  server: 154.127.56.212
+  port: 65443
+  cipher: aes-256-cfb
+  password: 7eadc6dbe2ae
+  udp: true
+- name: 🇨🇦 加拿大 (Canada) 08 - xiaohe
   type: vless
   server: 130.94.115.231
   port: 2087
@@ -139,13 +89,6 @@ proxy-groups:
   - 🇨🇦 加拿大 (Canada) 06 - xiaohe
   - 🇨🇦 加拿大 (Canada) 07 - xiaohe
   - 🇨🇦 加拿大 (Canada) 08 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 09 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 10 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 11 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 12 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 13 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 14 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 15 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -159,12 +102,5 @@ proxy-groups:
   - 🇨🇦 加拿大 (Canada) 06 - xiaohe
   - 🇨🇦 加拿大 (Canada) 07 - xiaohe
   - 🇨🇦 加拿大 (Canada) 08 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 09 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 10 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 11 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 12 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 13 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 14 - xiaohe
-  - 🇨🇦 加拿大 (Canada) 15 - xiaohe
 rules:
 - MATCH,PROXIES
