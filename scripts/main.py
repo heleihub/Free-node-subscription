@@ -306,7 +306,6 @@ def convert_node_to_clash(node_str, index):
                     "sni": params.get("sni", server).strip(),
                     "skip-cert-verify": True
                 }
-                # 物理去重核心：同一个 IP+端口+密码 视作同一个节点，坚决去重
                 unique_key = f"trojan_{server}_{port}_{password}"
                 return proxy, unique_key
 
@@ -400,7 +399,6 @@ def test_single_batch(proxies_batch, port=19090, secret="secret123"):
         return {}
 
     batch_alive = {}
-    # 使用 Google 真实握手连接验证，彻底拒绝 Anycast 虚假假通！
     test_url = "http://connectivitycheck.gstatic.com/generate_204"
     headers = {"Authorization": f"Bearer {secret}"}
 
@@ -451,7 +449,6 @@ def run_real_delay_test(clash_proxies):
     return alive_nodes
 
 def rename_node_link(raw_link, new_name):
-    """彻底规范化重写节点备注，确保 V2RayN 导入名字绝对统一"""
     try:
         if raw_link.startswith("vmess://"):
             b64 = raw_link[8:]
@@ -460,7 +457,7 @@ def rename_node_link(raw_link, new_name):
             data["ps"] = new_name
             new_b64 = base64.b64encode(json.dumps(data, ensure_ascii=False).encode('utf-8')).decode('utf-8')
             return f"vmess://{new_b64}"
-        elif raw_link.startswith("vless://") or raw_link.startswith("trojan://") or raw_link.startswith("ss://") or raw_link.startswith("hy2://") or raw_link.startswith("hysteria2://"):
+        elif any(raw_link.startswith(p) for p in ["vless://", "trojan://", "ss://", "hy2://", "hysteria2://"]):
             base_part = raw_link.split("#")[0].strip()
             return f"{base_part}#{urllib.parse.quote(new_name)}"
     except Exception:
@@ -575,7 +572,6 @@ def export_singbox_json(clash_proxies, filepath):
         json.dump(config, f, indent=2, ensure_ascii=False)
 
 def format_node_group(nodes_list, res_tag_force=False):
-    """顺序连续命名，保证每个文件内从 01 开始依次编号"""
     formatted_links = []
     formatted_proxies = []
     
@@ -587,7 +583,6 @@ def format_node_group(nodes_list, res_tag_force=False):
         is_res = item["is_residential"] or res_tag_force
         tag = " (家宽)" if is_res else ""
         
-        # 严格执行统一命名
         node_name = f"{flag} {c_name} {idx:02d}{tag} - xiaohe"
         
         new_proxy = dict(item["clash_proxy"])
@@ -646,6 +641,193 @@ def export_subscriptions(verified_nodes):
     print(f"[*] 导出完毕！全量真活: {len(all_links)} | 家宽真活: {len(res_links)}")
     return len(all_links), len(res_links)
 
+def update_readme():
+    """实时统计物理生成的订阅节点数量并更新 README.md"""
+    repo_name = os.environ.get("GITHUB_REPOSITORY", "heleihub/Free-node-subscription").strip()
+    
+    def count_file(path):
+        if not os.path.exists(path):
+            return 0
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                c = f.read().strip()
+                if not c:
+                    return 0
+                decoded = base64.b64decode(c).decode("utf-8", errors="ignore")
+                return len([line for line in decoded.splitlines() if line.strip()])
+        except Exception:
+            return 0
+
+    total_count = count_file(os.path.join(OUTPUT_DIR, "v2ray.txt"))
+    res_count = count_file(os.path.join(OUTPUT_DIR, "residential.txt"))
+
+    # 统计真实家宽各地区数量
+    res_counts = {}
+    if os.path.exists(RESIDENTIAL_COUNTRY_DIR):
+        for fn in os.listdir(RESIDENTIAL_COUNTRY_DIR):
+            if fn.endswith(".txt"):
+                cc = fn[:-4]
+                cnt = count_file(os.path.join(RESIDENTIAL_COUNTRY_DIR, fn))
+                if cnt > 0:
+                    res_counts[cc] = cnt
+
+    # 统计非家宽各地区数量
+    normal_counts = {}
+    if os.path.exists(COUNTRY_DIR):
+        for fn in os.listdir(COUNTRY_DIR):
+            if fn.endswith(".txt"):
+                cc = fn[:-4]
+                cnt = count_file(os.path.join(COUNTRY_DIR, fn))
+                if cnt > 0:
+                    normal_counts[cc] = cnt
+
+    # 生成家宽表格行
+    res_rows = []
+    for cc in sorted(res_counts.keys(), key=lambda x: res_counts[x], reverse=True):
+        flag = get_country_flag(cc)
+        name = COUNTRY_NAMES.get(cc, cc)
+        cnt = res_counts[cc]
+        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/{cc}.txt"
+        v2_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/{cc}.txt"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/clash-{cc}.yaml"
+        clash_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/clash-{cc}.yaml"
+        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/singbox-{cc}.json"
+        sb_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/singbox-{cc}.json"
+
+        col_v2 = f"[CDN 直链]({v2_cdn}) · [Raw 直链]({v2_raw})"
+        col_clash = f"[CDN 直链]({clash_cdn}) · [Raw 直链]({clash_raw})"
+        col_sb = f"[CDN 直链]({sb_cdn}) · [Raw 直链]({sb_raw})"
+        res_rows.append(f"| {flag} {name} | {cnt} | {col_v2} | {col_clash} | {col_sb} |")
+    res_table_str = "\n".join(res_rows) if res_rows else "| 暂无可用家宽节点 | 0 | - | - | - |"
+
+    # 生成非家宽表格行
+    normal_rows = []
+    for cc in sorted(normal_counts.keys(), key=lambda x: normal_counts[x], reverse=True):
+        flag = get_country_flag(cc)
+        name = COUNTRY_NAMES.get(cc, cc)
+        cnt = normal_counts[cc]
+        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/{cc}.txt"
+        v2_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/{cc}.txt"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/clash-{cc}.yaml"
+        clash_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/clash-{cc}.yaml"
+        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/singbox-{cc}.json"
+        sb_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/singbox-{cc}.json"
+
+        col_v2 = f"[CDN 直链]({v2_cdn}) · [Raw 直链]({v2_raw})"
+        col_clash = f"[CDN 直链]({clash_cdn}) · [Raw 直链]({clash_raw})"
+        col_sb = f"[CDN 直链]({sb_cdn}) · [Raw 直链]({sb_raw})"
+        normal_rows.append(f"| {flag} {name} | {cnt} | {col_v2} | {col_clash} | {col_sb} |")
+    normal_table_str = "\n".join(normal_rows) if normal_rows else "| 暂无可用节点 | 0 | - | - | - |"
+
+    worker_code = """```javascript
+export default {
+  async fetch(request) {
+    const GITHUB_TOKEN = "ghp_你的GitHub永久访问令牌"; // 填入第1步生成的Token
+    const OWNER = "heleihub";
+    const REPO = "Free-node-subscription";
+    const BRANCH = "main";
+
+    const url = new URL(request.url);
+    const filePath = "output" + url.pathname;
+    const ghUrl = "[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)" + OWNER + "/" + REPO + "/" + BRANCH + "/" + filePath;
+    
+    const res = await fetch(ghUrl, {
+      headers: {
+        "Authorization": "token " + GITHUB_TOKEN,
+        "User-Agent": "Cloudflare-Worker"
+      }
+    });
+
+    if (!res.ok) {
+      return new Response("Not Found", { status: 404 });
+    }
+
+    return new Response(await res.text(), {
+      headers: { 
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-cache" 
+      }
+    });
+  }
+}
+```"""
+
+    readme_content = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
+
+> 👤 **定制规范命名**: 所有订阅节点均重命名为 `国旗 地区 序号 (家宽) - xiaohe`  
+> ⚡ **真实可用保障**: 所有节点由 `mihomo` 代理内核建立实际网络通道握手测活，拒绝虚假通畅与死节点。无论是通过免翻 CDN 直链还是官方原生 Raw 直链拉取，节点命名格式完全一致。
+
+---
+
+## 📌 全部节点总订阅链接
+
+| 客户端 / 格式类型 | 节点总数 | 免翻 CDN 订阅直链 (国内直连) | 官方原生 Raw 直链 (开启代理) |
+| :--- | :---: | :--- | :--- |
+| 🚀 **Clash (YAML 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo_name}@main/output/clash.yaml` | `https://raw.githubusercontent.com/{repo_name}/main/output/clash.yaml` |
+| ⚡ **V2RayN (Base64 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo_name}@main/output/v2ray.txt` | `https://raw.githubusercontent.com/{repo_name}/main/output/v2ray.txt` |
+| 📦 **sing-box (JSON 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo_name}@main/output/singbox.json` | `https://raw.githubusercontent.com/{repo_name}/main/output/singbox.json` |
+
+---
+
+## 🏠 按照家宽分类节点订阅 (住宅 IP 专区)
+> 经 MaxMind ASN 数据库与 rDNS 宽带特征探测，排除所有云主机/数据中心，保留真实民用宽带。
+
+| 家宽地区 | 节点数 | V2RayN 专属订阅 | Clash 专属订阅 | sing-box 专属订阅 |
+| :--- | :---: | :---: | :---: | :---: |
+{res_table_str}
+
+---
+
+## 🗺️ 按照国家分类节点订阅 (非家宽/数据中心节点)
+
+| 地区/国家 | 节点数 | V2RayN 专属订阅 | Clash 专属订阅 | sing-box 专属订阅 |
+| :--- | :---: | :---: | :---: | :---: |
+{normal_table_str}
+
+---
+
+## 🔒 私有仓库（Private）无感免翻订阅方案 (基于 Cloudflare Workers)
+
+> 如果你希望将本 GitHub 仓库设置为 **Private (私有仓库)** 保护节点资产，外部客户端无法直接拉取原生 Raw 或公共 CDN 链接，可以通过以下 Cloudflare Worker 搭建轻量级私密网关反代：
+
+### 1. 获取 GitHub 永久个人令牌 (PAT)
+1. 进入 GitHub -> **Settings** -> **Developer Settings** -> **Personal access tokens (classic)**。
+2. 点击 **Generate new token (classic)**，勾选 `repo` 权限，有效期设为 `No expiration`（永不过期）。
+3. 复制保存生成的以 `ghp_` 开头的 Token。
+
+### 2. 部署 Cloudflare Worker
+登录 Cloudflare Dashboard，创建一个新的 Worker，复制以下脚本粘贴并部署：
+
+{worker_code}
+
+### 3. 私有订阅链接映射方式
+部署后 Worker 会分配一个专属域名（例如 `my-sub.yourname.workers.dev`），你的客户端可以直接无感订阅：
+* **总 V2RayN 订阅**: `https://你的域名.workers.dev/v2ray.txt`
+* **总 Clash 订阅**: `https://你的域名.workers.dev/clash.yaml`
+* **总 sing-box 订阅**: `https://你的域名.workers.dev/singbox.json`
+* **台湾家宽 V2RayN**: `https://你的域名.workers.dev/residential-by-country/TW.txt`
+* **香港家宽 Clash**: `https://你的域名.workers.dev/residential-by-country/clash-HK.yaml`
+* **日本家宽 sing-box**: `https://你的域名.workers.dev/residential-by-country/singbox-JP.json`
+
+---
+
+## ⭐ 项目热度
+
+[![Star History Chart](https://api.star-history.com/svg?repos={repo_name}&type=Date)](https://star-history.com/#{repo_name}&Date)
+
+---
+
+## 🛠️ 项目使用说明
+1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
+2. **多客户端兼容**：
+   - **Clash / Clash Verge / Mihomo Party**：直接复制上方表格中的 **Clash 专属订阅** 链接。
+   - **v2rayN / v2rayNG**：直接复制上方表格中的 **V2RayN 专属订阅** 链接。
+   - **sing-box**：直接使用上方 **sing-box 专属订阅** 链接。
+"""
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(readme_content)
+    print(f"[+] README.md 实时动态表格更新完毕！总节点: {total_count}, 家宽节点: {res_count}")
+
 if __name__ == "__main__":
     setup_environment()
     raw_nodes = fetch_raw_nodes()
@@ -654,7 +836,6 @@ if __name__ == "__main__":
     node_map = {}
     seen_unique = set()
 
-    # 协议物理特征去重，彻底拒绝克隆马甲节点
     for i, raw in enumerate(raw_nodes):
         c_obj, u_key = convert_node_to_clash(raw, i)
         if c_obj and u_key:
@@ -667,3 +848,4 @@ if __name__ == "__main__":
     alive_dict = run_real_delay_test(clash_list)
     verified = classify_and_filter(alive_dict, node_map)
     export_subscriptions(verified)
+    update_readme()
