@@ -585,7 +585,6 @@ def format_node_group(nodes_list, res_tag_force=False):
         is_res = item["is_residential"] or res_tag_force
         tag = " (家宽)" if is_res else ""
         
-        # 严格保持完全一致的命名规范：国旗 地区 序号 (家宽) - xiaohe
         node_name = f"{flag} {c_name} {idx:02d}{tag} - xiaohe"
         
         new_proxy = dict(item["clash_proxy"])
@@ -609,7 +608,7 @@ def export_subscriptions(verified_nodes):
     export_clash_yaml(all_proxies, os.path.join(OUTPUT_DIR, "clash.yaml"))
     export_singbox_json(all_proxies, os.path.join(OUTPUT_DIR, "singbox.json"))
 
-    # 2. 导出家宽总节点
+    # 2. 导出全部家宽总节点
     res_links, res_proxies = format_node_group(residential_nodes, res_tag_force=True)
     with open(os.path.join(OUTPUT_DIR, "residential.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(res_links).encode()).decode())
@@ -617,7 +616,7 @@ def export_subscriptions(verified_nodes):
         export_clash_yaml(res_proxies, os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
         export_singbox_json(res_proxies, os.path.join(OUTPUT_DIR, "residential-singbox.json"))
 
-    # 3. 按国家分类【全部/非家宽节点】
+    # 3. 按国家分类【非家宽/数据中心节点】
     by_cc = {}
     for n in non_residential_nodes:
         by_cc.setdefault(n["country"], []).append(n)
