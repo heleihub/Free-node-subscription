@@ -17,32 +17,17 @@ proxies:
     path: /755276b33b6f
     headers:
       Host: 189.74.97.47
-- name: 🇺🇿 UZ 02 - xiaohe
-  type: vless
-  server: 157.22.133.130
-  port: 2087
-  uuid: e6d369db-22be-4f30-8685-455c717aaa8c
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /5021201ef53f
-    headers:
-      Host: 157.22.133.130
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇺🇿 UZ 01 - xiaohe
-  - 🇺🇿 UZ 02 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
   - 🇺🇿 UZ 01 - xiaohe
-  - 🇺🇿 UZ 02 - xiaohe
 rules:
 - MATCH,PROXIES
