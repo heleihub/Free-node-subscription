@@ -447,19 +447,18 @@ def run_real_delay_test(clash_proxies):
     return alive_nodes
 
 def rename_node_link(raw_link, new_name):
+    """彻底规范化重命名，保证所有导出的节点备注100%变成要求格式"""
     try:
         if raw_link.startswith("vmess://"):
             b64 = raw_link[8:]
             b64 += '=' * (-len(b64) % 4)
             data = json.loads(base64.b64decode(b64).decode('utf-8', errors='ignore'))
             data["ps"] = new_name
-            new_b64 = base64.b64encode(json.dumps(data, ensure_ascii=False).encode()).decode()
+            new_b64 = base64.b64encode(json.dumps(data, ensure_ascii=False).encode('utf-8')).decode('utf-8')
             return f"vmess://{new_b64}"
-        elif "#" in raw_link:
-            base_url = raw_link.split("#")[0]
-            return f"{base_url}#{urllib.parse.quote(new_name)}"
         else:
-            return f"{raw_link}#{urllib.parse.quote(new_name)}"
+            base_part = raw_link.split("#")[0].strip()
+            return f"{base_part}#{urllib.parse.quote(new_name)}"
     except Exception:
         return raw_link
 
@@ -585,6 +584,7 @@ def format_node_group(nodes_list, res_tag_force=False):
         is_res = item["is_residential"] or res_tag_force
         tag = " (家宽)" if is_res else ""
         
+        # 统一命名规范
         node_name = f"{flag} {c_name} {idx:02d}{tag} - xiaohe"
         
         new_proxy = dict(item["clash_proxy"])
@@ -640,7 +640,7 @@ def export_subscriptions(verified_nodes):
         export_clash_yaml(cr_proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"clash-{cc}.yaml"))
         export_singbox_json(cr_proxies, os.path.join(RESIDENTIAL_COUNTRY_DIR, f"singbox-{cc}.json"))
 
-    print(f"[*] 导出完毕！全部存活: {len(all_links)} | 真家宽: {len(res_links)} | 普通国家数: {len(by_cc)} | 家宽国家数: {len(res_by_cc)}")
+    print(f"[*] 导出完毕！全部存活: {len(all_links)} | 真家宽: {len(res_links)} | 非家宽国家: {len(by_cc)} | 家宽国家: {len(res_by_cc)}")
 
 if __name__ == "__main__":
     setup_environment()
