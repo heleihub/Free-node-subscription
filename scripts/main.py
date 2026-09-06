@@ -16,7 +16,6 @@ import maxminddb
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# ----------------- 1. 订阅源池 -----------------
 SOURCE_URLS = [
     "https://shadowmere.xyz/api/b64sub/",
     "https://shadowmere.xyz/api/sub/",
@@ -601,14 +600,14 @@ def export_subscriptions(verified_nodes):
     ensure_directories()
     residential_nodes = [n for n in verified_nodes if n["is_residential"]]
 
-    # 1. 导出全部节点
+    # 1. 全部节点
     all_links, all_proxies = format_node_group(verified_nodes)
     with open(os.path.join(OUTPUT_DIR, "v2ray.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(all_links).encode()).decode())
     export_clash_yaml(all_proxies, os.path.join(OUTPUT_DIR, "clash.yaml"))
     export_singbox_json(all_proxies, os.path.join(OUTPUT_DIR, "singbox.json"))
 
-    # 2. 导出全部家宽节点
+    # 2. 全部家宽节点
     res_links, res_proxies = format_node_group(residential_nodes, res_tag_force=True)
     with open(os.path.join(OUTPUT_DIR, "residential.txt"), "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(res_links).encode()).decode())
@@ -616,7 +615,7 @@ def export_subscriptions(verified_nodes):
         export_clash_yaml(res_proxies, os.path.join(OUTPUT_DIR, "residential-clash.yaml"))
         export_singbox_json(res_proxies, os.path.join(OUTPUT_DIR, "residential-singbox.json"))
 
-    # 3. 按国家分类全部节点
+    # 3. 按国家分类
     by_cc = {}
     for n in verified_nodes:
         by_cc.setdefault(n["country"], []).append(n)
@@ -628,7 +627,7 @@ def export_subscriptions(verified_nodes):
         export_clash_yaml(c_proxies, os.path.join(COUNTRY_DIR, f"clash-{cc}.yaml"))
         export_singbox_json(c_proxies, os.path.join(COUNTRY_DIR, f"singbox-{cc}.json"))
 
-    # 4. 按国家分类家宽节点
+    # 4. 家宽分类
     res_by_cc = {}
     for n in residential_nodes:
         res_by_cc.setdefault(n["country"], []).append(n)
@@ -682,7 +681,7 @@ def update_readme():
                 if cnt > 0:
                     res_country_counts[cc] = cnt
 
-    # 生成精简防错位家宽表格
+    # 家宽表格
     res_table_rows = []
     for cc in sorted(res_country_counts.keys(), key=lambda x: res_country_counts[x], reverse=True):
         flag = get_country_flag(cc)
@@ -703,7 +702,7 @@ def update_readme():
         res_table_rows.append(f"| {flag} {c_name} | {count} | {col_v2} | {col_clash} | {col_sb} |")
     res_table_str = "\n".join(res_table_rows) if res_table_rows else "| 暂无可用家宽节点 | 0 | - | - | - |"
 
-    # 生成精简防错位全量表格
+    # 全量表格
     country_table_rows = []
     for cc in sorted(country_counts.keys(), key=lambda x: country_counts[x], reverse=True):
         flag = get_country_flag(cc)
@@ -724,86 +723,44 @@ def update_readme():
         country_table_rows.append(f"| {flag} {c_name} | {count} | {col_v2} | {col_clash} | {col_sb} |")
     country_table_str = "\n".join(country_table_rows) if country_table_rows else "| 暂无可用节点 | 0 | - | - | - |"
 
-    owner_str = repo_name.split('/')[0] if '/' in repo_name else 'heleihub'
-    repo_str = repo_name.split('/')[1] if '/' in repo_name else 'Free-node-subscription'
+    owner = repo_name.split('/')[0] if '/' in repo_name else 'heleihub'
+    repo = repo_name.split('/')[1] if '/' in repo_name else 'Free-node-subscription'
 
-    part1 = f"""# 🚀 免费节点自动测活订阅池 (含真实家宽/住宅IP甄选)
+    # 使用模版文件安全替换，彻底杜绝任何 Python 语法解析错误
+    template_path = "README.template.md"
+    if os.path.exists(template_path):
+        with open(template_path, "r", encoding="utf-8") as f:
+            content = f.read()
+    else:
+        # 如果模版不存在，自动生成基础结构
+        content = "# Free Nodes\n\n{RES_TABLE}\n\n{COUNTRY_TABLE}"
 
-> 🕒 **最近更新时间**: `{now_utc}`  
-> 🟢 **全部可用节点数量**: `{total_count}` 个  
-> 🏠 **甄选家宽节点数量**: `{res_count}` 个  
-> 👤 **定制规范命名**: 所有订阅节点均重命名为 `国旗 地区 序号 (家宽) - xiaohe`  
-> ⚡ **真实可用保障**: 所有节点由 `mihomo` 代理内核建立实际网络通道握手测活，拒绝虚假通畅与死节点。
+    final_readme = content.replace("{NOW_UTC}", now_utc)\
+                          .replace("{TOTAL_COUNT}", str(total_count))\
+                          .replace("{RES_COUNT}", str(res_count))\
+                          .replace("{REPO_NAME}", repo_name)\
+                          .replace("{OWNER}", owner)\
+                          .replace("{REPO}", repo)\
+                          .replace("{RES_TABLE}", res_table_str)\
+                          .replace("{COUNTRY_TABLE}", country_table_str)
 
----
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(final_readme)
+    print(f"[+] README.md 数据更新完成！全部可用: {total_count}, 真家宽数: {res_count}")
 
-## 📌 全部节点总订阅链接
+if __name__ == "__main__":
+    setup_environment()
+    raw_nodes = fetch_raw_nodes()
 
-| 客户端 / 格式 | 节点总数 | 免翻 CDN 直链 (国内直连) | 原生 Raw 直链 (开启代理) |
-| :--- | :---: | :---: | :---: |
-| 🚀 **Clash (YAML)** | `{total_count}` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/clash.yaml) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/clash.yaml) |
-| ⚡ **V2Ray (Base64)** | `{total_count}` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/v2ray.txt) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/v2ray.txt) |
-| 📦 **sing-box (JSON)** | `{total_count}` | [点击使用免翻 CDN 直链](https://cdn.jsdelivr.net/gh/{repo_name}@main/output/singbox.json) | [点击使用官方原生 Raw 直链](https://raw.githubusercontent.com/{repo_name}/main/output/singbox.json) |
+    clash_list = []
+    node_map = {}
+    for i, raw in enumerate(raw_nodes):
+        c_obj = convert_node_to_clash(raw, i)
+        if c_obj:
+            clash_list.append(c_obj)
+            node_map[c_obj["name"]] = (raw, c_obj)
 
----
-
-## 🏠 按照家宽分类节点订阅 (住宅 IP 专区)
-> 经 MaxMind ASN 数据库与 rDNS 宽带特征探测，排除所有云主机/数据中心，保留真实民用宽带。
-
-| 地区/国家 | 节点数 | 通用 Base64 | Clash (YAML) | sing-box (JSON) |
-| :--- | :---: | :---: | :---: | :---: |
-{res_table_str}
-
----
-
-## 🗺️ 按照国家分类节点订阅 (全部可用节点)
-
-| 地区/国家 | 节点数 | 通用 Base64 | Clash (YAML) | sing-box (JSON) |
-| :--- | :---: | :---: | :---: | :---: |
-{country_table_str}
-
----
-
-## 🔒 私有仓库（Private）无感免翻订阅方案 (基于 Cloudflare Workers)
-
-> 如果你希望将本 GitHub 仓库设置为 **Private (私有仓库)** 保护节点资产，外部客户端无法直接拉取原生 Raw 或公共 CDN 链接，可以通过以下 Cloudflare Worker 搭建轻量级私密网关反代：
-
-### 1. 获取 GitHub 永久个人令牌 (PAT)
-1. 进入 GitHub -> **Settings** -> **Developer Settings** -> **Personal access tokens (classic)**。
-2. 点击 **Generate new token (classic)**，勾选 `repo` 权限，有效期设为 `No expiration`（永不过期）。
-3. 复制保存生成的以 `ghp_` 开头的 Token。
-
-### 2. 部署 Cloudflare Worker
-登录 Cloudflare Dashboard，创建一个新的 Worker 并粘贴以下代码部署：
-
-```javascript
-export default {
-  async fetch(request) {
-    const GITHUB_TOKEN = "ghp_你的GitHub永久访问令牌"; // 填入第1步生成的Token
-    const OWNER = \"""" + owner_str + """\";
-    const REPO = \"""" + repo_str + """\";
-    const BRANCH = "main";
-
-    const url = new URL(request.url);
-    const filePath = "output" + url.pathname;
-    const ghUrl = "[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)" + OWNER + "/" + REPO + "/" + BRANCH + "/" + filePath;
-    
-    const res = await fetch(ghUrl, {
-      headers: {
-        "Authorization": "token " + GITHUB_TOKEN,
-        "User-Agent": "Cloudflare-Worker"
-      }
-    });
-
-    if (!res.ok) {
-      return new Response("Not Found", { status: 404 });
-    }
-
-    return new Response(await res.text(), {
-      headers: { 
-        "Content-Type": "text/plain; charset=utf-8",
-        "Cache-Control": "no-cache" 
-      }
-    });
-  }
-}
+    alive_dict = run_real_delay_test(clash_list)
+    verified = classify_and_filter(alive_dict, node_map)
+    export_subscriptions(verified)
+    update_readme()
