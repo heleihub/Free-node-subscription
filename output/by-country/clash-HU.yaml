@@ -4,7 +4,7 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇭🇺 HU 01 (家宽) - xiaohe
+- name: 🇭🇺 HU 01 - xiaohe
   type: trojan
   server: 46.29.142.57
   port: 4443
@@ -17,12 +17,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇭🇺 HU 01 (家宽) - xiaohe
+  - 🇭🇺 HU 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇭🇺 HU 01 (家宽) - xiaohe
+  - 🇭🇺 HU 01 - xiaohe
 rules:
 - MATCH,PROXIES

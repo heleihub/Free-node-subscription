@@ -6,17 +6,17 @@ log-level: info
 proxies:
 - name: 🇸🇪 SE 01 - xiaohe
   type: vless
-  server: 104.18.20.69
+  server: 202.155.11.249
   port: 443
-  uuid: 367d010d-e93f-46ba-a0c7-46d13ef4e9cd
+  uuid: 0a2dde28-70da-4863-a06f-35d007d94d35
   udp: true
   tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /announcement?ed=2048
+    path: /cdn/v3/live
     headers:
-      Host: se-sto.xhs152.shop
+      Host: cf2.rumedia-cdn.com
 proxy-groups:
 - name: PROXIES
   type: select

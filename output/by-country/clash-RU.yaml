@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇫🇷 法国 (France) 01 (家宽) - xiaohe
+- name: 🇷🇺 俄罗斯 (Russia) 01 - xiaohe
   type: vless
-  server: 45.144.28.39
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  server: 45.9.15.206
+  port: 443
+  uuid: a289a3d3-5833-4b28-8809-ae72898a98d0
   udp: true
-  tls: false
+  tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /websocket
     headers:
-      Host: usejh2.neobo-tooth.ru
+      Host: 45.9.15.206
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇫🇷 法国 (France) 01 (家宽) - xiaohe
+  - 🇷🇺 俄罗斯 (Russia) 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇫🇷 法国 (France) 01 (家宽) - xiaohe
+  - 🇷🇺 俄罗斯 (Russia) 01 - xiaohe
 rules:
 - MATCH,PROXIES

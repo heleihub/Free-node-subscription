@@ -5,38 +5,25 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇰🇷 韩国 (South Korea) 01 - xiaohe
-  type: vless
-  server: 172.64.145.93
-  port: 2087
-  uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
+  type: trojan
+  server: 154.90.62.70
+  port: 56127
+  password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
   udp: true
-  tls: true
+  sni: 154.90.62.70
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: fx3h2kf8xn.fx6hsv0.ccwu.cc
 - name: 🇰🇷 韩国 (South Korea) 02 - xiaohe
   type: vless
-  server: 104.16.150.108
-  port: 2087
-  uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
+  server: 151.245.106.49
+  port: 2053
+  uuid: 579ac5bd-a43d-49d4-b83e-a9e3ddd1f706
   udp: true
   tls: true
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /?ed=2560
-    headers:
-      Host: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
-- name: 🇰🇷 韩国 (South Korea) 03 - xiaohe
-  type: ss
-  server: 141.164.45.187
-  port: 9090
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-  udp: true
+  reality-opts:
+    public-key: k9narlSK7fUqy94_p0rrqKl52W35QLNsp3W8xaGq_Go
+  servername: www.apple.com
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
@@ -44,7 +31,6 @@ proxy-groups:
   - AUTO
   - 🇰🇷 韩国 (South Korea) 01 - xiaohe
   - 🇰🇷 韩国 (South Korea) 02 - xiaohe
-  - 🇰🇷 韩国 (South Korea) 03 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -52,6 +38,5 @@ proxy-groups:
   proxies:
   - 🇰🇷 韩国 (South Korea) 01 - xiaohe
   - 🇰🇷 韩国 (South Korea) 02 - xiaohe
-  - 🇰🇷 韩国 (South Korea) 03 - xiaohe
 rules:
 - MATCH,PROXIES
