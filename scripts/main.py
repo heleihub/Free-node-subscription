@@ -40,7 +40,7 @@ def ensure_directories():
 
 ensure_directories()
 
-# Cloudflare 官方 CDN Anycast 网段
+# 1. Cloudflare 官方全部 CDN Anycast 网段（严禁判定为家宽）
 CLOUDFLARE_IP_NETWORKS = [
     ipaddress.ip_network("173.245.48.0/20"),
     ipaddress.ip_network("103.21.244.0/22"),
@@ -69,20 +69,33 @@ def is_cloudflare_cdn_ip(ip_str):
         pass
     return False
 
-# 常见数据中心 ASN 黑名单
+# 2. 常见数据中心/服务器云厂商 ASN 黑名单
 DATACENTER_ASNS = {
     13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
     14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081,
     197540, 51167, 8560, 42708, 201814, 49981, 212238, 46652,
     141995, 200019, 136907, 39351, 9009, 174, 3356, 1299, 2914,
-    199180 # Lagom Products 等机房广播商
+    199180, 202051, 62240, 49304, 34665, 209242
 }
 
-DATACENTER_KEYWORDS = [
-    "hosting", "datacenter", "cloud", "server", "vps", "compute", 
-    "dedicated", "choopa", "ovh", "hetzner", "linode", "digitalocean",
-    "alibaba", "tencent", "oracle", "amazon", "google", "microsoft",
-    "lagom", "m247", "cogent", "leaseweb"
+# 3. 机房/主机提供商关键词黑名单（命中即判定为 IDC）
+IDC_KEYWORDS = [
+    "host", "cloud", "server", "vps", "datacenter", "data center",
+    "dedicated", "compute", "colo", "network", "telecom transit",
+    "digitalocean", "linode", "ovh", "hetzner", "choopa", "vultr",
+    "alibaba", "tencent", "amazon", "aws", "google", "microsoft",
+    "oracle", "fastly", "cloudflare", "akamai", "netgrid", "m247",
+    "leaseweb", "contabo", "cogent", "zenlayer", "ucloud", "lagom",
+    "ipvolume", "hostkey", "selectel", "quadranet", "buyvm"
+]
+
+# 4. 显式民用住宅/宽带运营商关键词白名单
+RESIDENTIAL_WHITELIST_KEYWORDS = [
+    "broadband", "dynamic", "pppoe", "cust", "dial", "user", "home",
+    "residential", "ftth", "cable", "dsl", "consumer", "chunghwa", "hinet",
+    "kbro", "pccw", "hkbn", "so-net", "kddi", "softbank", "ocn", "plala",
+    "comcast", "charter", "at&t", "verizon", "spectrum", "cox", "vodafone",
+    "deutsche telekom", "telekom", "orange", "bt-central", "virgin media"
 ]
 
 COUNTRY_NAMES = {
@@ -439,12 +452,12 @@ def test_single_node_xray(node_tuple):
             "http": f"socks5h://127.0.0.1:{socks_port}",
             "https": f"socks5h://127.0.0.1:{socks_port}"
         }
-        # 1. 真实 HTTPS 握手测活
+        # 1. 真实 HTTPS 双向加密握手
         resp = requests.get("https://www.google.com/generate_204", proxies=proxies, timeout=4.5)
         if resp.status_code in [200, 204]:
             delay_ms = int((time.time() - start_t) * 1000)
             if 30 < delay_ms < 4500:
-                # 2. 获取真实出口落地 IP (解决中转出口国别不一致问题)
+                # 2. 获取真实出口落地 IP (解决中转出口国别漂移问题)
                 ip_resp = requests.get("https://api.ipify.org?format=json", proxies=proxies, timeout=3.5)
                 if ip_resp.status_code == 200:
                     exit_ip = ip_resp.json().get("ip")
@@ -466,7 +479,7 @@ def test_single_node_xray(node_tuple):
     return None
 
 def run_real_delay_test_xray(candidates):
-    print(f"[*] 启动 Xray 真实出口与抗阻断握手测活，物理独立候选节点: {len(candidates)}...")
+    print(f"[*] 启动 Xray 真实双向 HTTPS 抗阻断测活，物理独立候选节点: {len(candidates)}...")
     alive = []
     with ThreadPoolExecutor(max_workers=30) as executor:
         futures = {executor.submit(test_single_node_xray, item): item for item in candidates}
@@ -503,24 +516,44 @@ def get_rdns_host(ip):
     except Exception:
         return ""
 
-def check_residential_ipwhois(ip):
+def is_verified_residential(ip, org_str):
+    """
+    终极住宅判定机制：
+    1. 任何命中机房/云厂商关键字的，一票否决
+    2. 远程调用免鉴权 ip-api.com 查询 hosting 字段
+    3. 必须命中显式民用宽带特征
+    """
+    info = f"{org_str} {get_rdns_host(ip)}".lower()
+    
+    # 规则 1：命中机房词，100% 判定为 IDC/机房
+    for kw in IDC_KEYWORDS:
+        if kw in info:
+            return False
+            
+    # 规则 2：显式命中宽带运营商关键词白名单
+    for r_kw in RESIDENTIAL_WHITELIST_KEYWORDS:
+        if r_kw in info:
+            return True
+
+    # 规则 3：在线复核接口兜底 (ip-api.com)
     try:
-        url = f"https://ipwho.is/{ip}"
-        resp = requests.get(url, timeout=3.5)
+        url = f"http://ip-api.com/json/{ip}?fields=status,isp,org,as,hosting,proxy"
+        resp = requests.get(url, timeout=3.0)
         if resp.status_code == 200:
             data = resp.json()
-            if data.get("success", False):
-                security = data.get("security", {})
-                if security.get("hosting") is True:
+            if data.get("status") == "success":
+                # hosting == True 必定是机房/数据中心
+                if data.get("hosting", False) or data.get("proxy", False):
                     return False
-                connection = data.get("connection", {})
-                isp = str(connection.get("isp", "")).lower()
-                org = str(connection.get("org", "")).lower()
-                if any(kw in isp or kw in org for kw in DATACENTER_KEYWORDS):
-                    return False
+                api_info = f"{data.get('isp', '')} {data.get('org', '')} {data.get('as', '')}".lower()
+                for kw in IDC_KEYWORDS:
+                    if kw in api_info:
+                        return False
                 return True
     except Exception:
         pass
+
+    # 严控策略：无法明确确认为民用住宅宽带的，一律保守判定为非家宽
     return False
 
 def classify_and_filter(alive_nodes):
@@ -531,7 +564,7 @@ def classify_and_filter(alive_nodes):
     def classify_item(item):
         raw_node, server, port, in_ip, exit_ip, delay = item
 
-        # 以真实落地出口 IP 判定国家
+        # 以真实落地出口 IP 判定国家归属
         country_code = "OTHER"
         try:
             c = country_reader.get(exit_ip)
@@ -542,7 +575,7 @@ def classify_and_filter(alive_nodes):
         except Exception:
             pass
 
-        # 核心防御：入口或出口只要命中 Cloudflare CDN 一律排除家宽
+        # 核心防线 1：入口或出口命中 Cloudflare CDN 一律排除家宽
         if is_cloudflare_cdn_ip(in_ip) or is_cloudflare_cdn_ip(exit_ip):
             is_residential = False
         else:
@@ -552,11 +585,9 @@ def classify_and_filter(alive_nodes):
                 asn = a.get("autonomous_system_number", 0) if a else 0
                 org = str(a.get("autonomous_system_organization", "")).lower() if a else ""
                 
-                # 彻底封杀机房 ASN 与 IDC 关键词，绝不放行 Lagom、Choopa 等机房广播 IP
-                if asn not in DATACENTER_ASNS and not any(kw in org for kw in DATACENTER_KEYWORDS):
-                    rdns = get_rdns_host(exit_ip)
-                    if not any(kw in rdns for kw in DATACENTER_KEYWORDS):
-                        is_residential = check_residential_ipwhois(exit_ip)
+                # 核心防线 2：排除已知数据中心 ASN
+                if asn not in DATACENTER_ASNS:
+                    is_residential = is_verified_residential(exit_ip, org)
             except Exception:
                 pass
 
@@ -575,7 +606,7 @@ def classify_and_filter(alive_nodes):
             "delay": delay
         }
 
-    print("[*] 正在解析出口国家并鉴定住宅属性（以真实落地出口 IP 严格核验）...")
+    print("[*] 正在解析出口国家并严格核验住宅属性（严格拦截 NetGrid、Lagom 等高风险机房）...")
     with ThreadPoolExecutor(max_workers=25) as executor:
         futures = [executor.submit(classify_item, item) for item in alive_nodes]
         for f in as_completed(futures):
@@ -586,7 +617,7 @@ def classify_and_filter(alive_nodes):
     country_reader.close()
     asn_reader.close()
 
-    # 双层物理单端口去重：同一 (server_ip, port) 或同一出口落地 IP 严格只保留 1 个
+    # 双层物理单端口去重：同一物理机/出口端口无论何种协议仅留 1 个
     unique_verified = []
     seen_endpoints = set()
     for item in verified:
