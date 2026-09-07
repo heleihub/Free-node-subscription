@@ -4,6 +4,7 @@ import sys
 import json
 import time
 import uuid
+import ipaddress
 import zipfile
 import base64
 import shutil
@@ -39,7 +40,36 @@ def ensure_directories():
 
 ensure_directories()
 
-# 纯粹的数据中心/服务器云厂商 ASN（这些绝对不是家宽）
+# 1. Cloudflare 官方全部 CDN Anycast 网段（坚决禁止判定为家宽）
+CLOUDFLARE_IP_NETWORKS = [
+    ipaddress.ip_network("173.245.48.0/20"),
+    ipaddress.ip_network("103.21.244.0/22"),
+    ipaddress.ip_network("103.22.200.0/22"),
+    ipaddress.ip_network("103.31.4.0/22"),
+    ipaddress.ip_network("141.101.64.0/18"),
+    ipaddress.ip_network("108.162.192.0/18"),
+    ipaddress.ip_network("190.93.240.0/20"),
+    ipaddress.ip_network("188.114.96.0/20"),
+    ipaddress.ip_network("197.234.240.0/22"),
+    ipaddress.ip_network("198.41.128.0/17"),
+    ipaddress.ip_network("162.158.0.0/15"),
+    ipaddress.ip_network("104.16.0.0/13"),
+    ipaddress.ip_network("104.24.0.0/14"),
+    ipaddress.ip_network("172.64.0.0/13"),
+    ipaddress.ip_network("131.0.72.0/22"),
+]
+
+def is_cloudflare_cdn_ip(ip_str):
+    try:
+        ip_obj = ipaddress.ip_address(ip_str)
+        for net in CLOUDFLARE_IP_NETWORKS:
+            if ip_obj in net:
+                return True
+    except Exception:
+        pass
+    return False
+
+# 2. 数据中心/云服务提供商 ASN 黑名单
 DATACENTER_ASNS = {
     13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
     14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081,
@@ -47,11 +77,11 @@ DATACENTER_ASNS = {
     141995, 200019, 136907, 39351, 9009, 174, 3356, 1299, 2914
 }
 
-RESIDENTIAL_KEYWORDS = [
-    "broadband", "dynamic", "pppoe", "cust", "dial", "pool", "user", 
-    "home", "residential", "res", "dhcp", "ftth", "cable", "dsl", 
-    "telecom", "chunghwa", "hinet", "pccw", "hkbn", "so-net", "kddi", 
-    "softbank", "comcast", "charter", "at&t", "verizon", "vodafone"
+# 3. 常见机房与数据中心关键词
+DATACENTER_KEYWORDS = [
+    "hosting", "datacenter", "cloud", "server", "vps", "compute", 
+    "dedicated", "choopa", "ovh", "hetzner", "linode", "digitalocean",
+    "alibaba", "tencent", "oracle", "amazon", "google", "microsoft"
 ]
 
 COUNTRY_NAMES = {
@@ -139,7 +169,7 @@ def extract_nodes_from_text(text):
 def fetch_raw_nodes():
     nodes = set()
     headers = {"User-Agent": "Mozilla/5.0"}
-    print("[*] 正在抓取全部节点池...")
+    print("[*] 正在抓取节点池...")
     for url in SOURCE_URLS:
         try:
             resp = requests.get(url, headers=headers, timeout=20)
@@ -163,7 +193,7 @@ def resolve_host_cached(host, cache={}):
         return None
 
 def parse_node_to_xray_outbound(node_str):
-    """解析主流节点为 Xray 协议，兼顾兼容性"""
+    """解析节点为 Xray 协议，兼顾兼容性与 TLS 验证"""
     try:
         if node_str.startswith("vless://"):
             m = re.search(r"vless://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
@@ -408,11 +438,11 @@ def test_single_node_xray(node_tuple):
             "http": f"socks5h://127.0.0.1:{socks_port}",
             "https": f"socks5h://127.0.0.1:{socks_port}"
         }
-        # 双重地址探测：兼顾 Google 与 Cloudflare，状态码宽松（只要能通即可），超时放宽到 5.0 秒
-        resp = requests.get("http://cp.cloudflare.com/generate_204", proxies=proxies, timeout=5.0)
-        if resp.status_code in [200, 204, 301, 302]:
+        # 针对中国大陆网络环境：严苛测试 HTTPS TLS 握手（使用 Google 端点验证抗阻断能力）
+        resp = requests.get("https://www.google.com/generate_204", proxies=proxies, timeout=5.0)
+        if resp.status_code in [200, 204]:
             delay_ms = int((time.time() - start_t) * 1000)
-            if 30 < delay_ms < 4500:
+            if 30 < delay_ms < 4800:
                 success = True
     except Exception:
         success = False
@@ -430,7 +460,7 @@ def test_single_node_xray(node_tuple):
     return None
 
 def run_real_delay_test_xray(candidates):
-    print(f"[*] 启动 Xray 真实双向 HTTP 测活，物理独立候选节点: {len(candidates)}...")
+    print(f"[*] 启动 Xray 真实双向 HTTPS 抗阻断测活，物理独立候选节点: {len(candidates)}...")
     alive = []
     with ThreadPoolExecutor(max_workers=30) as executor:
         futures = {executor.submit(test_single_node_xray, item): item for item in candidates}
@@ -467,6 +497,28 @@ def get_rdns_host(ip):
     except Exception:
         return ""
 
+def check_residential_ipwhois(ip):
+    """调用开源免注册权威 API (ipwho.is) 进行住宅终审"""
+    try:
+        url = f"https://ipwho.is/{ip}"
+        resp = requests.get(url, timeout=3.5)
+        if resp.status_code == 200:
+            data = resp.json()
+            if data.get("success", False):
+                security = data.get("security", {})
+                # hosting == True 说明是云机房/VPS，绝不是家宽
+                if security.get("hosting") is True:
+                    return False
+                connection = data.get("connection", {})
+                isp = str(connection.get("isp", "")).lower()
+                org = str(connection.get("org", "")).lower()
+                if any(kw in isp or kw in org for kw in DATACENTER_KEYWORDS):
+                    return False
+                return True
+    except Exception:
+        pass
+    return False
+
 def classify_and_filter(alive_nodes):
     country_reader = maxminddb.open_database("Country.mmdb")
     asn_reader = maxminddb.open_database("ASN.mmdb")
@@ -485,22 +537,26 @@ def classify_and_filter(alive_nodes):
         except Exception:
             pass
 
-        # 科学严密的家宽判定：排除 IDC 机房，只要是运营商宽带网段，均保留为真实民用宽带
+        # 核心拦截：Cloudflare CDN 任播网段一票否决
+        is_cf_cdn = is_cloudflare_cdn_ip(ip)
+
         is_residential = False
-        try:
-            a = asn_reader.get(ip)
-            asn = a.get("autonomous_system_number", 0) if a else 0
-            org = str(a.get("autonomous_system_organization", "")).lower() if a else ""
-            
-            if asn not in DATACENTER_ASNS:
-                rdns = get_rdns_host(ip)
-                if any(k in rdns for k in RESIDENTIAL_KEYWORDS) or any(k in org for k in RESIDENTIAL_KEYWORDS):
-                    is_residential = True
-                elif country_code in ["TW", "HK", "JP", "KR", "US", "GB", "DE"]:
-                    # 在主要宽带国家，非云主机机房的直连 IP 判定为民用宽带
-                    is_residential = True
-        except Exception:
-            pass
+        if not is_cf_cdn:
+            try:
+                a = asn_reader.get(ip)
+                asn = a.get("autonomous_system_number", 0) if a else 0
+                org = str(a.get("autonomous_system_organization", "")).lower() if a else ""
+                
+                # 排除知名数据中心 ASN
+                if asn not in DATACENTER_ASNS and not any(kw in org for kw in DATACENTER_KEYWORDS):
+                    rdns = get_rdns_host(ip)
+                    # 结合免费开放 API 做住宅终审
+                    if any(k in rdns for k in ["broadband", "dynamic", "pppoe", "cust", "hinet-ip"]):
+                        is_residential = True
+                    else:
+                        is_residential = check_residential_ipwhois(ip)
+            except Exception:
+                pass
 
         c_dict = convert_to_clash_dict(raw_node, "temp")
         if not c_dict:
@@ -516,8 +572,8 @@ def classify_and_filter(alive_nodes):
             "delay": delay
         }
 
-    print("[*] 正在解析出口国家并鉴定住宅宽带属性...")
-    with ThreadPoolExecutor(max_workers=40) as executor:
+    print("[*] 正在解析出口国家并鉴定住宅属性（已启用 Cloudflare 强力剔除与住宅终审）...")
+    with ThreadPoolExecutor(max_workers=30) as executor:
         futures = [executor.submit(classify_item, item) for item in alive_nodes]
         for f in as_completed(futures):
             res = f.result()
@@ -527,7 +583,7 @@ def classify_and_filter(alive_nodes):
     country_reader.close()
     asn_reader.close()
 
-    # 终极物理单端口去重：同一 (IP, port) 无论任何协议均只保留 1 个
+    # 最终绝对防御：强制以 (server_ip, port) 全局唯一合并！同 IP 同端口不同协议只留 1 条！
     unique_verified = []
     seen_endpoints = set()
     for item in verified:
@@ -536,7 +592,7 @@ def classify_and_filter(alive_nodes):
             seen_endpoints.add(endpoint)
             unique_verified.append(item)
 
-    print(f"[*] 单端口唯一性过滤完成，最终出库独立节点数: {len(unique_verified)} 个")
+    print(f"[*] 全局物理单端口去重完成，最终出库独立节点数: {len(unique_verified)} 个")
     return unique_verified
 
 def export_clash_yaml(clash_proxies, filepath):
@@ -550,7 +606,7 @@ def export_clash_yaml(clash_proxies, filepath):
         "proxies": clash_proxies,
         "proxy-groups": [
             {"name": "PROXIES", "type": "select", "proxies": ["AUTO"] + names},
-            {"name": "AUTO", "type": "url-test", "url": "http://cp.cloudflare.com/generate_204", "interval": 300, "proxies": names}
+            {"name": "AUTO", "type": "url-test", "url": "https://www.google.com/generate_204", "interval": 300, "proxies": names}
         ],
         "rules": ["MATCH,PROXIES"]
     }
@@ -561,7 +617,7 @@ def export_singbox_json(clash_proxies, filepath):
     names = [p["name"] for p in clash_proxies]
     outbounds = [
         {"type": "selector", "tag": "select", "outbounds": ["auto"] + names},
-        {"type": "urltest", "tag": "auto", "outbounds": names, "url": "http://cp.cloudflare.com/generate_204"},
+        {"type": "urltest", "tag": "auto", "outbounds": names, "url": "https://www.google.com/generate_204"},
         {"type": "direct", "tag": "direct"},
         {"type": "block", "tag": "block"}
     ]
@@ -570,7 +626,7 @@ def export_singbox_json(clash_proxies, filepath):
         json.dump(config, f, indent=2, ensure_ascii=False)
 
 def format_node_group(nodes_list, res_tag_force=False):
-    """顺序重命名并二次强制去重同一 IP:端口"""
+    """顺序重命名规范化，同时局部强制 (server_ip, port) 唯一"""
     formatted_links = []
     formatted_proxies = []
     
@@ -732,7 +788,7 @@ def update_readme():
     worker_code = """```javascript
 export default {
   async fetch(request) {
-    const GITHUB_TOKEN = "ghp_你的GitHub永久访问令牌"; // 填入第1步生成的Token
+    const GITHUB_TOKEN = "ghp_你的GitHub永久访问令牌";
     const OWNER = "heleihub";
     const REPO = "Free-node-subscription";
     const BRANCH = "main";
@@ -780,7 +836,7 @@ export default {
 ---
 
 ## 🏠 按照家宽分类节点订阅 (住宅 IP 专区)
-> 经 MaxMind ASN 数据库与运营商白名单探测，排除所有云主机/数据中心，保留真实民用宽带。
+> 经 MaxMind ASN 数据库与运营商白名单探测，排除所有云主机/数据中心及 CDN 任播，保留真实民用宽带。
 
 | 家宽地区 | 节点数 | V2RayN 专属订阅 | Clash 专属订阅 | sing-box 专属订阅 |
 | :--- | :---: | :---: | :---: | :---: |
@@ -828,7 +884,7 @@ export default {
 ---
 
 ## 🛠️ 项目使用说明
-1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据[cite: 4]。
+1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
 2. **多客户端兼容**：
    - **Clash / Clash Verge / Mihomo Party**：直接复制上方表格中的 **Clash 专属订阅** 链接[cite: 4]。
    - **v2rayN / v2rayNG**：直接复制上方表格中的 **V2RayN 专属订阅** 链接[cite: 4]。
@@ -845,6 +901,7 @@ if __name__ == "__main__":
     candidates = []
     seen_endpoints = set()
 
+    # 1. 物理层端点唯一性锁定：无论原始链接写什么域名、什么协议，(real_ip, port) 相同的只允许进入 1 个！
     print("[*] 正在执行底层物理 IP 强力单端口去重...")
     for raw in raw_nodes:
         outbound, server, port = parse_node_to_xray_outbound(raw)
