@@ -16,7 +16,7 @@ proxies:
   ws-opts:
     path: /
     headers:
-      Host: 45.144.28.39
+      Host: usejh2.neobo-tooth.ru
 proxy-groups:
 - name: PROXIES
   type: select

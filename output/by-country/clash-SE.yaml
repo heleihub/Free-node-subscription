@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇷 IR 01 (家宽) - xiaohe
+- name: 🇸🇪 SE 01 - xiaohe
   type: vless
-  server: 185.143.233.5
-  port: 80
-  uuid: 38dd06a1-e1cb-492b-bb87-218ce05d0d67
+  server: 104.18.20.69
+  port: 443
+  uuid: 367d010d-e93f-46ba-a0c7-46d13ef4e9cd
   udp: true
-  tls: false
+  tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /announcement?ed=2048
     headers:
-      Host: fox-a9e04bb07a-test.apps.ir-central1.arvancaas.ir
+      Host: se-sto.xhs152.shop
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇷 IR 01 (家宽) - xiaohe
+  - 🇸🇪 SE 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇷 IR 01 (家宽) - xiaohe
+  - 🇸🇪 SE 01 - xiaohe
 rules:
 - MATCH,PROXIES
