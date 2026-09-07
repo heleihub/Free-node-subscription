@@ -1,0 +1,28 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇪🇪 EE 01 (家宽) - xiaohe
+  type: trojan
+  server: 109.206.241.10
+  port: 449
+  password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+  udp: true
+  sni: russiapower.accesscam.org
+  skip-cert-verify: true
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇪🇪 EE 01 (家宽) - xiaohe
+- name: AUTO
+  type: url-test
+  url: https://www.google.com/generate_204
+  interval: 300
+  proxies:
+  - 🇪🇪 EE 01 (家宽) - xiaohe
+rules:
+- MATCH,PROXIES

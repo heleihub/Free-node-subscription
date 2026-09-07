@@ -25,7 +25,7 @@ proxy-groups:
   - 🇵🇭 PH 01 - xiaohe
 - name: AUTO
   type: url-test
-  url: http://cp.cloudflare.com/generate_204
+  url: https://www.google.com/generate_204
   interval: 300
   proxies:
   - 🇵🇭 PH 01 - xiaohe

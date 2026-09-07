@@ -6,26 +6,18 @@ log-level: info
 proxies:
 - name: 🇩🇪 德国 (Germany) 01 (家宽) - xiaohe
   type: vless
-  server: 87.120.84.32
-  port: 33843
-  uuid: 93dac4b8-3879-4179-abdb-9666a9e2ca8d
+  server: 146.103.42.161
+  port: 443
+  uuid: e7099864-b110-493c-9541-4a4638dc8299
   udp: true
   tls: true
   skip-cert-verify: true
-- name: 🇩🇪 德国 (Germany) 02 (家宽) - xiaohe
-  type: vless
-  server: 87.120.84.32
-  port: 8443
-  uuid: 93dac4b8-3879-4179-abdb-9666a9e2ca8d
-  udp: true
-  tls: false
-  skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /jryRJzwfISH4eaAVKgp2Zfw
     headers:
-      Host: deproxy2.lckdwn.ru
-- name: 🇩🇪 德国 (Germany) 03 (家宽) - xiaohe
+      Host: 146.103.42.161
+- name: 🇩🇪 德国 (Germany) 02 (家宽) - xiaohe
   type: vless
   server: 151.242.17.99
   port: 8443
@@ -37,7 +29,7 @@ proxies:
     public-key: 6Yskxg5U0WxPGtuCAAGH9uD57T4U8LeGrErTBNvIrwM
   servername: de.emvservice.com
   client-fingerprint: chrome
-- name: 🇩🇪 德国 (Germany) 04 (家宽) - xiaohe
+- name: 🇩🇪 德国 (Germany) 03 (家宽) - xiaohe
   type: vless
   server: 144.31.106.40
   port: 8443
@@ -48,7 +40,14 @@ proxies:
   reality-opts:
     public-key: NI5Rkfn6zO_gF-UC1nuvJwu4SDakCXh3ygJOKU1EITU
   servername: cdn.shopify.com
-  client-fingerprint: chrome
+  client-fingerprint: firefox
+- name: 🇩🇪 德国 (Germany) 04 (家宽) - xiaohe
+  type: ss
+  server: 185.226.172.8
+  port: 8008
+  cipher: aes-256-gcm
+  password: XKFKl2rULjIp74
+  udp: true
 - name: 🇩🇪 德国 (Germany) 05 (家宽) - xiaohe
   type: vless
   server: 81.95.4.189
@@ -62,61 +61,6 @@ proxies:
     path: /vws/
     headers:
       Host: bab-6.site
-- name: 🇩🇪 德国 (Germany) 06 (家宽) - xiaohe
-  type: vless
-  server: 146.103.42.161
-  port: 443
-  uuid: e7099864-b110-493c-9541-4a4638dc8299
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /jryRJzwfISH4eaAVKgp2Zfw
-    headers:
-      Host: 146.103.42.161
-- name: 🇩🇪 德国 (Germany) 07 (家宽) - xiaohe
-  type: ss
-  server: 209.46.102.22
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: 1hhrqrokj3ag
-  udp: true
-- name: 🇩🇪 德国 (Germany) 08 (家宽) - xiaohe
-  type: vless
-  server: 94.156.232.254
-  port: 443
-  uuid: 03c48eca-e0aa-4e18-998c-1f53f1de293c
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /cdn/v3/live
-    headers:
-      Host: cf6.rumedia-cdn.com
-- name: 🇩🇪 德国 (Germany) 09 (家宽) - xiaohe
-  type: vmess
-  server: 193.168.200.207
-  port: 55136
-  uuid: fe0f6ae2-85e4-4815-9206-4209bc118e94
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: ''
-    headers:
-      Host: ''
-- name: 🇩🇪 德国 (Germany) 10 (家宽) - xiaohe
-  type: ss
-  server: 185.226.172.8
-  port: 8008
-  cipher: aes-256-gcm
-  password: XKFKl2rULjIp74
-  udp: true
 proxy-groups:
 - name: PROXIES
   type: select
@@ -127,14 +71,9 @@ proxy-groups:
   - 🇩🇪 德国 (Germany) 03 (家宽) - xiaohe
   - 🇩🇪 德国 (Germany) 04 (家宽) - xiaohe
   - 🇩🇪 德国 (Germany) 05 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 06 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 07 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 08 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 09 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 10 (家宽) - xiaohe
 - name: AUTO
   type: url-test
-  url: http://cp.cloudflare.com/generate_204
+  url: https://www.google.com/generate_204
   interval: 300
   proxies:
   - 🇩🇪 德国 (Germany) 01 (家宽) - xiaohe
@@ -142,10 +81,5 @@ proxy-groups:
   - 🇩🇪 德国 (Germany) 03 (家宽) - xiaohe
   - 🇩🇪 德国 (Germany) 04 (家宽) - xiaohe
   - 🇩🇪 德国 (Germany) 05 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 06 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 07 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 08 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 09 (家宽) - xiaohe
-  - 🇩🇪 德国 (Germany) 10 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

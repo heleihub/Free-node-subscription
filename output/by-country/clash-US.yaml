@@ -5,39 +5,248 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇺🇸 美国 (United States) 01 - xiaohe
-  type: ss
-  server: 15.204.233.41
-  port: 8882
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
+  type: trojan
+  server: us01.duotg.top
+  port: 38261
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
   udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 02 - xiaohe
   type: ss
-  server: 37.19.198.243
+  server: 156.146.38.169
   port: 443
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
 - name: 🇺🇸 美国 (United States) 03 - xiaohe
   type: ss
+  server: 15.204.246.111
+  port: 5498
+  cipher: aes-256-gcm
+  password: lGqs95QkFHo2NV
+  udp: true
+- name: 🇺🇸 美国 (United States) 04 - xiaohe
+  type: vless
+  server: 88.216.73.74
+  port: 443
+  uuid: 493024a4-2da7-4ff9-9bc7-fdd5543141d2
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 88.216.73.74
+- name: 🇺🇸 美国 (United States) 05 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 46292
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com%23%F0%9F%90%B297%40oneclickvpnkeys
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 06 - xiaohe
+  type: ss
+  server: 38.180.135.156
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: YHtesZ0qvgtg
+  udp: true
+- name: 🇺🇸 美国 (United States) 07 - xiaohe
+  type: trojan
+  server: 64.94.95.114
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 08 - xiaohe
+  type: ss
+  server: 156.146.38.168
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 美国 (United States) 09 - xiaohe
+  type: vless
+  server: 172.66.0.236
+  port: 2083
+  uuid: 44eae030-290b-4083-8102-6f8bab05701b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: cfvvv-ev1.pages.dev
+- name: 🇺🇸 美国 (United States) 10 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 11 - xiaohe
+  type: ss
+  server: 156.146.38.170
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 美国 (United States) 12 - xiaohe
+  type: trojan
+  server: 64.94.95.118
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.118
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 13 - xiaohe
+  type: vless
+  server: 38.107.232.36
+  port: 80
+  uuid: 18cf8db1-9f86-43f7-baa0-382efb7f2dfa
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: 3h-unitedstates1.09vpn.com
+- name: 🇺🇸 美国 (United States) 14 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 54657
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 15 - xiaohe
+  type: trojan
+  server: 64.94.95.117
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.117
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 16 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 59385
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 17 - xiaohe
+  type: ss
   server: 37.19.198.244
   port: 443
   cipher: aes-128-gcm
   password: shadowsocks
   udp: true
-- name: 🇺🇸 美国 (United States) 04 - xiaohe
+- name: 🇺🇸 美国 (United States) 18 - xiaohe
+  type: vless
+  server: 170.114.45.6
+  port: 80
+  uuid: 6aa028bc-08a9-41d1-a397-d60ce65df081
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /shalana
+    headers:
+      Host: shalana.xyz
+- name: 🇺🇸 美国 (United States) 19 - xiaohe
   type: ss
   server: 15.204.246.189
   port: 8119
   cipher: aes-256-gcm
   password: cdBIDV42DCwnfIN
   udp: true
-- name: 🇺🇸 美国 (United States) 05 - xiaohe
+- name: 🇺🇸 美国 (United States) 20 - xiaohe
   type: ss
-  server: 15.204.246.111
-  port: 5498
+  server: 15.204.246.108
+  port: 8881
   cipher: aes-256-gcm
-  password: lGqs95QkFHo2NV
+  password: kDWvXYZoTBcGkC4
+  udp: true
+- name: 🇺🇸 美国 (United States) 21 - xiaohe
+  type: vless
+  server: 2.27.205.59
+  port: 443
+  uuid: c21631d5-36c9-4664-b575-97eca17456be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: neth8.lunariai.ru
+- name: 🇺🇸 美国 (United States) 22 - xiaohe
+  type: vless
+  server: 170.114.46.6
+  port: 80
+  uuid: 6aa028bc-08a9-41d1-a397-d60ce65df081
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /shalana
+    headers:
+      Host: shalana.xyz
+- name: 🇺🇸 美国 (United States) 23 - xiaohe
+  type: vless
+  server: 38.246.229.58
+  port: 47642
+  uuid: c538c9dd-2e3f-488f-a8ca-ac5b7c0773f3
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 9mg1QdPctekP9woKygHzBCxb8Hw2QTICXROQiiJB6Ag
+  servername: sega.com
+  client-fingerprint: random
+- name: 🇺🇸 美国 (United States) 24 - xiaohe
+  type: ss
+  server: 37.19.198.160
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 美国 (United States) 25 - xiaohe
+  type: vless
+  server: 144.225.246.111
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🇺🇸 美国 (United States) 26 - xiaohe
+  type: ss
+  server: 37.19.198.236
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 美国 (United States) 27 - xiaohe
+  type: ss
+  server: 156.146.38.167
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
   udp: true
 proxy-groups:
 - name: PROXIES
@@ -49,9 +258,31 @@ proxy-groups:
   - 🇺🇸 美国 (United States) 03 - xiaohe
   - 🇺🇸 美国 (United States) 04 - xiaohe
   - 🇺🇸 美国 (United States) 05 - xiaohe
+  - 🇺🇸 美国 (United States) 06 - xiaohe
+  - 🇺🇸 美国 (United States) 07 - xiaohe
+  - 🇺🇸 美国 (United States) 08 - xiaohe
+  - 🇺🇸 美国 (United States) 09 - xiaohe
+  - 🇺🇸 美国 (United States) 10 - xiaohe
+  - 🇺🇸 美国 (United States) 11 - xiaohe
+  - 🇺🇸 美国 (United States) 12 - xiaohe
+  - 🇺🇸 美国 (United States) 13 - xiaohe
+  - 🇺🇸 美国 (United States) 14 - xiaohe
+  - 🇺🇸 美国 (United States) 15 - xiaohe
+  - 🇺🇸 美国 (United States) 16 - xiaohe
+  - 🇺🇸 美国 (United States) 17 - xiaohe
+  - 🇺🇸 美国 (United States) 18 - xiaohe
+  - 🇺🇸 美国 (United States) 19 - xiaohe
+  - 🇺🇸 美国 (United States) 20 - xiaohe
+  - 🇺🇸 美国 (United States) 21 - xiaohe
+  - 🇺🇸 美国 (United States) 22 - xiaohe
+  - 🇺🇸 美国 (United States) 23 - xiaohe
+  - 🇺🇸 美国 (United States) 24 - xiaohe
+  - 🇺🇸 美国 (United States) 25 - xiaohe
+  - 🇺🇸 美国 (United States) 26 - xiaohe
+  - 🇺🇸 美国 (United States) 27 - xiaohe
 - name: AUTO
   type: url-test
-  url: http://cp.cloudflare.com/generate_204
+  url: https://www.google.com/generate_204
   interval: 300
   proxies:
   - 🇺🇸 美国 (United States) 01 - xiaohe
@@ -59,5 +290,27 @@ proxy-groups:
   - 🇺🇸 美国 (United States) 03 - xiaohe
   - 🇺🇸 美国 (United States) 04 - xiaohe
   - 🇺🇸 美国 (United States) 05 - xiaohe
+  - 🇺🇸 美国 (United States) 06 - xiaohe
+  - 🇺🇸 美国 (United States) 07 - xiaohe
+  - 🇺🇸 美国 (United States) 08 - xiaohe
+  - 🇺🇸 美国 (United States) 09 - xiaohe
+  - 🇺🇸 美国 (United States) 10 - xiaohe
+  - 🇺🇸 美国 (United States) 11 - xiaohe
+  - 🇺🇸 美国 (United States) 12 - xiaohe
+  - 🇺🇸 美国 (United States) 13 - xiaohe
+  - 🇺🇸 美国 (United States) 14 - xiaohe
+  - 🇺🇸 美国 (United States) 15 - xiaohe
+  - 🇺🇸 美国 (United States) 16 - xiaohe
+  - 🇺🇸 美国 (United States) 17 - xiaohe
+  - 🇺🇸 美国 (United States) 18 - xiaohe
+  - 🇺🇸 美国 (United States) 19 - xiaohe
+  - 🇺🇸 美国 (United States) 20 - xiaohe
+  - 🇺🇸 美国 (United States) 21 - xiaohe
+  - 🇺🇸 美国 (United States) 22 - xiaohe
+  - 🇺🇸 美国 (United States) 23 - xiaohe
+  - 🇺🇸 美国 (United States) 24 - xiaohe
+  - 🇺🇸 美国 (United States) 25 - xiaohe
+  - 🇺🇸 美国 (United States) 26 - xiaohe
+  - 🇺🇸 美国 (United States) 27 - xiaohe
 rules:
 - MATCH,PROXIES

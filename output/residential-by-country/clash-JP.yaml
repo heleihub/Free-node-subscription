@@ -13,21 +13,18 @@ proxies:
   tls: true
   skip-cert-verify: true
 - name: 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
-  type: trojan
-  server: 161.34.39.108
-  port: 443
-  password: tsuchiya
-  udp: true
-  sni: 161.34.39.108
-  skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 03 (家宽) - xiaohe
   type: vless
-  server: 137.220.221.179
-  port: 443
-  uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
+  server: 172.111.146.64
+  port: 80
+  uuid: 904f8ffa-4652-4076-8f2f-e586807840ec
   udp: true
   tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: join---i10vpn---join---i10vpn---join---i10vpn---join---i10vpn
 proxy-groups:
 - name: PROXIES
   type: select
@@ -35,14 +32,12 @@ proxy-groups:
   - AUTO
   - 🇯🇵 日本 (Japan) 01 (家宽) - xiaohe
   - 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 03 (家宽) - xiaohe
 - name: AUTO
   type: url-test
-  url: http://cp.cloudflare.com/generate_204
+  url: https://www.google.com/generate_204
   interval: 300
   proxies:
   - 🇯🇵 日本 (Japan) 01 (家宽) - xiaohe
   - 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 03 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

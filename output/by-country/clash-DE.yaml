@@ -5,18 +5,21 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇩🇪 德国 (Germany) 01 - xiaohe
-  type: vmess
-  server: 82.198.246.37
-  port: 180
-  uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-  alterId: 0
-  cipher: auto
+  type: vless
+  server: 94.156.232.254
+  port: 443
+  uuid: 03c48eca-e0aa-4e18-998c-1f53f1de293c
   udp: true
-  tls: false
+  tls: true
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /cdn/v3/live
+    headers:
+      Host: cf6.rumedia-cdn.com
 - name: 🇩🇪 德国 (Germany) 02 - xiaohe
   type: vmess
-  server: 82.198.246.250
+  server: 82.198.246.37
   port: 180
   uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
   alterId: 0
@@ -36,7 +39,7 @@ proxies:
   skip-cert-verify: true
 - name: 🇩🇪 德国 (Germany) 04 - xiaohe
   type: vmess
-  server: 82.198.246.233
+  server: 82.198.246.250
   port: 180
   uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
   alterId: 0
@@ -45,33 +48,72 @@ proxies:
   tls: false
   skip-cert-verify: true
 - name: 🇩🇪 德国 (Germany) 05 - xiaohe
-  type: ss
-  server: 51.195.126.38
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: 2YdE4lFOid5a
+  type: vless
+  server: 35.157.240.237
+  port: 443
+  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
   udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vws/
+    headers:
+      Host: bab-6.site
 - name: 🇩🇪 德国 (Germany) 06 - xiaohe
-  type: ss
-  server: 130.61.237.108
-  port: 59924
-  cipher: 2022-blake3-chacha20-poly1305
-  password: e0sT7dql6hUZTTWLOtz89tI2+PxjtSCqzAhkwhVVz9U=
+  type: vless
+  server: 91.107.190.63
+  port: 8080
+  uuid: 11af1c47-865a-47c6-92ff-118013655d78
   udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2048
+    headers:
+      Host: 91.107.190.63
 - name: 🇩🇪 德国 (Germany) 07 - xiaohe
+  type: vless
+  server: 57.129.41.216
+  port: 80
+  uuid: 7d74eae4-8a06-4306-a923-ad686f30bf26
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: OV-Germany1.09vpn.com
+- name: 🇩🇪 德国 (Germany) 08 - xiaohe
+  type: vless
+  server: 87.120.84.32
+  port: 33843
+  uuid: 93dac4b8-3879-4179-abdb-9666a9e2ca8d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: 🇩🇪 德国 (Germany) 09 - xiaohe
   type: ss
   server: 8.209.74.72
   port: 20001
   cipher: chacha20-ietf-poly1305
   password: PWpjPo3tqhPN4yRZ
   udp: true
-- name: 🇩🇪 德国 (Germany) 08 - xiaohe
-  type: ss
-  server: 130.61.151.195
-  port: 59924
-  cipher: 2022-blake3-chacha20-poly1305
-  password: fTZaFndeRbupljNHo/nvfMpVErTaltAoUW8DR4Kj+Z8=
+- name: 🇩🇪 德国 (Germany) 10 - xiaohe
+  type: vless
+  server: 91.107.154.19
+  port: 8080
+  uuid: 11af1c47-865a-47c6-92ff-118013655d78
   udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2048
+    headers:
+      Host: 91.107.154.19
 proxy-groups:
 - name: PROXIES
   type: select
@@ -85,9 +127,11 @@ proxy-groups:
   - 🇩🇪 德国 (Germany) 06 - xiaohe
   - 🇩🇪 德国 (Germany) 07 - xiaohe
   - 🇩🇪 德国 (Germany) 08 - xiaohe
+  - 🇩🇪 德国 (Germany) 09 - xiaohe
+  - 🇩🇪 德国 (Germany) 10 - xiaohe
 - name: AUTO
   type: url-test
-  url: http://cp.cloudflare.com/generate_204
+  url: https://www.google.com/generate_204
   interval: 300
   proxies:
   - 🇩🇪 德国 (Germany) 01 - xiaohe
@@ -98,5 +142,7 @@ proxy-groups:
   - 🇩🇪 德国 (Germany) 06 - xiaohe
   - 🇩🇪 德国 (Germany) 07 - xiaohe
   - 🇩🇪 德国 (Germany) 08 - xiaohe
+  - 🇩🇪 德国 (Germany) 09 - xiaohe
+  - 🇩🇪 德国 (Germany) 10 - xiaohe
 rules:
 - MATCH,PROXIES
