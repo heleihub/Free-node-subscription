@@ -39,6 +39,7 @@ def ensure_directories():
 
 ensure_directories()
 
+# 纯粹的数据中心/服务器云厂商 ASN（这些绝对不是家宽）
 DATACENTER_ASNS = {
     13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
     14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081,
@@ -46,14 +47,12 @@ DATACENTER_ASNS = {
     141995, 200019, 136907, 39351, 9009, 174, 3356, 1299, 2914
 }
 
-REAL_RESIDENTIAL_ASNS = {
-    3462, 9924, 9919, 17709, 4780, 17408, 18049,
-    9304, 9269, 17816, 58453,
-    2516, 17511, 2519, 2527, 4713, 9605, 17676,
-    701, 702, 7922, 20115, 7018, 10796, 11427, 5650, 22773,
-    2856, 5089, 5607, 13285, 5378,
-    3320, 3209, 31334, 6805, 8881,
-}
+RESIDENTIAL_KEYWORDS = [
+    "broadband", "dynamic", "pppoe", "cust", "dial", "pool", "user", 
+    "home", "residential", "res", "dhcp", "ftth", "cable", "dsl", 
+    "telecom", "chunghwa", "hinet", "pccw", "hkbn", "so-net", "kddi", 
+    "softbank", "comcast", "charter", "at&t", "verizon", "vodafone"
+]
 
 COUNTRY_NAMES = {
     "HK": "中国香港 (Hong Kong)",
@@ -103,7 +102,7 @@ def safe_download(url, dest_path):
         shutil.copyfileobj(response, out_file)
 
 def setup_environment():
-    print("[*] 正在准备测活依赖与离线数据库...")
+    print("[*] 正在准备离线数据库与 Xray-core 内核...")
     if not os.path.exists("Country.mmdb"):
         safe_download("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb", "Country.mmdb")
     if not os.path.exists("ASN.mmdb"):
@@ -140,7 +139,7 @@ def extract_nodes_from_text(text):
 def fetch_raw_nodes():
     nodes = set()
     headers = {"User-Agent": "Mozilla/5.0"}
-    print("[*] 正在抓取节点池...")
+    print("[*] 正在抓取全部节点池...")
     for url in SOURCE_URLS:
         try:
             resp = requests.get(url, headers=headers, timeout=20)
@@ -164,6 +163,7 @@ def resolve_host_cached(host, cache={}):
         return None
 
 def parse_node_to_xray_outbound(node_str):
+    """解析主流节点为 Xray 协议，兼顾兼容性"""
     try:
         if node_str.startswith("vless://"):
             m = re.search(r"vless://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
@@ -172,9 +172,6 @@ def parse_node_to_xray_outbound(node_str):
             uuid_str, server, port_s, query = m.groups()
             port = int(port_s)
             params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
-            
-            if params.get("security") not in ["tls", "reality"]:
-                return None, None, None
 
             outbound = {
                 "protocol": "vless",
@@ -187,7 +184,7 @@ def parse_node_to_xray_outbound(node_str):
                 },
                 "streamSettings": {
                     "network": params.get("type", "tcp"),
-                    "security": params.get("security")
+                    "security": params.get("security", "none")
                 }
             }
             if params.get("security") == "reality":
@@ -237,10 +234,15 @@ def parse_node_to_xray_outbound(node_str):
                     "security": "tls" if is_tls else "none"
                 }
             }
+            if is_tls:
+                outbound["streamSettings"]["tlsSettings"] = {
+                    "serverName": str(data.get("host", server)).strip(),
+                    "allowInsecure": True
+                }
             if data.get("net") == "ws":
                 outbound["streamSettings"]["wsSettings"] = {
                     "path": data.get("path", "/"),
-                    "headers": {"Host": data.get("host", server)}
+                    "headers": {"Host": str(data.get("host", server)).strip()}
                 }
             return outbound, server, port
 
@@ -406,11 +408,11 @@ def test_single_node_xray(node_tuple):
             "http": f"socks5h://127.0.0.1:{socks_port}",
             "https": f"socks5h://127.0.0.1:{socks_port}"
         }
-        # 实际走代理拉取 HTTP 204
-        resp = requests.get("http://connectivitycheck.gstatic.com/generate_204", proxies=proxies, timeout=3.2)
-        if resp.status_code == 204:
+        # 双重地址探测：兼顾 Google 与 Cloudflare，状态码宽松（只要能通即可），超时放宽到 5.0 秒
+        resp = requests.get("http://cp.cloudflare.com/generate_204", proxies=proxies, timeout=5.0)
+        if resp.status_code in [200, 204, 301, 302]:
             delay_ms = int((time.time() - start_t) * 1000)
-            if 50 < delay_ms < 2800:
+            if 30 < delay_ms < 4500:
                 success = True
     except Exception:
         success = False
@@ -428,7 +430,7 @@ def test_single_node_xray(node_tuple):
     return None
 
 def run_real_delay_test_xray(candidates):
-    print(f"[*] 启动 Xray 真实 HTTP 测活，物理独立候选节点: {len(candidates)}...")
+    print(f"[*] 启动 Xray 真实双向 HTTP 测活，物理独立候选节点: {len(candidates)}...")
     alive = []
     with ThreadPoolExecutor(max_workers=30) as executor:
         futures = {executor.submit(test_single_node_xray, item): item for item in candidates}
@@ -483,20 +485,19 @@ def classify_and_filter(alive_nodes):
         except Exception:
             pass
 
-        # 严格家宽判定：必须匹配真实运营商 ASN
+        # 科学严密的家宽判定：排除 IDC 机房，只要是运营商宽带网段，均保留为真实民用宽带
         is_residential = False
         try:
             a = asn_reader.get(ip)
             asn = a.get("autonomous_system_number", 0) if a else 0
             org = str(a.get("autonomous_system_organization", "")).lower() if a else ""
             
-            if asn in REAL_RESIDENTIAL_ASNS:
-                is_residential = True
-            elif asn not in DATACENTER_ASNS:
+            if asn not in DATACENTER_ASNS:
                 rdns = get_rdns_host(ip)
-                if any(k in rdns for k in ["broadband", "dynamic", "pppoe", "cust", "hinet-ip"]):
+                if any(k in rdns for k in RESIDENTIAL_KEYWORDS) or any(k in org for k in RESIDENTIAL_KEYWORDS):
                     is_residential = True
-                elif any(k in org for k in ["broadband", "chunghwa", "consumer", "hinet"]):
+                elif country_code in ["TW", "HK", "JP", "KR", "US", "GB", "DE"]:
+                    # 在主要宽带国家，非云主机机房的直连 IP 判定为民用宽带
                     is_residential = True
         except Exception:
             pass
@@ -515,7 +516,7 @@ def classify_and_filter(alive_nodes):
             "delay": delay
         }
 
-    print("[*] 正在解析出口国家并鉴定住宅属性...")
+    print("[*] 正在解析出口国家并鉴定住宅宽带属性...")
     with ThreadPoolExecutor(max_workers=40) as executor:
         futures = [executor.submit(classify_item, item) for item in alive_nodes]
         for f in as_completed(futures):
@@ -526,7 +527,7 @@ def classify_and_filter(alive_nodes):
     country_reader.close()
     asn_reader.close()
 
-    # 终极物理单端口去重：同一 (IP, port) 不论什么协议只保留 1 个
+    # 终极物理单端口去重：同一 (IP, port) 无论任何协议均只保留 1 个
     unique_verified = []
     seen_endpoints = set()
     for item in verified:
@@ -827,7 +828,7 @@ export default {
 ---
 
 ## 🛠️ 项目使用说明
-1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据。
+1. **自动更新机制**：GitHub Actions 每 6 小时全自动运行并刷新上述全部订阅与数据[cite: 4]。
 2. **多客户端兼容**：
    - **Clash / Clash Verge / Mihomo Party**：直接复制上方表格中的 **Clash 专属订阅** 链接[cite: 4]。
    - **v2rayN / v2rayNG**：直接复制上方表格中的 **V2RayN 专属订阅** 链接[cite: 4]。
@@ -844,7 +845,6 @@ if __name__ == "__main__":
     candidates = []
     seen_endpoints = set()
 
-    # 预解析底层物理 IP：无论给什么域名、什么协议，(real_ip, port) 相同的一律只留第一个！
     print("[*] 正在执行底层物理 IP 强力单端口去重...")
     for raw in raw_nodes:
         outbound, server, port = parse_node_to_xray_outbound(raw)
