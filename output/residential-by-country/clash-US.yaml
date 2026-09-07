@@ -6,7 +6,7 @@ log-level: info
 proxies:
 - name: 🇺🇸 美国 (United States) 01 (家宽) - xiaohe
   type: vless
-  server: 2.27.205.59
+  server: neth8.lunariai.ru
   port: 443
   uuid: c21631d5-36c9-4664-b575-97eca17456be
   udp: true
@@ -18,16 +18,6 @@ proxies:
     headers:
       Host: neth8.lunariai.ru
 - name: 🇺🇸 美国 (United States) 02 (家宽) - xiaohe
-  type: vmess
-  server: 165.140.216.142
-  port: 443
-  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 03 (家宽) - xiaohe
   type: trojan
   server: 100.42.228.109
   port: 443
@@ -42,7 +32,6 @@ proxy-groups:
   - AUTO
   - 🇺🇸 美国 (United States) 01 (家宽) - xiaohe
   - 🇺🇸 美国 (United States) 02 (家宽) - xiaohe
-  - 🇺🇸 美国 (United States) 03 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -50,6 +39,5 @@ proxy-groups:
   proxies:
   - 🇺🇸 美国 (United States) 01 (家宽) - xiaohe
   - 🇺🇸 美国 (United States) 02 (家宽) - xiaohe
-  - 🇺🇸 美国 (United States) 03 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

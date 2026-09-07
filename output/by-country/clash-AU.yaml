@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇵🇭 PH 01 - xiaohe
+- name: 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
   type: vless
-  server: 149.104.109.17
+  server: 103.75.119.126
   port: 2087
-  uuid: 9ed3dcb3-b71a-4ae1-8210-95e33615d7e6
+  uuid: 731f177e-00aa-480c-b935-661456139a32
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /04461917b179
+    path: /7586c69d3dc9
     headers:
-      Host: 149.104.109.17
+      Host: 103.75.119.126
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇵🇭 PH 01 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇵🇭 PH 01 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
 rules:
 - MATCH,PROXIES

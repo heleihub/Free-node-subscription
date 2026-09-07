@@ -6,14 +6,6 @@ log-level: info
 proxies:
 - name: 🇫🇮 FI 01 - xiaohe
   type: vless
-  server: 87.58.154.128
-  port: 443
-  uuid: 263a627b-7a5e-4180-b6af-a6cb0f03cc90
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇫🇮 FI 02 - xiaohe
-  type: vless
   server: 2.26.122.101
   port: 8443
   uuid: 758f49d3-5f5f-47e7-bfa4-4ce96faf800d
@@ -24,7 +16,7 @@ proxies:
     public-key: NI5Rkfn6zO_gF-UC1nuvJwu4SDakCXh3ygJOKU1EITU
   servername: cdn.shopify.com
   client-fingerprint: firefox
-- name: 🇫🇮 FI 03 - xiaohe
+- name: 🇫🇮 FI 02 - xiaohe
   type: vless
   server: 185.79.138.71
   port: 448
@@ -43,7 +35,6 @@ proxy-groups:
   - AUTO
   - 🇫🇮 FI 01 - xiaohe
   - 🇫🇮 FI 02 - xiaohe
-  - 🇫🇮 FI 03 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -51,6 +42,5 @@ proxy-groups:
   proxies:
   - 🇫🇮 FI 01 - xiaohe
   - 🇫🇮 FI 02 - xiaohe
-  - 🇫🇮 FI 03 - xiaohe
 rules:
 - MATCH,PROXIES

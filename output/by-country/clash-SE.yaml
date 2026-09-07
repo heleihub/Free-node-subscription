@@ -6,6 +6,19 @@ log-level: info
 proxies:
 - name: 🇸🇪 SE 01 - xiaohe
   type: vless
+  server: 104.21.25.152
+  port: 8080
+  uuid: 9abe6dbd-5988-4943-8a93-afc65ab50f54
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vips.irhubby.ir
+- name: 🇸🇪 SE 02 - xiaohe
+  type: vless
   server: 202.155.11.249
   port: 443
   uuid: 0a2dde28-70da-4863-a06f-35d007d94d35
@@ -23,11 +36,13 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇸🇪 SE 01 - xiaohe
+  - 🇸🇪 SE 02 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
   - 🇸🇪 SE 01 - xiaohe
+  - 🇸🇪 SE 02 - xiaohe
 rules:
 - MATCH,PROXIES
