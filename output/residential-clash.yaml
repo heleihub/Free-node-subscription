@@ -4,7 +4,720 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - xiaohe
+- name: 🇬🇧 英国 (United Kingdom) 01 (家宽) - xiaohe
+  type: vless
+  server: 188.220.67.161
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.161
+- name: 🇺🇸 美国 (United States) 02 (家宽) - xiaohe
+  type: trojan
+  server: 64.94.95.117
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 03 (家宽) - xiaohe
+  type: vless
+  server: freshjuniper.download
+  port: 443
+  uuid: 6429d27e-a7d4-4e04-ae57-e88243fbbfe3
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I
+  servername: freshjuniper.download
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 04 (家宽) - xiaohe
+  type: vless
+  server: 170.114.46.6
+  port: 80
+  uuid: 6aa028bc-08a9-41d1-a397-d60ce65df081
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /shalana
+    headers:
+      Host: shalana.xyz
+- name: 🇺🇸 美国 (United States) 05 (家宽) - xiaohe
+  type: vmess
+  server: 165.140.216.142
+  port: 443
+  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 06 (家宽) - xiaohe
+  type: trojan
+  server: 64.94.95.118
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.118
+  skip-cert-verify: true
+- name: 🇬🇧 英国 (United Kingdom) 07 (家宽) - xiaohe
+  type: vless
+  server: 91.193.58.217
+  port: 2053
+  uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vlso200.1d.mom
+- name: 🇺🇸 美国 (United States) 08 (家宽) - xiaohe
+  type: trojan
+  server: 64.94.95.115
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.115
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 09 (家宽) - xiaohe
+  type: trojan
+  server: 64.94.95.114
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: static.rutube.ru
+  skip-cert-verify: true
+- name: 🇬🇧 英国 (United Kingdom) 10 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.218
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 英国 (United Kingdom) 11 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.186
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇯🇵 日本 (Japan) 12 (家宽) - xiaohe
+  type: vless
+  server: 38.175.203.11
+  port: 443
+  uuid: 1b8ec962-6e6f-4fc3-a9a4-c8a6fc907796
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: 🇬🇧 英国 (United Kingdom) 13 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.185
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 英国 (United Kingdom) 14 (家宽) - xiaohe
+  type: vless
+  server: 91.193.59.27
+  port: 2096
+  uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vlso300.1d.mom
+- name: 🇬🇧 英国 (United Kingdom) 15 (家宽) - xiaohe
+  type: vless
+  server: 82.24.203.10
+  port: 2087
+  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3bfc3e3ed603
+    headers:
+      Host: 82.24.203.10
+- name: 🇺🇸 美国 (United States) 16 (家宽) - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 46292
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 17 (家宽) - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 59385
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 18 (家宽) - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com%233%F0%9F%90%B2%40oneclickvpnkeyshysteria2%3A%2F%2Fumndu7jgfyujpvjvm2sw9hl0rryljngzvwru2hzwehyzkkrx%40hold.wwwinternetvideo.click%3A443%2F%3Finsecure%3D1
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 19 (家宽) - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 54657
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 20 (家宽) - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 38261
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 21 (家宽) - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 27732
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇬🇧 英国 (United Kingdom) 22 (家宽) - xiaohe
+  type: vless
+  server: 188.220.67.224
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.224
+- name: 🇯🇵 日本 (Japan) 23 (家宽) - xiaohe
+  type: trojan
+  server: 185.200.65.251
+  port: 443
+  password: UQfj7bdfjibTjpUHfg72aew51S7fB32g
+  udp: true
+  sni: portal.buildtunnel.com
+  skip-cert-verify: true
+- name: 🇩🇪 德国 (Germany) 24 (家宽) - xiaohe
+  type: vless
+  server: 151.242.17.99
+  port: 8443
+  uuid: a04814d9-d006-4e7b-ae20-8ab304b3b429
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 6Yskxg5U0WxPGtuCAAGH9uD57T4U8LeGrErTBNvIrwM
+  servername: de.emvservice.com
+  client-fingerprint: chrome
+- name: 🇬🇧 英国 (United Kingdom) 25 (家宽) - xiaohe
+  type: vless
+  server: 82.24.203.9
+  port: 2087
+  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3bfc3e3ed603
+    headers:
+      Host: 82.24.203.9
+- name: 🇬🇧 英国 (United Kingdom) 26 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.9
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 英国 (United Kingdom) 27 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.179
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 英国 (United Kingdom) 28 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.35
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇬🇧 英国 (United Kingdom) 29 (家宽) - xiaohe
+  type: vless
+  server: 188.220.67.140
+  port: 2087
+  uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /8f2690e2d016
+    headers:
+      Host: 188.220.67.140
+- name: 🇺🇸 美国 (United States) 30 (家宽) - xiaohe
+  type: vless
+  server: 23.94.227.94
+  port: 15884
+  uuid: c543f497-6a6d-4842-8317-a5f62ea56dc2
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: rZAYGSqaklKNltwTGPpAok74VYCxV9uKvrOyydSn9UE
+  servername: www.intel.com
+  client-fingerprint: firefox
+- name: 🇺🇸 美国 (United States) 31 (家宽) - xiaohe
+  type: vless
+  server: 147.189.129.155
+  port: 2087
+  uuid: 090a3fa8-973f-4812-9b69-ed982082a933
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4ad49ed0a3d5
+    headers:
+      Host: 147.189.129.155
+- name: 🇺🇸 美国 (United States) 32 (家宽) - xiaohe
+  type: vless
+  server: 147.189.129.144
+  port: 2087
+  uuid: 090a3fa8-973f-4812-9b69-ed982082a933
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4ad49ed0a3d5
+    headers:
+      Host: 147.189.129.144
+- name: 🇬🇧 英国 (United Kingdom) 33 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.18
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇺🇸 美国 (United States) 34 (家宽) - xiaohe
+  type: vless
+  server: 194.55.189.249
+  port: 40443
+  uuid: 8212a50b-25bf-4739-bba1-aaffb5ffc84c
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: KCbW84C8h2Ja01LS0Ro8EpLLfzMTjs11t1ldDWLd5zo
+  servername: deepl.com
+  client-fingerprint: qq
+- name: 🇬🇧 英国 (United Kingdom) 35 (家宽) - xiaohe
+  type: vless
+  server: 82.24.203.2
+  port: 2087
+  uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /3bfc3e3ed603
+    headers:
+      Host: 82.24.203.2
+- name: 🇺🇸 美国 (United States) 36 (家宽) - xiaohe
+  type: ss
+  server: 173.244.56.6
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇬🇧 英国 (United Kingdom) 37 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.176
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: k1dBOmOB4oqi7Ump37a1bQ
+  udp: true
+- name: 🇬🇧 英国 (United Kingdom) 38 (家宽) - xiaohe
+  type: vless
+  server: 82.24.203.20
+  port: 2087
+  uuid: 5fcdc9b7-e70f-4a5c-85c3-e018ad818326
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /fd5ba98a3970
+    headers:
+      Host: 82.24.203.20
+- name: 🇬🇧 英国 (United Kingdom) 39 (家宽) - xiaohe
+  type: vless
+  server: 91.193.58.219
+  port: 2053
+  uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vlso4.1d.mom
+- name: 🇬🇧 英国 (United Kingdom) 40 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.162
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇩🇪 德国 (Germany) 41 (家宽) - xiaohe
+  type: vless
+  server: 144.31.106.40
+  port: 8443
+  uuid: 758f49d3-5f5f-47e7-bfa4-4ce96faf800d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: NI5Rkfn6zO_gF-UC1nuvJwu4SDakCXh3ygJOKU1EITU
+  servername: cdn.shopify.com
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 42 (家宽) - xiaohe
+  type: vless
+  server: 38.107.232.36
+  port: 80
+  uuid: 18cf8db1-9f86-43f7-baa0-382efb7f2dfa
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: 3h-unitedstates1.09vpn.com
+- name: 🇺🇸 美国 (United States) 43 (家宽) - xiaohe
+  type: vless
+  server: 2.26.91.98
+  port: 1443
+  uuid: 487273f5-4aeb-4631-b197-2e169dffc285
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
+- name: 🇩🇪 德国 (Germany) 44 (家宽) - xiaohe
+  type: vless
+  server: 146.103.42.161
+  port: 443
+  uuid: e7099864-b110-493c-9541-4a4638dc8299
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /jryRJzwfISH4eaAVKgp2Zfw
+    headers:
+      Host: 146.103.42.161
+- name: 🇭🇰 中国香港 (Hong Kong) 45 (家宽) - xiaohe
+  type: vmess
+  server: 143.14.189.125
+  port: 21316
+  uuid: 116f6ecd-275e-4b50-921d-780e78a526cb
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: ''
+    headers:
+      Host: ''
+- name: 🇬🇧 英国 (United Kingdom) 46 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.26
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇺🇸 美国 (United States) 47 (家宽) - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 43022
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇬🇧 英国 (United Kingdom) 48 (家宽) - xiaohe
+  type: ss
+  server: 82.38.31.39
+  port: 8080
+  cipher: chacha20-ietf-poly1305
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  udp: true
+- name: 🇺🇸 美国 (United States) 49 (家宽) - xiaohe
+  type: vless
+  server: 144.225.246.111
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🇯🇵 日本 (Japan) 50 (家宽) - xiaohe
+  type: vless
+  server: 137.220.221.179
+  port: 443
+  uuid: a16a3336-c9ab-489f-9b85-c973f5e2cfa4
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 51 (家宽) - xiaohe
+  type: vless
+  server: 31.169.125.12
+  port: 443
+  uuid: 170e1be8-e51b-4a82-a779-3ad27b78607c
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: us6.lunariai.ru
+- name: 🇬🇧 英国 (United Kingdom) 52 (家宽) - xiaohe
+  type: vless
+  server: 82.24.203.37
+  port: 2087
+  uuid: 44573770-963a-41f5-a080-3cc11e4957a2
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /5c62e3c616d8
+    headers:
+      Host: 82.24.203.37
+- name: 🇭🇰 中国香港 (Hong Kong) 53 (家宽) - xiaohe
+  type: vless
+  server: 002282db-tla000-u1dafb-1ro8s.hk3.hyhuawei.com
+  port: 443
+  uuid: a18ef18e-293a-11ef-b76e-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 54 (家宽) - xiaohe
+  type: ss
+  server: 209.46.102.22
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: 1hhrqrokj3ag
+  udp: true
+- name: 🇺🇸 美国 (United States) 55 (家宽) - xiaohe
+  type: vless
+  server: 2.27.205.59
+  port: 443
+  uuid: c21631d5-36c9-4664-b575-97eca17456be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 2.27.205.59
+- name: 🇬🇧 英国 (United Kingdom) 56 (家宽) - xiaohe
+  type: vless
+  server: 91.193.58.215
+  port: 2083
+  uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vlso4.1d.mom
+- name: 🇺🇸 美国 (United States) 57 (家宽) - xiaohe
+  type: ss
+  server: 198.98.53.130
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇰🇷 韩国 (South Korea) 58 (家宽) - xiaohe
+  type: trojan
+  server: 154.90.62.70
+  port: 56127
+  password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
+  udp: true
+  sni: 154.90.62.70
+  skip-cert-verify: true
+- name: 🇬🇧 英国 (United Kingdom) 59 (家宽) - xiaohe
+  type: vmess
+  server: 66.163.117.58
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 60 (家宽) - xiaohe
+  type: vmess
+  server: 216.106.185.141
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 61 (家宽) - xiaohe
+  type: vless
+  server: 149.248.79.235
+  port: 17301
+  uuid: 3571b127-4b3b-4c01-8249-1684daf586b5
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: nadshlxG0RqC6om__cf9E4F6qolRmHJLcNtReBTr9xY
+  servername: aws.amazon.com
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 62 (家宽) - xiaohe
+  type: vless
+  server: 31.76.88.10
+  port: 443
+  uuid: 03c48eca-e0aa-4e18-998c-1f53f1de293c
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /cdn/v3/live
+    headers:
+      Host: cf5.rumedia-cdn.com
+- name: 🇺🇸 美国 (United States) 63 (家宽) - xiaohe
+  type: vmess
+  server: 67.220.72.237
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 64 (家宽) - xiaohe
+  type: ss
+  server: 108.181.57.93
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: RSo52SbxW40r
+  udp: true
+- name: 🇩🇪 德国 (Germany) 65 (家宽) - xiaohe
+  type: ss
+  server: 185.226.172.8
+  port: 8008
+  cipher: aes-256-gcm
+  password: XKFKl2rULjIp74
+  udp: true
+- name: 🇩🇪 德国 (Germany) 66 (家宽) - xiaohe
+  type: vless
+  server: 87.120.84.32
+  port: 8443
+  uuid: 93dac4b8-3879-4179-abdb-9666a9e2ca8d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 87.120.84.32
+- name: 🇩🇪 德国 (Germany) 67 (家宽) - xiaohe
+  type: vless
+  server: 87.120.84.32
+  port: 33843
+  uuid: 93dac4b8-3879-4179-abdb-9666a9e2ca8d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 68 (家宽) - xiaohe
+  type: ss
+  server: 144.31.243.2
+  port: 16015
+  cipher: chacha20-ietf-poly1305
+  password: J1InuU6QRT5JOh1mQfkjU2
+  udp: true
+- name: 🇺🇸 美国 (United States) 69 (家宽) - xiaohe
+  type: trojan
+  server: 64.20.209.125
+  port: 443
+  password: UQfj7bdfjibTjpUHfg72aew51S7fB32g
+  udp: true
+  sni: 64.20.209.125
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 70 (家宽) - xiaohe
+  type: trojan
+  server: 119.246.1.143
+  port: 443
+  password: BxceQaOe
+  udp: true
+  sni: t.me
+  skip-cert-verify: true
+- name: 🇹🇼 中国台湾 (Taiwan) 71 (家宽) - xiaohe
+  type: vless
+  server: 118.167.200.67
+  port: 24215
+  uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
+  servername: addons.mozilla.org
+  client-fingerprint: chrome
+- name: 🇹🇼 中国台湾 (Taiwan) 72 (家宽) - xiaohe
   type: vless
   server: 60.248.219.78
   port: 443
@@ -17,80 +730,195 @@ proxies:
     path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     headers:
       Host: ty986gfazs.cainiaohub.xyz
-- name: 🇹🇼 中国台湾 (Taiwan) 02 (家宽) - xiaohe
+- name: 🇹🇼 中国台湾 (Taiwan) 73 (家宽) - xiaohe
   type: ss
   server: 36.224.152.189
   port: 50099
   cipher: chacha20-ietf-poly1305
   password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
   udp: true
-- name: 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
-  type: trojan
-  server: 119.246.1.143
-  port: 443
-  password: BxceQaOe
-  udp: true
-  sni: 119.246.1.143
-  skip-cert-verify: true
-- name: 🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe
+- name: 🇩🇪 德国 (Germany) 74 (家宽) - xiaohe
   type: vless
-  server: 118.167.200.67
-  port: 24215
-  uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
+  server: 163.8.195.241
+  port: 2087
+  uuid: 56ba5d34-ef22-4ba6-8090-4188b807df54
   udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
-  servername: addons.mozilla.org
-  client-fingerprint: chrome
-- name: 🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe
-  type: vless
-  server: 60.248.219.53
-  port: 443
-  uuid: f1d247db-d7ce-4eb8-9c0d-7b10603cd0b4
-  udp: true
-  tls: true
+  tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
+    path: /29c8fed7ca22
     headers:
-      Host: ty986gfazs.cainiaohub.xyz
-- name: 🇹🇼 中国台湾 (Taiwan) 06 (家宽) - xiaohe
-  type: vless
-  server: 60.248.219.52
-  port: 443
-  uuid: f265b49a-70a3-407a-b17b-e45dfb9f255c
+      Host: /?--v2rayNplus--v2rayNplus--v2rayNplus--
+- name: 🇹🇼 中国台湾 (Taiwan) 75 (家宽) - xiaohe
+  type: vmess
+  server: 165.154.195.38
+  port: 35034
+  uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
+  alterId: 0
+  cipher: auto
   udp: true
-  tls: true
+  tls: false
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
-    headers:
-      Host: ty986gfazs.cainiaohub.xyz
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) - xiaohe
-  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 06 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 01 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 02 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 03 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 04 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 05 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 06 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 07 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 08 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 09 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 10 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 11 (家宽) - xiaohe
+  - 🇯🇵 日本 (Japan) 12 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 13 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 14 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 15 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 16 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 17 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 18 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 19 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 20 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 21 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 22 (家宽) - xiaohe
+  - 🇯🇵 日本 (Japan) 23 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 24 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 25 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 26 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 27 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 28 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 29 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 30 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 31 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 32 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 33 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 34 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 35 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 36 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 37 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 38 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 39 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 40 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 41 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 42 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 43 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 44 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 45 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 46 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 47 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 48 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 49 (家宽) - xiaohe
+  - 🇯🇵 日本 (Japan) 50 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 51 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 52 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 53 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 54 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 55 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 56 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 57 (家宽) - xiaohe
+  - 🇰🇷 韩国 (South Korea) 58 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 59 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 60 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 61 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 62 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 63 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 64 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 65 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 66 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 67 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 68 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 69 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 70 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 71 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 72 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 73 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 74 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 75 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 02 (家宽) - xiaohe
-  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 06 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 01 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 02 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 03 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 04 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 05 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 06 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 07 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 08 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 09 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 10 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 11 (家宽) - xiaohe
+  - 🇯🇵 日本 (Japan) 12 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 13 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 14 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 15 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 16 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 17 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 18 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 19 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 20 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 21 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 22 (家宽) - xiaohe
+  - 🇯🇵 日本 (Japan) 23 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 24 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 25 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 26 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 27 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 28 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 29 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 30 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 31 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 32 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 33 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 34 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 35 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 36 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 37 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 38 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 39 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 40 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 41 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 42 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 43 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 44 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 45 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 46 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 47 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 48 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 49 (家宽) - xiaohe
+  - 🇯🇵 日本 (Japan) 50 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 51 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 52 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 53 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 54 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 55 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 56 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 57 (家宽) - xiaohe
+  - 🇰🇷 韩国 (South Korea) 58 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 59 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 60 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 61 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 62 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 63 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 64 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 65 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 66 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 67 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 68 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 69 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 70 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 71 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 72 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 73 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 74 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 75 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

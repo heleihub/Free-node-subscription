@@ -5,16 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇸🇬 新加坡 (Singapore) 01 - xiaohe
-  type: vmess
-  server: 149.88.23.207
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 02 - xiaohe
   type: trojan
   server: ww12.levikogjgfdd.ir
   port: 50573
@@ -22,7 +12,7 @@ proxies:
   udp: true
   sni: ww12.levikogjgfdd.ir
   skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 03 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 02 - xiaohe
   type: vless
   server: 149.118.55.234
   port: 443
@@ -35,47 +25,31 @@ proxies:
     path: /xlordgrim/sg
     headers:
       Host: edge.xlordgrim.com
+- name: 🇸🇬 新加坡 (Singapore) 03 - xiaohe
+  type: vmess
+  server: 149.88.23.207
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 04 - xiaohe
-  type: trojan
-  server: 86.38.247.109
-  port: 2087
-  password: sshs8_6481354771
-  udp: true
-  sni: ul-singapore1.09vpn.com
-  skip-cert-verify: true
-- name: 🇸🇬 新加坡 (Singapore) 05 - xiaohe
-  type: vless
-  server: 8.222.193.153
-  port: 443
-  uuid: 8525fe74-67e6-4a55-8a26-95f227bd1384
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: white-forest-2c01.alvlirm222.workers.dev
-- name: 🇸🇬 新加坡 (Singapore) 06 - xiaohe
   type: ss
   server: 176.97.64.144
   port: 8388
   cipher: chacha20-ietf-poly1305
   password: TFElG2FVqyqG
   udp: true
-- name: 🇸🇬 新加坡 (Singapore) 07 - xiaohe
+- name: 🇸🇬 新加坡 (Singapore) 05 - xiaohe
   type: vless
-  server: 175.41.179.37
-  port: 51262
-  uuid: 903fed13-8e78-4fa2-a83e-b392b289741f
+  server: 134.122.154.210
+  port: 443
+  uuid: 7f549a50-4655-46b6-962d-183cfc532fc9
   udp: true
-  tls: true
+  tls: false
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: 3tmj2egtm-fno.49bnithzk8vphybv36d1z1xkzfvogt2m6.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
@@ -86,8 +60,6 @@ proxy-groups:
   - 🇸🇬 新加坡 (Singapore) 03 - xiaohe
   - 🇸🇬 新加坡 (Singapore) 04 - xiaohe
   - 🇸🇬 新加坡 (Singapore) 05 - xiaohe
-  - 🇸🇬 新加坡 (Singapore) 06 - xiaohe
-  - 🇸🇬 新加坡 (Singapore) 07 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -98,7 +70,5 @@ proxy-groups:
   - 🇸🇬 新加坡 (Singapore) 03 - xiaohe
   - 🇸🇬 新加坡 (Singapore) 04 - xiaohe
   - 🇸🇬 新加坡 (Singapore) 05 - xiaohe
-  - 🇸🇬 新加坡 (Singapore) 06 - xiaohe
-  - 🇸🇬 新加坡 (Singapore) 07 - xiaohe
 rules:
 - MATCH,PROXIES

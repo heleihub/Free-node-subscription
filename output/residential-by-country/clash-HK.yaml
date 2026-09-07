@@ -5,12 +5,39 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
+  type: vmess
+  server: 143.14.189.125
+  port: 21316
+  uuid: 116f6ecd-275e-4b50-921d-780e78a526cb
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: ''
+    headers:
+      Host: ''
+- name: 🇭🇰 中国香港 (Hong Kong) 02 (家宽) - xiaohe
+  type: vless
+  server: 002282db-tla000-u1dafb-1ro8s.hk3.hyhuawei.com
+  port: 443
+  uuid: a18ef18e-293a-11ef-b76e-f23c91cfbbc9
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+  servername: updates.cdn-apple.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
   type: trojan
   server: 119.246.1.143
   port: 443
   password: BxceQaOe
   udp: true
-  sni: 119.246.1.143
+  sni: t.me
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
@@ -18,11 +45,15 @@ proxy-groups:
   proxies:
   - AUTO
   - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
   - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 02 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

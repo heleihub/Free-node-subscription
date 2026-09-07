@@ -4,13 +4,11 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇹🇼 中国台湾 (Taiwan) 01 - xiaohe
-  type: vmess
-  server: 165.154.195.38
-  port: 35034
-  uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
-  alterId: 0
-  cipher: auto
+- name: 🇨🇴 CO 01 - xiaohe
+  type: vless
+  server: 149.130.188.248
+  port: 62145
+  uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
   udp: true
   tls: false
   skip-cert-verify: true
@@ -19,12 +17,12 @@ proxy-groups:
   type: select
   proxies:
   - AUTO
-  - 🇹🇼 中国台湾 (Taiwan) 01 - xiaohe
+  - 🇨🇴 CO 01 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇹🇼 中国台湾 (Taiwan) 01 - xiaohe
+  - 🇨🇴 CO 01 - xiaohe
 rules:
 - MATCH,PROXIES

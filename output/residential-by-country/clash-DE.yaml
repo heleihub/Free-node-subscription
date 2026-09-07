@@ -1,0 +1,119 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇩🇪 德国 (Germany) 01 (家宽) - xiaohe
+  type: vless
+  server: 151.242.17.99
+  port: 8443
+  uuid: a04814d9-d006-4e7b-ae20-8ab304b3b429
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 6Yskxg5U0WxPGtuCAAGH9uD57T4U8LeGrErTBNvIrwM
+  servername: de.emvservice.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 02 (家宽) - xiaohe
+  type: vless
+  server: 144.31.106.40
+  port: 8443
+  uuid: 758f49d3-5f5f-47e7-bfa4-4ce96faf800d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: NI5Rkfn6zO_gF-UC1nuvJwu4SDakCXh3ygJOKU1EITU
+  servername: cdn.shopify.com
+  client-fingerprint: chrome
+- name: 🇩🇪 德国 (Germany) 03 (家宽) - xiaohe
+  type: vless
+  server: 146.103.42.161
+  port: 443
+  uuid: e7099864-b110-493c-9541-4a4638dc8299
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /jryRJzwfISH4eaAVKgp2Zfw
+    headers:
+      Host: 146.103.42.161
+- name: 🇩🇪 德国 (Germany) 04 (家宽) - xiaohe
+  type: ss
+  server: 209.46.102.22
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: 1hhrqrokj3ag
+  udp: true
+- name: 🇩🇪 德国 (Germany) 05 (家宽) - xiaohe
+  type: ss
+  server: 185.226.172.8
+  port: 8008
+  cipher: aes-256-gcm
+  password: XKFKl2rULjIp74
+  udp: true
+- name: 🇩🇪 德国 (Germany) 06 (家宽) - xiaohe
+  type: vless
+  server: 87.120.84.32
+  port: 8443
+  uuid: 93dac4b8-3879-4179-abdb-9666a9e2ca8d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 87.120.84.32
+- name: 🇩🇪 德国 (Germany) 07 (家宽) - xiaohe
+  type: vless
+  server: 87.120.84.32
+  port: 33843
+  uuid: 93dac4b8-3879-4179-abdb-9666a9e2ca8d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+- name: 🇩🇪 德国 (Germany) 08 (家宽) - xiaohe
+  type: vless
+  server: 163.8.195.241
+  port: 2087
+  uuid: 56ba5d34-ef22-4ba6-8090-4188b807df54
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /29c8fed7ca22
+    headers:
+      Host: /?--v2rayNplus--v2rayNplus--v2rayNplus--
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇩🇪 德国 (Germany) 01 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 02 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 03 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 04 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 05 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 06 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 07 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 08 (家宽) - xiaohe
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - 🇩🇪 德国 (Germany) 01 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 02 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 03 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 04 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 05 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 06 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 07 (家宽) - xiaohe
+  - 🇩🇪 德国 (Germany) 08 (家宽) - xiaohe
+rules:
+- MATCH,PROXIES

@@ -4,29 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇳🇴 NO 01 - xiaohe
+- name: 🇱🇻 LV 01 - xiaohe
   type: vless
-  server: 46.29.238.139
-  port: 40443
-  uuid: 8384341b-cd89-4a21-a022-cc4bd4e648ca
+  server: 89.36.161.222
+  port: 2096
+  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
   udp: true
-  tls: true
+  tls: false
   skip-cert-verify: true
-  reality-opts:
-    public-key: 7i4Y7v80NVAIi_4_9roDkqcXmexIHli87dfZuFaQMUI
-  servername: deepl.com
-  client-fingerprint: firefox
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: laoye.in-gect.fun
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇳🇴 NO 01 - xiaohe
+  - 🇱🇻 LV 01 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
   interval: 300
   proxies:
-  - 🇳🇴 NO 01 - xiaohe
+  - 🇱🇻 LV 01 - xiaohe
 rules:
 - MATCH,PROXIES
