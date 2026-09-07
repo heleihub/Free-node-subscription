@@ -39,14 +39,6 @@ def ensure_directories():
 
 ensure_directories()
 
-VALID_SS_CIPHERS = {
-    "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
-    "chacha20-ietf-poly1305", "xchacha20-ietf-poly1305",
-    "2022-blake3-aes-128-gcm", "2022-blake3-aes-256-gcm",
-    "2022-blake3-chacha20-poly1305", "aes-128-ctr", "aes-192-ctr",
-    "aes-256-ctr", "aes-128-cfb", "aes-192-cfb", "aes-256-cfb", "rc4-md5"
-}
-
 DATACENTER_ASNS = {
     13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
     14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081,
@@ -169,28 +161,35 @@ def parse_node_to_xray_outbound(node_str):
             m = re.search(r"vless://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
             if not m:
                 return None, None, None
-            uuid, server, port_s, query = m.groups()
+            uuid_str, server, port_s, query = m.groups()
             port = int(port_s)
             params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
             
+            # 过滤掉无法通过 GFW 的纯明文无证书节点
+            if params.get("security") not in ["tls", "reality"]:
+                return None, None, None
+
             outbound = {
                 "protocol": "vless",
                 "settings": {
                     "vnext": [{
                         "address": server,
                         "port": port,
-                        "users": [{"id": uuid, "encryption": params.get("encryption", "none")}]
+                        "users": [{"id": uuid_str, "encryption": params.get("encryption", "none")}]
                     }]
                 },
                 "streamSettings": {
                     "network": params.get("type", "tcp"),
-                    "security": params.get("security", "none")
+                    "security": params.get("security")
                 }
             }
             if params.get("security") == "reality":
+                pbk = params.get("pbk", "")
+                if not pbk:
+                    return None, None, None
                 outbound["streamSettings"]["realitySettings"] = {
                     "serverName": params.get("sni", server),
-                    "publicKey": params.get("pbk", ""),
+                    "publicKey": pbk,
                     "shortId": params.get("sid", ""),
                     "fingerprint": params.get("fp", "chrome")
                 }
@@ -212,22 +211,23 @@ def parse_node_to_xray_outbound(node_str):
             data = json.loads(base64.b64decode(b64).decode('utf-8', errors='ignore'))
             server = str(data.get("add", "")).strip()
             port = int(data.get("port", 0))
-            uuid = str(data.get("id", "")).strip()
+            uuid_str = str(data.get("id", "")).strip()
             if not server or port <= 0:
                 return None, None, None
             
+            is_tls = data.get("tls") in ["tls", "1"]
             outbound = {
                 "protocol": "vmess",
                 "settings": {
                     "vnext": [{
                         "address": server,
                         "port": port,
-                        "users": [{"id": uuid, "alterId": int(data.get("aid", 0)), "security": "auto"}]
+                        "users": [{"id": uuid_str, "alterId": int(data.get("aid", 0)), "security": "auto"}]
                     }]
                 },
                 "streamSettings": {
                     "network": data.get("net", "tcp"),
-                    "security": "tls" if data.get("tls") in ["tls", "1"] else "none"
+                    "security": "tls" if is_tls else "none"
                 }
             }
             if data.get("net") == "ws":
@@ -257,31 +257,6 @@ def parse_node_to_xray_outbound(node_str):
                 }
             }
             return outbound, server, port
-
-        elif node_str.startswith("ss://"):
-            raw = node_str[5:]
-            server, port, password, cipher = "", 0, "", ""
-            if "@" in raw:
-                user_info, host_info = raw.split("@", 1)
-                user_info += '=' * (-len(user_info) % 4)
-                try:
-                    dec = base64.b64decode(user_info).decode('utf-8', errors='ignore')
-                    if ":" in dec:
-                        cipher, password = dec.split(":", 1)
-                except Exception:
-                    pass
-                host_info = host_info.split("#")[0]
-                if ":" in host_info:
-                    server, port_s = host_info.split(":", 1)
-                    port = int(port_s.split("/")[0])
-            if server and port > 0 and cipher in VALID_SS_CIPHERS:
-                outbound = {
-                    "protocol": "shadowsocks",
-                    "settings": {
-                        "servers": [{"address": server, "port": port, "method": cipher, "password": password}]
-                    }
-                }
-                return outbound, server, port
     except Exception:
         pass
     return None, None, None
@@ -346,29 +321,16 @@ def convert_to_clash_dict(node_str, name):
                 "sni": stream.get("tlsSettings", {}).get("serverName", server),
                 "skip-cert-verify": True
             }
-        elif proto == "shadowsocks":
-            srv = outbound["settings"]["servers"][0]
-            return {
-                "name": name,
-                "type": "ss",
-                "server": server,
-                "port": port,
-                "cipher": srv["method"],
-                "password": srv["password"],
-                "udp": True
-            }
     except Exception:
         pass
     return None
 
 def test_single_node_xray(node_tuple):
-    """每个并发任务分配完全唯一的随机 UUID 临时配置文件，杜绝冲突"""
     raw_node, server, port = node_tuple
     outbound, _, _ = parse_node_to_xray_outbound(raw_node)
     if not outbound:
         return None
 
-    # 动态获取一个本地空闲端口
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind(('127.0.0.1', 0))
         socks_port = s.getsockname()[1]
@@ -401,11 +363,11 @@ def test_single_node_xray(node_tuple):
             "http": f"socks5h://127.0.0.1:{socks_port}",
             "https": f"socks5h://127.0.0.1:{socks_port}"
         }
-        # 真正通过代理拉取 HTTP 204
-        resp = requests.get("http://connectivitycheck.gstatic.com/generate_204", proxies=proxies, timeout=3.2)
+        # 严苛测活：真实拉取 HTTP 204，拒绝 TCP 假连接
+        resp = requests.get("http://connectivitycheck.gstatic.com/generate_204", proxies=proxies, timeout=3.5)
         if resp.status_code == 204:
             delay_ms = int((time.time() - start_t) * 1000)
-            if 30 < delay_ms < 2800:
+            if 50 < delay_ms < 2600:
                 success = True
     except Exception:
         success = False
@@ -423,18 +385,17 @@ def test_single_node_xray(node_tuple):
     return None
 
 def run_real_delay_test_xray(candidates):
-    print(f"[*] 启动 Xray 官方内核真连通测试，物理候选节点数: {len(candidates)}...")
+    print(f"[*] 启动 Xray 真实双向 HTTP 通道测活，物理独立候选节点: {len(candidates)}...")
     alive = []
-    # 25 个并发测试，兼顾稳定性与准确性
-    with ThreadPoolExecutor(max_workers=25) as executor:
+    with ThreadPoolExecutor(max_workers=30) as executor:
         futures = {executor.submit(test_single_node_xray, item): item for item in candidates}
         for future in as_completed(futures):
             res = future.result()
             if res:
                 alive.append(res)
                 if len(alive) % 20 == 0:
-                    print(f"[+] 当前已确认真实通畅节点: {len(alive)} 个")
-    print(f"[+] Xray 测试完成！真实可用节点总量: {len(alive)}")
+                    print(f"[+] 当前已核验可用节点: {len(alive)} 个")
+    print(f"[+] 测活完成！真实可用节点总数: {len(alive)}")
     return alive
 
 def rename_node_link(raw_link, new_name):
@@ -560,7 +521,16 @@ def format_node_group(nodes_list, res_tag_force=False):
     formatted_links = []
     formatted_proxies = []
     
-    for idx, item in enumerate(nodes_list, start=1):
+    # 局部物理排重，确保每个出库文件没有一个重复 IP:端口
+    seen_local = set()
+    cleaned = []
+    for item in nodes_list:
+        ep = f"{item['server_ip']}:{item['port']}"
+        if ep not in seen_local:
+            seen_local.add(ep)
+            cleaned.append(item)
+
+    for idx, item in enumerate(cleaned, start=1):
         cc = item["country"]
         flag = get_country_flag(cc)
         c_name = COUNTRY_NAMES.get(cc, cc)
@@ -635,6 +605,8 @@ def export_subscriptions(verified_nodes):
 
 def update_readme():
     repo_name = os.environ.get("GITHUB_REPOSITORY", "heleihub/Free-node-subscription").strip()
+    # 动态时间戳，用来击碎 jsDelivr 的顽固死缓存
+    cache_bust = int(time.time())
     
     def count_file(path):
         if not os.path.exists(path):
@@ -675,11 +647,12 @@ def update_readme():
         flag = get_country_flag(cc)
         name = COUNTRY_NAMES.get(cc, cc)
         cnt = res_counts[cc]
-        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/{cc}.txt"
+        # 带上 ?v={cache_bust}，客户端点击或拉取绝不会拿到旧缓存
+        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/{cc}.txt?v={cache_bust}"
         v2_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/{cc}.txt"
-        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/clash-{cc}.yaml"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/clash-{cc}.yaml?v={cache_bust}"
         clash_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/clash-{cc}.yaml"
-        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/singbox-{cc}.json"
+        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/singbox-{cc}.json?v={cache_bust}"
         sb_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/singbox-{cc}.json"
 
         col_v2 = f"[CDN 直链]({v2_cdn}) · [Raw 直链]({v2_raw})"
@@ -693,11 +666,11 @@ def update_readme():
         flag = get_country_flag(cc)
         name = COUNTRY_NAMES.get(cc, cc)
         cnt = normal_counts[cc]
-        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/{cc}.txt"
+        v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/{cc}.txt?v={cache_bust}"
         v2_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/{cc}.txt"
-        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/clash-{cc}.yaml"
+        clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/clash-{cc}.yaml?v={cache_bust}"
         clash_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/clash-{cc}.yaml"
-        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/singbox-{cc}.json"
+        sb_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/by-country/singbox-{cc}.json?v={cache_bust}"
         sb_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/by-country/singbox-{cc}.json"
 
         col_v2 = f"[CDN 直链]({v2_cdn}) · [Raw 直链]({v2_raw})"
@@ -750,9 +723,9 @@ export default {
 
 | 客户端 / 格式类型 | 节点总数 | 免翻 CDN 订阅直链 (国内直连) | 官方原生 Raw 直链 (开启代理) |
 | :--- | :---: | :--- | :--- |
-| 🚀 **Clash (YAML 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo_name}@main/output/clash.yaml` | `https://raw.githubusercontent.com/{repo_name}/main/output/clash.yaml` |
-| ⚡ **V2RayN (Base64 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo_name}@main/output/v2ray.txt` | `https://raw.githubusercontent.com/{repo_name}/main/output/v2ray.txt` |
-| 📦 **sing-box (JSON 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo_name}@main/output/singbox.json` | `https://raw.githubusercontent.com/{repo_name}/main/output/singbox.json` |
+| 🚀 **Clash (YAML 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo_name}@main/output/clash.yaml?v={cache_bust}` | `https://raw.githubusercontent.com/{repo_name}/main/output/clash.yaml` |
+| ⚡ **V2RayN (Base64 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo_name}@main/output/v2ray.txt?v={cache_bust}` | `https://raw.githubusercontent.com/{repo_name}/main/output/v2ray.txt` |
+| 📦 **sing-box (JSON 格式)** | `{total_count}` | `https://cdn.jsdelivr.net/gh/{repo_name}@main/output/singbox.json?v={cache_bust}` | `https://raw.githubusercontent.com/{repo_name}/main/output/singbox.json` |
 
 ---
 
