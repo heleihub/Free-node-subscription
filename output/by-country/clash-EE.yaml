@@ -21,13 +21,18 @@ proxies:
   tls: true
   skip-cert-verify: true
 - name: 🇪🇪 EE 03 - xiaohe
-  type: trojan
-  server: 109.206.241.10
-  port: 449
-  password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+  type: vless
+  server: 94.183.170.248
+  port: 443
+  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
   udp: true
-  sni: russiapower.accesscam.org
+  tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 94.183.170.248
 - name: 🇪🇪 EE 04 - xiaohe
   type: vless
   server: 94.183.170.135
@@ -43,19 +48,6 @@ proxies:
       Host: 94.183.170.135
 - name: 🇪🇪 EE 05 - xiaohe
   type: vless
-  server: 94.183.170.248
-  port: 443
-  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 94.183.170.248
-- name: 🇪🇪 EE 06 - xiaohe
-  type: vless
   server: 45.80.108.236
   port: 443
   uuid: ef9d2063-0140-472b-8b17-ba02ba4b4435
@@ -67,6 +59,14 @@ proxies:
     path: /
     headers:
       Host: lively-resonance-4e12.electrocellco-cf-059.workers.dev
+- name: 🇪🇪 EE 06 - xiaohe
+  type: trojan
+  server: 109.206.241.10
+  port: 449
+  password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+  udp: true
+  sni: russiapower.accesscam.org
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select

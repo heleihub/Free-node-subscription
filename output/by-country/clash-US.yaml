@@ -5,26 +5,6 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇺🇸 美国 (United States) 01 - xiaohe
-  type: ss
-  server: 15.204.247.124
-  port: 2375
-  cipher: aes-256-gcm
-  password: faBAoD54k87UJG7
-  udp: true
-- name: 🇺🇸 美国 (United States) 02 - xiaohe
-  type: vless
-  server: 172.66.2.13
-  port: 2053
-  uuid: 50414e45-4c5f-5a45-5553-60c86b8747e5
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /api/ws
-    headers:
-      Host: web-app-aug8yr.app-f1qsy1.workers.dev
-- name: 🇺🇸 美国 (United States) 03 - xiaohe
   type: vless
   server: 162.159.152.4
   port: 443
@@ -36,466 +16,8 @@ proxies:
   ws-opts:
     path: /
     headers:
-      Host: rayan-007.maxima.dpdns.org
-- name: 🇺🇸 美国 (United States) 04 - xiaohe
-  type: vless
-  server: 66.235.200.30
-  port: 8880
-  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: vms.lifetime47.workers.dev
-- name: 🇺🇸 美国 (United States) 05 - xiaohe
-  type: vless
-  server: 162.159.133.82
-  port: 443
-  uuid: 07974401-62dd-4ec3-b9e0-42c08accbc04
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: wallweb-9gw.pages.dev
-- name: 🇺🇸 美国 (United States) 06 - xiaohe
-  type: trojan
-  server: 64.94.95.118
-  port: 57142
-  password: kkzh2prsyr2ik47as615
-  udp: true
-  sni: 64.94.95.118
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 07 - xiaohe
-  type: hysteria2
-  server: 155.248.209.237
-  port: 33333
-  password: bce6c821-200d-421f-bf3d-7159e5246ea0
-  sni: 155.248.209.237
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 08 - xiaohe
-  type: vless
-  server: 128.241.25.72
-  port: 30021
-  uuid: 65f26a08-9a5e-4b28-9004-f98676cc1e49
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: 2-gys60wmzb6bqzd.qpsjn114hh3vlph9z60sesz0agjawpwroneg.workers.dev
-- name: 🇺🇸 美国 (United States) 09 - xiaohe
-  type: vless
-  server: 128.241.25.11
-  port: 30021
-  uuid: 40ca0d8c-0641-4e2d-a701-9fd8330daf6d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev
-- name: 🇺🇸 美国 (United States) 10 - xiaohe
-  type: trojan
-  server: 64.94.95.115
-  port: 57142
-  password: kkzh2prsyr2ik47as615
-  udp: true
-  sni: 64.94.95.115
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 11 - xiaohe
-  type: vless
-  server: 63.141.128.22
-  port: 443
-  uuid: b8b01773-36b1-4b49-9bd0-6249f52345b4
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /eyJqdW5rIjoiTkNUaFg0ZnJNUjhhcyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=
-    headers:
-      Host: MiSty-tooth-78cA.FoboGAH414-e7B.WoRKERs.DEv
-- name: 🇺🇸 美国 (United States) 12 - xiaohe
-  type: vless
-  server: 141.193.27.4
-  port: 80
-  uuid: e403856e-4e50-49e6-9edc-d9536a803a6a
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /pyip=Telegram🇨🇳+@WangCai2
-    headers:
-      Host: proud-cloud-5c50.113-8dc.workers.dev
-- name: 🇺🇸 美国 (United States) 13 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 38261
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 14 - xiaohe
-  type: hysteria2
-  server: 163.192.14.135
-  port: 50160
-  password: 099830134df5ac3a04a4b21d39b8c395
-  sni: 163.192.14.135
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 15 - xiaohe
-  type: vmess
-  server: 67.220.72.237
-  port: 22324
-  uuid: 04621bae-ab36-11ec-b909-0242ac120002
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 16 - xiaohe
-  type: vless
-  server: 128.241.25.215
-  port: 30036
-  uuid: 196b7228-58df-4bcf-af2a-2e96608d5add
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: 2-gys60wmzb6bqzd.qpsjn114hh3vlph9z60sesz0agjawpwroneg.workers.dev
-- name: 🇺🇸 美国 (United States) 17 - xiaohe
-  type: ss
-  server: 38.180.135.156
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: YHtesZ0qvgtg
-  udp: true
-- name: 🇺🇸 美国 (United States) 18 - xiaohe
-  type: trojan
-  server: us01.duotg.top
-  port: 46292
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com%23%F0%9F%90%B297%40oneclickvpnkeys
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 19 - xiaohe
-  type: vless
-  server: 128.241.25.3
-  port: 30021
-  uuid: afec813e-a5c7-432d-be48-2803c30eea4e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev
-- name: 🇺🇸 美国 (United States) 20 - xiaohe
-  type: ss
-  server: 15.204.246.189
-  port: 8119
-  cipher: aes-256-gcm
-  password: cdBIDV42DCwnfIN
-  udp: true
-- name: 🇺🇸 美国 (United States) 21 - xiaohe
-  type: vless
-  server: 170.114.46.6
-  port: 80
-  uuid: 6aa028bc-08a9-41d1-a397-d60ce65df081
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /shalana
-    headers:
-      Host: shalana.xyz
-- name: 🇺🇸 美国 (United States) 22 - xiaohe
-  type: hysteria2
-  server: hy2.561891.xyz
-  port: 44356
-  password: dongtaiwang.com
-  sni: hy2.561891.xyz
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 23 - xiaohe
-  type: vless
-  server: 66.81.247.155
-  port: 2083
-  uuid: 6cc29a05-4828-4e48-a34a-20b7ada60e85
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /OAZko425kNFF0PpQ
-    headers:
-      Host: testmikonim.hydrymhmdamyn7.workers.dev
-- name: 🇺🇸 美国 (United States) 24 - xiaohe
-  type: ss
-  server: 15.204.246.108
-  port: 8881
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-  udp: true
-- name: 🇺🇸 美国 (United States) 25 - xiaohe
-  type: vless
-  server: 130.12.102.62
-  port: 443
-  uuid: 6429d27e-a7d4-4e04-ae57-e88243fbbfe3
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I
-    short-id: ''
-  servername: localhost
-  client-fingerprint: chrome
-- name: 🇺🇸 美国 (United States) 26 - xiaohe
-  type: vless
-  server: 147.189.129.144
-  port: 2087
-  uuid: 090a3fa8-973f-4812-9b69-ed982082a933
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /4ad49ed0a3d5
-    headers:
-      Host: 147.189.129.144
-- name: 🇺🇸 美国 (United States) 27 - xiaohe
-  type: vless
-  server: us6.lunariai.ru
-  port: 443
-  uuid: 170e1be8-e51b-4a82-a779-3ad27b78607c
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: us6.lunariai.ru
-- name: 🇺🇸 美国 (United States) 28 - xiaohe
-  type: hysteria2
-  server: vpn-us-006.fastervpn.world
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: vpn-us-006.fastervpn.world
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 29 - xiaohe
-  type: vless
-  server: 162.159.152.205
-  port: 443
-  uuid: c98a16e4-0dc5-42f0-b3db-30f04525c123
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: vless2-8vx.pages.dev
-- name: 🇺🇸 美国 (United States) 30 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 54657
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: us01.duotg.top
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 31 - xiaohe
-  type: vless
-  server: 147.189.129.155
-  port: 2087
-  uuid: 090a3fa8-973f-4812-9b69-ed982082a933
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /4ad49ed0a3d5
-    headers:
-      Host: 147.189.129.155
-- name: 🇺🇸 美国 (United States) 32 - xiaohe
-  type: vless
-  server: 116.204.164.27
-  port: 7443
-  uuid: 3e438472-0f1e-4bbf-be5a-67d034afd8c0
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev
-- name: 🇺🇸 美国 (United States) 33 - xiaohe
-  type: vless
-  server: 2.27.205.59
-  port: 443
-  uuid: c21631d5-36c9-4664-b575-97eca17456be
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: neth8.lunariai.ru
-- name: 🇺🇸 美国 (United States) 34 - xiaohe
-  type: vless
-  server: 162.159.142.17
-  port: 2053
-  uuid: 50414e45-4c5f-5a45-5553-60c86b8747e5
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /api/ws
-    headers:
-      Host: web-app-aug8yr.app-f1qsy1.workers.dev
-- name: 🇺🇸 美国 (United States) 35 - xiaohe
-  type: trojan
-  server: 18.65.190.65
-  port: 443
-  password: 5c777277-17f2-4272-ae65-7bd00fa4fbaa
-  udp: true
-  sni: wel-jp.optage.moe
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 36 - xiaohe
-  type: vmess
-  server: 67.220.95.3
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 37 - xiaohe
-  type: vless
-  server: 116.204.164.30
-  port: 7443
-  uuid: d5f29a64-da5d-4f99-b3c4-ae92cc39ad5f
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev
-- name: 🇺🇸 美国 (United States) 38 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 20065
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 39 - xiaohe
-  type: vless
-  server: 116.204.164.60
-  port: 7443
-  uuid: 48942ced-a272-41c1-98ac-75745d83bf93
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: bapj1qapjk4.0sds0li1bwcz0i76it0gjxv1.workers.dev
-- name: 🇺🇸 美国 (United States) 40 - xiaohe
-  type: ss
-  server: 138.199.43.159
-  port: 8080
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-  udp: true
-- name: 🇺🇸 美国 (United States) 41 - xiaohe
-  type: vless
-  server: 172.66.0.236
-  port: 2083
-  uuid: 44eae030-290b-4083-8102-6f8bab05701b
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: cfvvv-ev1.pages.dev
-- name: 🇺🇸 美国 (United States) 42 - xiaohe
-  type: ss
-  server: 15.204.233.41
-  port: 8882
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-  udp: true
-- name: 🇺🇸 美国 (United States) 43 - xiaohe
-  type: vmess
-  server: 165.140.216.142
-  port: 443
-  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 44 - xiaohe
-  type: ss
-  server: 15.204.246.111
-  port: 5498
-  cipher: aes-256-gcm
-  password: lGqs95QkFHo2NV
-  udp: true
-- name: 🇺🇸 美国 (United States) 45 - xiaohe
-  type: trojan
-  server: 107.150.105.84
-  port: 59385
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 46 - xiaohe
-  type: trojan
-  server: 207.246.97.36
-  port: 29739
-  password: i99Cef
-  udp: true
-  sni: download.windowsupdate.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 47 - xiaohe
-  type: vless
-  server: 162.159.156.214
-  port: 8880
-  uuid: 8991a496-1baa-486f-9948-ffe44e68c072
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /pyip=ProxyIP.SG.CMLiussss.net
-    headers:
-      Host: soft-band-8da6.426.workers.dev
-- name: 🇺🇸 美国 (United States) 48 - xiaohe
+      Host: rAyAn-007.mAxImA.DpDnS.OrG
+- name: 🇺🇸 美国 (United States) 02 - xiaohe
   type: vmess
   server: 129.146.77.248
   port: 39495
@@ -510,82 +32,17 @@ proxies:
     path: /cctv13.m3u8
     headers:
       Host: ''
-- name: 🇺🇸 美国 (United States) 49 - xiaohe
-  type: vless
-  server: 162.159.130.82
+- name: 🇺🇸 美国 (United States) 03 - xiaohe
+  type: vmess
+  server: 165.140.216.141
   port: 443
-  uuid: 07974401-62dd-4ec3-b9e0-42c08accbc04
+  uuid: e7d72a8d-26f2-4b54-b366-0c43e0bcba7d
+  alterId: 0
+  cipher: auto
   udp: true
-  tls: true
+  tls: false
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: wallweb-9gw.pages.dev
-- name: 🇺🇸 美国 (United States) 50 - xiaohe
-  type: vless
-  server: 146.190.124.36
-  port: 74
-  uuid: d38f648c-d7f3-4b0a-9ae9-273528846652
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
-- name: 🇺🇸 美国 (United States) 51 - xiaohe
-  type: ss
-  server: 107.151.182.197
-  port: 8080
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-  udp: true
-- name: 🇺🇸 美国 (United States) 52 - xiaohe
-  type: hysteria2
-  server: us4.xiaoliyu.cyou
-  port: 4433
-  password: 19f72087-4591-4d72-930b-2697078ec2be
-  sni: us4.xiaoliyu.cyou
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 53 - xiaohe
-  type: hysteria2
-  server: 159.223.157.129
-  port: 8443
-  password: suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g
-  sni: 159.223.157.129
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 54 - xiaohe
-  type: vless
-  server: 154.9.227.100
-  port: 443
-  uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vws/
-    headers:
-      Host: bab-6.site
-- name: 🇺🇸 美国 (United States) 55 - xiaohe
-  type: trojan
-  server: us01.duotg.top
-  port: 27732
-  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
-  udp: true
-  sni: www.microsoft.com
-  skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 56 - xiaohe
-  type: ss
-  server: 198.98.53.130
-  port: 443
-  cipher: chacha20-ietf-poly1305
-  password: eDfN7SODQceIOmIAbtJJtK
-  udp: true
-- name: 🇺🇸 美国 (United States) 57 - xiaohe
+- name: 🇺🇸 美国 (United States) 04 - xiaohe
   type: trojan
   server: 64.94.95.117
   port: 57142
@@ -593,57 +50,96 @@ proxies:
   udp: true
   sni: 64.94.95.117
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 58 - xiaohe
-  type: vmess
-  server: 38.110.1.246
-  port: 18000
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  alterId: 0
-  cipher: auto
+- name: 🇺🇸 美国 (United States) 05 - xiaohe
+  type: trojan
+  server: 64.94.95.115
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.115
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 06 - xiaohe
+  type: trojan
+  server: 64.94.95.118
+  port: 57142
+  password: kkzh2prsyr2ik47as615
+  udp: true
+  sni: 64.94.95.118
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 07 - xiaohe
+  type: ss
+  server: 15.204.246.111
+  port: 5498
+  cipher: aes-256-gcm
+  password: lGqs95QkFHo2NV
+  udp: true
+- name: 🇺🇸 美国 (United States) 08 - xiaohe
+  type: vless
+  server: 199.232.78.159
+  port: 443
+  uuid: c53fb39f-1e03-4ed4-ac4b-3dbdbda870c6
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER,TELEGRAM_NUFiLTER?ed=2053
+    headers:
+      Host: pan1.global.ssl.fastly.net
+- name: 🇺🇸 美国 (United States) 09 - xiaohe
+  type: vless
+  server: freshjuniper.download
+  port: 443
+  uuid: 6429d27e-a7d4-4e04-ae57-e88243fbbfe3
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I
+  servername: freshjuniper.download
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 10 - xiaohe
+  type: vless
+  server: 141.193.27.4
+  port: 80
+  uuid: e403856e-4e50-49e6-9edc-d9536a803a6a
   udp: true
   tls: false
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 59 - xiaohe
-  type: ss
-  server: 144.31.243.2
-  port: 16015
-  cipher: chacha20-ietf-poly1305
-  password: J1InuU6QRT5JOh1mQfkjU2
+  network: ws
+  ws-opts:
+    path: /pyip=Telegram🇨🇳+@WangCai2
+    headers:
+      Host: proud-cloud-5c50.113-8dc.workers.dev
+- name: 🇺🇸 美国 (United States) 11 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 54657
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
   udp: true
-- name: 🇺🇸 美国 (United States) 60 - xiaohe
-  type: ss
-  server: 108.181.0.177
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: G5p6ww4o67HB
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 12 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 20065
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
   udp: true
-- name: 🇺🇸 美国 (United States) 61 - xiaohe
+  sni: www.microsoft.com%233%F0%9F%90%B2%40oneclickvpnkeyshysteria2%3A%2F%2Fumndu7jgfyujpvjvm2sw9hl0rryljngzvwru2hzwehyzkkrx%40hold.wwwinternetvideo.click%3A443%2F%3Finsecure%3D1
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 13 - xiaohe
   type: vless
-  server: 116.204.164.17
-  port: 7443
-  uuid: ef8907eb-8bb5-4735-80f2-1d0068500d95
+  server: 23.94.227.94
+  port: 15884
+  uuid: c543f497-6a6d-4842-8317-a5f62ea56dc2
   udp: true
   tls: true
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev
-- name: 🇺🇸 美国 (United States) 62 - xiaohe
-  type: vless
-  server: 116.204.164.5
-  port: 7443
-  uuid: d25fa7ff-f71e-4cc2-88e6-a340b86fdebf
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev
-- name: 🇺🇸 美国 (United States) 63 - xiaohe
+  reality-opts:
+    public-key: rZAYGSqaklKNltwTGPpAok74VYCxV9uKvrOyydSn9UE
+  servername: www.intel.com
+  client-fingerprint: random
+- name: 🇺🇸 美国 (United States) 14 - xiaohe
   type: vless
   server: 31.76.88.10
   port: 443
@@ -656,7 +152,30 @@ proxies:
     path: /cdn/v3/live
     headers:
       Host: cf5.rumedia-cdn.com
-- name: 🇺🇸 美国 (United States) 64 - xiaohe
+- name: 🇺🇸 美国 (United States) 15 - xiaohe
+  type: vmess
+  server: 67.220.72.237
+  port: 22324
+  uuid: 04621bae-ab36-11ec-b909-0242ac120002
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 16 - xiaohe
+  type: vless
+  server: 162.159.133.82
+  port: 443
+  uuid: 07974401-62dd-4ec3-b9e0-42c08accbc04
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: wallweb-9gw.pages.dev
+- name: 🇺🇸 美国 (United States) 17 - xiaohe
   type: vless
   server: 2.26.91.98
   port: 1443
@@ -669,15 +188,371 @@ proxies:
     path: /@Marisa_kristi
     headers:
       Host: sxyyvihkektlx4rjxsdj.pkc73phpweu4rbxbatm444.workers.dev
-- name: 🇺🇸 美国 (United States) 65 - xiaohe
-  type: trojan
-  server: 64.20.209.125
+- name: 🇺🇸 美国 (United States) 18 - xiaohe
+  type: vless
+  server: 130.12.102.62
   port: 443
-  password: UQfj7bdfjibTjpUHfg72aew51S7fB32g
+  uuid: 6429d27e-a7d4-4e04-ae57-e88243fbbfe3
   udp: true
-  sni: 64.20.209.125
+  tls: true
   skip-cert-verify: true
-- name: 🇺🇸 美国 (United States) 66 - xiaohe
+  reality-opts:
+    public-key: F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I
+  servername: localhost
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 19 - xiaohe
+  type: vless
+  server: 66.81.247.155
+  port: 2083
+  uuid: 6cc29a05-4828-4e48-a34a-20b7ada60e85
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /OAZko425kNFF0PpQ
+    headers:
+      Host: testmikonim.hydrymhmdamyn7.workers.dev
+- name: 🇺🇸 美国 (United States) 20 - xiaohe
+  type: vless
+  server: 2.27.205.59
+  port: 443
+  uuid: c21631d5-36c9-4664-b575-97eca17456be
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: neth8.lunariai.ru
+- name: 🇺🇸 美国 (United States) 21 - xiaohe
+  type: ss
+  server: 198.98.53.130
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+  udp: true
+- name: 🇺🇸 美国 (United States) 22 - xiaohe
+  type: vmess
+  server: 165.140.216.142
+  port: 443
+  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 23 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 38261
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 24 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 59385
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 25 - xiaohe
+  type: vless
+  server: 128.241.25.3
+  port: 30021
+  uuid: afec813e-a5c7-432d-be48-2803c30eea4e
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev
+- name: 🇺🇸 美国 (United States) 26 - xiaohe
+  type: vless
+  server: 144.225.246.111
+  port: 443
+  uuid: 7893b302-3882-4c38-9ab6-6313f1575d1a
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@zyzzzoao
+    headers:
+      Host: cf.udpid.org
+- name: 🇺🇸 美国 (United States) 27 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 46292
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com%23%F0%9F%90%B297%40oneclickvpnkeys
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 28 - xiaohe
+  type: vless
+  server: 162.159.130.82
+  port: 443
+  uuid: 07974401-62dd-4ec3-b9e0-42c08accbc04
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: wallweb-9gw.pages.dev
+- name: 🇺🇸 美国 (United States) 29 - xiaohe
+  type: vless
+  server: 194.55.189.249
+  port: 40443
+  uuid: 8212a50b-25bf-4739-bba1-aaffb5ffc84c
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: KCbW84C8h2Ja01LS0Ro8EpLLfzMTjs11t1ldDWLd5zo
+  servername: deepl.com
+  client-fingerprint: qq
+- name: 🇺🇸 美国 (United States) 30 - xiaohe
+  type: vless
+  server: 128.241.25.11
+  port: 30021
+  uuid: 40ca0d8c-0641-4e2d-a701-9fd8330daf6d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: wkytah9k8oggj60.qzfi0skkopy875xhtc0l9pwds.workers.dev
+- name: 🇺🇸 美国 (United States) 31 - xiaohe
+  type: vless
+  server: us6.lunariai.ru
+  port: 443
+  uuid: 170e1be8-e51b-4a82-a779-3ad27b78607c
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: us6.lunariai.ru
+- name: 🇺🇸 美国 (United States) 32 - xiaohe
+  type: vless
+  server: 147.189.129.144
+  port: 2087
+  uuid: 090a3fa8-973f-4812-9b69-ed982082a933
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4ad49ed0a3d5
+    headers:
+      Host: 147.189.129.144
+- name: 🇺🇸 美国 (United States) 33 - xiaohe
+  type: vless
+  server: 147.189.129.155
+  port: 2087
+  uuid: 090a3fa8-973f-4812-9b69-ed982082a933
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /4ad49ed0a3d5
+    headers:
+      Host: 147.189.129.155
+- name: 🇺🇸 美国 (United States) 34 - xiaohe
+  type: vless
+  server: 162.159.156.214
+  port: 8880
+  uuid: 8991a496-1baa-486f-9948-ffe44e68c072
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /pyip=ProxyIP.SG.CMLiussss.net
+    headers:
+      Host: soft-band-8da6.426.workers.dev
+- name: 🇺🇸 美国 (United States) 35 - xiaohe
+  type: vless
+  server: 128.241.25.72
+  port: 30021
+  uuid: 65f26a08-9a5e-4b28-9004-f98676cc1e49
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: 2-gys60wmzb6bqzd.qpsjn114hh3vlph9z60sesz0agjawpwroneg.workers.dev
+- name: 🇺🇸 美国 (United States) 36 - xiaohe
+  type: ss
+  server: 108.181.0.177
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: G5p6ww4o67HB
+  udp: true
+- name: 🇺🇸 美国 (United States) 37 - xiaohe
+  type: vless
+  server: 38.107.236.166
+  port: 8443
+  uuid: 48572af1-d091-457b-a86e-4a457e99927f
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: 3h-unitedstates3.09vpn.com
+- name: 🇺🇸 美国 (United States) 38 - xiaohe
+  type: vless
+  server: 63.141.128.22
+  port: 443
+  uuid: b8b01773-36b1-4b49-9bd0-6249f52345b4
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /eyJqdW5rIjoiTkNUaFg0ZnJNUjhhcyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=
+    headers:
+      Host: MiSty-tooth-78cA.FoboGAH414-e7B.WoRKERs.DEv
+- name: 🇺🇸 美国 (United States) 39 - xiaohe
+  type: vless
+  server: 162.159.152.205
+  port: 443
+  uuid: c98a16e4-0dc5-42f0-b3db-30f04525c123
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vless2-8vx.pages.dev
+- name: 🇺🇸 美国 (United States) 40 - xiaohe
+  type: trojan
+  server: us01.duotg.top
+  port: 27732
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: www.microsoft.com
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 41 - xiaohe
+  type: ss
+  server: 156.146.38.169
+  port: 443
+  cipher: aes-128-gcm
+  password: shadowsocks
+  udp: true
+- name: 🇺🇸 美国 (United States) 42 - xiaohe
+  type: vless
+  server: 128.241.25.215
+  port: 30036
+  uuid: 196b7228-58df-4bcf-af2a-2e96608d5add
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: 2-gys60wmzb6bqzd.qpsjn114hh3vlph9z60sesz0agjawpwroneg.workers.dev
+- name: 🇺🇸 美国 (United States) 43 - xiaohe
+  type: trojan
+  server: 107.150.105.84
+  port: 43022
+  password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+  udp: true
+  sni: us01.duotg.top
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 44 - xiaohe
+  type: vless
+  server: 172.66.0.236
+  port: 2083
+  uuid: 44eae030-290b-4083-8102-6f8bab05701b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: cfvvv-ev1.pages.dev
+- name: 🇺🇸 美国 (United States) 45 - xiaohe
+  type: vmess
+  server: 38.110.1.246
+  port: 18000
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+- name: 🇺🇸 美国 (United States) 46 - xiaohe
+  type: vless
+  server: 38.246.229.58
+  port: 47642
+  uuid: c538c9dd-2e3f-488f-a8ca-ac5b7c0773f3
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 9mg1QdPctekP9woKygHzBCxb8Hw2QTICXROQiiJB6Ag
+  servername: sega.com
+  client-fingerprint: random
+- name: 🇺🇸 美国 (United States) 47 - xiaohe
+  type: ss
+  server: 38.180.135.156
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: YHtesZ0qvgtg
+  udp: true
+- name: 🇺🇸 美国 (United States) 48 - xiaohe
+  type: vless
+  server: 146.190.124.36
+  port: 74
+  uuid: d38f648c-d7f3-4b0a-9ae9-273528846652
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
+- name: 🇺🇸 美国 (United States) 49 - xiaohe
+  type: vless
+  server: 149.248.79.235
+  port: 17301
+  uuid: 3571b127-4b3b-4c01-8249-1684daf586b5
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: nadshlxG0RqC6om__cf9E4F6qolRmHJLcNtReBTr9xY
+  servername: aws.amazon.com
+  client-fingerprint: chrome
+- name: 🇺🇸 美国 (United States) 50 - xiaohe
+  type: ss
+  server: 144.31.243.2
+  port: 16015
+  cipher: chacha20-ietf-poly1305
+  password: J1InuU6QRT5JOh1mQfkjU2
+  udp: true
+- name: 🇺🇸 美国 (United States) 51 - xiaohe
   type: vless
   server: 208.103.161.5
   port: 443
@@ -690,7 +565,7 @@ proxies:
     path: /
     headers:
       Host: dry-butterfly-8eb9.tmpgnacio83.workers.dev
-- name: 🇺🇸 美国 (United States) 67 - xiaohe
+- name: 🇺🇸 美国 (United States) 52 - xiaohe
   type: vless
   server: 142.248.218.34
   port: 2053
@@ -760,21 +635,6 @@ proxy-groups:
   - 🇺🇸 美国 (United States) 50 - xiaohe
   - 🇺🇸 美国 (United States) 51 - xiaohe
   - 🇺🇸 美国 (United States) 52 - xiaohe
-  - 🇺🇸 美国 (United States) 53 - xiaohe
-  - 🇺🇸 美国 (United States) 54 - xiaohe
-  - 🇺🇸 美国 (United States) 55 - xiaohe
-  - 🇺🇸 美国 (United States) 56 - xiaohe
-  - 🇺🇸 美国 (United States) 57 - xiaohe
-  - 🇺🇸 美国 (United States) 58 - xiaohe
-  - 🇺🇸 美国 (United States) 59 - xiaohe
-  - 🇺🇸 美国 (United States) 60 - xiaohe
-  - 🇺🇸 美国 (United States) 61 - xiaohe
-  - 🇺🇸 美国 (United States) 62 - xiaohe
-  - 🇺🇸 美国 (United States) 63 - xiaohe
-  - 🇺🇸 美国 (United States) 64 - xiaohe
-  - 🇺🇸 美国 (United States) 65 - xiaohe
-  - 🇺🇸 美国 (United States) 66 - xiaohe
-  - 🇺🇸 美国 (United States) 67 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -832,20 +692,5 @@ proxy-groups:
   - 🇺🇸 美国 (United States) 50 - xiaohe
   - 🇺🇸 美国 (United States) 51 - xiaohe
   - 🇺🇸 美国 (United States) 52 - xiaohe
-  - 🇺🇸 美国 (United States) 53 - xiaohe
-  - 🇺🇸 美国 (United States) 54 - xiaohe
-  - 🇺🇸 美国 (United States) 55 - xiaohe
-  - 🇺🇸 美国 (United States) 56 - xiaohe
-  - 🇺🇸 美国 (United States) 57 - xiaohe
-  - 🇺🇸 美国 (United States) 58 - xiaohe
-  - 🇺🇸 美国 (United States) 59 - xiaohe
-  - 🇺🇸 美国 (United States) 60 - xiaohe
-  - 🇺🇸 美国 (United States) 61 - xiaohe
-  - 🇺🇸 美国 (United States) 62 - xiaohe
-  - 🇺🇸 美国 (United States) 63 - xiaohe
-  - 🇺🇸 美国 (United States) 64 - xiaohe
-  - 🇺🇸 美国 (United States) 65 - xiaohe
-  - 🇺🇸 美国 (United States) 66 - xiaohe
-  - 🇺🇸 美国 (United States) 67 - xiaohe
 rules:
 - MATCH,PROXIES

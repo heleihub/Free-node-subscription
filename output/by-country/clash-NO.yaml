@@ -1,0 +1,46 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇳🇴 NO 01 - xiaohe
+  type: vless
+  server: 46.29.238.139
+  port: 40443
+  uuid: 8384341b-cd89-4a21-a022-cc4bd4e648ca
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 7i4Y7v80NVAIi_4_9roDkqcXmexIHli87dfZuFaQMUI
+  servername: deepl.com
+  client-fingerprint: firefox
+- name: 🇳🇴 NO 02 - xiaohe
+  type: vless
+  server: 46.29.238.136
+  port: 40443
+  uuid: 374181b9-44bf-44f1-a227-1184f3e9e47b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: Ic-S89gGVGw1RnKJHOi3CzAmdU8fIdlMZOd4DBV7A3M
+  servername: deepl.com
+  client-fingerprint: chrome
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇳🇴 NO 01 - xiaohe
+  - 🇳🇴 NO 02 - xiaohe
+- name: AUTO
+  type: url-test
+  url: http://cp.cloudflare.com/generate_204
+  interval: 300
+  proxies:
+  - 🇳🇴 NO 01 - xiaohe
+  - 🇳🇴 NO 02 - xiaohe
+rules:
+- MATCH,PROXIES
