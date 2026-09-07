@@ -18,12 +18,51 @@ proxies:
     headers:
       Host: cf2.rumedia-cdn.com
 - name: 🇸🇪 SE 02 - xiaohe
+  type: vless
+  server: 109.120.155.155
+  port: 444
+  uuid: 99ab6748-3d57-4562-9451-843c15960b9b
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev
+- name: 🇸🇪 SE 03 - xiaohe
+  type: vless
+  server: 213.21.229.126
+  port: 12345
+  uuid: 8e80fe77-270e-4ac2-8f57-95761072d1a2
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: ruu2rx-oycdrnsrzc.9uokolpk04vmg2ecqb8oys7.workers.dev
+- name: 🇸🇪 SE 04 - xiaohe
   type: hysteria2
   server: se.allgoodvpn.su
   port: 8443
   password: 0db4a6c709ca4a46153af8a401b7138a
   sni: se.allgoodvpn.su
   skip-cert-verify: true
+- name: 🇸🇪 SE 05 - xiaohe
+  type: vless
+  server: 89.22.224.146
+  port: 43788
+  uuid: 6fbd9bd1-ccd4-4e2f-a918-a0f871965763
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /@Marisa_kristi
+    headers:
+      Host: ke859ch2gse1iery3hiz.e3q4a5mjld11kpj0zj8dq.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
@@ -31,6 +70,9 @@ proxy-groups:
   - AUTO
   - 🇸🇪 SE 01 - xiaohe
   - 🇸🇪 SE 02 - xiaohe
+  - 🇸🇪 SE 03 - xiaohe
+  - 🇸🇪 SE 04 - xiaohe
+  - 🇸🇪 SE 05 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -38,5 +80,8 @@ proxy-groups:
   proxies:
   - 🇸🇪 SE 01 - xiaohe
   - 🇸🇪 SE 02 - xiaohe
+  - 🇸🇪 SE 03 - xiaohe
+  - 🇸🇪 SE 04 - xiaohe
+  - 🇸🇪 SE 05 - xiaohe
 rules:
 - MATCH,PROXIES

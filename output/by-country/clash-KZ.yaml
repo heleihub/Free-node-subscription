@@ -5,18 +5,24 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇰🇿 KZ 01 - xiaohe
+  type: vless
+  server: 194.59.5.46
+  port: 2096
+  uuid: 8525fe74-67e6-4a55-8a26-95f227bd1384
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: wild-sky-f384.alvlirm3737.workers.dev
+- name: 🇰🇿 KZ 02 - xiaohe
   type: hysteria2
   server: 194.238.40.185
   port: 443
   password: eb0e3aec-f67f-4fa2-8577-b0bff0484e77
   sni: 194.238.40.185
-  skip-cert-verify: true
-- name: 🇰🇿 KZ 02 - xiaohe
-  type: hysteria2
-  server: kz03hy01.tcp-reset-club.net
-  port: 443
-  password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
-  sni: kz03hy01.tcp-reset-club.net
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES

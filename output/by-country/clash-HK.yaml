@@ -5,110 +5,31 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇭🇰 中国香港 (Hong Kong) 01 - xiaohe
-  type: vmess
-  server: 47.83.19.148
-  port: 443
-  uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws-vmess
-    headers:
-      Host: 6JDvArazgU3qQR6Q.v.3dns.vip
-- name: 🇭🇰 中国香港 (Hong Kong) 02 - xiaohe
-  type: vmess
-  server: 143.14.189.125
-  port: 21316
-  uuid: 116f6ecd-275e-4b50-921d-780e78a526cb
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: pull.free.video.10010.com
-- name: 🇭🇰 中国香港 (Hong Kong) 03 - xiaohe
-  type: trojan
-  server: 209.248.32.116
-  port: 28159
-  password: i99Cef
-  udp: true
-  sni: download.windowsupdate.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 04 - xiaohe
-  type: trojan
-  server: 209.248.32.116
-  port: 28165
-  password: i99Cef
-  udp: true
-  sni: ctldl.windowsupdate.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 05 - xiaohe
-  type: trojan
-  server: 209.248.32.116
-  port: 28125
-  password: i99Cef
-  udp: true
-  sni: ctldl.windowsupdate.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 06 - xiaohe
-  type: trojan
-  server: 209.248.32.116
-  port: 28104
-  password: i99Cef
-  udp: true
-  sni: ctldl.windowsupdate.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 07 - xiaohe
-  type: trojan
-  server: 209.248.32.116
-  port: 28145
-  password: i99Cef
-  udp: true
-  sni: ctldl.windowsupdate.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 08 - xiaohe
-  type: trojan
-  server: 209.248.32.116
-  port: 28144
-  password: i99Cef
-  udp: true
-  sni: ctldl.windowsupdate.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 09 - xiaohe
   type: hysteria2
   server: 202.146.222.29
   port: 443
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   sni: 202.146.222.29
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 10 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 02 - xiaohe
+  type: hysteria2
+  server: 202.146.222.89
+  port: 443
+  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+  sni: 202.146.222.89
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 03 - xiaohe
   type: hysteria2
   server: 202.146.222.174
   port: 443
   password: H7mP2xY9kJ4nQ8wR5tF6vB3z
   sni: 202.146.222.174
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 11 - xiaohe
-  type: trojan
-  server: 209.248.32.116
-  port: 28122
-  password: i99Cef
-  udp: true
-  sni: ctldl.windowsupdate.com
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 12 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 04 - xiaohe
   type: vless
-  server: e1e7c7b8-tl4g00-tnt75r-1k8ga.hk3.hyhuawei.com
+  server: d38422b4-tl4g00-ts3rye-mrtr.hk3.hyhuawei.com
   port: 443
-  uuid: f860f2da-5035-11ed-bb74-f23c9164ca5d
+  uuid: 28a8a4d0-3e02-11eb-a8bf-f23c91cfbbc9
   udp: true
   tls: true
   skip-cert-verify: true
@@ -116,16 +37,31 @@ proxies:
     public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
     short-id: ''
   servername: updates.cdn-apple.com
-  client-fingerprint: safari
-- name: 🇭🇰 中国香港 (Hong Kong) 13 - xiaohe
-  type: trojan
-  server: 209.248.32.116
-  port: 28166
-  password: i99Cef
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 05 - xiaohe
+  type: vmess
+  server: 47.244.120.197
+  port: 44867
+  uuid: 845e6b08-2919-4290-ade0-5dc7dcea59ca
+  alterId: 0
+  cipher: auto
   udp: true
-  sni: ctldl.windowsupdate.com
+  tls: false
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 14 - xiaohe
+  network: ws
+  ws-opts:
+    path: /arki?ed=2048
+    headers:
+      Host: ''
+- name: 🇭🇰 中国香港 (Hong Kong) 06 - xiaohe
+  type: trojan
+  server: 185.244.208.13
+  port: 443
+  password: ND91608427
+  udp: true
+  sni: ace-starling.rooster465.autos
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 07 - xiaohe
   type: trojan
   server: 209.248.32.116
   port: 28105
@@ -133,22 +69,63 @@ proxies:
   udp: true
   sni: ctldl.windowsupdate.com
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 15 - xiaohe
-  type: hysteria2
-  server: 202.146.222.89
-  port: 443
-  password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-  sni: 202.146.222.89
-  skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 16 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 08 - xiaohe
   type: trojan
   server: 209.248.32.116
-  port: 28126
+  port: 28145
   password: i99Cef
   udp: true
   sni: ctldl.windowsupdate.com
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 17 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 09 - xiaohe
+  type: trojan
+  server: 209.248.32.116
+  port: 28125
+  password: i99Cef
+  udp: true
+  sni: ctldl.windowsupdate.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 10 - xiaohe
+  type: trojan
+  server: 209.248.32.116
+  port: 28166
+  password: i99Cef
+  udp: true
+  sni: ctldl.windowsupdate.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 11 - xiaohe
+  type: trojan
+  server: 209.248.32.116
+  port: 28159
+  password: i99Cef
+  udp: true
+  sni: download.windowsupdate.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 12 - xiaohe
+  type: trojan
+  server: 209.248.32.116
+  port: 28104
+  password: i99Cef
+  udp: true
+  sni: ctldl.windowsupdate.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 13 - xiaohe
+  type: trojan
+  server: 209.248.32.116
+  port: 28165
+  password: i99Cef
+  udp: true
+  sni: ctldl.windowsupdate.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 14 - xiaohe
+  type: trojan
+  server: 209.248.32.116
+  port: 28144
+  password: i99Cef
+  udp: true
+  sni: ctldl.windowsupdate.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 15 - xiaohe
   type: trojan
   server: 209.248.32.116
   port: 28121
@@ -156,13 +133,21 @@ proxies:
   udp: true
   sni: ctldl.windowsupdate.com
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 18 - xiaohe
+- name: 🇭🇰 中国香港 (Hong Kong) 16 - xiaohe
   type: trojan
-  server: 185.244.208.13
-  port: 443
-  password: ND91608427
+  server: 209.248.32.116
+  port: 28122
+  password: i99Cef
   udp: true
-  sni: ace-starling.rooster465.autos
+  sni: ctldl.windowsupdate.com
+  skip-cert-verify: true
+- name: 🇭🇰 中国香港 (Hong Kong) 17 - xiaohe
+  type: trojan
+  server: 209.248.32.116
+  port: 28126
+  password: i99Cef
+  udp: true
+  sni: ctldl.windowsupdate.com
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
@@ -186,7 +171,6 @@ proxy-groups:
   - 🇭🇰 中国香港 (Hong Kong) 15 - xiaohe
   - 🇭🇰 中国香港 (Hong Kong) 16 - xiaohe
   - 🇭🇰 中国香港 (Hong Kong) 17 - xiaohe
-  - 🇭🇰 中国香港 (Hong Kong) 18 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -209,6 +193,5 @@ proxy-groups:
   - 🇭🇰 中国香港 (Hong Kong) 15 - xiaohe
   - 🇭🇰 中国香港 (Hong Kong) 16 - xiaohe
   - 🇭🇰 中国香港 (Hong Kong) 17 - xiaohe
-  - 🇭🇰 中国香港 (Hong Kong) 18 - xiaohe
 rules:
 - MATCH,PROXIES
