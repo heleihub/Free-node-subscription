@@ -6,18 +6,6 @@ log-level: info
 proxies:
 - name: 🇳🇴 NO 01 - xiaohe
   type: vless
-  server: 46.29.238.139
-  port: 40443
-  uuid: 8384341b-cd89-4a21-a022-cc4bd4e648ca
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: 7i4Y7v80NVAIi_4_9roDkqcXmexIHli87dfZuFaQMUI
-  servername: deepl.com
-  client-fingerprint: firefox
-- name: 🇳🇴 NO 02 - xiaohe
-  type: vless
   server: 46.29.238.136
   port: 40443
   uuid: 374181b9-44bf-44f1-a227-1184f3e9e47b
@@ -28,6 +16,18 @@ proxies:
     public-key: Ic-S89gGVGw1RnKJHOi3CzAmdU8fIdlMZOd4DBV7A3M
   servername: deepl.com
   client-fingerprint: chrome
+- name: 🇳🇴 NO 02 - xiaohe
+  type: vless
+  server: 46.29.238.139
+  port: 40443
+  uuid: 8384341b-cd89-4a21-a022-cc4bd4e648ca
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 7i4Y7v80NVAIi_4_9roDkqcXmexIHli87dfZuFaQMUI
+  servername: deepl.com
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select

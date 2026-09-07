@@ -6,47 +6,21 @@ log-level: info
 proxies:
 - name: 🇪🇪 EE 01 - xiaohe
   type: vless
-  server: 94.183.170.248
+  server: 94.183.170.135
   port: 8443
-  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
   udp: true
   tls: true
   skip-cert-verify: true
 - name: 🇪🇪 EE 02 - xiaohe
   type: vless
-  server: 94.183.170.135
+  server: 94.183.170.248
   port: 8443
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
   udp: true
   tls: true
   skip-cert-verify: true
 - name: 🇪🇪 EE 03 - xiaohe
-  type: vless
-  server: 94.183.170.248
-  port: 443
-  uuid: 9d9e3421-5652-4804-85ba-238355b948ab
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 94.183.170.248
-- name: 🇪🇪 EE 04 - xiaohe
-  type: vless
-  server: 94.183.170.135
-  port: 443
-  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 94.183.170.135
-- name: 🇪🇪 EE 05 - xiaohe
   type: vless
   server: 45.80.108.236
   port: 443
@@ -59,7 +33,7 @@ proxies:
     path: /
     headers:
       Host: lively-resonance-4e12.electrocellco-cf-059.workers.dev
-- name: 🇪🇪 EE 06 - xiaohe
+- name: 🇪🇪 EE 04 - xiaohe
   type: trojan
   server: 109.206.241.10
   port: 449
@@ -76,8 +50,6 @@ proxy-groups:
   - 🇪🇪 EE 02 - xiaohe
   - 🇪🇪 EE 03 - xiaohe
   - 🇪🇪 EE 04 - xiaohe
-  - 🇪🇪 EE 05 - xiaohe
-  - 🇪🇪 EE 06 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -87,7 +59,5 @@ proxy-groups:
   - 🇪🇪 EE 02 - xiaohe
   - 🇪🇪 EE 03 - xiaohe
   - 🇪🇪 EE 04 - xiaohe
-  - 🇪🇪 EE 05 - xiaohe
-  - 🇪🇪 EE 06 - xiaohe
 rules:
 - MATCH,PROXIES

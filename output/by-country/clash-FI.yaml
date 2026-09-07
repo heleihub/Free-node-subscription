@@ -6,6 +6,18 @@ log-level: info
 proxies:
 - name: 🇫🇮 FI 01 - xiaohe
   type: vless
+  server: 46.62.135.67
+  port: 443
+  uuid: bed0fd7d-7873-4617-8459-edc93a2138cd
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: 1U9eTADaumTYxiO9NifVHUv5mbMowU2NSjgc2rBdvHo
+  servername: amp-api-edge.apps.apple.com
+  client-fingerprint: chrome
+- name: 🇫🇮 FI 02 - xiaohe
+  type: vless
   server: 84.22.150.39
   port: 7443
   uuid: 5cc814de-2bbb-4409-ad8c-ee841ca7bad1
@@ -17,18 +29,6 @@ proxies:
     path: /@Marisa_kristi
     headers:
       Host: sxyyvihkektlx4rjxsdj.pkc73phpweu4rbxbatm444.workers.dev
-- name: 🇫🇮 FI 02 - xiaohe
-  type: vless
-  server: 2.26.122.101
-  port: 8443
-  uuid: 758f49d3-5f5f-47e7-bfa4-4ce96faf800d
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: NI5Rkfn6zO_gF-UC1nuvJwu4SDakCXh3ygJOKU1EITU
-  servername: cdn.shopify.com
-  client-fingerprint: firefox
 - name: 🇫🇮 FI 03 - xiaohe
   type: vless
   server: 193.29.225.249
@@ -44,35 +44,16 @@ proxies:
       Host: c6dbx99g6stb418qeo.t3jmlj0r152zji4htdkm9.workers.dev
 - name: 🇫🇮 FI 04 - xiaohe
   type: vless
-  server: 46.62.135.67
-  port: 443
-  uuid: bed0fd7d-7873-4617-8459-edc93a2138cd
+  server: 2.26.122.101
+  port: 8443
+  uuid: 758f49d3-5f5f-47e7-bfa4-4ce96faf800d
   udp: true
   tls: true
   skip-cert-verify: true
   reality-opts:
-    public-key: 1U9eTADaumTYxiO9NifVHUv5mbMowU2NSjgc2rBdvHo
-  servername: amp-api-edge.apps.apple.com
-  client-fingerprint: chrome
-- name: 🇫🇮 FI 05 - xiaohe
-  type: ss
-  server: 86.38.182.226
-  port: 112
-  cipher: chacha20-ietf-poly1305
-  password: T6IcUpcVx0Y85DxSTgXe4A
-  udp: true
-- name: 🇫🇮 FI 06 - xiaohe
-  type: vless
-  server: 185.79.138.71
-  port: 448
-  uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
-  servername: www.samsung.com
-  client-fingerprint: chrome
+    public-key: NI5Rkfn6zO_gF-UC1nuvJwu4SDakCXh3ygJOKU1EITU
+  servername: cdn.shopify.com
+  client-fingerprint: firefox
 proxy-groups:
 - name: PROXIES
   type: select
@@ -82,8 +63,6 @@ proxy-groups:
   - 🇫🇮 FI 02 - xiaohe
   - 🇫🇮 FI 03 - xiaohe
   - 🇫🇮 FI 04 - xiaohe
-  - 🇫🇮 FI 05 - xiaohe
-  - 🇫🇮 FI 06 - xiaohe
 - name: AUTO
   type: url-test
   url: http://cp.cloudflare.com/generate_204
@@ -93,7 +72,5 @@ proxy-groups:
   - 🇫🇮 FI 02 - xiaohe
   - 🇫🇮 FI 03 - xiaohe
   - 🇫🇮 FI 04 - xiaohe
-  - 🇫🇮 FI 05 - xiaohe
-  - 🇫🇮 FI 06 - xiaohe
 rules:
 - MATCH,PROXIES
