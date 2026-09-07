@@ -3,6 +3,7 @@ import re
 import sys
 import json
 import time
+import uuid
 import zipfile
 import base64
 import shutil
@@ -38,7 +39,14 @@ def ensure_directories():
 
 ensure_directories()
 
-# 严格的机房 ASN 黑名单，坚决排除
+VALID_SS_CIPHERS = {
+    "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
+    "chacha20-ietf-poly1305", "xchacha20-ietf-poly1305",
+    "2022-blake3-aes-128-gcm", "2022-blake3-aes-256-gcm",
+    "2022-blake3-chacha20-poly1305", "aes-128-ctr", "aes-192-ctr",
+    "aes-256-ctr", "aes-128-cfb", "aes-192-cfb", "aes-256-cfb", "rc4-md5"
+}
+
 DATACENTER_ASNS = {
     13335, 16509, 14618, 15169, 396982, 8075, 24940, 16276, 
     14061, 31898, 63949, 45102, 132203, 20473, 60068, 55081,
@@ -46,14 +54,13 @@ DATACENTER_ASNS = {
     141995, 200019, 136907, 39351, 9009, 174, 3356, 1299, 2914
 }
 
-# 权威民用宽带 ASN 白名单
 REAL_RESIDENTIAL_ASNS = {
-    3462, 9924, 9919, 17709, 4780, 17408, 18049,  # 台湾中华电信/中嘉等
-    9304, 9269, 17816, 58453,                      # 香港 HKBN/PCCW/HKT
-    2516, 17511, 2519, 2527, 4713, 9605, 17676,    # 日本 KDDI/NTT/Softbank
-    701, 702, 7922, 20115, 7018, 10796, 11427, 5650, 22773, # 美国 Comcast/Charter/AT&T
-    2856, 5089, 5607, 13285, 5378,                 # 英国 BT/Virgin
-    3320, 3209, 31334, 6805, 8881,                 # 德国电信/沃达丰
+    3462, 9924, 9919, 17709, 4780, 17408, 18049,
+    9304, 9269, 17816, 58453,
+    2516, 17511, 2519, 2527, 4713, 9605, 17676,
+    701, 702, 7922, 20115, 7018, 10796, 11427, 5650, 22773,
+    2856, 5089, 5607, 13285, 5378,
+    3320, 3209, 31334, 6805, 8881,
 }
 
 COUNTRY_NAMES = {
@@ -102,7 +109,6 @@ def setup_environment():
     if not os.path.exists("ASN.mmdb"):
         safe_download("https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb", "ASN.mmdb")
     
-    # 下载官方 Xray-core 测活核心
     if not os.path.exists("xray"):
         print("[*] 正在下载官方 Xray-core 测活内核...")
         safe_download("https://github.com/XTLS/Xray-core/releases/download/v1.8.24/Xray-linux-64.zip", "xray.zip")
@@ -158,7 +164,6 @@ def resolve_host_cached(host, cache={}):
         return None
 
 def parse_node_to_xray_outbound(node_str):
-    """将节点字符串精准转换为 Xray 标准 Outbound 结构"""
     try:
         if node_str.startswith("vless://"):
             m = re.search(r"vless://([^@]+)@([^:]+):(\d+)\??(.*)", node_str)
@@ -282,7 +287,6 @@ def parse_node_to_xray_outbound(node_str):
     return None, None, None
 
 def convert_to_clash_dict(node_str, name):
-    """生成合规的 Clash Proxy 配置字典"""
     try:
         outbound, server, port = parse_node_to_xray_outbound(node_str)
         if not outbound:
@@ -357,14 +361,21 @@ def convert_to_clash_dict(node_str, name):
         pass
     return None
 
-def test_single_node_xray(node_tuple, port_id):
-    """启动独立 Xray 实例，用真实的 HTTP GET 204 请求验证连通性"""
+def test_single_node_xray(node_tuple):
+    """每个并发任务分配完全唯一的随机 UUID 临时配置文件，杜绝冲突"""
     raw_node, server, port = node_tuple
     outbound, _, _ = parse_node_to_xray_outbound(raw_node)
     if not outbound:
         return None
 
-    socks_port = 20000 + port_id
+    # 动态获取一个本地空闲端口
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind(('127.0.0.1', 0))
+        socks_port = s.getsockname()[1]
+
+    task_id = uuid.uuid4().hex
+    cfg_path = f"xray_tmp_{task_id}.json"
+
     config = {
         "log": {"loglevel": "none"},
         "inbounds": [{
@@ -376,12 +387,11 @@ def test_single_node_xray(node_tuple, port_id):
         "outbounds": [outbound]
     }
     
-    cfg_path = f"xray_temp_{port_id}.json"
     with open(cfg_path, "w") as f:
         json.dump(config, f)
 
     proc = subprocess.Popen(["./xray", "-c", cfg_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    time.sleep(0.3)
+    time.sleep(0.35)
 
     success = False
     delay_ms = 0
@@ -391,38 +401,40 @@ def test_single_node_xray(node_tuple, port_id):
             "http": f"socks5h://127.0.0.1:{socks_port}",
             "https": f"socks5h://127.0.0.1:{socks_port}"
         }
-        # 真正走代理拉取 HTTP 204 报文验证
-        resp = requests.get("http://connectivitycheck.gstatic.com/generate_204", proxies=proxies, timeout=3.5)
+        # 真正通过代理拉取 HTTP 204
+        resp = requests.get("http://connectivitycheck.gstatic.com/generate_204", proxies=proxies, timeout=3.2)
         if resp.status_code == 204:
             delay_ms = int((time.time() - start_t) * 1000)
-            if 50 < delay_ms < 2800:
+            if 30 < delay_ms < 2800:
                 success = True
     except Exception:
         success = False
     finally:
         proc.kill()
         proc.wait()
-        if os.path.exists(cfg_path):
-            os.remove(cfg_path)
+        try:
+            if os.path.exists(cfg_path):
+                os.remove(cfg_path)
+        except Exception:
+            pass
 
     if success:
         return (raw_node, server, port, delay_ms)
     return None
 
 def run_real_delay_test_xray(candidates):
-    print(f"[*] 启动 Xray-core 官方内核真连通测试，物理独立节点数: {len(candidates)}...")
+    print(f"[*] 启动 Xray 官方内核真连通测试，物理候选节点数: {len(candidates)}...")
     alive = []
-    # 30 个本地端口并发，既快又绝不会被系统限流
-    concurrency = 30
-    with ThreadPoolExecutor(max_workers=concurrency) as executor:
-        futures = {executor.submit(test_single_node_xray, item, i % concurrency): item for i, item in enumerate(candidates)}
+    # 25 个并发测试，兼顾稳定性与准确性
+    with ThreadPoolExecutor(max_workers=25) as executor:
+        futures = {executor.submit(test_single_node_xray, item): item for item in candidates}
         for future in as_completed(futures):
             res = future.result()
             if res:
                 alive.append(res)
                 if len(alive) % 20 == 0:
                     print(f"[+] 当前已确认真实通畅节点: {len(alive)} 个")
-    print(f"[+] Xray 测试完成！100% 真实通畅节点总量: {len(alive)}")
+    print(f"[+] Xray 测试完成！真实可用节点总量: {len(alive)}")
     return alive
 
 def rename_node_link(raw_link, new_name):
@@ -470,7 +482,7 @@ def classify_and_filter(alive_nodes):
         except Exception:
             pass
 
-        # 严格家宽判断：必须命中真实民用 ISP 白名单，彻底解决机房冒充
+        # 严格家宽判定：必须匹配真实运营商 ASN
         is_residential = False
         try:
             a = asn_reader.get(ip)
@@ -545,7 +557,6 @@ def export_singbox_json(clash_proxies, filepath):
         json.dump(config, f, indent=2, ensure_ascii=False)
 
 def format_node_group(nodes_list, res_tag_force=False):
-    """顺序重命名规范化"""
     formatted_links = []
     formatted_proxies = []
     
@@ -811,7 +822,6 @@ if __name__ == "__main__":
     candidates = []
     seen_endpoints = set()
 
-    # 预解析底层物理 IP：无论给什么别名域名，IP:端口 相同的一律只留第一个！
     print("[*] 正在执行底层物理 IP 强力去重...")
     for raw in raw_nodes:
         outbound, server, port = parse_node_to_xray_outbound(raw)
