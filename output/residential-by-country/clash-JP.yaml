@@ -14,11 +14,11 @@ proxies:
   skip-cert-verify: true
 - name: 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
   type: trojan
-  server: 185.200.65.251
+  server: 161.34.39.108
   port: 443
-  password: UQfj7bdfjibTjpUHfg72aew51S7fB32g
+  password: tsuchiya
   udp: true
-  sni: portal.buildtunnel.com
+  sni: 161.34.39.108
   skip-cert-verify: true
 - name: 🇯🇵 日本 (Japan) 03 (家宽) - xiaohe
   type: vless
