@@ -16,11 +16,11 @@ proxies:
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 02 - xiaohe
   type: trojan
-  server: 139.59.238.97
+  server: ww12.levikogjgfdd.ir
   port: 50573
   password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
   udp: true
-  sni: telegram-leviko_v2ray
+  sni: ww12.levikogjgfdd.ir
   skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 03 - xiaohe
   type: vless
@@ -36,17 +36,13 @@ proxies:
     headers:
       Host: edge.xlordgrim.com
 - name: 🇸🇬 新加坡 (Singapore) 04 - xiaohe
-  type: vless
-  server: 13.251.16.174
-  port: 8686
-  uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+  type: trojan
+  server: 86.38.247.109
+  port: 2087
+  password: sshs8_6481354771
   udp: true
-  tls: true
+  sni: ul-singapore1.09vpn.com
   skip-cert-verify: true
-  reality-opts:
-    public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
-  servername: www.apple.com
-  client-fingerprint: chrome
 - name: 🇸🇬 新加坡 (Singapore) 05 - xiaohe
   type: vless
   server: 8.222.193.153
@@ -61,13 +57,12 @@ proxies:
     headers:
       Host: white-forest-2c01.alvlirm222.workers.dev
 - name: 🇸🇬 新加坡 (Singapore) 06 - xiaohe
-  type: trojan
-  server: 86.38.247.109
-  port: 2087
-  password: sshs8_6481354771
+  type: ss
+  server: 176.97.64.144
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: TFElG2FVqyqG
   udp: true
-  sni: ul-singapore1.09vpn.com
-  skip-cert-verify: true
 - name: 🇸🇬 新加坡 (Singapore) 07 - xiaohe
   type: vless
   server: 175.41.179.37
