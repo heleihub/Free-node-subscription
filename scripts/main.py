@@ -77,6 +77,14 @@ COUNTRY_NAMES = {
     "OTHER": "其他地区 (Other)",
 }
 
+VALID_SS_CIPHERS = {
+    "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
+    "chacha20-ietf-poly1305", "xchacha20-ietf-poly1305",
+    "2022-blake3-aes-128-gcm", "2022-blake3-aes-256-gcm",
+    "2022-blake3-chacha20-poly1305", "aes-128-ctr", "aes-192-ctr",
+    "aes-256-ctr", "aes-128-cfb", "aes-192-cfb", "aes-256-cfb", "rc4-md5"
+}
+
 def get_country_flag(country_code):
     if not country_code or country_code.upper() in ["OTHER", "ZZ", "XX", "T1"]:
         return "🌐"
@@ -165,7 +173,6 @@ def parse_node_to_xray_outbound(node_str):
             port = int(port_s)
             params = dict(re.findall(r"([^=&#]+)=([^&#]*)", query))
             
-            # 过滤掉无法通过 GFW 的纯明文无证书节点
             if params.get("security") not in ["tls", "reality"]:
                 return None, None, None
 
@@ -257,6 +264,31 @@ def parse_node_to_xray_outbound(node_str):
                 }
             }
             return outbound, server, port
+
+        elif node_str.startswith("ss://"):
+            raw = node_str[5:]
+            server, port, password, cipher = "", 0, "", ""
+            if "@" in raw:
+                user_info, host_info = raw.split("@", 1)
+                user_info += '=' * (-len(user_info) % 4)
+                try:
+                    dec = base64.b64decode(user_info).decode('utf-8', errors='ignore')
+                    if ":" in dec:
+                        cipher, password = dec.split(":", 1)
+                except Exception:
+                    pass
+                host_info = host_info.split("#")[0]
+                if ":" in host_info:
+                    server, port_s = host_info.split(":", 1)
+                    port = int(port_s.split("/")[0])
+            if server and port > 0 and cipher in VALID_SS_CIPHERS:
+                outbound = {
+                    "protocol": "shadowsocks",
+                    "settings": {
+                        "servers": [{"address": server, "port": port, "method": cipher, "password": password}]
+                    }
+                }
+                return outbound, server, port
     except Exception:
         pass
     return None, None, None
@@ -321,12 +353,23 @@ def convert_to_clash_dict(node_str, name):
                 "sni": stream.get("tlsSettings", {}).get("serverName", server),
                 "skip-cert-verify": True
             }
+        elif proto == "shadowsocks":
+            srv = outbound["settings"]["servers"][0]
+            return {
+                "name": name,
+                "type": "ss",
+                "server": server,
+                "port": port,
+                "cipher": srv["method"],
+                "password": srv["password"],
+                "udp": True
+            }
     except Exception:
         pass
     return None
 
 def test_single_node_xray(node_tuple):
-    raw_node, server, port = node_tuple
+    raw_node, server, port, ip = node_tuple
     outbound, _, _ = parse_node_to_xray_outbound(raw_node)
     if not outbound:
         return None
@@ -363,11 +406,11 @@ def test_single_node_xray(node_tuple):
             "http": f"socks5h://127.0.0.1:{socks_port}",
             "https": f"socks5h://127.0.0.1:{socks_port}"
         }
-        # 严苛测活：真实拉取 HTTP 204，拒绝 TCP 假连接
-        resp = requests.get("http://connectivitycheck.gstatic.com/generate_204", proxies=proxies, timeout=3.5)
+        # 实际走代理拉取 HTTP 204
+        resp = requests.get("http://connectivitycheck.gstatic.com/generate_204", proxies=proxies, timeout=3.2)
         if resp.status_code == 204:
             delay_ms = int((time.time() - start_t) * 1000)
-            if 50 < delay_ms < 2600:
+            if 50 < delay_ms < 2800:
                 success = True
     except Exception:
         success = False
@@ -381,11 +424,11 @@ def test_single_node_xray(node_tuple):
             pass
 
     if success:
-        return (raw_node, server, port, delay_ms)
+        return (raw_node, server, port, ip, delay_ms)
     return None
 
 def run_real_delay_test_xray(candidates):
-    print(f"[*] 启动 Xray 真实双向 HTTP 通道测活，物理独立候选节点: {len(candidates)}...")
+    print(f"[*] 启动 Xray 真实 HTTP 测活，物理独立候选节点: {len(candidates)}...")
     alive = []
     with ThreadPoolExecutor(max_workers=30) as executor:
         futures = {executor.submit(test_single_node_xray, item): item for item in candidates}
@@ -394,7 +437,7 @@ def run_real_delay_test_xray(candidates):
             if res:
                 alive.append(res)
                 if len(alive) % 20 == 0:
-                    print(f"[+] 当前已核验可用节点: {len(alive)} 个")
+                    print(f"[+] 当前已确认真实通畅节点: {len(alive)} 个")
     print(f"[+] 测活完成！真实可用节点总数: {len(alive)}")
     return alive
 
@@ -428,10 +471,7 @@ def classify_and_filter(alive_nodes):
     verified = []
 
     def classify_item(item):
-        raw_node, server, port, delay = item
-        ip = resolve_host_cached(server)
-        if not ip:
-            return None
+        raw_node, server, port, ip, delay = item
 
         country_code = "OTHER"
         try:
@@ -485,7 +525,18 @@ def classify_and_filter(alive_nodes):
 
     country_reader.close()
     asn_reader.close()
-    return verified
+
+    # 终极物理单端口去重：同一 (IP, port) 不论什么协议只保留 1 个
+    unique_verified = []
+    seen_endpoints = set()
+    for item in verified:
+        endpoint = f"{item['server_ip']}:{item['port']}"
+        if endpoint not in seen_endpoints:
+            seen_endpoints.add(endpoint)
+            unique_verified.append(item)
+
+    print(f"[*] 单端口唯一性过滤完成，最终出库独立节点数: {len(unique_verified)} 个")
+    return unique_verified
 
 def export_clash_yaml(clash_proxies, filepath):
     names = [p["name"] for p in clash_proxies]
@@ -518,10 +569,10 @@ def export_singbox_json(clash_proxies, filepath):
         json.dump(config, f, indent=2, ensure_ascii=False)
 
 def format_node_group(nodes_list, res_tag_force=False):
+    """顺序重命名并二次强制去重同一 IP:端口"""
     formatted_links = []
     formatted_proxies = []
     
-    # 局部物理排重，确保每个出库文件没有一个重复 IP:端口
     seen_local = set()
     cleaned = []
     for item in nodes_list:
@@ -605,7 +656,6 @@ def export_subscriptions(verified_nodes):
 
 def update_readme():
     repo_name = os.environ.get("GITHUB_REPOSITORY", "heleihub/Free-node-subscription").strip()
-    # 动态时间戳，用来击碎 jsDelivr 的顽固死缓存
     cache_bust = int(time.time())
     
     def count_file(path):
@@ -647,7 +697,6 @@ def update_readme():
         flag = get_country_flag(cc)
         name = COUNTRY_NAMES.get(cc, cc)
         cnt = res_counts[cc]
-        # 带上 ?v={cache_bust}，客户端点击或拉取绝不会拿到旧缓存
         v2_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/{cc}.txt?v={cache_bust}"
         v2_raw = f"https://raw.githubusercontent.com/{repo_name}/main/output/residential-by-country/{cc}.txt"
         clash_cdn = f"https://cdn.jsdelivr.net/gh/{repo_name}@main/output/residential-by-country/clash-{cc}.yaml?v={cache_bust}"
@@ -795,7 +844,8 @@ if __name__ == "__main__":
     candidates = []
     seen_endpoints = set()
 
-    print("[*] 正在执行底层物理 IP 强力去重...")
+    # 预解析底层物理 IP：无论给什么域名、什么协议，(real_ip, port) 相同的一律只留第一个！
+    print("[*] 正在执行底层物理 IP 强力单端口去重...")
     for raw in raw_nodes:
         outbound, server, port = parse_node_to_xray_outbound(raw)
         if outbound and server and port:
@@ -804,9 +854,9 @@ if __name__ == "__main__":
                 ep = f"{ip}:{port}"
                 if ep not in seen_endpoints:
                     seen_endpoints.add(ep)
-                    candidates.append((raw, server, port))
+                    candidates.append((raw, server, port, ip))
 
-    print(f"[*] 物理 IP 去重完成，唯一候选节点数: {len(candidates)}")
+    print(f"[*] 物理 IP:端口 绝对去重完成，唯一候选节点数: {len(candidates)}")
     alive_nodes = run_real_delay_test_xray(candidates)
     verified = classify_and_filter(alive_nodes)
     export_subscriptions(verified)
