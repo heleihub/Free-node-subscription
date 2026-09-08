@@ -5,15 +5,18 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇺🇸 美国 (United States) 01 (家宽) - xiaohe
-  type: vmess
-  server: 165.140.216.142
+  type: vless
+  server: 2.27.205.59
   port: 443
-  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
-  alterId: 0
-  cipher: auto
+  uuid: c21631d5-36c9-4664-b575-97eca17456be
   udp: true
   tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: neth8.lunariai.ru
 - name: 🇺🇸 美国 (United States) 02 (家宽) - xiaohe
   type: vmess
   server: 165.140.216.141
@@ -26,17 +29,17 @@ proxies:
   skip-cert-verify: true
 - name: 🇺🇸 美国 (United States) 03 (家宽) - xiaohe
   type: vless
-  server: 2.27.205.59
-  port: 443
-  uuid: c21631d5-36c9-4664-b575-97eca17456be
+  server: 38.58.180.136
+  port: 3087
+  uuid: 5efabea4-f6d4-91fd-b8f0-17e004c89c68
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /@s5gydl
     headers:
-      Host: 2.27.205.59
+      Host: node67.lunes.host
 proxy-groups:
 - name: PROXIES
   type: select

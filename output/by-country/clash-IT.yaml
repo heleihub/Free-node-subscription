@@ -8,7 +8,7 @@ proxies:
   type: vless
   server: 57.131.32.191
   port: 80
-  uuid: b3051b10-716d-455b-9811-aefcce3d633e
+  uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
   udp: true
   tls: false
   skip-cert-verify: true
@@ -16,7 +16,7 @@ proxies:
   ws-opts:
     path: /vless/
     headers:
-      Host: 57.131.32.191
+      Host: ov-italy1.09vpn.com
 - name: 🇮🇹 意大利 (Italy) 02 - xiaohe
   type: ss
   server: 57.131.48.45
@@ -33,20 +33,17 @@ proxies:
   tls: false
   skip-cert-verify: true
 - name: 🇮🇹 意大利 (Italy) 04 - xiaohe
-  type: vmess
-  server: 57.131.32.191
-  port: 8443
-  uuid: 848af33c-81f2-40c9-93b2-4681d056936b
-  alterId: 0
-  cipher: auto
+  type: vless
+  server: 57.131.38.163
+  port: 2053
+  uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
   udp: true
   tls: true
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /vmess/
-    headers:
-      Host: OV-Italy1.09vpn.com
+  reality-opts:
+    public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+  servername: www.apple.com
+  client-fingerprint: edge
 proxy-groups:
 - name: PROXIES
   type: select
