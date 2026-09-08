@@ -4,25 +4,27 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇬 BG 01 (家宽) - xiaohe
-  type: vless
-  server: 192.145.31.5
-  port: 8443
-  uuid: 9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a
+- name: 🇹🇼 中国台湾 (Taiwan) 01 - xiaohe
+  type: vmess
+  server: 165.154.195.38
+  port: 35034
+  uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
+  alterId: 0
+  cipher: auto
   udp: true
-  tls: true
+  tls: false
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇬 BG 01 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇬 BG 01 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 01 - xiaohe
 rules:
 - MATCH,PROXIES

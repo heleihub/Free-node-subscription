@@ -4,30 +4,29 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇺🇿 UZ 01 - xiaohe
+- name: 🇰🇿 KZ 01 - xiaohe
   type: vless
-  server: 104.18.80.149
-  port: 443
-  uuid: 50414e45-4c5f-5a45-5553-4017ea8bea78
+  server: 83.222.23.81
+  port: 38065
+  uuid: 4b9063e0-3288-44e9-9aac-80fbfce323a0
   udp: true
   tls: true
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /stream/PANEL_ZEUS/4017ea8bea78/loc-4
-    headers:
-      Host: zeus-panel-mvtum1.mahdiharchegani.workers.dev
+  reality-opts:
+    public-key: dSSDPTK6AHfAdRAXD9i4rzqcNIY65RxlF25UyCKdiyo
+  servername: yahoo.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇺🇿 UZ 01 - xiaohe
+  - 🇰🇿 KZ 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇺🇿 UZ 01 - xiaohe
+  - 🇰🇿 KZ 01 - xiaohe
 rules:
 - MATCH,PROXIES

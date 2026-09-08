@@ -8,7 +8,7 @@ proxies:
   type: vless
   server: 57.131.32.191
   port: 80
-  uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
+  uuid: b3051b10-716d-455b-9811-aefcce3d633e
   udp: true
   tls: false
   skip-cert-verify: true

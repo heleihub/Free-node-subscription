@@ -6,7 +6,7 @@ log-level: info
 proxies:
 - name: 🇭🇺 HU 01 - xiaohe
   type: trojan
-  server: hu2.vpnjantit.com
+  server: 46.29.142.57
   port: 4443
   password: C0ldyfh-vpnjantit.com
   udp: true

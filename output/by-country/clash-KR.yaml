@@ -5,6 +5,13 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇰🇷 韩国 (South Korea) 01 - xiaohe
+  type: ss
+  server: 141.164.45.187
+  port: 9090
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+  udp: true
+- name: 🇰🇷 韩国 (South Korea) 02 - xiaohe
   type: trojan
   server: 154.90.62.70
   port: 56127
@@ -12,17 +19,20 @@ proxies:
   udp: true
   sni: 154.90.62.70
   skip-cert-verify: true
-- name: 🇰🇷 韩国 (South Korea) 02 - xiaohe
-  type: vmess
-  server: 140.238.2.250
-  port: 443
-  uuid: 41a7089a-040b-4538-8b8d-010902405bde
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
 - name: 🇰🇷 韩国 (South Korea) 03 - xiaohe
+  type: vless
+  server: 188.114.97.6
+  port: 2087
+  uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: fx3h2kf8xn.fx6hsv0.ccwu.cc
+- name: 🇰🇷 韩国 (South Korea) 04 - xiaohe
   type: vless
   server: 151.245.106.49
   port: 2053
@@ -34,6 +44,25 @@ proxies:
     public-key: k9narlSK7fUqy94_p0rrqKl52W35QLNsp3W8xaGq_Go
   servername: www.apple.com
   client-fingerprint: firefox
+- name: 🇰🇷 韩国 (South Korea) 05 - xiaohe
+  type: ss
+  server: 141.164.45.187
+  port: 5498
+  cipher: aes-256-gcm
+  password: lGqs95QkFHo2NV
+  udp: true
+- name: 🇰🇷 韩国 (South Korea) 06 - xiaohe
+  type: vless
+  server: 119.28.161.143
+  port: 443
+  uuid: 1ebb0858-218a-4dee-8746-36a67bc64462
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: pR7MPTAA4cZsW9AO-twMzuogiWGMKPiheTg70fcWWWs
+  servername: apple.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
@@ -42,6 +71,9 @@ proxy-groups:
   - 🇰🇷 韩国 (South Korea) 01 - xiaohe
   - 🇰🇷 韩国 (South Korea) 02 - xiaohe
   - 🇰🇷 韩国 (South Korea) 03 - xiaohe
+  - 🇰🇷 韩国 (South Korea) 04 - xiaohe
+  - 🇰🇷 韩国 (South Korea) 05 - xiaohe
+  - 🇰🇷 韩国 (South Korea) 06 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -50,5 +82,8 @@ proxy-groups:
   - 🇰🇷 韩国 (South Korea) 01 - xiaohe
   - 🇰🇷 韩国 (South Korea) 02 - xiaohe
   - 🇰🇷 韩国 (South Korea) 03 - xiaohe
+  - 🇰🇷 韩国 (South Korea) 04 - xiaohe
+  - 🇰🇷 韩国 (South Korea) 05 - xiaohe
+  - 🇰🇷 韩国 (South Korea) 06 - xiaohe
 rules:
 - MATCH,PROXIES

@@ -5,13 +5,30 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇬🇧 英国 (United Kingdom) 01 - xiaohe
-  type: ss
-  server: 51.77.225.200
-  port: 8388
-  cipher: chacha20-ietf-poly1305
-  password: zRZNBszYyWo5
+  type: vless
+  server: 46.250.250.149
+  port: 2053
+  uuid: 59bf58d9-ddaf-42cd-a0ca-db3559ad8714
   udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: eUjgCl7-ujbXq11kaSLe-8q1LJJfSueB5Vkh24wKgk8
+  servername: www.apple.com
+  client-fingerprint: random
 - name: 🇬🇧 英国 (United Kingdom) 02 - xiaohe
+  type: vless
+  server: 51.89.194.151
+  port: 2053
+  uuid: a8444f42-8aa2-4ef2-8755-2b0d82415fc6
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: T10K4VspJ7ZIptzXTqFL0k-lgV2a8ekf7RedogymJzo
+  servername: www.cloudflare.com
+  client-fingerprint: chrome
+- name: 🇬🇧 英国 (United Kingdom) 03 - xiaohe
   type: vless
   server: 129.121.95.159
   port: 443
@@ -24,44 +41,38 @@ proxies:
     path: /connect
     headers:
       Host: 129.121.95.159
-- name: 🇬🇧 英国 (United Kingdom) 03 - xiaohe
-  type: vless
-  server: 51.89.194.151
-  port: 2053
-  uuid: a8444f42-8aa2-4ef2-8755-2b0d82415fc6
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: T10K4VspJ7ZIptzXTqFL0k-lgV2a8ekf7RedogymJzo
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
 - name: 🇬🇧 英国 (United Kingdom) 04 - xiaohe
   type: ss
-  server: 149.102.149.207
-  port: 443
-  cipher: aes-256-gcm
-  password: LXchLsIwtCeUAUgu
+  server: 51.77.225.200
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: zRZNBszYyWo5
   udp: true
 - name: 🇬🇧 英国 (United Kingdom) 05 - xiaohe
-  type: ss
-  server: 149.102.149.207
+  type: vless
+  server: 57.129.132.223
   port: 80
-  cipher: aes-256-gcm
-  password: LXchLsIwtCeUAUgu
+  uuid: 9e20b04d-5a81-4e16-b421-01e502f0aac6
   udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /vless/
+    headers:
+      Host: google.com
 - name: 🇬🇧 英国 (United Kingdom) 06 - xiaohe
   type: vless
-  server: 46.250.250.149
-  port: 2053
-  uuid: 59bf58d9-ddaf-42cd-a0ca-db3559ad8714
+  server: 78.129.208.44
+  port: 421
+  uuid: a3c861cb-e1e7-4ad6-8be2-7c2314ec6f18
   udp: true
   tls: true
   skip-cert-verify: true
   reality-opts:
-    public-key: eUjgCl7-ujbXq11kaSLe-8q1LJJfSueB5Vkh24wKgk8
-  servername: www.apple.com
-  client-fingerprint: random
+    public-key: zUdAvpr07q1Yd0Om-jc4-Vu4Un5tVird8FGoN-7W9Tg
+  servername: chistomat.dry.care
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select

@@ -6,16 +6,14 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇧🇬 BG 01 (家宽) - xiaohe",
-        "🇧🇬 BG 02 (家宽) - xiaohe"
+        "🇧🇬 BG 01 (家宽) - xiaohe"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇧🇬 BG 01 (家宽) - xiaohe",
-        "🇧🇬 BG 02 (家宽) - xiaohe"
+        "🇧🇬 BG 01 (家宽) - xiaohe"
       ],
       "url": "https://www.google.com/generate_204"
     },
