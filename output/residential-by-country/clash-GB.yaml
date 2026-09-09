@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇲🇩 MD 01 - xiaohe
+- name: 🇬🇧 英国 (United Kingdom) 01 (家宽) - xiaohe
   type: vless
-  server: 104.17.169.13
-  port: 2053
-  uuid: a22bff60-a40a-4250-bde2-4c660e363b47
+  server: 89.106.206.57
+  port: 443
+  uuid: f081b5e2-f3a0-4ef5-833b-1ea59e0797b6
   udp: true
   tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /axch1mttbxz2k55y01
+    path: /6d2fed050b30
     headers:
-      Host: inDeX.HaRMONiCA01.WORkers.DeV
+      Host: fcs013.getdcz.me
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇲🇩 MD 01 - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 01 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇲🇩 MD 01 - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 01 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

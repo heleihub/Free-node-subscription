@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇱🇻 LV 01 - xiaohe
+- name: 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
   type: vless
-  server: 89.36.161.222
-  port: 2096
-  uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+  server: 69.46.46.112
+  port: 443
+  uuid: f3651e35-d7a5-4416-bece-ddcd3799ebc4
   udp: true
-  tls: false
+  tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /ws/f3651e35-d7a5-4416-bece-ddcd3799ebc4
     headers:
-      Host: laoye.in-gect.fun
+      Host: vnova005.up.railway.app
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇱🇻 LV 01 - xiaohe
+  - 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇱🇻 LV 01 - xiaohe
+  - 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

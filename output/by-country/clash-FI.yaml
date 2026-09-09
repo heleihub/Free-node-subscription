@@ -4,25 +4,29 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇧🇬 BG 01 (家宽) - xiaohe
+- name: 🇫🇮 FI 01 - xiaohe
   type: vless
-  server: 192.145.31.5
-  port: 8443
-  uuid: 9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a
+  server: 185.79.138.71
+  port: 448
+  uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
   udp: true
   tls: true
   skip-cert-verify: true
+  reality-opts:
+    public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+  servername: www.samsung.com
+  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇧🇬 BG 01 (家宽) - xiaohe
+  - 🇫🇮 FI 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇧🇬 BG 01 (家宽) - xiaohe
+  - 🇫🇮 FI 01 - xiaohe
 rules:
 - MATCH,PROXIES

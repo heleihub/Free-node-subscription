@@ -5,6 +5,18 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
+  type: vless
+  server: c302b802-tla000-u10a65-1os43.hk3.hyhuawei.com
+  port: 443
+  uuid: 96c798f6-4645-11ee-b8a1-f23c9164ca5d
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  reality-opts:
+    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+  servername: updates.cdn-apple.com
+  client-fingerprint: qq
+- name: 🇭🇰 中国香港 (Hong Kong) 02 (家宽) - xiaohe
   type: trojan
   server: hk04.qianmoip.win
   port: 52224
@@ -12,18 +24,6 @@ proxies:
   udp: true
   sni: taobao.com
   skip-cert-verify: true
-- name: 🇭🇰 中国香港 (Hong Kong) 02 (家宽) - xiaohe
-  type: vless
-  server: 7306ab60-tla000-tlvr2y-1imi4.hk3.hyhuawei.com
-  port: 443
-  uuid: 40fb1315-191a-11ed-b0ca-f23c91cfbbc9
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
-  servername: updates.cdn-apple.com
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
