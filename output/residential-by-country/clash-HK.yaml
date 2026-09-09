@@ -6,19 +6,19 @@ log-level: info
 proxies:
 - name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
   type: vless
-  server: c302b802-tla000-u10a65-1os43.hk3.hyhuawei.com
+  server: 203.218.231.156
   port: 443
-  uuid: 96c798f6-4645-11ee-b8a1-f23c9164ca5d
+  uuid: 5f091cbe-fb34-11ea-9777-f23c9164ca5d
   udp: true
   tls: true
   skip-cert-verify: true
   reality-opts:
     public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
   servername: updates.cdn-apple.com
-  client-fingerprint: qq
+  client-fingerprint: chrome
 - name: 🇭🇰 中国香港 (Hong Kong) 02 (家宽) - xiaohe
   type: trojan
-  server: hk04.qianmoip.win
+  server: 58.152.211.48
   port: 52224
   password: d742752c-4231-4695-801e-f06d77f0f277
   udp: true
