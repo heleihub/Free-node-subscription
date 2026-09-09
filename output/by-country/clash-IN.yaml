@@ -15,8 +15,23 @@ proxies:
   reality-opts:
     public-key: R06_DTSjzQI9DswvRz9OqSBECfSwlpCMPR4DCc9oXyw
   servername: www.apple.com
-  client-fingerprint: random
+  client-fingerprint: chrome
 - name: 🇮🇳 印度 (India) 02 - xiaohe
+  type: vmess
+  server: 152.67.8.205
+  port: 80
+  uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: ''
+    headers:
+      Host: ''
+- name: 🇮🇳 印度 (India) 03 - xiaohe
   type: trojan
   server: 34.131.228.210
   port: 443
@@ -24,19 +39,19 @@ proxies:
   udp: true
   sni: hyfuuf6.wsone.icu
   skip-cert-verify: true
-- name: 🇮🇳 印度 (India) 03 - xiaohe
+- name: 🇮🇳 印度 (India) 04 - xiaohe
   type: vless
-  server: 104.18.2.67
+  server: 104.21.69.118
   port: 443
-  uuid: 65c56e1f-5c41-40bc-b0b5-9346772476ca
+  uuid: 1443b7a1-7ba9-4ec9-b904-2e867367b5d7
   udp: true
   tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /cdn/packages/runtime-core.tar.gz
+    path: /sync
     headers:
-      Host: in.520782.xyz
+      Host: odd-violet-5440.asdgrweeee13.workers.dev
 proxy-groups:
 - name: PROXIES
   type: select
@@ -45,6 +60,7 @@ proxy-groups:
   - 🇮🇳 印度 (India) 01 - xiaohe
   - 🇮🇳 印度 (India) 02 - xiaohe
   - 🇮🇳 印度 (India) 03 - xiaohe
+  - 🇮🇳 印度 (India) 04 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -53,5 +69,6 @@ proxy-groups:
   - 🇮🇳 印度 (India) 01 - xiaohe
   - 🇮🇳 印度 (India) 02 - xiaohe
   - 🇮🇳 印度 (India) 03 - xiaohe
+  - 🇮🇳 印度 (India) 04 - xiaohe
 rules:
 - MATCH,PROXIES

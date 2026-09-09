@@ -8,14 +8,14 @@ proxies:
   type: vless
   server: 151.242.168.125
   port: 390
-  uuid: 7b363f9c-3df9-4b60-a789-9cd36be0bdfe
+  uuid: b02ff150-ee30-46e0-9ea1-adbfd7762a06
   udp: true
   tls: true
   skip-cert-verify: true
   reality-opts:
     public-key: 5RCgAVjaT7hwdVIKAEULswXGqR127ZOZV6X17nEhYk8
   servername: bowandbead.com
-  client-fingerprint: qq
+  client-fingerprint: ios
 proxy-groups:
 - name: PROXIES
   type: select
