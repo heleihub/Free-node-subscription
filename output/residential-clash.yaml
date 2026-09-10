@@ -6,90 +6,68 @@ log-level: info
 proxies:
 - name: 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
   type: vless
-  server: 619c9ae2-tla000-tls5or-6gn6.hk3.hyhuawei.com
+  server: ac35c80b-tla000-tpmc23-1s3lb.hk3.hyhuawei.com
   port: 443
-  uuid: c12f73f6-e8c7-11ed-9246-f23c9164ca5d
+  uuid: fbf91120-50ba-11ef-a203-f23c91cfbbc9
   udp: true
   tls: true
   skip-cert-verify: true
   reality-opts:
     public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
   servername: updates.cdn-apple.com
-  client-fingerprint: qq
-- name: 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
+  client-fingerprint: safari
+- name: 🇹🇷 土耳其 (Turkey) 02 (家宽) - xiaohe
   type: vless
-  server: 95.181.162.170
-  port: 444
-  uuid: 751b51bc-af59-4b04-93c0-3fed4965297e
+  server: 45.74.158.180
+  port: 443
+  uuid: 42994234-1689-48bc-8d01-cfb16e7b017a
   udp: true
   tls: true
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: 2-gys60wmzb6bqzd.qpsjn114hh3vlph9z60sesz0agjawpwroneg.workers.dev
-- name: 🇺🇿 UZ 03 (家宽) - xiaohe
-  type: vless
-  server: 189.74.97.47
-  port: 2087
-  uuid: 894fe9f0-b998-49c0-8003-a5007de921e1
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /755276b33b6f
-    headers:
-      Host: 189.74.97.47
-- name: 🇯🇵 日本 (Japan) 04 (家宽) - xiaohe
-  type: vless
-  server: 83.147.216.223
-  port: 4433
-  uuid: 55889b09-e315-4640-9404-e10834e7728e
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: kqjifhg9rw.tradsc8p9xp7wxyqmc1wy0ah.workers.dev
-- name: 🇭🇰 中国香港 (Hong Kong) 05 (家宽) - xiaohe
+  reality-opts:
+    public-key: MgyA2FY0p2q_VOwoL9T1Z3rzpKEcGjfN61QliGcyHA8
+  servername: refersion.com
+  client-fingerprint: chrome
+- name: 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
   type: trojan
-  server: hk04.qianmoip.win
+  server: 58.152.211.48
   port: 52224
   password: d742752c-4231-4695-801e-f06d77f0f277
   udp: true
   sni: taobao.com
   skip-cert-verify: true
-- name: 🇯🇵 日本 (Japan) 06 (家宽) - xiaohe
+- name: 🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe
   type: vless
-  server: 79.137.199.52
-  port: 21
-  uuid: f346f223-ebf6-4da3-955e-425de7e9c372
+  server: 60.248.219.53
+  port: 443
+  uuid: f1d247db-d7ce-4eb8-9c0d-7b10603cd0b4
   udp: true
   tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /@Marisa_kristi
+    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     headers:
-      Host: 8n9qi6t-owl.gevc9s4n60cc3wzcmwhjyezydpmbchocxp.workers.dev
-- name: 🇯🇵 日本 (Japan) 07 (家宽) - xiaohe
-  type: vless
-  server: 80.240.18.227
-  port: 10051
-  uuid: f4d859eb-abc6-4c57-9eee-8fe9e2ef0f94
+      Host: 60.248.219.53
+- name: 🇺🇸 美国 (United States) 05 (家宽) - xiaohe
+  type: vmess
+  server: 165.140.216.142
+  port: 443
+  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
+  alterId: 0
+  cipher: auto
   udp: true
-  tls: true
+  tls: false
   skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /@Marisa_kristi
-    headers:
-      Host: d-l28t5-65-b.pbe40wmcujaw726h7cpqernzmawz4stwtrnqve0n1s5reht.workers.dev
-- name: 🇹🇼 中国台湾 (Taiwan) 08 (家宽) - xiaohe
+- name: 🇰🇷 韩国 (South Korea) 06 (家宽) - xiaohe
+  type: trojan
+  server: 154.90.62.70
+  port: 56127
+  password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
+  udp: true
+  sni: 154.90.62.70
+  skip-cert-verify: true
+- name: 🇹🇼 中国台湾 (Taiwan) 07 (家宽) - xiaohe
   type: vless
   server: 118.167.200.67
   port: 24215
@@ -100,40 +78,8 @@ proxies:
   reality-opts:
     public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
   servername: addons.mozilla.org
-  client-fingerprint: chrome
-- name: 🇨🇾 CY 09 (家宽) - xiaohe
-  type: ss
-  server: 132.243.255.3
-  port: 20111
-  cipher: aes-256-gcm
-  password: 78235e7dc55e9ad1
-  udp: true
-- name: 🇺🇸 美国 (United States) 10 (家宽) - xiaohe
-  type: vmess
-  server: 165.140.216.142
-  port: 443
-  uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  skip-cert-verify: true
-- name: 🇹🇼 中国台湾 (Taiwan) 11 (家宽) - xiaohe
-  type: ss
-  server: 36.224.152.189
-  port: 50099
-  cipher: chacha20-ietf-poly1305
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-  udp: true
-- name: 🇺🇸 美国 (United States) 12 (家宽) - xiaohe
-  type: trojan
-  server: 100.42.228.109
-  port: 443
-  password: BxceQaOe
-  udp: true
-  sni: t.me/ripaojiedian
-  skip-cert-verify: true
-- name: 🇬🇧 英国 (United Kingdom) 13 (家宽) - xiaohe
+  client-fingerprint: qq
+- name: 🇬🇧 英国 (United Kingdom) 08 (家宽) - xiaohe
   type: vless
   server: 89.106.206.57
   port: 443
@@ -146,156 +92,31 @@ proxies:
     path: /6d2fed050b30
     headers:
       Host: fcs013.getdcz.me
-- name: 🇹🇼 中国台湾 (Taiwan) 14 (家宽) - xiaohe
-  type: vless
-  server: 60.248.219.52
-  port: 443
-  uuid: f265b49a-70a3-407a-b17b-e45dfb9f255c
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
-    headers:
-      Host: 60.248.219.52
-- name: 🇹🇭 TH 15 (家宽) - xiaohe
-  type: vless
-  server: 103.86.49.57
-  port: 80
-  uuid: 3c52e091-6714-4915-949f-2149fe69951b
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws
-    headers:
-      Host: aIs.SpEeDtEsT.nEt
-- name: 🇳🇱 荷兰 (Netherlands) 16 (家宽) - xiaohe
-  type: vless
-  server: 69.46.46.126
-  port: 443
-  uuid: 1bb24e02-ab65-741a-ee0e-01c0ddd3f318
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws/1bb24e02-ab65-741a-ee0e-01c0ddd3f318
-    headers:
-      Host: x4gkingx4g-production-bb72.up.railway.app
-- name: 🇳🇱 荷兰 (Netherlands) 17 (家宽) - xiaohe
-  type: vless
-  server: web-production-ef5d6d.up.railway.app
-  port: 443
-  uuid: 36aa71ef-8736-44e0-8e28-fe38f212d783
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws/36aa71ef-8736-44e0-8e28-fe38f212d783
-    headers:
-      Host: web-production-ef5d6d.up.railway.app
-- name: 🇧🇬 BG 18 (家宽) - xiaohe
-  type: vless
-  server: 192.145.31.5
-  port: 8443
-  uuid: 9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a
-  udp: true
-  tls: true
-  skip-cert-verify: true
-- name: 🇧🇬 BG 19 (家宽) - xiaohe
-  type: vless
-  server: 192.145.31.5
-  port: 443
-  uuid: 9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 192.145.31.5
-- name: 🇨🇦 加拿大 (Canada) 20 (家宽) - xiaohe
-  type: vless
-  server: 130.94.115.231
-  port: 2087
-  uuid: 8a51f3d9-30cc-44e6-8d31-700211a29066
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /721740e567c7
-    headers:
-      Host: 130.94.115.231
-- name: 🇰🇷 韩国 (South Korea) 21 (家宽) - xiaohe
-  type: vless
-  server: 130.94.29.111
-  port: 2087
-  uuid: 84da6391-1539-4583-a3d9-d6efd796b4d6
-  udp: true
-  tls: false
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /e17586a75123
-    headers:
-      Host: 130.94.29.111
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
-  - 🇺🇿 UZ 03 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 04 (家宽) - xiaohe
-  - 🇭🇰 中国香港 (Hong Kong) 05 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 06 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 07 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 08 (家宽) - xiaohe
-  - 🇨🇾 CY 09 (家宽) - xiaohe
-  - 🇺🇸 美国 (United States) 10 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 11 (家宽) - xiaohe
-  - 🇺🇸 美国 (United States) 12 (家宽) - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 13 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 14 (家宽) - xiaohe
-  - 🇹🇭 TH 15 (家宽) - xiaohe
-  - 🇳🇱 荷兰 (Netherlands) 16 (家宽) - xiaohe
-  - 🇳🇱 荷兰 (Netherlands) 17 (家宽) - xiaohe
-  - 🇧🇬 BG 18 (家宽) - xiaohe
-  - 🇧🇬 BG 19 (家宽) - xiaohe
-  - 🇨🇦 加拿大 (Canada) 20 (家宽) - xiaohe
-  - 🇰🇷 韩国 (South Korea) 21 (家宽) - xiaohe
+  - 🇹🇷 土耳其 (Turkey) 02 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 05 (家宽) - xiaohe
+  - 🇰🇷 韩国 (South Korea) 06 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 07 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 08 (家宽) - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
   - 🇭🇰 中国香港 (Hong Kong) 01 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
-  - 🇺🇿 UZ 03 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 04 (家宽) - xiaohe
-  - 🇭🇰 中国香港 (Hong Kong) 05 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 06 (家宽) - xiaohe
-  - 🇯🇵 日本 (Japan) 07 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 08 (家宽) - xiaohe
-  - 🇨🇾 CY 09 (家宽) - xiaohe
-  - 🇺🇸 美国 (United States) 10 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 11 (家宽) - xiaohe
-  - 🇺🇸 美国 (United States) 12 (家宽) - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 13 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 14 (家宽) - xiaohe
-  - 🇹🇭 TH 15 (家宽) - xiaohe
-  - 🇳🇱 荷兰 (Netherlands) 16 (家宽) - xiaohe
-  - 🇳🇱 荷兰 (Netherlands) 17 (家宽) - xiaohe
-  - 🇧🇬 BG 18 (家宽) - xiaohe
-  - 🇧🇬 BG 19 (家宽) - xiaohe
-  - 🇨🇦 加拿大 (Canada) 20 (家宽) - xiaohe
-  - 🇰🇷 韩国 (South Korea) 21 (家宽) - xiaohe
+  - 🇹🇷 土耳其 (Turkey) 02 (家宽) - xiaohe
+  - 🇭🇰 中国香港 (Hong Kong) 03 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe
+  - 🇺🇸 美国 (United States) 05 (家宽) - xiaohe
+  - 🇰🇷 韩国 (South Korea) 06 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 07 (家宽) - xiaohe
+  - 🇬🇧 英国 (United Kingdom) 08 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

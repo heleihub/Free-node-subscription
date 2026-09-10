@@ -10,7 +10,7 @@ proxies:
   port: 443
   password: BxceQaOe
   udp: true
-  sni: 119.246.1.143
+  sni: t.me%2Fripaojiedian
   skip-cert-verify: true
 - name: 🇭🇰 中国香港 (Hong Kong) 02 - xiaohe
   type: vmess
@@ -26,7 +26,7 @@ proxies:
   ws-opts:
     path: /ws-vmess
     headers:
-      Host: u2frxj0g13vdi0wo.v.3dns.vip
+      Host: ''
 - name: 🇭🇰 中国香港 (Hong Kong) 03 - xiaohe
   type: ss
   server: 212.192.15.86
