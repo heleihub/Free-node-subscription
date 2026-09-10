@@ -1,0 +1,48 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
+  type: vless
+  server: 69.46.46.126
+  port: 443
+  uuid: 1bb24e02-ab65-741a-ee0e-01c0ddd3f318
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /ws/1bb24e02-ab65-741a-ee0e-01c0ddd3f318
+    headers:
+      Host: x4gkingx4g-production-bb72.up.railway.app
+- name: 🇳🇱 荷兰 (Netherlands) 02 (家宽) - xiaohe
+  type: vless
+  server: web-production-ef5d6d.up.railway.app
+  port: 443
+  uuid: 36aa71ef-8736-44e0-8e28-fe38f212d783
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /ws/36aa71ef-8736-44e0-8e28-fe38f212d783
+    headers:
+      Host: web-production-ef5d6d.up.railway.app
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
+  - 🇳🇱 荷兰 (Netherlands) 02 (家宽) - xiaohe
+- name: AUTO
+  type: url-test
+  url: https://www.google.com/generate_204
+  interval: 300
+  proxies:
+  - 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
+  - 🇳🇱 荷兰 (Netherlands) 02 (家宽) - xiaohe
+rules:
+- MATCH,PROXIES

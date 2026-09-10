@@ -6,7 +6,7 @@ log-level: info
 proxies:
 - name: 🇫🇮 FI 01 - xiaohe
   type: vless
-  server: italic.dearhossein-taktaz.ir
+  server: 65.109.185.234
   port: 8080
   uuid: 83fd52e3-c8d4-4ba6-abf4-445b99fec0f0
   udp: true
