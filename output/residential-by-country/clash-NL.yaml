@@ -6,17 +6,17 @@ log-level: info
 proxies:
 - name: 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
   type: vless
-  server: web-production-711a78.up.railway.app
+  server: core-d79e53-5f2007-production.up.railway.app
   port: 443
-  uuid: 3fa64081-cfc7-439a-92f5-20f2991f41bc
+  uuid: a70d8502-3306-5ed8-bf09-26675b773c9e
   udp: true
   tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /ws/3fa64081-cfc7-439a-92f5-20f2991f41bc
+    path: /ws/Jehdhsus
     headers:
-      Host: web-production-711a78.up.railway.app
+      Host: core-d79e53-5f2007-production.up.railway.app
 proxy-groups:
 - name: PROXIES
   type: select
