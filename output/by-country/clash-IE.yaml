@@ -9,7 +9,7 @@ proxies:
   server: 20.234.82.250
   port: 443
   cipher: chacha20-ietf-poly1305
-  password: kYhF4RWqohTpbVau
+  password: R2QvJ9exeq61wfSV
   udp: true
 proxy-groups:
 - name: PROXIES
