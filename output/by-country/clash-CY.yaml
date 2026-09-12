@@ -15,20 +15,8 @@ proxies:
   reality-opts:
     public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
   servername: deepl.com
-  client-fingerprint: qq
+  client-fingerprint: random
 - name: 🇨🇾 CY 02 - xiaohe
-  type: vless
-  server: cassiopeia.yokkastars.com
-  port: 40443
-  uuid: e4371581-c418-4770-b09a-d630f18290a6
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: WFvn-RRJzpt2qV4xwj_R93gDr6dduIjkQKO3De3Y2Hc
-  servername: deepl.com
-  client-fingerprint: ios
-- name: 🇨🇾 CY 03 - xiaohe
   type: vless
   server: 45.9.2.171
   port: 8443
@@ -43,7 +31,6 @@ proxy-groups:
   - AUTO
   - 🇨🇾 CY 01 - xiaohe
   - 🇨🇾 CY 02 - xiaohe
-  - 🇨🇾 CY 03 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -51,6 +38,5 @@ proxy-groups:
   proxies:
   - 🇨🇾 CY 01 - xiaohe
   - 🇨🇾 CY 02 - xiaohe
-  - 🇨🇾 CY 03 - xiaohe
 rules:
 - MATCH,PROXIES
