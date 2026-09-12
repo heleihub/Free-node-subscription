@@ -5,12 +5,12 @@ mode: rule
 log-level: info
 proxies:
 - name: 🇪🇪 EE 01 - xiaohe
-  type: trojan
-  server: 109.206.241.10
-  port: 449
-  password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+  type: vless
+  server: 94.183.170.135
+  port: 8443
+  uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
   udp: true
-  sni: russiapower.accesscam.org
+  tls: true
   skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
