@@ -13,21 +13,23 @@ proxies:
   udp: true
 - name: 🇫🇷 法国 (France) 02 - xiaohe
   type: ss
-  server: 51.83.192.80
-  port: 8388
-  cipher: aes-256-gcm
-  password: itzvpn@321
+  server: 171.22.128.72
+  port: 2
+  cipher: chacha20-ietf-poly1305
+  password: hcPtVDnxZHumuyqGtiOGtA
   udp: true
 - name: 🇫🇷 法国 (France) 03 - xiaohe
-  type: vmess
-  server: 141.95.65.9
-  port: 1234
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: auto
+  type: vless
+  server: 51.38.82.1
+  port: 443
+  uuid: 9343f183-7a16-4bdd-9c65-b0c21feca40b
   udp: true
   tls: true
   skip-cert-verify: true
+  reality-opts:
+    public-key: YRKpNLfduSsOl3l-CCUkhZDEjvcKytnuELqnWjLZI1M
+  servername: play.google.com
+  client-fingerprint: chrome
 - name: 🇫🇷 法国 (France) 04 - xiaohe
   type: vmess
   server: 162.19.204.71
@@ -52,17 +54,28 @@ proxies:
     headers:
       Host: 45.144.28.39
 - name: 🇫🇷 法国 (France) 06 - xiaohe
-  type: vless
-  server: 51.38.82.1
-  port: 443
-  uuid: 9343f183-7a16-4bdd-9c65-b0c21feca40b
+  type: ss
+  server: 51.83.192.80
+  port: 8388
+  cipher: aes-256-gcm
+  password: itzvpn@321
   udp: true
-  tls: true
+- name: 🇫🇷 法国 (France) 07 - xiaohe
+  type: vless
+  server: 15.237.145.224
+  port: 22222
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+  tls: false
   skip-cert-verify: true
-  reality-opts:
-    public-key: YRKpNLfduSsOl3l-CCUkhZDEjvcKytnuELqnWjLZI1M
-  servername: play.google.com
-  client-fingerprint: chrome
+- name: 🇫🇷 法国 (France) 08 - xiaohe
+  type: vless
+  server: 15.237.145.224
+  port: 22223
+  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  udp: true
+  tls: false
+  skip-cert-verify: true
 proxy-groups:
 - name: PROXIES
   type: select
@@ -74,6 +87,8 @@ proxy-groups:
   - 🇫🇷 法国 (France) 04 - xiaohe
   - 🇫🇷 法国 (France) 05 - xiaohe
   - 🇫🇷 法国 (France) 06 - xiaohe
+  - 🇫🇷 法国 (France) 07 - xiaohe
+  - 🇫🇷 法国 (France) 08 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -85,5 +100,7 @@ proxy-groups:
   - 🇫🇷 法国 (France) 04 - xiaohe
   - 🇫🇷 法国 (France) 05 - xiaohe
   - 🇫🇷 法国 (France) 06 - xiaohe
+  - 🇫🇷 法国 (France) 07 - xiaohe
+  - 🇫🇷 法国 (France) 08 - xiaohe
 rules:
 - MATCH,PROXIES

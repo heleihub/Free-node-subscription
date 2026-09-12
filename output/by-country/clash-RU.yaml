@@ -4,24 +4,24 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇪 IE 01 - xiaohe
+- name: 🇷🇺 俄罗斯 (Russia) 01 - xiaohe
   type: ss
-  server: 20.234.82.250
-  port: 443
+  server: 130.49.189.158
+  port: 43558
   cipher: chacha20-ietf-poly1305
-  password: R2QvJ9exeq61wfSV
+  password: jIlQi9jGPJd7KHMx6Y4+JbaNoWSWfe2A73U4J4o0Qrs=
   udp: true
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇪 IE 01 - xiaohe
+  - 🇷🇺 俄罗斯 (Russia) 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇪 IE 01 - xiaohe
+  - 🇷🇺 俄罗斯 (Russia) 01 - xiaohe
 rules:
 - MATCH,PROXIES
