@@ -12,15 +12,21 @@ proxies:
   udp: true
   sni: 154.90.62.70
   skip-cert-verify: true
-- name: 🇹🇷 土耳其 (Turkey) 02 (家宽) - xiaohe
-  type: vless
-  server: connect3.nyxserver.ir
-  port: 8444
-  uuid: 0b39a009-2a2a-4035-ba87-cc82894f8e21
+- name: 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
+  type: ss
+  server: 103.115.18.43
+  port: 8388
+  cipher: aes-256-gcm
+  password: DpCoJB6R8tYNe1LI
   udp: true
-  tls: true
-  skip-cert-verify: true
-- name: 🇦🇪 阿联酋 (UAE) 03 (家宽) - xiaohe
+- name: 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - xiaohe
+  type: ss
+  server: 36.224.152.189
+  port: 50099
+  cipher: chacha20-ietf-poly1305
+  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+  udp: true
+- name: 🇦🇪 阿联酋 (UAE) 04 (家宽) - xiaohe
   type: vless
   server: 89.125.147.199
   port: 443
@@ -32,13 +38,6 @@ proxies:
     public-key: iQJ8UdFw-lUWa9mXugescYHkmwNH96nuj_z-LAZvfxg
   servername: maps.apple.com
   client-fingerprint: chrome
-- name: 🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe
-  type: ss
-  server: 36.224.152.189
-  port: 50099
-  cipher: chacha20-ietf-poly1305
-  password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-  udp: true
 - name: 🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe
   type: vless
   server: 60.248.219.78
@@ -51,16 +50,16 @@ proxies:
   ws-opts:
     path: /81574b6b-c9d7-44a0-b83d-dad56e8cb530
     headers:
-      Host: 60.248.219.78
+      Host: ty986gfazs.cainiaohub.xyz
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe
-  - 🇹🇷 土耳其 (Turkey) 02 (家宽) - xiaohe
-  - 🇦🇪 阿联酋 (UAE) 03 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe
+  - 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - xiaohe
+  - 🇦🇪 阿联酋 (UAE) 04 (家宽) - xiaohe
   - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe
 - name: AUTO
   type: url-test
@@ -68,9 +67,9 @@ proxy-groups:
   interval: 300
   proxies:
   - 🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe
-  - 🇹🇷 土耳其 (Turkey) 02 (家宽) - xiaohe
-  - 🇦🇪 阿联酋 (UAE) 03 (家宽) - xiaohe
-  - 🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe
+  - 🇯🇵 日本 (Japan) 02 (家宽) - xiaohe
+  - 🇹🇼 中国台湾 (Taiwan) 03 (家宽) - xiaohe
+  - 🇦🇪 阿联酋 (UAE) 04 (家宽) - xiaohe
   - 🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe
 rules:
 - MATCH,PROXIES

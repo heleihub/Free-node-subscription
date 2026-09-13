@@ -19,34 +19,17 @@ proxies:
     path: /yoga-suggesting-recording-calls.trycloudflare.com/3aa71202-a099-49c1-99fc-6662f3335369-vm
     headers:
       Host: nomino.11hi8itbaf.workers.dev
-- name: 🇭🇰 中国香港 (Hong Kong) 02 - xiaohe
-  type: vmess
-  server: 47.83.19.148
-  port: 443
-  uuid: f23bb427-c1f9-4373-876c-2f43e9f790f3
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /ws-vmess
-    headers:
-      Host: 6JDvArazgU3qQR6Q.v.3dns.vip
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇭🇰 中国香港 (Hong Kong) 01 - xiaohe
-  - 🇭🇰 中国香港 (Hong Kong) 02 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
   - 🇭🇰 中国香港 (Hong Kong) 01 - xiaohe
-  - 🇭🇰 中国香港 (Hong Kong) 02 - xiaohe
 rules:
 - MATCH,PROXIES

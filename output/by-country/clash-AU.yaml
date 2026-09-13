@@ -4,30 +4,30 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇦🇪 阿联酋 (UAE) 01 - xiaohe
+- name: 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
   type: vless
-  server: 84.235.244.108
-  port: 22573
-  uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+  server: 103.75.119.126
+  port: 2087
+  uuid: 731f177e-00aa-480c-b935-661456139a32
   udp: true
   tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /
+    path: /7586c69d3dc9
     headers:
-      Host: uae.unixzone.us
+      Host: 103.75.119.126
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇦🇪 阿联酋 (UAE) 01 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇦🇪 阿联酋 (UAE) 01 - xiaohe
+  - 🇦🇺 澳大利亚 (Australia) 01 - xiaohe
 rules:
 - MATCH,PROXIES
