@@ -12,16 +12,6 @@ proxies:
   password: itzvpn@321
   udp: true
 - name: 🇫🇷 法国 (France) 02 - xiaohe
-  type: vmess
-  server: 141.95.65.9
-  port: 1234
-  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  skip-cert-verify: true
-- name: 🇫🇷 法国 (France) 03 - xiaohe
   type: vless
   server: 51.38.82.1
   port: 443
@@ -32,14 +22,26 @@ proxies:
   reality-opts:
     public-key: YRKpNLfduSsOl3l-CCUkhZDEjvcKytnuELqnWjLZI1M
   servername: play.google.com
-  client-fingerprint: random
-- name: 🇫🇷 法国 (France) 04 - xiaohe
-  type: vless
-  server: 35.181.22.53
-  port: 22223
-  uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+  client-fingerprint: firefox
+- name: 🇫🇷 法国 (France) 03 - xiaohe
+  type: vmess
+  server: 141.95.65.9
+  port: 1234
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: auto
   udp: true
-  tls: false
+  tls: true
+  skip-cert-verify: true
+- name: 🇫🇷 法国 (France) 04 - xiaohe
+  type: vmess
+  server: 162.19.204.71
+  port: 1234
+  uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
   skip-cert-verify: true
 - name: 🇫🇷 法国 (France) 05 - xiaohe
   type: vless
