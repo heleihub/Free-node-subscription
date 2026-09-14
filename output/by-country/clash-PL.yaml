@@ -26,6 +26,19 @@ proxies:
       Host: pl2.lckdwn.ru
 - name: 🇵🇱 PL 03 - xiaohe
   type: vless
+  server: 104.25.22.24
+  port: 443
+  uuid: e6cc4788-3c45-4df1-94f3-8303504a65bf
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /sync
+    headers:
+      Host: khoda.ak-khoda.workers.dev
+- name: 🇵🇱 PL 04 - xiaohe
+  type: vless
   server: 94.183.209.59
   port: 443
   uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
@@ -45,6 +58,7 @@ proxy-groups:
   - 🇵🇱 PL 01 - xiaohe
   - 🇵🇱 PL 02 - xiaohe
   - 🇵🇱 PL 03 - xiaohe
+  - 🇵🇱 PL 04 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -53,5 +67,6 @@ proxy-groups:
   - 🇵🇱 PL 01 - xiaohe
   - 🇵🇱 PL 02 - xiaohe
   - 🇵🇱 PL 03 - xiaohe
+  - 🇵🇱 PL 04 - xiaohe
 rules:
 - MATCH,PROXIES
