@@ -1,0 +1,48 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+proxies:
+- name: 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
+  type: vless
+  server: 69.46.46.106
+  port: 443
+  uuid: d636bed9-a49f-7ad3-5278-38c47c392aef
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /ws/d636bed9-a49f-7ad3-5278-38c47c392aef
+    headers:
+      Host: soliconf-production-2633.up.railway.app
+- name: 🇳🇱 荷兰 (Netherlands) 02 (家宽) - xiaohe
+  type: vless
+  server: switchyard.proxy.rlwy.net
+  port: 32985
+  uuid: 2c7ea4a8-b867-4008-b21d-e9377e4c294d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: switchyard.proxy.rlwy.net
+proxy-groups:
+- name: PROXIES
+  type: select
+  proxies:
+  - AUTO
+  - 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
+  - 🇳🇱 荷兰 (Netherlands) 02 (家宽) - xiaohe
+- name: AUTO
+  type: url-test
+  url: https://www.google.com/generate_204
+  interval: 300
+  proxies:
+  - 🇳🇱 荷兰 (Netherlands) 01 (家宽) - xiaohe
+  - 🇳🇱 荷兰 (Netherlands) 02 (家宽) - xiaohe
+rules:
+- MATCH,PROXIES
