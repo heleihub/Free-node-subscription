@@ -4,29 +4,29 @@ allow-lan: true
 mode: rule
 log-level: info
 proxies:
-- name: 🇮🇳 印度 (India) 01 - xiaohe
+- name: 🇦🇹 AT 01 - xiaohe
   type: vless
-  server: 194.61.31.126
-  port: 2053
-  uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+  server: 152.53.1.40
+  port: 443
+  uuid: edde565e-41f5-400e-84ea-7b87a3e84488
   udp: true
   tls: true
   skip-cert-verify: true
   reality-opts:
-    public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
-  servername: www.apple.com
-  client-fingerprint: firefox
+    public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+  servername: at.quattro-tech.ru
+  client-fingerprint: qq
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
-  - 🇮🇳 印度 (India) 01 - xiaohe
+  - 🇦🇹 AT 01 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
-  - 🇮🇳 印度 (India) 01 - xiaohe
+  - 🇦🇹 AT 01 - xiaohe
 rules:
 - MATCH,PROXIES

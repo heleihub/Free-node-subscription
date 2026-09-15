@@ -6,43 +6,28 @@ log-level: info
 proxies:
 - name: 🇹🇷 土耳其 (Turkey) 01 - xiaohe
   type: vless
-  server: 172.67.134.170
-  port: 443
-  uuid: 50414e45-4c5f-5a45-5553-635698a6bb9c
+  server: shop.neexbyte.ir
+  port: 8443
+  uuid: 464bc502-f963-45b6-81e3-e33d18427506
   udp: true
   tls: true
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /stream/PANEL_ZEUS/635698a6bb9c/loc-0
+    path: /
     headers:
-      Host: jdzit4e4urks.xwzohsebujps.workers.dev
-- name: 🇹🇷 土耳其 (Turkey) 02 - xiaohe
-  type: vless
-  server: 104.17.169.13
-  port: 2053
-  uuid: a22bff60-a40a-4250-bde2-4c660e363b47
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: /axch1mttbxz2k55y01
-    headers:
-      Host: inDeX.HaRMONiCA01.WORkers.DeV
+      Host: shop.neexbyte.ir
 proxy-groups:
 - name: PROXIES
   type: select
   proxies:
   - AUTO
   - 🇹🇷 土耳其 (Turkey) 01 - xiaohe
-  - 🇹🇷 土耳其 (Turkey) 02 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
   interval: 300
   proxies:
   - 🇹🇷 土耳其 (Turkey) 01 - xiaohe
-  - 🇹🇷 土耳其 (Turkey) 02 - xiaohe
 rules:
 - MATCH,PROXIES
