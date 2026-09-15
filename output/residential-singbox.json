@@ -6,22 +6,32 @@
       "tag": "select",
       "outbounds": [
         "auto",
-        "🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe",
-        "🇦🇪 阿联酋 (UAE) 02 (家宽) - xiaohe",
-        "🇹🇼 中国台湾 (Taiwan) 03 (家宽) - xiaohe",
-        "🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe",
-        "🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe"
+        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) - xiaohe",
+        "🇯🇵 日本 (Japan) 02 (家宽) - xiaohe",
+        "🇯🇵 日本 (Japan) 03 (家宽) - xiaohe",
+        "🇦🇪 阿联酋 (UAE) 04 (家宽) - xiaohe",
+        "🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe",
+        "🇩🇪 德国 (Germany) 06 (家宽) - xiaohe",
+        "🇯🇵 日本 (Japan) 07 (家宽) - xiaohe",
+        "🇸🇬 新加坡 (Singapore) 08 (家宽) - xiaohe",
+        "🇳🇴 NO 09 (家宽) - xiaohe",
+        "🇯🇵 日本 (Japan) 10 (家宽) - xiaohe"
       ]
     },
     {
       "type": "urltest",
       "tag": "auto",
       "outbounds": [
-        "🇰🇷 韩国 (South Korea) 01 (家宽) - xiaohe",
-        "🇦🇪 阿联酋 (UAE) 02 (家宽) - xiaohe",
-        "🇹🇼 中国台湾 (Taiwan) 03 (家宽) - xiaohe",
-        "🇹🇼 中国台湾 (Taiwan) 04 (家宽) - xiaohe",
-        "🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe"
+        "🇹🇼 中国台湾 (Taiwan) 01 (家宽) - xiaohe",
+        "🇯🇵 日本 (Japan) 02 (家宽) - xiaohe",
+        "🇯🇵 日本 (Japan) 03 (家宽) - xiaohe",
+        "🇦🇪 阿联酋 (UAE) 04 (家宽) - xiaohe",
+        "🇹🇼 中国台湾 (Taiwan) 05 (家宽) - xiaohe",
+        "🇩🇪 德国 (Germany) 06 (家宽) - xiaohe",
+        "🇯🇵 日本 (Japan) 07 (家宽) - xiaohe",
+        "🇸🇬 新加坡 (Singapore) 08 (家宽) - xiaohe",
+        "🇳🇴 NO 09 (家宽) - xiaohe",
+        "🇯🇵 日本 (Japan) 10 (家宽) - xiaohe"
       ],
       "url": "https://www.google.com/generate_204"
     },
