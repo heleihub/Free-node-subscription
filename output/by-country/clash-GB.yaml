@@ -15,59 +15,27 @@ proxies:
   tls: false
   skip-cert-verify: true
 - name: 🇬🇧 英国 (United Kingdom) 02 - xiaohe
-  type: ss
-  server: 51.38.71.51
-  port: 2083
-  cipher: 2022-blake3-aes-256-gcm
-  password: cOiC+3JhAXMwdGV5exnrMSorJU0Rl5qlLCbCAuDlWY4=:2tFqykGqZ101XW11f6iRiERnPycFAjjYq0y2zUYhKho=
+  type: vmess
+  server: 57.129.132.223
+  port: 80
+  uuid: a25cbf11-2908-4a1b-a3a8-9a571777dca3
+  alterId: 0
+  cipher: auto
   udp: true
-- name: 🇬🇧 英国 (United Kingdom) 03 - xiaohe
-  type: vless
-  server: 186.190.211.188
-  port: 443
-  uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-  udp: true
-  tls: true
-  skip-cert-verify: true
-- name: 🇬🇧 英国 (United Kingdom) 04 - xiaohe
-  type: vless
-  server: 129.121.95.159
-  port: 443
-  uuid: f6190ff2-864c-46cf-ac16-93908c069b75
-  udp: true
-  tls: true
+  tls: false
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /connect
+    path: /vmess/
     headers:
-      Host: 129.121.95.159
-- name: 🇬🇧 英国 (United Kingdom) 05 - xiaohe
-  type: ss
-  server: 158.173.221.214
-  port: 11001
-  cipher: chacha20-ietf-poly1305
-  password: c58d16e593d44f42
-  udp: true
-- name: 🇬🇧 英国 (United Kingdom) 06 - xiaohe
+      Host: google.com
+- name: 🇬🇧 英国 (United Kingdom) 03 - xiaohe
   type: ss
   server: 51.77.225.200
   port: 8388
   cipher: chacha20-ietf-poly1305
   password: zRZNBszYyWo5
   udp: true
-- name: 🇬🇧 英国 (United Kingdom) 07 - xiaohe
-  type: vless
-  server: 78.129.208.44
-  port: 421
-  uuid: a3c861cb-e1e7-4ad6-8be2-7c2314ec6f18
-  udp: true
-  tls: true
-  skip-cert-verify: true
-  reality-opts:
-    public-key: zUdAvpr07q1Yd0Om-jc4-Vu4Un5tVird8FGoN-7W9Tg
-  servername: chistomat.dry.care
-  client-fingerprint: chrome
 proxy-groups:
 - name: PROXIES
   type: select
@@ -76,10 +44,6 @@ proxy-groups:
   - 🇬🇧 英国 (United Kingdom) 01 - xiaohe
   - 🇬🇧 英国 (United Kingdom) 02 - xiaohe
   - 🇬🇧 英国 (United Kingdom) 03 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 04 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 05 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 06 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 07 - xiaohe
 - name: AUTO
   type: url-test
   url: https://www.google.com/generate_204
@@ -88,9 +52,5 @@ proxy-groups:
   - 🇬🇧 英国 (United Kingdom) 01 - xiaohe
   - 🇬🇧 英国 (United Kingdom) 02 - xiaohe
   - 🇬🇧 英国 (United Kingdom) 03 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 04 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 05 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 06 - xiaohe
-  - 🇬🇧 英国 (United Kingdom) 07 - xiaohe
 rules:
 - MATCH,PROXIES
